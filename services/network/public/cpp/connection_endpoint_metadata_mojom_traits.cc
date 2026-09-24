@@ -11,6 +11,7 @@ bool StructTraits<network::mojom::ConnectionEndpointMetadataDataView,
                   net::ConnectionEndpointMetadata>::
     Read(network::mojom::ConnectionEndpointMetadataDataView data,
          net::ConnectionEndpointMetadata* out) {
+  out->target_port = data.target_port();
   if (!data.ReadSupportedProtocolAlpns(&out->supported_protocol_alpns))
     return false;
   if (!data.ReadEchConfigList(&out->ech_config_list))

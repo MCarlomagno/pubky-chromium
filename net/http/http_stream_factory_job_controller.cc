@@ -4,6 +4,8 @@
 
 #include "net/http/http_stream_factory_job_controller.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <string>
 #include <utility>
 
@@ -921,6 +923,7 @@ int HttpStreamFactory::JobController::DoCreateJobs() {
   // - proxied connections perform DNS on the proxy, so they can't get supported
   //   ALPNs from DNS
   const bool dns_alpn_h3_job_enabled =
+      !ParsePubkyPublicKey(destination.host()) &&
       !session_->ShouldForceQuic(destination, proxy_info_, is_websocket_) &&
       enable_alternative_services_ &&
       session_->params().use_dns_https_svcb_alpn &&
@@ -1350,7 +1353,8 @@ HttpStreamFactory::JobController::GetAdvertisedAltSvcFor(
     const StreamRequestInfo& request_info,
     HttpStreamRequest::Delegate* delegate,
     HttpStreamRequest::StreamType stream_type) {
-  if (!enable_alternative_services_) {
+  if (!enable_alternative_services_ ||
+      ParsePubkyPublicKey(request_info.url.host())) {
     return AdvertisedAlternativeService();
   }
 

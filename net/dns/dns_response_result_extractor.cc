@@ -4,6 +4,9 @@
 
 #include "net/dns/dns_response_result_extractor.h"
 
+#include "net/base/port_util.h"
+#include "net/base/pubky_public_key.h"
+
 #include <limits.h>
 #include <stdint.h>
 
@@ -555,12 +558,17 @@ ResultsOrError ExtractHttpsResults(const DnsResponse& response,
     // port redirects, Chrome must ensure redirects to the "bad port list" are
     // disallowed. Unclear if such logic would belong here or in socket
     // connection logic.
+    const bool is_pubky = ParsePubkyPublicKey(original_domain_name).has_value();
     if (service->port().has_value() &&
-        service->port().value() != request_port) {
+        (!IsPortAllowedForScheme(service->port().value(), "https") ||
+         (service->port().value() != request_port && !is_pubky))) {
       continue;
     }
 
     ConnectionEndpointMetadata metadata;
+    if (is_pubky) {
+      metadata.target_port = service->port().value_or(0);
+    }
 
     metadata.supported_protocol_alpns = service->alpn_ids();
     if (service->default_alpn() &&

@@ -767,7 +767,7 @@ mojom::URLResponseHeadPtr BuildResponseHead(
   CHECK(include_load_timing_internal_info_with_response ||
         !response->load_timing_internal_info);
 
-  if (url_request.ssl_info().cert.get()) {
+  if (url_request.ssl_info().is_valid()) {
     response->cert_status = url_request.ssl_info().cert_status;
     if ((url_load_options & mojom::kURLLoadOptionSendSSLInfoWithResponse) ||
         (net::IsCertStatusError(url_request.ssl_info().cert_status) &&

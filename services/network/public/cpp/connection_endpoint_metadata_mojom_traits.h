@@ -18,6 +18,9 @@ struct COMPONENT_EXPORT(NETWORK_CPP_IP_ADDRESS)
     StructTraits<network::mojom::ConnectionEndpointMetadataDataView,
                  net::ConnectionEndpointMetadata> {
   using EchConfigList = std::vector<std::uint8_t>;
+  static uint16_t target_port(const net::ConnectionEndpointMetadata& obj) {
+    return obj.target_port;
+  }
   static const std::vector<std::string>& supported_protocol_alpns(
       const net::ConnectionEndpointMetadata& obj) {
     return obj.supported_protocol_alpns;

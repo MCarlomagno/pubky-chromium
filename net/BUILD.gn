@@ -249,6 +249,7 @@ component("net") {
     "base/platform_mime_util.h",
     "base/port_util.cc",
     "base/port_util.h",
+    "base/pubky_public_key.h",
     "base/prioritized_dispatcher.cc",
     "base/prioritized_dispatcher.h",
     "base/prioritized_task_runner.cc",

@@ -43,6 +43,29 @@ TEST_F(HttpResponseInfoTest, UnusedSincePrefetchDefault) {
   EXPECT_FALSE(response_info_.unused_since_prefetch);
 }
 
+TEST_F(HttpResponseInfoTest, PubkyRawKeyCacheRoundTrip) {
+  response_info_.ssl_info.verified_raw_public_key.assign(32, 0x42);
+  response_info_.ssl_info.connection_status = 1234;
+  response_info_.ssl_info.peer_signature_algorithm = 0x0807;
+  response_info_.ssl_info.key_exchange_group = 29;
+  HttpResponseInfo restored;
+  PickleAndRestore(response_info_, &restored);
+  EXPECT_TRUE(restored.ssl_info.is_valid());
+  EXPECT_FALSE(restored.ssl_info.cert);
+  EXPECT_EQ(restored.ssl_info.verified_raw_public_key,
+            response_info_.ssl_info.verified_raw_public_key);
+  EXPECT_EQ(restored.ssl_info.connection_status, 1234);
+  EXPECT_EQ(restored.ssl_info.peer_signature_algorithm, 0x0807);
+}
+
+TEST_F(HttpResponseInfoTest, PubkyMalformedCachedKeyRejected) {
+  response_info_.ssl_info.verified_raw_public_key.assign(31, 0x42);
+  auto pickle = response_info_.MakePickle(false, false);
+  HttpResponseInfo restored;
+  bool truncated = false;
+  EXPECT_FALSE(restored.InitFromPickle(base::PickleIterator(*pickle), &truncated));
+}
+
 TEST_F(HttpResponseInfoTest, UnusedSincePrefetchCopy) {
   response_info_.unused_since_prefetch = true;
   HttpResponseInfo response_info_clone(response_info_);

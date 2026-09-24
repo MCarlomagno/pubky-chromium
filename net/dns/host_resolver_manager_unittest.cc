@@ -589,6 +589,26 @@ IPEndPoint HostResolverManagerTest::CreateExpected(
   return IPEndPoint(ip, port);
 }
 
+TEST_F(HostResolverManagerTest, PubkyFailsClosedWithoutDoh) {
+  constexpr char kHost[] =
+      "4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy";
+  proc_->AddRuleForAllFamilies(kHost, "192.0.2.1");
+  proc_->SignalMultiple(3u);
+  for (auto source : {HostResolverSource::ANY, HostResolverSource::SYSTEM,
+                      HostResolverSource::DNS}) {
+    HostResolver::ResolveHostParameters parameters;
+    parameters.source = source;
+    parameters.secure_dns_policy = SecureDnsPolicy::kDisable;
+    ResolveHostResponseHelper response(resolver_->CreateRequest(
+        HostPortPair(kHost, 443), NetworkAnonymizationKey(),
+        handles::kInvalidNetworkHandle, NetLogWithSource(), parameters,
+        resolve_context_.get()));
+    EXPECT_NE(response.result_error(), OK);
+    EXPECT_TRUE(response.request()->GetAddressResults().empty());
+  }
+  EXPECT_TRUE(proc_->GetCaptureList().empty());
+}
+
 TEST_F(HostResolverManagerTest, AsynchronousLookup) {
   AddScopedFeatureList().InitAndEnableFeature(features::kUseHostResolverCache);
 

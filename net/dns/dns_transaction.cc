@@ -4,6 +4,8 @@
 
 #include "net/dns/dns_transaction.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <stdint.h>
 
 #include <algorithm>
@@ -508,7 +510,7 @@ class DnsTransactionImpl final : public DnsTransaction {
     if (!labeled_qname.has_value())
       return ERR_INVALID_ARGUMENT;
 
-    if (hostname_.back() == '.') {
+    if (hostname_.back() == '.' || ParsePubkyPublicKey(hostname_)) {
       // It's a fully-qualified name, no suffix search.
       qnames_.push_back(std::move(labeled_qname).value());
       return OK;

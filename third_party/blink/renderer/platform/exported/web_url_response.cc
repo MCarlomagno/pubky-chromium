@@ -117,7 +117,7 @@ void SetSecurityStyleAndDetails(const GURL& url,
     response->SetSecurityStyle(SecurityStyle::kSecure);
   }
 
-  if (!ssl_info.cert) {
+  if (!ssl_info.is_valid()) {
     NOTREACHED();
   }
 

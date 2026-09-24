@@ -4,6 +4,8 @@
 
 #include "net/spdy/spdy_session.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <algorithm>
 #include <array>
 #include <limits>
@@ -725,6 +727,11 @@ bool SpdySession::CanPool(TransportSecurityState* transport_security_state,
                           const SSLConfigService& ssl_config_service,
                           std::string_view old_hostname,
                           std::string_view new_hostname) {
+  // Do not coalesce raw-key and X.509 identities, or different raw-key origins.
+  if (!ssl_info.verified_raw_public_key.empty() ||
+      ParsePubkyPublicKey(new_hostname)) {
+    return false;
+  }
   // Pooling is prohibited if the server cert is not valid for the new domain,
   // and for connections on which client certs were sent. It is also prohibited
   // when channel ID was sent if the hosts are from different eTLDs+1.

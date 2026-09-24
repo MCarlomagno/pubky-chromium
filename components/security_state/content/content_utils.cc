@@ -39,6 +39,7 @@ std::unique_ptr<security_state::VisibleSecurityState> GetVisibleSecurityState(
   state->connection_info_initialized = true;
   const content::SSLStatus& ssl = entry->GetSSL();
   state->certificate = ssl.certificate;
+  state->verified_raw_public_key = ssl.verified_raw_public_key;
   state->cert_status = ssl.cert_status;
   state->connection_status = ssl.connection_status;
   state->key_exchange_group = ssl.key_exchange_group;

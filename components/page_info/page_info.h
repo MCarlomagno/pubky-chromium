@@ -96,6 +96,8 @@ class PageInfo : private content_settings::CookieControlsObserver,
     // except when installed in dev-mode-proxy. The identities of Isolated Web
     // Apps are associated with the bundle signature.
     SITE_IDENTITY_STATUS_ISOLATED_WEB_APP,
+    // The server proved possession of the public key in the URL via RFC 7250.
+    SITE_IDENTITY_STATUS_RAW_PUBLIC_KEY,
   };
 
   // Safe Browsing status of a website.

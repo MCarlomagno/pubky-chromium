@@ -43,9 +43,9 @@ ConnectionEndpointMetadata::ConnectionEndpointMetadata(
 bool ConnectionEndpointMetadata::operator<(
     const ConnectionEndpointMetadata& other) const {
   return std::tie(supported_protocol_alpns, ech_config_list, target_name,
-                  trust_anchor_ids) <
+                  trust_anchor_ids, target_port) <
          std::tie(other.supported_protocol_alpns, other.ech_config_list,
-                  other.target_name, other.trust_anchor_ids);
+                  other.target_name, other.trust_anchor_ids, other.target_port);
 }
 
 base::Value ConnectionEndpointMetadata::ToValue() const {
@@ -61,6 +61,9 @@ base::Value ConnectionEndpointMetadata::ToValue() const {
 
   if (!target_name.empty()) {
     dict.Set(kTargetNameKey, target_name);
+  }
+  if (target_port != 0) {
+    dict.Set("pubky_target_port", static_cast<int>(target_port));
   }
 
   base::ListValue trust_anchor_ids_list;
@@ -91,6 +94,12 @@ std::optional<ConnectionEndpointMetadata> ConnectionEndpointMetadata::FromValue(
     return std::nullopt;
 
   ConnectionEndpointMetadata metadata;
+  if (const base::Value* port = dict->Find("pubky_target_port")) {
+    if (!port->is_int() || port->GetInt() <= 0 || port->GetInt() > 65535) {
+      return std::nullopt;
+    }
+    metadata.target_port = static_cast<uint16_t>(port->GetInt());
+  }
 
   std::vector<std::string> alpns;
   for (const base::Value& alpn : *alpns_list) {

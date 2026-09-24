@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "net/base/url_util.h"
 #include "net/cert/cert_status_flags.h"
@@ -177,6 +178,7 @@ struct VisibleSecurityState {
   // The following fields contain information about the connection
   // used to load the page or request.
   scoped_refptr<net::X509Certificate> certificate;
+  std::vector<uint8_t> verified_raw_public_key;
   scoped_refptr<net::X509Certificate> two_qwac;
   net::CertStatus cert_status;
   int connection_status;

@@ -114,7 +114,8 @@ SecurityLevel GetSecurityLevel(
   // TODO(meacer): Remove special case for blob (crbug.com/684751).
   const bool is_cryptographic_with_certificate =
       visible_security_state.url.SchemeIsCryptographic() &&
-      visible_security_state.certificate;
+      (visible_security_state.certificate ||
+       visible_security_state.verified_raw_public_key.size() == 32);
   if (!is_cryptographic_with_certificate) {
     if (!visible_security_state.is_error_page &&
         !network::IsUrlPotentiallyTrustworthy(url) &&
@@ -172,7 +173,8 @@ bool HasMajorCertificateError(
 
   const bool is_cryptographic_with_certificate =
       visible_security_state.url.SchemeIsCryptographic() &&
-      visible_security_state.certificate;
+      (visible_security_state.certificate ||
+       visible_security_state.verified_raw_public_key.size() == 32);
 
   const bool is_major_cert_error =
       net::IsCertStatusError(visible_security_state.cert_status);

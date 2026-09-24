@@ -154,6 +154,7 @@ enum {
   // This bit is set if the zstd uncompressed body size is stored, indicating
   // the response body on disk is zstd-compressed.
   RESPONSE_EXTRA_INFO_HAS_ZSTD_UNCOMPRESSED_BODY_SIZE = 1 << 4,
+  RESPONSE_EXTRA_INFO_HAS_RAW_PUBLIC_KEY = 1 << 5,
 };
 
 HttpResponseInfo::HttpResponseInfo() = default;
@@ -404,6 +405,14 @@ bool HttpResponseInfo::InitFromPickle(base::PickleIterator iter,
     zstd_uncompressed_body_size = size;
   }
 
+  if (extra_flags & RESPONSE_EXTRA_INFO_HAS_RAW_PUBLIC_KEY) {
+    std::string key;
+    if (ssl_info.cert || !iter.ReadString(&key) || key.size() != 32) {
+      return false;
+    }
+    ssl_info.verified_raw_public_key.assign(key.begin(), key.end());
+  }
+
   return true;
 }
 
@@ -442,7 +451,9 @@ std::unique_ptr<base::Pickle> HttpResponseInfo::MakePickleImpl(
   int flags = RESPONSE_INFO_VERSION;
   int extra_flags = 0;
   if (ssl_info.is_valid()) {
-    flags |= RESPONSE_INFO_HAS_CERT;
+    if (ssl_info.cert) {
+      flags |= RESPONSE_INFO_HAS_CERT;
+    }
     flags |= RESPONSE_INFO_HAS_CERT_STATUS;
     if (ssl_info.key_exchange_group != 0)
       flags |= RESPONSE_INFO_HAS_KEY_EXCHANGE_GROUP;
@@ -495,6 +506,9 @@ std::unique_ptr<base::Pickle> HttpResponseInfo::MakePickleImpl(
   }
 
   extra_flags |= RESPONSE_EXTRA_INFO_HAS_ORIGINAL_RESPONSE_TIME;
+  if (!ssl_info.verified_raw_public_key.empty()) {
+    extra_flags |= RESPONSE_EXTRA_INFO_HAS_RAW_PUBLIC_KEY;
+  }
   flags |= RESPONSE_INFO_HAS_EXTRA_FLAGS;
 
   pickle->WriteInt(flags);
@@ -518,7 +532,9 @@ std::unique_ptr<base::Pickle> HttpResponseInfo::MakePickleImpl(
   headers->Persist(pickle.get(), persist_options);
 
   if (ssl_info.is_valid()) {
-    ssl_info.cert->Persist(pickle.get());
+    if (ssl_info.cert) {
+      ssl_info.cert->Persist(pickle.get());
+    }
     pickle->WriteUInt32(ssl_info.cert_status);
     if (ssl_info.connection_status != 0)
       pickle->WriteInt(ssl_info.connection_status);
@@ -570,6 +586,10 @@ std::unique_ptr<base::Pickle> HttpResponseInfo::MakePickleImpl(
     pickle->WriteInt64(zstd_uncompressed_body_size.value());
   }
 
+  if (!ssl_info.verified_raw_public_key.empty()) {
+    pickle->WriteString(std::string(ssl_info.verified_raw_public_key.begin(),
+                                    ssl_info.verified_raw_public_key.end()));
+  }
   return pickle;
 }
 

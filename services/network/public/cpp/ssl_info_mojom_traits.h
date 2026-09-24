@@ -34,6 +34,10 @@ template <>
 class COMPONENT_EXPORT(NETWORK_CPP_NETWORK_PARAM)
     StructTraits<network::mojom::SSLInfoDataView, net::SSLInfo> {
  public:
+  static const std::vector<uint8_t>& verified_raw_public_key(
+      const net::SSLInfo& info) {
+    return info.verified_raw_public_key;
+  }
   static const scoped_refptr<net::X509Certificate>& cert(
       const net::SSLInfo& info) {
     return info.cert;

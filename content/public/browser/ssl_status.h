@@ -7,6 +7,8 @@
 
 #include <stdint.h>
 
+#include <vector>
+
 #include "content/common/content_export.h"
 #include "net/cert/cert_status_flags.h"
 #include "net/cert/x509_certificate.h"
@@ -50,6 +52,7 @@ struct CONTENT_EXPORT SSLStatus {
 
   bool initialized;
   scoped_refptr<net::X509Certificate> certificate;
+  std::vector<uint8_t> verified_raw_public_key;
   net::CertStatus cert_status;
   uint16_t key_exchange_group;
   uint16_t peer_signature_algorithm;

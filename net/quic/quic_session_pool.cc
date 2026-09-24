@@ -4,6 +4,8 @@
 
 #include "net/quic/quic_session_pool.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <algorithm>
 #include <memory>
 #include <optional>
@@ -827,6 +829,9 @@ bool QuicSessionPool::CanUseExistingSessionForWebSocket(
 QuicChromiumClientSession* QuicSessionPool::FindExistingSession(
     const QuicSessionKey& session_key,
     const url::SchemeHostPort& destination) const {
+  if (ParsePubkyPublicKey(session_key.host())) {
+    return nullptr;
+  }
   auto active_session_it = active_sessions_.find(session_key);
   if (active_session_it != active_sessions_.end()) {
     return active_session_it->second;
@@ -897,6 +902,9 @@ int QuicSessionPool::RequestSession(
     const GURL& url,
     const NetLogWithSource& net_log,
     QuicSessionRequest* request) {
+  if (ParsePubkyPublicKey(session_key.host())) {
+    return ERR_NOT_IMPLEMENTED;
+  }
 #if BUILDFLAG(IS_ANDROID)
   if (base::FeatureList::IsEnabled(features::kCloseQuicSessionsOnPreFreeze)) {
     // If the process is pre-frozen, we block new requests because the OS will

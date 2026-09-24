@@ -1436,6 +1436,22 @@ TEST_F(DnsTransactionTestWithMockTime, ServerFallbackAndRotate) {
   CheckServerOrder(kOrder);
 }
 
+TEST_F(DnsTransactionTest, PubkyNeverAppendsSearchSuffix) {
+  constexpr char kHost[] =
+      "4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy";
+  config_.ndots = 5;
+  config_.search = {"example.com", "internal"};
+  ConfigureFactory();
+  AddAsyncQueryAndRcode(kHost, dns_protocol::kTypeA,
+                       dns_protocol::kRcodeNXDOMAIN);
+  TransactionHelper helper(ERR_NAME_NOT_RESOLVED);
+  helper.StartTransaction(transaction_factory_.get(), kHost,
+                          dns_protocol::kTypeA,
+                          DnsTransactionFactory::AttemptMode::kClassic,
+                          resolve_context_.get());
+  helper.RunUntilComplete();
+}
+
 TEST_F(DnsTransactionTest, SuffixSearchAboveNdots) {
   config_.ndots = 2;
   config_.search.push_back("a");
