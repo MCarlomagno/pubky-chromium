@@ -4,6 +4,8 @@
 
 #include "net/http/http_network_session.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <inttypes.h>
 
 #include <utility>
@@ -389,7 +391,7 @@ void HttpNetworkSession::DisableQuic() {
 bool HttpNetworkSession::ShouldForceQuic(const url::SchemeHostPort& destination,
                                          const ProxyInfo& proxy_info,
                                          bool is_websocket) {
-  if (!IsQuicEnabled()) {
+  if (ParsePubkyPublicKey(destination.host()) || !IsQuicEnabled()) {
     return false;
   }
   if (is_websocket) {

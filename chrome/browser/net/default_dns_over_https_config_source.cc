@@ -29,7 +29,7 @@ DefaultDnsOverHttpsConfigSource::DefaultDnsOverHttpsConfigSource(
   if (set_up_pref_defaults) {
     local_state->SetDefaultPrefValue(prefs::kDnsOverHttpsMode,
                                      base::Value(SecureDnsConfig::ModeToString(
-                                         net::SecureDnsMode::kAutomatic)));
+                                         net::SecureDnsMode::kSecure)));
   }
 }
 
@@ -39,7 +39,8 @@ DefaultDnsOverHttpsConfigSource::~DefaultDnsOverHttpsConfigSource() = default;
 void DefaultDnsOverHttpsConfigSource::RegisterPrefs(
     PrefRegistrySimple* registry) {
   registry->RegisterStringPref(prefs::kDnsOverHttpsMode, std::string());
-  registry->RegisterStringPref(prefs::kDnsOverHttpsTemplates, std::string());
+  registry->RegisterStringPref(prefs::kDnsOverHttpsTemplates,
+                              "https://pkdns.pubky.org/dns-query");
   registry->RegisterBooleanPref(prefs::kDnsOverHttpsAutomaticModeFallbackToDoh,
                                 false);
 #if BUILDFLAG(IS_CHROMEOS)

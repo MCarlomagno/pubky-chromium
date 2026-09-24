@@ -18,6 +18,7 @@ enum SSLInfoHandshakeType {
 
 // Typemapped to `net::SSLInfo`.
 struct SSLInfo {
+  array<uint8> verified_raw_public_key;
   X509Certificate? cert;
   X509Certificate? unverified_cert;
   // Bitmasks of status flags, e.g. indicating known errors and EV errors.

@@ -4,6 +4,8 @@
 
 #include "net/dns/host_resolver_manager.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
@@ -809,6 +811,9 @@ void HostResolverManager::InitializeJobKeyAndIPAddress(
 
   out_job_key.secure_dns_mode =
       GetEffectiveSecureDnsMode(parameters.secure_dns_policy);
+  if (ParsePubkyPublicKey(out_job_key.host.GetHostname())) {
+    out_job_key.secure_dns_mode = SecureDnsMode::kSecure;
+  }
   out_job_key.flags = HostResolver::ParametersToHostResolverFlags(parameters) |
                       additional_resolver_flags_;
 
@@ -1434,6 +1439,17 @@ void HostResolverManager::CreateTaskSequence(
   // DnsTask, this task may be replaced.
   bool allow_cache =
       cache_usage != ResolveHostParameters::CacheUsage::DISALLOWED;
+  if (ParsePubkyPublicKey(job_key.host.GetHostname())) {
+    if (allow_cache) {
+      out_tasks->push_back(TaskType::SECURE_CACHE_LOOKUP);
+    }
+    if (job_key.source != HostResolverSource::LOCAL_ONLY && dns_client_ &&
+        dns_client_->CanUseSecureDnsTransactions() &&
+        !ShouldForceSystemResolverDueToTestOverride()) {
+      out_tasks->push_back(TaskType::SECURE_DNS);
+    }
+    return;
+  }
   if (secure_dns_policy == SecureDnsPolicy::kBootstrap) {
     DCHECK_EQ(SecureDnsMode::kOff, job_key.secure_dns_mode);
     if (allow_cache)

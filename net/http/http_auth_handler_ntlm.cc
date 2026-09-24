@@ -19,6 +19,9 @@ bool HttpAuthHandlerNTLM::Init(
     HttpAuthChallengeTokenizer* tok,
     const SSLInfo& ssl_info,
     const NetworkAnonymizationKey& network_anonymization_key) {
+  if (!ssl_info.verified_raw_public_key.empty()) {
+    return false;  // tls-server-end-point channel binding requires X.509.
+  }
   auth_scheme_ = HttpAuth::AUTH_SCHEME_NTLM;
   score_ = 3;
   properties_ = ENCRYPTS_IDENTITY | IS_CONNECTION_BASED;

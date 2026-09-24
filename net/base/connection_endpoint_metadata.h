@@ -63,6 +63,9 @@ struct NET_EXPORT_PRIVATE ConnectionEndpointMetadata {
   // The target domain name of this metadata.
   std::string target_name;
 
+  // HTTPS-record port for a public-key endpoint; zero uses the URL port.
+  uint16_t target_port = 0;
+
   // A list of TLS Trust Anchor IDs advertised by the server, indicating
   // different options for trust anchors that it can offer. The client can
   // choose a subset of these to advertise in the TLS ClientHello to guide the

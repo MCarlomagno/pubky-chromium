@@ -46,6 +46,11 @@ EnumTraits<network::mojom::SSLInfoHandshakeType, net::SSLInfo::HandshakeType>::
 bool StructTraits<network::mojom::SSLInfoDataView, net::SSLInfo>::Read(
     network::mojom::SSLInfoDataView data,
     net::SSLInfo* out) {
+  if (!data.ReadVerifiedRawPublicKey(&out->verified_raw_public_key) ||
+      (!out->verified_raw_public_key.empty() &&
+       out->verified_raw_public_key.size() != 32)) {
+    return false;
+  }
   out->cert_status = data.cert_status();
   out->key_exchange_group = data.key_exchange_group();
   out->peer_signature_algorithm = data.peer_signature_algorithm();

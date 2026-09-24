@@ -4,6 +4,8 @@
 
 #include "components/omnibox/browser/autocomplete_input.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <optional>
 #include <string_view>
 #include <vector>
@@ -190,6 +192,18 @@ void AutocompleteInput::Init(
   type_ = Parse(text_, desired_tld_, scheme_classifier, &parts_, &scheme_,
                 &canonicalized_url);
   PopulateTermsPrefixedByHttpOrHttps(text_, &terms_prefixed_by_http_or_https_);
+
+  // Public-key names are explicit HTTPS identities, not speculative HTTPS
+  // upgrades (which the navigation stack is allowed to downgrade on failure).
+  if (canonicalized_url.is_valid() &&
+      canonicalized_url.SchemeIsHTTPOrHTTPS() &&
+      net::ParsePubkyPublicKey(canonicalized_url.host()) &&
+      !parts_.scheme.is_nonempty()) {
+    GURL::Replacements replacements;
+    replacements.SetSchemeStr(url::kHttpsScheme);
+    canonicalized_url = canonicalized_url.ReplaceComponents(replacements);
+    scheme_ = std::u16string(url::kHttpsScheme16);
+  }
 
   DCHECK(!added_default_scheme_to_typed_url_);
   typed_url_had_http_scheme_ =
@@ -539,7 +553,8 @@ metrics::OmniboxInputType AutocompleteInput::Parse(
 
   // If the host has a known TLD or a port, it's probably a URL. Just localhost
   // is considered a valid host name due to https://tools.ietf.org/html/rfc6761.
-  if (has_known_tld || canonicalized_url->DomainIs("localhost") ||
+  if (has_known_tld || net::ParsePubkyPublicKey(canonicalized_url->host()) ||
+      canonicalized_url->DomainIs("localhost") ||
       canonicalized_url->has_port())
     return metrics::OmniboxInputType::URL;
 

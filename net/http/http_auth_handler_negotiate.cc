@@ -208,6 +208,9 @@ bool HttpAuthHandlerNegotiate::Init(
     return false;
 
   // Try to extract channel bindings.
+  if (!ssl_info.verified_raw_public_key.empty()) {
+    return false;  // tls-server-end-point channel binding requires X.509.
+  }
   if (ssl_info.is_valid())
     x509_util::GetTLSServerEndPointChannelBinding(*ssl_info.cert,
                                                   &channel_bindings_);

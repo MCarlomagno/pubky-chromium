@@ -4,6 +4,8 @@
 
 #include "net/http/http_stream_pool_attempt_manager.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <algorithm>
 #include <map>
 #include <memory>
@@ -2195,7 +2197,8 @@ bool HttpStreamPool::AttemptManager::CanUseTcpBasedProtocols() const {
 }
 
 bool HttpStreamPool::AttemptManager::CanUseQuic() const {
-  return allowed_alpns_.HasAny(kQuicBasedProtocols);
+  return !ParsePubkyPublicKey(stream_key().destination().host()) &&
+         allowed_alpns_.HasAny(kQuicBasedProtocols);
 }
 
 bool HttpStreamPool::AttemptManager::CanUseExistingQuicSession() const {

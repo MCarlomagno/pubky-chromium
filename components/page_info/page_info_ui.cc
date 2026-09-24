@@ -467,6 +467,22 @@ PageInfoUI::GetSecurityDescription(const IdentityInfo& identity_info) const {
   }
 
   switch (identity_info.identity_status) {
+    case PageInfo::SITE_IDENTITY_STATUS_RAW_PUBLIC_KEY:
+      if (identity_info.connection_status ==
+          PageInfo::SITE_CONNECTION_STATUS_ENCRYPTED) {
+        auto description = CreateSecurityDescription(
+            SecuritySummaryColor::GREEN, IDS_PAGE_INFO_SECURE_SUMMARY,
+            IDS_PAGE_INFO_SECURE_DETAILS, SecurityDescriptionType::CONNECTION);
+        description->summary = u"Public-key TLS connection is secure";
+        description->details =
+            u"The server proved possession of the Ed25519 public key in this "
+            u"website's address using TLS 1.3 and RFC 7250. No certificate "
+            u"authority was used to authenticate this connection.";
+        return description;
+      }
+      return CreateSecurityDescription(
+          SecuritySummaryColor::RED, IDS_PAGE_INFO_NOT_SECURE_SUMMARY,
+          IDS_PAGE_INFO_NOT_SECURE_DETAILS, SecurityDescriptionType::CONNECTION);
 #if BUILDFLAG(IS_ANDROID)
     case PageInfo::SITE_IDENTITY_STATUS_INTERNAL_PAGE:
       return CreateSecurityDescription(SecuritySummaryColor::GREEN, 0,
@@ -901,6 +917,7 @@ int PageInfoUI::GetIdentityIconID(PageInfo::SiteIdentityStatus status) {
       }
     case PageInfo::SITE_IDENTITY_STATUS_UNKNOWN:
     case PageInfo::SITE_IDENTITY_STATUS_CERT:
+    case PageInfo::SITE_IDENTITY_STATUS_RAW_PUBLIC_KEY:
     case PageInfo::SITE_IDENTITY_STATUS_EV_CERT:
     case PageInfo::SITE_IDENTITY_STATUS_1QWAC_CERT:
     case PageInfo::SITE_IDENTITY_STATUS_ISOLATED_WEB_APP:
@@ -923,6 +940,7 @@ int PageInfoUI::GetIdentityIconColorID(PageInfo::SiteIdentityStatus status) {
     case PageInfo::SITE_IDENTITY_STATUS_UNKNOWN:
     case PageInfo::SITE_IDENTITY_STATUS_INTERNAL_PAGE:
     case PageInfo::SITE_IDENTITY_STATUS_CERT:
+    case PageInfo::SITE_IDENTITY_STATUS_RAW_PUBLIC_KEY:
     case PageInfo::SITE_IDENTITY_STATUS_EV_CERT:
     case PageInfo::SITE_IDENTITY_STATUS_1QWAC_CERT:
     case PageInfo::SITE_IDENTITY_STATUS_ISOLATED_WEB_APP:

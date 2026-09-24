@@ -2289,6 +2289,31 @@ TEST(HostCacheTest, MergeMetadatasWithIpEndpointsMatchingCanonicalName) {
             HostCache::Entry::MergeEntries(with_ip_endpoint, metadata_entry));
 }
 
+TEST(HostCacheTest, PubkyHttpsPortReachesBothEndpointApis) {
+  const std::string host =
+      "4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy";
+  ConnectionEndpointMetadata metadata;
+  metadata.supported_protocol_alpns = {"http/1.1"};
+  metadata.target_name = host;
+  metadata.target_port = 6287;
+  std::multimap<HttpsRecordPriority, ConnectionEndpointMetadata> metadatas{
+      {1, metadata}};
+  HostCache::Entry service(OK, metadatas, HostCache::Entry::SOURCE_DNS);
+  HostCache::Entry addresses(OK, {IPEndPoint(IPAddress(192, 0, 2, 1), 0)}, {},
+                            HostCache::Entry::SOURCE_DNS);
+  addresses.set_canonical_names({host});
+  auto entry = HostCache::Entry::MergeEntries(service, addresses)
+                   .CopyWithDefaultPort(443);
+  const auto endpoints = entry.GetEndpoints();
+  ASSERT_EQ(endpoints.size(), 2u);
+  EXPECT_EQ(endpoints[0].ip_endpoints[0].port(), 6287);
+  EXPECT_EQ(endpoints[1].ip_endpoints[0].port(), 443);
+  const auto services = entry.ConvertToServiceEndpoints(443);
+  ASSERT_EQ(services.size(), 2u);
+  EXPECT_EQ(services[0].ipv4_endpoints[0].port(), 6287);
+  EXPECT_EQ(services[1].ipv4_endpoints[0].port(), 443);
+}
+
 TEST(HostCacheTest, MergeMultipleMetadatasWithIpEndpoints) {
   std::string target_name = "example.com";
   ConnectionEndpointMetadata front_metadata;

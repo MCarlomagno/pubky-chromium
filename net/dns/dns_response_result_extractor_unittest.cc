@@ -1377,6 +1377,34 @@ TEST_F(DnsResponseResultExtractorTest, ExtractsHttpsRecordWithMatchingPort) {
                      /*ech_config_list_matcher=*/IsEmpty(), kName)))))));
 }
 
+TEST_F(DnsResponseResultExtractorTest, PubkyHttpsPortSelection) {
+  constexpr char kName[] =
+      "4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy";
+  for (uint16_t port : {6287, 25}) {
+    DnsResponse response = BuildTestDnsResponse(
+        kName, dns_protocol::kTypeHttps,
+        {BuildTestHttpsServiceRecord(
+            kName, /*priority=*/1, /*service_name=*/".",
+            {BuildTestHttpsServicePortParam(port)})});
+    DnsResponseResultExtractor extractor(response, clock_, tick_clock_);
+    auto results = extractor.ExtractDnsResults(DnsQueryType::HTTPS, kName, 443);
+    ASSERT_TRUE(results.has_value());
+    ASSERT_EQ(results->size(), 1u);
+    const auto& metadatas = (*results->begin())->AsMetadata().metadatas();
+    if (port == 25) {
+      EXPECT_TRUE(metadatas.empty());
+    } else {
+      ASSERT_EQ(metadatas.size(), 1u);
+      EXPECT_EQ(metadatas.begin()->second.target_port, port);
+      EXPECT_EQ(metadatas.begin()->second.target_name, kName);
+      auto restored = ConnectionEndpointMetadata::FromValue(
+          metadatas.begin()->second.ToValue());
+      ASSERT_TRUE(restored);
+      EXPECT_EQ(restored->target_port, port);
+    }
+  }
+}
+
 TEST_F(DnsResponseResultExtractorTest, IgnoresHttpsRecordWithMismatchingPort) {
   constexpr char kName[] = "https.test";
   constexpr base::TimeDelta kTtl = base::Days(14);

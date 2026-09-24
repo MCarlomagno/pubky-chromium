@@ -4,6 +4,9 @@
 
 #include "net/socket/ssl_client_socket_impl.h"
 
+#include "net/base/pubky_public_key.h"
+#include "third_party/boringssl/src/include/openssl/evp.h"
+
 #include <errno.h>
 #include <string.h>
 
@@ -111,6 +114,10 @@ base::DictValue NetLogSSLInfoParams(SSLClientSocketImpl* socket) {
            SSLConnectionStatusToCipherSuite(ssl_info.connection_status))
       .Set("key_exchange_group", ssl_info.key_exchange_group)
       .Set("peer_signature_algorithm", ssl_info.peer_signature_algorithm)
+      .Set("peer_authentication", ssl_info.verified_raw_public_key.empty()
+                                      ? "X509" : "RawPublicKey")
+      .Set("verified_raw_public_key",
+           NetLogBinaryValue(ssl_info.verified_raw_public_key))
       .Set("encrypted_client_hello", ssl_info.encrypted_client_hello)
       .Set("next_proto", NextProtoToString(socket->GetNegotiatedProtocol()))
       .Set("requested_server_padding", ssl_info.server_padding_requested)
@@ -509,8 +516,10 @@ SSLClientSocketImpl::GetPeerApplicationSettings() const {
 
 bool SSLClientSocketImpl::GetSSLInfo(SSLInfo* ssl_info) {
   *ssl_info = SSLInfo();
-  if (!server_cert_)
+  if (!server_cert_ && verified_raw_public_key_.empty())
     return false;
+
+  ssl_info->verified_raw_public_key = verified_raw_public_key_;
 
   ssl_info->cert = server_cert_verify_result_.verified_cert;
   ssl_info->unverified_cert = server_cert_;
@@ -886,6 +895,22 @@ int SSLClientSocketImpl::Init() {
 
   // The compliance policy must be the last thing configured in order to have
   // defined behavior.
+  if (ParsePubkyPublicKey(host_and_port_.host())) {
+    const uint8_t types[] = {TLSEXT_cert_type_rpk};
+    const uint16_t algorithms[] = {SSL_SIGN_ED25519};
+    if (!SSL_set1_accepted_peer_cert_types(ssl_.get(), types, std::size(types)) ||
+        !SSL_set_verify_algorithm_prefs(ssl_.get(), algorithms,
+                                       std::size(algorithms)) ||
+        !SSL_set_min_proto_version(ssl_.get(), TLS1_3_VERSION)) {
+      return ERR_UNEXPECTED;
+    }
+    // Require a fresh proof of possession for each connection in this first
+    // implementation. Do not send application data before authentication.
+    ssl_config_.early_data_enabled = false;
+    SSL_set_early_data_enabled(ssl_.get(), 0);
+    SSL_set_renegotiate_mode(ssl_.get(), ssl_renegotiate_never);
+  }
+
   if (context_->config().tls13_cipher_prefer_aes_256 &&
       !SSL_set_compliance_policy(ssl_.get(),
                                  ssl_compliance_policy_cnsa_202407)) {
@@ -1068,6 +1093,26 @@ ssl_verify_result_t SSLClientSocketImpl::VerifyCertCallback(
 // returned, use OpenSSLPutNetError to add them directly to the
 // OpenSSL error queue.
 ssl_verify_result_t SSLClientSocketImpl::VerifyCert() {
+  if (auto expected = ParsePubkyPublicKey(host_and_port_.host())) {
+    verified_raw_public_key_.clear();
+    EVP_PKEY* peer = SSL_get0_peer_rpk(ssl_.get());
+    std::array<uint8_t, 32> actual{};
+    size_t size = actual.size();
+    if (!GetECHNameOverride().empty() ||
+        SSL_get_peer_cert_type(ssl_.get()) != TLSEXT_cert_type_rpk ||
+        !peer || EVP_PKEY_id(peer) != EVP_PKEY_ED25519 ||
+        !EVP_PKEY_get_raw_public_key(peer, actual.data(), &size) ||
+        size != actual.size() || actual != *expected) {
+      // A protocol-level failure cannot be bypassed by a certificate exception
+      // or by --ignore-certificate-errors.
+      OpenSSLPutNetError(FROM_HERE, ERR_SSL_PROTOCOL_ERROR);
+      return ssl_verify_invalid;
+    }
+    verified_raw_public_key_.assign(actual.begin(), actual.end());
+    // BoringSSL verifies CertificateVerify and Finished after this callback.
+    return ssl_verify_ok;
+  }
+
   if (cert_verification_result_ != kCertVerifyPending) {
     // The certificate verifier updates cert_verification_result_ when
     // it returns asynchronously. If there is a result in
@@ -1656,7 +1701,8 @@ bool SSLClientSocketImpl::IsRenegotiationAllowed() const {
 }
 
 bool SSLClientSocketImpl::IsCachingEnabled() const {
-  return context_->ssl_client_session_cache() != nullptr;
+  return !ParsePubkyPublicKey(host_and_port_.host()) &&
+         context_->ssl_client_session_cache() != nullptr;
 }
 
 void SSLClientSocketImpl::MaybeClearEarlyDataCache(int error) {

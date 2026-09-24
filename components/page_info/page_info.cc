@@ -1064,7 +1064,11 @@ void PageInfo::ComputeUIInputs(const GURL& url) {
   certificate_ = visible_security_state.certificate;
   two_qwac_ = visible_security_state.two_qwac;
 
-  if (certificate_ &&
+  if (visible_security_state.verified_raw_public_key.size() == 32 &&
+      visible_security_state.url.SchemeIsCryptographic() &&
+      !net::IsCertStatusError(visible_security_state.cert_status)) {
+    site_identity_status_ = SITE_IDENTITY_STATUS_RAW_PUBLIC_KEY;
+  } else if (certificate_ &&
       (!net::IsCertStatusError(visible_security_state.cert_status))) {
     // No major or minor errors.
 #if BUILDFLAG(CHROME_ROOT_STORE_SUPPORTED)
@@ -1187,7 +1191,8 @@ void PageInfo::ComputeUIInputs(const GURL& url) {
         l10n_util::GetStringUTF16(IDS_PAGE_INFO_SECURITY_TAB_UNKNOWN_PARTY));
   }
 
-  if (!visible_security_state.certificate ||
+  if ((!visible_security_state.certificate &&
+       visible_security_state.verified_raw_public_key.empty()) ||
       !security_state::IsSchemeCryptographic(visible_security_state.url)) {
     // Page is still loading (so SSL status is not yet available) or
     // loaded over HTTP or loaded over HTTPS with no cert.

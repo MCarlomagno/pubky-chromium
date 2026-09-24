@@ -20,6 +20,7 @@ SSLStatus::SSLStatus()
 SSLStatus::SSLStatus(const net::SSLInfo& ssl_info)
     : initialized(true),
       certificate(ssl_info.cert),
+      verified_raw_public_key(ssl_info.verified_raw_public_key),
       cert_status(ssl_info.cert_status),
       key_exchange_group(ssl_info.key_exchange_group),
       peer_signature_algorithm(ssl_info.peer_signature_algorithm),

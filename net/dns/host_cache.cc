@@ -438,6 +438,11 @@ std::vector<HostResolverEndpointResult> HostCache::Entry::GetEndpoints() const {
       }
       endpoints.emplace_back();
       endpoints.back().ip_endpoints = ip_endpoints_;
+      if (metadata.target_port != 0) {
+        for (auto& ip : endpoints.back().ip_endpoints) {
+          ip = ip.CopyWithPort(metadata.target_port);
+        }
+      }
       endpoints.back().metadata = std::move(metadata);
     }
   }
@@ -553,6 +558,14 @@ std::vector<ServiceEndpoint> HostCache::Entry::ConvertToServiceEndpoints(
       ServiceEndpoint endpoint;
       endpoint.ipv4_endpoints = ipv4_endpoints;
       endpoint.ipv6_endpoints = ipv6_endpoints;
+      if (metadata.target_port != 0) {
+        for (auto& ip : endpoint.ipv4_endpoints) {
+          ip = ip.CopyWithPort(metadata.target_port);
+        }
+        for (auto& ip : endpoint.ipv6_endpoints) {
+          ip = ip.CopyWithPort(metadata.target_port);
+        }
+      }
       endpoint.metadata = metadata;
       endpoints.emplace_back(std::move(endpoint));
     }

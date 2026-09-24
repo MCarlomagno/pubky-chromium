@@ -26,6 +26,18 @@
 using base::ASCIIToUTF16;
 using metrics::OmniboxEventProto;
 
+TEST(AutocompleteInputTest, PubkyBareKeyIsExplicitHttps) {
+  const std::u16string host =
+      u"4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy";
+  for (const auto& text : {host, host + u"/path?q=1", u"www." + host}) {
+    AutocompleteInput input(text, OmniboxEventProto::OTHER,
+                            TestSchemeClassifier());
+    EXPECT_EQ(input.type(), metrics::OmniboxInputType::URL);
+    EXPECT_TRUE(input.canonicalized_url().SchemeIs("https"));
+    EXPECT_FALSE(input.added_default_scheme_to_typed_url());
+  }
+}
+
 TEST(AutocompleteInputTest, InputType) {
   struct test_data {
     const std::u16string input;

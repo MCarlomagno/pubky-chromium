@@ -252,6 +252,8 @@ class NET_EXPORT_PRIVATE SSLClientSocketImpl
 
   // Set when Connect finishes.
   scoped_refptr<X509Certificate> server_cert_;
+  // Only populated after the peer's RFC 7250 key matches the URL identity.
+  std::vector<uint8_t> verified_raw_public_key_;
   CertVerifyResult server_cert_verify_result_;
   bool completed_connect_ = false;
 

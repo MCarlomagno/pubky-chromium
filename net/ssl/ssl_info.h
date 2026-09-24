@@ -37,7 +37,12 @@ class NET_EXPORT SSLInfo {
   SSLInfo& operator=(SSLInfo&& info);
   ~SSLInfo();
 
-  bool is_valid() const { return cert.get() != nullptr; }
+  bool is_valid() const {
+    return cert.get() != nullptr || verified_raw_public_key.size() == 32;
+  }
+
+  // Authenticated Ed25519 RFC 7250 key, or empty for X.509 connections.
+  std::vector<uint8_t> verified_raw_public_key;
 
   // The SSL certificate.
   scoped_refptr<X509Certificate> cert;

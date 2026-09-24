@@ -2150,6 +2150,40 @@ static_library("test_support") {
   }
 }
 
+test("pubky_browser_unittests") {
+  sources = [
+    "testing/pubky_response_unittest.cc",
+    "testing/run_all_tests.cc",
+    "//components/omnibox/browser/autocomplete_input_unittest.cc",
+    "//components/omnibox/browser/test_scheme_classifier.cc",
+    "//components/omnibox/browser/test_scheme_classifier.h",
+  ]
+  configs += [
+    "//third_party/blink/renderer/platform/wtf:wtf_config",
+    "//third_party/blink/renderer:config",
+    "//third_party/blink/renderer:inside_blink",
+    "//build/config/compiler:no_exit_time_destructors",
+  ]
+  deps = [
+    ":platform",
+    ":test_support",
+    "//base",
+    "//base/test:test_support",
+    "//components/omnibox/browser:location_bar",
+    "//components/search_engines",
+    "//components/search_engines:test_support",
+    "//gin",
+    "//mojo/core/embedder",
+    "//net",
+    "//services/network/public/mojom",
+    "//skia:test_fonts",
+    "//testing/gmock",
+    "//testing/gtest",
+    "//third_party/blink/renderer/platform/wtf",
+    "//url",
+  ]
+}
+
 test("blink_platform_unittests") {
   deps = [ ":blink_platform_unittests_sources" ]
 

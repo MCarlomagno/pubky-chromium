@@ -4,6 +4,8 @@
 
 #include "net/socket/ssl_client_socket.h"
 
+#include "net/base/pubky_public_key.h"
+
 #include <errno.h>
 #include <string.h>
 
@@ -1428,6 +1430,79 @@ TEST_P(SSLClientSocketVersionTest, Connect) {
 
   sock->Disconnect();
   EXPECT_FALSE(sock->IsConnected());
+}
+
+constexpr char kPubkyTestHost[] =
+    "35gbkb6hdzqzffcidowotn8o1ss51bnpdp37pfzg5hdf44b54u6y";
+
+SSLServerConfig PubkyTestServerConfig() {
+  SSLServerConfig config;
+  config.version_min = TLS1_3_VERSION;
+  config.client_hello_callback_for_testing = base::BindRepeating(
+      [](const SSL_CLIENT_HELLO* hello) {
+        const std::array<uint8_t, 32> seed = {1};
+        bssl::UniquePtr<EVP_PKEY> key(EVP_PKEY_new_raw_private_key(
+            EVP_PKEY_ED25519, nullptr, seed.data(), seed.size()));
+        if (!key) {
+          return false;
+        }
+        bssl::UniquePtr<SSL_CREDENTIAL> credential(
+            SSL_CREDENTIAL_new_raw_public_key(key.get()));
+        SSL_certs_clear(hello->ssl);
+        return credential && SSL_add1_credential(hello->ssl, credential.get());
+      });
+  return config;
+}
+
+TEST_F(SSLClientSocketTest, PubkyRawKeyAuthenticatedWithoutCertVerifier) {
+  ASSERT_TRUE(StartEmbeddedTestServer(EmbeddedTestServer::CERT_OK,
+                                     PubkyTestServerConfig()));
+  cert_verifier_->set_default_result(ERR_CERT_AUTHORITY_INVALID);
+  const HostPortPair identity(kPubkyTestHost, host_port_pair().port());
+  for (int attempt = 0; attempt < 2; ++attempt) {
+    int rv;
+    ASSERT_TRUE(CreateAndConnectSSLClientSocketWithHost(SSLConfig(), identity,
+                                                      &rv));
+    ASSERT_THAT(rv, IsOk());
+    SSLInfo info;
+    ASSERT_TRUE(sock_->GetSSLInfo(&info));
+    EXPECT_FALSE(info.cert);
+    EXPECT_FALSE(info.unverified_cert);
+    EXPECT_TRUE(info.is_valid());
+    EXPECT_FALSE(info.is_issued_by_known_root);
+    EXPECT_EQ(info.peer_signature_algorithm, SSL_SIGN_ED25519);
+    EXPECT_EQ(info.handshake_type, SSLInfo::HANDSHAKE_FULL);
+    auto expected = ParsePubkyPublicKey(kPubkyTestHost);
+    ASSERT_TRUE(expected);
+    EXPECT_EQ(info.verified_raw_public_key,
+              std::vector<uint8_t>(expected->begin(), expected->end()));
+    sock_->Disconnect();
+  }
+}
+
+TEST_F(SSLClientSocketTest, PubkyWrongKeyCannotBypassVerification) {
+  ASSERT_TRUE(StartEmbeddedTestServer(EmbeddedTestServer::CERT_OK,
+                                     PubkyTestServerConfig()));
+  std::string wrong_host(kPubkyTestHost);
+  wrong_host[0] = 'y';
+  SSLConfig config;
+  config.ignore_certificate_errors = true;
+  int rv;
+  ASSERT_TRUE(CreateAndConnectSSLClientSocketWithHost(
+      config, HostPortPair(wrong_host, host_port_pair().port()), &rv));
+  EXPECT_THAT(rv, IsError(ERR_SSL_PROTOCOL_ERROR));
+}
+
+TEST_F(SSLClientSocketTest, PubkyRejectsX509OnlyServer) {
+  ASSERT_TRUE(StartEmbeddedTestServer(EmbeddedTestServer::CERT_OK,
+                                     SSLServerConfig()));
+  SSLConfig config;
+  config.ignore_certificate_errors = true;
+  int rv;
+  ASSERT_TRUE(CreateAndConnectSSLClientSocketWithHost(
+      config, HostPortPair(kPubkyTestHost, host_port_pair().port()), &rv));
+  EXPECT_LT(rv, 0);
+  EXPECT_FALSE(sock_->IsConnected());
 }
 
 TEST_P(SSLClientSocketVersionTest, ConnectSyncVerify) {

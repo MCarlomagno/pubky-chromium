@@ -419,6 +419,14 @@ void DnsTaskResultsManager::UpdateEndpoints() {
         // the current logic doesn't do that. To handle it correctly we need to
         // go though an alias tree for the domain name.
         endpoint.metadata = metadata;
+        if (metadata.target_port != 0) {
+          for (auto& ip : endpoint.ipv4_endpoints) {
+            ip = ip.CopyWithPort(metadata.target_port);
+          }
+          for (auto& ip : endpoint.ipv6_endpoints) {
+            ip = ip.CopyWithPort(metadata.target_port);
+          }
+        }
         new_endpoints.push_back(
             {std::move(endpoint), ipv4_from_hints, ipv6_from_hints});
       }
