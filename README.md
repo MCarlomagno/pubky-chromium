@@ -1,3 +1,14 @@
+# Pubky Chromium
+
+Chromium with strict PKDNS DNS-over-HTTPS defaults and native RFC 7250
+raw-public-key TLS for Ed25519 public-key URLs.
+
+See [Pubky build and usage instructions](pubky/README.md) and
+[verification results](pubky/VERIFICATION.md). The custom branch is `pubky`;
+Chromium updates are merged from the `upstream` remote.
+
+---
+
 # ![Logo](chrome/app/theme/chromium/product_logo_64.png) Chromium
 
 Chromium is an open-source browser project that aims to build a safer, faster,
