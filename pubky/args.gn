@@ -7,3 +7,4 @@ blink_symbol_level = 0
 v8_symbol_level = 0
 is_chrome_branded = false
 use_remoteexec = false
+blink_bindings_single_process = true

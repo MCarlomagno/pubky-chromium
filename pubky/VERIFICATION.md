@@ -63,3 +63,46 @@ homeserver test separately established working non-default-port HTTPS discovery.
 machine-checked public connection summary. Raw NetLogs, browser profiles,
 screenshots, downloaded dependencies, and compiled binaries remain local build
 artifacts. Reproduce the checks using the scripts documented in the README.
+
+## JavaScript capabilities — 25 September 2026
+
+The rebuilt browser exposes a native `navigator.pubky` object with read-only
+`supportsPkdns` and `supportsRawPublicKeyTls` boolean getters. These report built-in
+support, not current DNS settings or the current page's TLS authentication.
+
+Verification:
+
+- The new HTTP test failed against the previous binary because the API was
+  absent, before the implementation was built.
+- `bash pubky/scripts/test_capabilities.sh` builds Chromium and ChromeDriver and
+  runs the WPT fixtures. Four test cases passed (16 subtests):
+  - HTTP, explicitly verified as an insecure context.
+  - HTTPS, explicitly verified as a secure context.
+  - Dedicated worker, where the Window-only API is absent.
+  - A virtual suite with `--disable-blink-features=PubkyCapabilities`, where both
+    `navigator.pubky` and the interface constructor are absent.
+- The unflagged copy of the disabled-feature fixture is intentionally skipped;
+  the same fixture executes in the virtual suite. There were no unexpected
+  results.
+- HTTP and HTTPS coverage checks native interface identity, both booleans,
+  `[SameObject]`, read-only WebIDL descriptors and assignments, rejection of
+  script construction, per-frame objects, and access after frame detachment.
+- A normal launch without experimental-feature flags loaded the live public-key
+  test website and returned both booleans as `true`, with native type
+  `[object PubkyCapabilities]`.
+- With CDP network emulation setting `navigator.onLine` to `false`, both
+  capability booleans remained `true`.
+- A separate test profile with secure DNS disabled reported the effective
+  `dns_over_https.mode` preference as `off`, while both capability booleans
+  remained `true`.
+
+See [verification/capabilities.json](verification/capabilities.json) for the
+observed live values. WPT output is in `out/Pubky/layout-test-results/`.
+
+### Build memory
+
+The local build now defaults to four jobs and sets
+`blink_bindings_single_process = true`. This prevents each parallel binding
+generation action from creating its own CPU-sized Python worker pool. During
+the limited rebuild, reported free memory stayed around 73–74%, and existing
+swap usage declined. `BUILD_JOBS` remains configurable.

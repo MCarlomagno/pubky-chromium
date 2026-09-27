@@ -5,6 +5,10 @@
 declare_args() {
   # Enable V8 to produce hints regarding which functions to compile eagerly.
   produce_v8_compile_hints = !is_android
+
+  # Avoid one CPU-sized Python worker pool per concurrent generation action.
+  # The build scheduler still controls parallelism between actions.
+  blink_bindings_single_process = false
 }
 
 # The database file produced by

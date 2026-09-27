@@ -1,0 +1,12 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Pubky capability exposure can be disabled</title>
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script>
+test(() => {
+  assert_false('pubky' in navigator);
+  assert_equals(navigator.pubky, undefined);
+  assert_false('PubkyCapabilities' in self);
+}, 'Disabling PubkyCapabilities removes the API instead of reporting false support');
+</script>
