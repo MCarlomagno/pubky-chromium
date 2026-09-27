@@ -177,6 +177,9 @@ template("generate_bindings") {
     if (blink_enable_generated_code_formatting) {
       args += [ "--format_generated_files" ]
     }
+    if (blink_bindings_single_process) {
+      args += [ "--single_process" ]
+    }
     args += invoker.targets
 
     deps = [ ":web_idl_database" ]

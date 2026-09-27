@@ -1,0 +1,29 @@
+{
+  "verified_date": "2026-09-25",
+  "browser_version": "156.0.8073.0",
+  "web_platform_tests": {
+    "http": "PASS",
+    "https": "PASS",
+    "dedicated_worker_exclusion": "PASS",
+    "runtime_feature_disabled": "PASS",
+    "subtests_passed": 16
+  },
+  "normal_launch": {
+    "url": "https://4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy/",
+    "secureContext": true,
+    "supportsPkdns": true,
+    "supportsRawPublicKeyTls": true,
+    "sameObject": true,
+    "nativeType": "[object PubkyCapabilities]"
+  },
+  "offline": {
+    "online": false,
+    "supportsPkdns": true,
+    "supportsRawPublicKeyTls": true
+  },
+  "secure_dns_disabled": {
+    "dnsMode": "off",
+    "supportsPkdns": true,
+    "supportsRawPublicKeyTls": true
+  }
+}

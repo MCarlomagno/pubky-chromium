@@ -1,0 +1,11 @@
+// Copyright 2026 The Pubky Chromium Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+[
+    Exposed=Window,
+    RuntimeEnabled=PubkyCapabilities
+] interface PubkyCapabilities {
+    readonly attribute boolean supportsPkdns;
+    readonly attribute boolean supportsRawPublicKeyTls;
+};

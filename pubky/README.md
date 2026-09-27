@@ -20,10 +20,52 @@ live public-key website checks. See [VERIFICATION.md](VERIFICATION.md).
   and is displayed in the browser's security state and site-info panel.
 - No PKARR relay is used by the browser; DoH discovers the endpoint and the URL
   key authenticates the server.
+- Native JavaScript capability detection through `navigator.pubky`.
 
 The initial implementation uses TCP TLS. It disables TLS resumption/0-RTT,
 HTTP/3, cross-origin HTTP/2 coalescing, and X.509-dependent NTLM/Negotiate channel
 binding for public-key connections. Cross-name/key delegation is not implemented.
+
+## JavaScript capability detection
+
+```js
+const supportsPubky =
+  navigator.pubky?.supportsPkdns === true &&
+  navigator.pubky?.supportsRawPublicKeyTls === true;
+
+if (supportsPubky) {
+  link.href = `https://${publicKey}/`;
+}
+```
+
+`navigator.pubky` is a native, read-only `PubkyCapabilities` object. Repeated
+access on the same Navigator returns the same object. Its two read-only boolean
+properties report **built-in support**:
+
+| Property | Meaning |
+|---|---|
+| `supportsPkdns` | Public-key hostname resolution through PKDNS is implemented. |
+| `supportsRawPublicKeyTls` | RFC 7250 TLS with Ed25519 URL-key verification is implemented. |
+
+The API is exposed to page scripts on both HTTP and HTTPS origins, including
+ordinary domains and public-key domains. It is not exposed in workers. It
+requires no permissions, performs no network requests, and stays true while
+offline or when a user disables secure DNS. It does not report current DNS
+configuration, server reachability, or the authentication used for the current
+page. Read-only WebIDL getters are feature detection, not an attestation against
+scripts that deliberately replace JavaScript properties.
+
+Ordinary browsers do not provide this API. The Blink runtime feature
+`PubkyCapabilities` is enabled by default in this fork; launching with
+`--disable-blink-features=PubkyCapabilities` removes both `navigator.pubky` and the
+`PubkyCapabilities` interface. This flag controls API exposure, not DNS/TLS support.
+
+Configure `out/Pubky` and run the HTTP, HTTPS, worker, and feature-disabled
+web-platform tests with:
+
+```sh
+bash pubky/scripts/test_capabilities.sh
+```
 
 ## Repository and branches
 
@@ -65,7 +107,9 @@ bash pubky-checkout/src/pubky/scripts/build.sh
 
 The `.gclient` solution is deliberately unmanaged: `sync.sh` updates dependencies
 from the checked-out `DEPS` without switching away from the Pubky branch.
-`BUILD_JOBS` (default 14) and `SYNC_JOBS` (default 8) control parallelism. Set
+`BUILD_JOBS` (default 4) and `SYNC_JOBS` (default 8) control parallelism. Blink's
+binding generators use `blink_bindings_single_process = true` to avoid each
+concurrent generator spawning a separate CPU-sized Python worker pool. Set
 `DEPOT_TOOLS_DIR` if depot_tools is elsewhere; otherwise adjacent checkout
 locations and the existing `PATH` are supported.
 

@@ -44,6 +44,15 @@
     "expires": "Mar 1, 2027"
   },
   {
+    "prefix": "pubky-capabilities-disabled",
+    "platforms": ["Linux", "Mac", "Win"],
+    "bases": ["external/wpt/pubky/capabilities-disabled.tentative.html"],
+    "exclusive_tests": "ALL",
+    "args": ["--disable-blink-features=PubkyCapabilities"],
+    "owners": ["sevi_buehler@hotmail.com"],
+    "expires": "never"
+  },
+  {
     "prefix": "ai-prompt-api-all-params",
     "platforms": [
       "Linux",

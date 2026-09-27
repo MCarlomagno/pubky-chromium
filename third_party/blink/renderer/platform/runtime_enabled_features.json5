@@ -5040,6 +5040,11 @@
       status: "experimental",
     },
     {
+      // Native, build-time Pubky support detection on HTTP and HTTPS pages.
+      name: "PubkyCapabilities",
+      status: "stable",
+    },
+    {
       name: "PushMessageDataBytes",
       depends_on: ["PushMessaging"],
       status: "stable",

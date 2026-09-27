@@ -160,6 +160,8 @@ blink_core_sources_frame = [
   "policy_container.h",
   "post_layout_snapshot_client.cc",
   "post_layout_snapshot_client.h",
+  "pubky_capabilities.cc",
+  "pubky_capabilities.h",
   "remote_dom_window.cc",
   "remote_dom_window.h",
   "remote_frame.cc",
