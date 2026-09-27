@@ -3,6 +3,8 @@
 Chromium with strict PKDNS DNS-over-HTTPS defaults and native RFC 7250
 raw-public-key TLS for Ed25519 public-key URLs.
 
+**[Why Pubky Chromium? Discover the public-key web →](pubky/about/README.md)**
+
 See [Pubky build and usage instructions](pubky/README.md) and
 [verification results](pubky/VERIFICATION.md). The custom branch is `pubky`;
 Chromium updates are merged from the `upstream` remote.
