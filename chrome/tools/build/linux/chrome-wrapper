@@ -8,7 +8,7 @@
 # default browser directly out of a compile, without needing to package it.
 
 DESKTOP="chromium-devel"
-TITLE="Chromium"
+TITLE="Pubky Chromium"
 
 usage() {
   echo "$0 [--gdb] [--help] [--man-page] [--] [chrome-options]"
