@@ -54,14 +54,10 @@ update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser \
 update-alternatives --install /usr/bin/@@package_orig @@package_orig \
   /usr/bin/@@usr_bin_symlink_name $PRIORITY
 
-@@include@@../common/apt.include
+# Pubky Chromium: no apt repository or signing key is added. The upstream
+# script points this package at Google's Chrome repository, which does not
+# publish Pubky Chromium; upgrades come from a newly downloaded package.
 
 @@include@@../common/symlinks.include
 
 remove_udev_symlinks
-
-## MAIN ##
-install_key
-install_deb822_sources
-remove_legacy_list
-remove_legacy_key
