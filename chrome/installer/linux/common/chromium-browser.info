@@ -21,21 +21,21 @@ ENROLLMENTDIR=/etc/chromium/policies/enrollment
 MENUNAME="Pubky Chromium"
 
 # Brief package description.
-SHORTDESC="The web browser from the Chromium projects"
+SHORTDESC="Experimental Chromium build with Pubky branding"
 
 # Detailed package description.
-FULLDESC="Chromium is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+FULLDESC="Pubky Chromium is an experimental build of Chromium from the MCarlomagno/pubky-chromium fork. It is not a Google or Chromium project release and has no automatic updates."
 
 # Package maintainer information.
-MAINTNAME="Chromium Linux Team"
-MAINTMAIL="chromium-packagers@chromium.org"
-PRODUCTURL="https://www.chromium.org/Home"
+MAINTNAME="MCarlomagno"
+MAINTMAIL="marcoscarlomagno1@gmail.com"
+PRODUCTURL="https://github.com/MCarlomagno/pubky-chromium"
 
 PROJECT_LICENSE="BSD-3-Clause and LGPL-2.1+ and Apache-2.0 and IJG and MIT and GPL-2.0+ and ISC and OpenSSL and (MPL-1.1 or GPL-2.0 or LGPL-2.0)"
 
 DEVELOPER_NAME="The Chromium Authors"
 
-BUGTRACKERURL="https://www.chromium.org/for-testers/bug-reporting-guidelines"
+BUGTRACKERURL="https://github.com/MCarlomagno/pubky-chromium/issues"
 
 HELPURL="https://chromium.googlesource.com/chromium/src/+/main/docs/linux/debugging.md"
 
