@@ -133,6 +133,13 @@ def main() -> None:
         # Pubky Chromium ships no daily cron job: upstream's re-adds Google's
         # Chrome apt repository, which does not publish this package.
 
+        # Chromium's LICENSE and the chrome://credits notices go with the
+        # binaries as package documentation.
+        doc_dir = staging_dir / f"usr/share/doc/{config.usr_bin_symlink_name}"
+        for src, dst in [("LICENSE", "LICENSE"), ("about_credits.html", "credits.html")]:
+            shutil.copyfile(output_dir / "installer/doc" / src, doc_dir / dst)
+            (doc_dir / dst).chmod(installer.StandardPermissions.REGULAR)
+
         for script in ["postinst", "prerm", "postrm"]:
             dest = staging_dir / "DEBIAN" / script
             installer.process_template(

@@ -111,6 +111,8 @@ packaging_files_binaries = packaging_files_executables + packaging_files_shlibs
 # (e.g. all locales, resources, etc.)
 packaging_files = packaging_files_binaries + [
                     "common/installer.py",
+                    "$root_out_dir/installer/doc/LICENSE",
+                    "$root_out_dir/installer/doc/about_credits.html",
                     "$root_out_dir/locales/en-US.pak",
                     "$root_out_dir/MEIPreload/manifest.json",
                     "$root_out_dir/MEIPreload/preloaded_data.pb",
@@ -397,6 +399,18 @@ copy("deb_packaging_files") {
   outputs = [ "$root_out_dir/installer/debian/{{source_file_part}}" ]
 }
 
+# Pubky Chromium: ship Chromium's LICENSE and the generated chrome://credits
+# page (every shipped component's notice) as package documentation.
+copy("license_files") {
+  visibility = [ ":*" ]
+  sources = [
+    "$root_gen_dir/components/resources/about_credits.html",
+    "//LICENSE",
+  ]
+  outputs = [ "$root_out_dir/installer/doc/{{source_file_part}}" ]
+  deps = [ "//components/resources:about_credits" ]
+}
+
 copy("theme_files") {
   visibility = [ ":*" ]
   sources = [
@@ -478,6 +492,7 @@ group("installer_deps") {
   public_deps = [
     ":common_packaging_files",
     ":deb_packaging_files",
+    ":license_files",
     ":save_build_info",
     ":strip_chrome_binary",
     ":strip_chrome_crashpad_handler",
