@@ -225,6 +225,7 @@
 <translation id="3296368748942286671">Chromium を閉じた際にバックグラウンド アプリの処理を続行する</translation>
 <translation id="3313189106987092621">Chromium で安全でない接続を使用してサイトを読み込む前に警告を表示します</translation>
 <translation id="3316771292331273802">Chromium のウィンドウをすべて閉じると、ほとんどのサイトからログアウトします。ただし Chromium にログインしている場合、Google アカウントからはログアウトしません。サイトにあなたの情報を記憶させるには、<ph name="SETTINGS_LINK" />します。</translation>
+<translation id="3322618165296853161">Pubky Chromium について</translation>
 <translation id="3352986031709923790">検索範囲の右上隅: 右 <ph name="RIGHT" />%、上 <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">アカウントの Chromium データ</translation>
 <translation id="3375770072980084583">スマートフォンの Chromium でパスワードを使用する</translation>
