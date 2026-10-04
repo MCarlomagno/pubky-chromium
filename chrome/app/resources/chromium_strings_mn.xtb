@@ -45,6 +45,7 @@
 <translation id="1465192221147974788">Цонхоо хуваалцахын тулд Системийн тохиргоонд Chromium-д дэлгэцийн үйлдэл бичихийг зөвшөөрнө үү.</translation>
 <translation id="1478370723027452770">Chrome for Testing-р тусламж авах</translation>
 <translation id="1497802159252041924">Суулгалтын алдаа: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Бодлогын менежер - Pubky Chromium</translation>
 <translation id="1518627427551567882">Энэ хуудсыг хамгаалагдсан байна</translation>
 <translation id="1524282610922162960">Chromium-н таб хуваалцах</translation>
 <translation id="154404805518949443">Chromium-д нэвтрэх</translation>
@@ -424,6 +425,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Chromium-н шинэчлэлт боломжтой байна}=1{Chromium-н шинэчлэлт боломжтой байна}other{Chromium-н шинэчлэлт # хоногийн турш боломжтой байсаар байна}}</translation>
 <translation id="5643865575100044307">Таныг Chromium-г хаах үед төхөөрөмжөөс тань сайтын өгөгдлийг үргэлж устгана</translation>
 <translation id="5653831366781983928">Chromium-г одоо дахин эхлүүлнэ үү</translation>
+<translation id="5664172666218028492">Pubky Chromium профайлд тавтай морилно уу</translation>
 <translation id="5690427481109656848">Google ХХК</translation>
 <translation id="5698481217667032250">Chromium-г энэ хэлээр харуулах</translation>
 <translation id="569897634095159764">Интернэтэд холбогдох боломжгүй байна. Прокси сервер баталгаажуулалт шаарддаг.</translation>

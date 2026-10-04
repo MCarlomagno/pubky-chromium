@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">Για να μοιραστείτε το παράθυρό σας, επιτρέψτε την εγγραφή οθόνης για το Chromium στις Ρυθμίσεις συστήματος.</translation>
 <translation id="1478370723027452770">Λήψη βοήθειας για το Chrome for Testing</translation>
 <translation id="1497802159252041924">Σφάλμα εγκατάστασης: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Διαχείριση Εργασιών - Pubky Chromium</translation>
 <translation id="1518627427551567882">Αυτή η σελίδα είναι προστατευμένη</translation>
 <translation id="1524282610922162960">Μοιραστείτε μια καρτέλα του Chromium</translation>
 <translation id="154404805518949443">Σύνδεση στο Chromium</translation>
@@ -174,6 +175,7 @@
 <translation id="2846251086934905009">Σφάλμα εγκατάστασης: Το πρόγραμμα εγκατάστασης δεν ολοκληρώθηκε. Η εγκατάσταση ακυρώθηκε.</translation>
 <translation id="2847479871509788944">Κατάργηση από το Chromium…</translation>
 <translation id="2850691299438350830">Διατηρεί την ασφάλειά σας στο Chromium και μπορεί να χρησιμοποιηθεί για τη βελτίωση της ασφάλειάς σας σε άλλες εφαρμογές Google όταν είστε συνδεδεμένοι.</translation>
+<translation id="2858220351857914958">Με τα προφίλ του Pubky Chromium μπορείτε να διαχωρίσετε όλη τη δραστηριότητα και το περιεχόμενό σας στο Pubky Chromium. Δημιουργήστε προφίλ για φίλους και μέλη της οικογένειας ή διαχωρίστε την εργασία και τη διασκέδαση.</translation>
 <translation id="2885378588091291677">Διαχείριση εργασιών</translation>
 <translation id="2910007522516064972">Σχετικά με το &amp;Chromium</translation>
 <translation id="2915996080311180594">Επανεκκίνηση αργότερα</translation>
@@ -242,6 +244,7 @@
 <translation id="3530103706039034513">Ο χρήστης <ph name="EXISTING_USER" /> είναι ήδη συνδεδεμένος.  Για να διατηρήσετε ξεχωριστά την περιήγησή σας, συνδεθείτε στο Chromium με το δικό σας προφίλ ως <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">Κωδικός QR για τη λήψη του προγράμματος περιήγησης Chromium σε κινητές συσκευές</translation>
 <translation id="354621070532799440">Υπενθύμιση: Οι καλύτερες λειτουργίες ασφαλείας της Google στην τσέπη σας</translation>
+<translation id="3554011135241686756">Έναρξη του Pubky Chromium</translation>
 <translation id="3561853857681580870">Για να μοιραστείτε την οθόνη σας, επιτρέψτε την εγγραφή οθόνης για το Chromium στις Ρυθμίσεις συστήματος.</translation>
 <translation id="3588112919289558122">Η Βελτιωμένη προστασία απενεργοποιεί τη βελτιστοποίηση JavaScript για ιστοτόπους που δεν αναγνωρίζει το Chromium</translation>
 <translation id="3597003331831379823">Απέτυχε η εκτέλεση της ρύθμισης με αναβαθμισμένα προνόμια. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -367,10 +370,12 @@
 <translation id="4987820182225656817">Οι επισκέπτες μπορούν να χρησιμοποιούν το Chromium χωρίς να αφήνουν κανένα ίχνος.</translation>
 <translation id="4992938037305302429">Ο λογαριασμός σας στο Chromium</translation>
 <translation id="4994636714258228724">Προσθήκη του εαυτού σας στο Chromium</translation>
+<translation id="5036105059978901236">Ποιος χρησιμοποιεί το Pubky Chromium;</translation>
 <translation id="504699503110800016">Ανοίξτε το μενού υπερχείλισης</translation>
 <translation id="5074496654342756568">Αποκτήστε πρόσβαση σε όλες τις αγαπημένες λειτουργίες της Google με το Chromium στη συσκευή <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Το Chromium χρειάζεται άδεια για να παρακολουθεί τα χέρια σας</translation>
 <translation id="5141988424377517949">Δεν έχετε επισκεφτεί πρόσφατα τον ιστότοπο. Το Chromium κατάργησε τις άδειες <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" /> και <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Λήψη βοήθειας σχετικά με το Pubky Chromium</translation>
 <translation id="5174969993834422967">Συνήθως αποκλείετε τις ειδοποιήσεις. Για να επιτρέψετε σε αυτόν τον ιστότοπο να σας στέλνει ειδοποιήσεις, κάντε κλικ στο εικονίδιο ειδοποίησης στη δεξιά γωνία της γραμμής τοποθεσίας.</translation>
 <translation id="5174983315706567306">Δεν υπάρχει αρκετός χώρος δίσκου.</translation>
 <translation id="5187123684706427865">Ο λογαριασμός Chromium απαιτεί εκ νέου έλεγχο ταυτότητας</translation>
@@ -425,6 +430,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Υπάρχει μια διαθέσιμη ενημέρωση του Chromium}=1{Υπάρχει μια διαθέσιμη ενημέρωση του Chromium}other{Υπάρχει μια διαθέσιμη ενημέρωση του Chromium για # ημέρες}}</translation>
 <translation id="5643865575100044307">Να διαγράφονται πάντα τα δεδομένα ιστοτόπων από τη συσκευή σας όταν κλείνετε το Chromium</translation>
 <translation id="5653831366781983928">Επανεκκινήστε το Chromium τώρα</translation>
+<translation id="5664172666218028492">Καλώς ήρθατε στα προφίλ του Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Να εμφανίζεται το Chromium σε αυτήν τη γλώσσα</translation>
 <translation id="569897634095159764">Δεν είναι δυνατή η σύνδεση στο διαδίκτυο. Ο διακομιστής μεσολάβησης απαιτεί έλεγχο ταυτότητας.</translation>
@@ -677,6 +683,7 @@
 <translation id="8004582292198964060">Πρόγραμμα περιήγησης</translation>
 <translation id="8010081455002666927">Αυτόματος εντοπισμός</translation>
 <translation id="8013436988911883588">Όταν το Chromium αποκτήσει πρόσβαση, οι ιστότοποι θα μπορούν να σας ζητήσουν πρόσβαση.</translation>
+<translation id="8024015851840632875">Καλώς ήρθατε στο Pubky Chromium</translation>
 <translation id="8031714377769448844">Καρφιτσώστε το Chromium στη γραμμή εργαλείων για γρήγορη πρόσβαση ανά πάσα στιγμή</translation>
 <translation id="80471789339884597">Ευχαριστούμε για την εγκατάσταση. Πρέπει να επανεκκινήσετε όλα τα προγράμματα περιήγησής σας πριν από τη χρήση του <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Να εμφανίζεται πάντα η συντόμευση Αναζήτησης με εικόνες</translation>

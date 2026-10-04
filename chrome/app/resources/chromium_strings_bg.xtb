@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">За да споделите прозореца си, разрешете записването на екрана за Chromium в System Settings.</translation>
 <translation id="1478370723027452770">Получаване на помощ за Chrome for Testing</translation>
 <translation id="1497802159252041924">Грешка при инсталирането: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Диспечер на задачите – Pubky Chromium</translation>
 <translation id="1518627427551567882">Тази страница е защитена</translation>
 <translation id="1524282610922162960">Споделяне на раздел в Chromium</translation>
 <translation id="154404805518949443">Вход в Chromium</translation>
@@ -240,6 +241,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> вече е в профила си.  За да бъде сърфирането ви отделно, влезте в Chromium със свой собствен потребителски профил като <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR код за изтегляне на браузъра Chromium на мобилни устройства</translation>
 <translation id="354621070532799440">Напомняне: Най-добрите функции на Google за безопасност в джоба ви</translation>
+<translation id="3554011135241686756">Стартиране на Pubky Chromium</translation>
 <translation id="3561853857681580870">За да споделите екрана си, разрешете записването на екрана за Chromium в System Settings.</translation>
 <translation id="3588112919289558122">Подобрената защита изключва оптимизирането на JavaScript за сайтовете, които Chromium не разпознава</translation>
 <translation id="3597003331831379823">Настройването с администраторски права не бе изпълнено успешно. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -365,10 +367,12 @@
 <translation id="4987820182225656817">Гостите могат да използват Chromium, без да оставят следи.</translation>
 <translation id="4992938037305302429">Профилът ви в Chromium</translation>
 <translation id="4994636714258228724">Добавяне на вас към Chromium</translation>
+<translation id="5036105059978901236">Кой използва Pubky Chromium?</translation>
 <translation id="504699503110800016">Отворете менюто при препълване.</translation>
 <translation id="5074496654342756568">Осъществявайте достъп до всичките си любими услуги на Google с Chromium на устройството си <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium се нуждае от разрешение да проследява ръцете ви</translation>
 <translation id="5141988424377517949">Не сте посещавали този сайт наскоро. Chromium премахна разрешенията „<ph name="PERMISSION_1" />“, „<ph name="PERMISSION_2" />“ и „<ph name="PERMISSION_3" />“.</translation>
+<translation id="5147126173418055786">Получаване на помощ за Pubky Chromium</translation>
 <translation id="5174969993834422967">Обикновено блокирате известията. За да разрешите на този сайт да ви изпраща такива, кликнете върху иконата за известия в десния ъгъл на лентата за местоположението.</translation>
 <translation id="5174983315706567306">Няма достатъчно място на диска.</translation>
 <translation id="5187123684706427865">Изисква се повторно удостоверяване за профила в Chromium</translation>
@@ -423,6 +427,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Налице е актуализация за Chromium}=1{Налице е актуализация за Chromium}other{Налице е актуализация за Chromium от # дни}}</translation>
 <translation id="5643865575100044307">Изтриване на данните за сайтовете от устройството ви при всяко затваряне на Chromium</translation>
 <translation id="5653831366781983928">Моля, рестартирайте Chromium сега</translation>
+<translation id="5664172666218028492">Добре дошли в потребителските профили в Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Показване на Chromium на този език</translation>
 <translation id="569897634095159764">Не може да се установи връзка с интернет. Прокси сървърът изисква удостоверяване.</translation>
@@ -671,6 +676,7 @@
 <translation id="8004582292198964060">Браузър</translation>
 <translation id="8010081455002666927">Автоматично откриване</translation>
 <translation id="8013436988911883588">След като Chromium получи достъп, уебсайтовете ще могат да искат достъп от вас.</translation>
+<translation id="8024015851840632875">Добре дошли в Pubky Chromium</translation>
 <translation id="8031714377769448844">Фиксирайте Chromium в лентата на задачите, за да имате бърз достъп до браузъра по всяко време</translation>
 <translation id="80471789339884597">Благодарим ви, че инсталирахте <ph name="BUNDLE_NAME" />. Трябва да рестартирате всичките си браузъри, преди да използвате това приложение.</translation>
 <translation id="8054112667659782652">Прекият път за търсене на изображения да се показва винаги</translation>

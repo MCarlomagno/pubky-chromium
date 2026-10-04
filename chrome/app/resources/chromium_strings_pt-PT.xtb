@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">Para partilhar a sua janela, permita a gravação de ecrã para o Chromium nas Definições do sistema.</translation>
 <translation id="1478370723027452770">Obter ajuda com o Chrome for Testing</translation>
 <translation id="1497802159252041924">Erro ao instalar: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Gestor de Tarefas - Pubky Chromium</translation>
 <translation id="1518627427551567882">Esta página está protegida</translation>
 <translation id="1524282610922162960">Partilhe um separador do Chromium</translation>
 <translation id="154404805518949443">Iniciar sessão no Chromium</translation>
@@ -174,6 +175,7 @@
 <translation id="2846251086934905009">Erro de instalação: o instalador não foi concluído. A instalação foi interrompida.</translation>
 <translation id="2847479871509788944">Remover do Chromium...</translation>
 <translation id="2850691299438350830">Mantém a sua segurança no Chromium e pode ser usada para melhorar a sua segurança noutras apps Google quando tem sessão iniciada</translation>
+<translation id="2858220351857914958">Com os perfis do Pubky Chromium, pode separar todos os seus itens do Pubky Chromium. Crie perfis para amigos e familiares ou separe o trabalho da diversão.</translation>
 <translation id="2885378588091291677">Gestor de tarefas</translation>
 <translation id="2910007522516064972">Acerca do &amp;Chromium</translation>
 <translation id="2915996080311180594">Reiniciar mais tarde</translation>
@@ -242,6 +244,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> já tem sessão iniciada.  Para manter a sua navegação separada, inicie sessão no Chromium no seu perfil como <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">Código QR para transferir o navegador Chromium em dispositivos móveis</translation>
 <translation id="354621070532799440">Lembrete: as melhores funcionalidades de segurança da Google no seu bolso</translation>
+<translation id="3554011135241686756">Iniciar o Pubky Chromium</translation>
 <translation id="3561853857681580870">Para partilhar o ecrã, permita a gravação de ecrã para o Chromium nas Definições do sistema.</translation>
 <translation id="3588112919289558122">A Proteção melhorada desativa a otimização do JavaScript para sites que o Chromium não reconhece</translation>
 <translation id="3597003331831379823">Falha ao executar a configuração com privilégios elevados. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -367,10 +370,12 @@
 <translation id="4987820182225656817">Os convidados podem utilizar o Chromium sem perder qualquer funcionalidade.</translation>
 <translation id="4992938037305302429">A sua conta no Chromium</translation>
 <translation id="4994636714258228724">Adicionar-se ao Chromium</translation>
+<translation id="5036105059978901236">Quem está a utilizar o Pubky Chromium?</translation>
 <translation id="504699503110800016">Abra o menu adicional</translation>
 <translation id="5074496654342756568">Aceda a todos os seus favoritos da Google com o Chromium no <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">O Chromium precisa de autorização para monitorizar as suas mãos</translation>
 <translation id="5141988424377517949">Não visitou o site recentemente. O Chromium removeu <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" /> e <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Obter ajuda relacionada com o Pubky Chromium</translation>
 <translation id="5174969993834422967">Normalmente, bloqueia as notificações. Para permitir que este site lhe apresente notificações, clique no ícone de notificação no canto direito da barra de localização.</translation>
 <translation id="5174983315706567306">Não existe espaço suficiente em disco.</translation>
 <translation id="5187123684706427865">A conta do Chromium requer a reautenticação</translation>
@@ -425,6 +430,7 @@ Se esta página não estiver a funcionar conforme esperado, experimente permitir
 <translation id="5623402015214259806">{0,plural, =0{Está disponível uma atualização do Chromium}=1{Está disponível uma atualização do Chromium}other{Está disponível uma atualização do Chromium há # dias}}</translation>
 <translation id="5643865575100044307">Eliminar sempre os dados de sites do seu dispositivo ao fechar o Chromium</translation>
 <translation id="5653831366781983928">Reinicie o Chromium agora</translation>
+<translation id="5664172666218028492">Damos-lhe as boas-vindas aos perfis do Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Apresentar o Chromium neste idioma</translation>
 <translation id="569897634095159764">Não é possível ligar à Internet. O servidor proxy necessita de autenticação.</translation>
@@ -677,6 +683,7 @@ O Chromium não consegue recuperar as suas definições.</translation>
 <translation id="8004582292198964060">Navegador</translation>
 <translation id="8010081455002666927">Detetar automaticamente</translation>
 <translation id="8013436988911883588">Assim que o Chromium tiver acesso, os Websites poderão solicitar-lhe o acesso.</translation>
+<translation id="8024015851840632875">Damos-lhe as boas-vindas ao Pubky Chromium</translation>
 <translation id="8031714377769448844">Afixe o Chromium à barra de tarefas para aceder rapidamente ao mesmo em qualquer altura</translation>
 <translation id="80471789339884597">Agradecemos a instalação. Tem de reiniciar todos os navegadores antes de usar o <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Mostrar sempre o atalho da pesquisa de imagens</translation>

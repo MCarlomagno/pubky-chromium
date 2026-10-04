@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">‏لمشاركة النافذة، يجب السماح بتسجيل الشاشة في Chromium ضِمن "إعدادات النظام" (System Settings).</translation>
 <translation id="1478370723027452770">‏الحصول على مساعدة بشأن Chrome for Testing</translation>
 <translation id="1497802159252041924">حدث خطأ أثناء التثبيت: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">‏إدارة المهام - Pubky Chromium</translation>
 <translation id="1518627427551567882">هذه الصفحة محمية</translation>
 <translation id="1524282610922162960">‏مشاركة علامة تبويب Chromium</translation>
 <translation id="154404805518949443">‏تسجيل الدخول إلى Chromium</translation>
@@ -174,6 +175,7 @@
 <translation id="2846251086934905009">خطأ في التثبيت: لم تكتمل أداة التثبيت. تم إلغاء عملية التثبيت.</translation>
 <translation id="2847479871509788944">‏إزالة من Chromium</translation>
 <translation id="2850691299438350830">‏يوفّر لك هذا الوضع حماية في Chromium، ويمكن استخدامه لتحسين مستوى أمانك في تطبيقات Google الأخرى عندما تكون مسجلاً دخولك.</translation>
+<translation id="2858220351857914958">‏باستخدام ميزة الملفات الشخصية على Pubky Chromium، يمكنك الفصل بين جميع بيانات Pubky Chromium. وبإمكانك إنشاء ملفات شخصية للأصدقاء والعائلة أو الفصل بين البيانات المرتبطة بالعمل وتلك المرتبطة بالأنشطة الترفيهية.</translation>
 <translation id="2885378588091291677">إدارة المهام</translation>
 <translation id="2910007522516064972">‏حو&amp;ل Chromium</translation>
 <translation id="2915996080311180594">إعادة التشغيل لاحقًا</translation>
@@ -242,6 +244,7 @@
 <translation id="3530103706039034513">‏سبق أن تم تسجيل الدخول إلى حساب "<ph name="EXISTING_USER" />".  للحصول على تجربة تصفّح منفصلة، سجِّل الدخول إلى Chromium في ملفك الشخصي باستخدام العنوان <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">‏يُرجى مسح رمز الاستجابة السريعة ضوئيًا لتنزيل متصفّح Chromium على الأجهزة الجوّالة</translation>
 <translation id="354621070532799440">‏تذكير: أفضل ميزات الأمان من Google في متناول يدك</translation>
+<translation id="3554011135241686756">‏بدء Pubky Chromium</translation>
 <translation id="3561853857681580870">‏لمشاركة شاشتك، يجب السماح بتسجيل الشاشة في Chromium ضِمن "إعدادات النظام" (System Settings).</translation>
 <translation id="3588112919289558122">‏يؤدي تفعيل ميزة "الحماية المحسّنة" إلى إيقاف ميزة تحسين JavaScript للمواقع الإلكترونية التي لا يتعرّف عليها Chromium</translation>
 <translation id="3597003331831379823">تعذَّر إجراء عملية الإعداد باستخدام أذونات مميزة وعالية المستوى. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -367,10 +370,12 @@
 <translation id="4987820182225656817">‏يمكن للضيف استخدام Chromium بدون أن يترك أي أثر وراءه.</translation>
 <translation id="4992938037305302429">‏حسابك في Chromium</translation>
 <translation id="4994636714258228724">‏إضافة نفسك إلى Chromium</translation>
+<translation id="5036105059978901236">‏مَن يستخدم Pubky Chromium؟</translation>
 <translation id="504699503110800016">افتح القائمة الكاملة</translation>
 <translation id="5074496654342756568">‏جميع خدمات Google المفضّلة لديك ستكون متاحة لك باستخدام Chromium على "<ph name="DEVICE_TYPE" />"</translation>
 <translation id="5123973130450702873">‏يحتاج Chromium إلى إذن لتتبُّع حركات يديك</translation>
 <translation id="5141988424377517949">‏لم تتم زيارة هذا الموقع الإلكتروني مؤخرًا، لذلك أزال Chromium أذونات <ph name="PERMISSION_1" /> و<ph name="PERMISSION_2" /> و<ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">‏الحصول على مساعدة في Pubky Chromium</translation>
 <translation id="5174969993834422967">أنت تحظر الإشعارات عادةً. للسماح لهذا الموقع الإلكتروني بإرسال إشعارات، انقر على رمز الإشعارات في الزاوية اليسرى من شريط الموقع الجغرافي.</translation>
 <translation id="5174983315706567306">لا تتوفّر مساحة كافية على القرص.</translation>
 <translation id="5187123684706427865">‏يتطلب حساب Chromium إعادة المصادقة</translation>
@@ -425,6 +430,7 @@
 <translation id="5623402015214259806">{0,plural, =0{‏يتوفر تحديث لمتصفح Chromium}=1{‏يتوفر تحديث لمتصفح Chromium}two{‏يتوفر تحديث لمتصفح Chromium منذ يومين}few{‏يتوفر تحديث لمتصفح Chromium منذ # أيام}many{‏يتوفر تحديث لمتصفح Chromium منذ # يومًا}other{‏يتوفر تحديث لمتصفح Chromium منذ # يوم}}</translation>
 <translation id="5643865575100044307">‏حذف بيانات الموقع الإلكتروني من جهازك دائمًا عند إغلاق Chromium</translation>
 <translation id="5653831366781983928">‏يُرجى إعادة تشغيل Chromium الآن</translation>
+<translation id="5664172666218028492">‏مرحبًا بك في الملفات الشخصية على Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">‏عرض Chromium بهذه اللغة</translation>
 <translation id="569897634095159764">يتعذّر الاتصال بالإنترنت. يتطلب الخادم الوكيل المصادقة.</translation>
@@ -677,6 +683,7 @@
 <translation id="8004582292198964060">المتصفّح</translation>
 <translation id="8010081455002666927">الرصد التلقائي</translation>
 <translation id="8013436988911883588">‏بعد حصول Chromium على إمكانية الوصول، ستتمكن المواقع الإلكترونية من مطالبتك بإمكانية الوصول.</translation>
+<translation id="8024015851840632875">‏مرحبًا بك في Pubky Chromium</translation>
 <translation id="8031714377769448844">‏يمكنك تثبيت Chromium على شريط المهام للوصول إليه بسرعة في أي وقت</translation>
 <translation id="80471789339884597">شكرًا على التثبيت. عليك إعادة تشغيل جميع المتصفِّحات قبل استخدام <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">عرض اختصار ميزة "البحث بالصور" دائمًا</translation>

@@ -46,6 +46,7 @@
 <translation id="1465192221147974788">თქვენი ფანჯრის გასაზიარებლად დაუშვით ეკრანის ჩაწერა Chromium-ისთვის სისტემის პარამეტრებში.</translation>
 <translation id="1478370723027452770">დახმარების მიღება Chrome for Testing-თან დაკავშირებით</translation>
 <translation id="1497802159252041924">შეცდომა ინსტალაციისას: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">დავალებათა მენეჯერი - Pubky Chromium</translation>
 <translation id="1518627427551567882">ეს გვერდი დაცულია</translation>
 <translation id="1524282610922162960">Chromium ჩანართის გაზიარება</translation>
 <translation id="154404805518949443">Chromium-ში შესვლა</translation>
@@ -427,6 +428,7 @@
 <translation id="5623402015214259806">{0,plural, =0{ხელმისაწვდომია Chromium-ის განახლება}=1{ხელმისაწვდომია Chromium-ის განახლება}other{უკვე # დღეა, რაც ხელმისაწვდომია Chromium-ის განახლება}}</translation>
 <translation id="5643865575100044307">Chromium-ის დახურვისას თქვენი მოწყობილობიდან საიტების მონაცემების ყოველთვის წაშლა</translation>
 <translation id="5653831366781983928">გთხოვთ, ახლავე გადატვირთოთ Chromium</translation>
+<translation id="5664172666218028492">მოგესალმებათ Pubky Chromium პროფილები</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Chromium-ის ამ ენაზე ჩვენება</translation>
 <translation id="569897634095159764">ინტერნეტთან დაკავშირება ვერ ხერხდება. პროქსი-სერვერი საჭიროებს ავტორიზაციას.</translation>
@@ -679,6 +681,7 @@ Chromium ვერ შეძლებს თქვენი პარამე�
 <translation id="8004582292198964060">ბრაუზერი</translation>
 <translation id="8010081455002666927">ავტომატური ამოცნობა</translation>
 <translation id="8013436988911883588">Chromium-ისთვის წვდომის მინიჭების შემდეგ ცალკეული ვებსაიტები შეძლებს თქვენგან წვდომის მოთხოვნას.</translation>
+<translation id="8024015851840632875">მოგესალმებათ Pubky Chromium!</translation>
 <translation id="8031714377769448844">ჩაამაგრეთ Chromium ამოცანათა ზოლში, რომ ნებისმიერ დროს გამოიყენოთ ის</translation>
 <translation id="80471789339884597">გმადლობთ დაინსტალირებისთვის. <ph name="BUNDLE_NAME" />-ის გამოყენებამდე თქვენი ყველა ბრაუზერი უნდა გადატვირთოთ.</translation>
 <translation id="8054112667659782652">სურათების ძიების მალსახმობის ყოველთვის ჩვენება</translation>

@@ -45,6 +45,7 @@
 <translation id="1465192221147974788">За да го споделите прозорецот, дозволете снимање на екранот за Chromium во System Settings.</translation>
 <translation id="1478370723027452770">Добијте помош со „Chrome за тестирање“</translation>
 <translation id="1497802159252041924">Грешка при инсталирање: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Управник со задачи - Pubky Chromium</translation>
 <translation id="1518627427551567882">Страницава е заштитена</translation>
 <translation id="1524282610922162960">Споделете картичка на Chromium</translation>
 <translation id="154404805518949443">Најавете се на Chromium</translation>
@@ -176,6 +177,7 @@
 <translation id="2846251086934905009">Грешка при инсталирање: инсталаторот не заврши. Инсталацијата е прекината.</translation>
 <translation id="2847479871509788944">Отстрани од Chromium</translation>
 <translation id="2850691299438350830">Ја чува вашата безбедност на Chromium и може да се користи за да ја подобри безбедноста на други апликации на Google кога сте најавени.</translation>
+<translation id="2858220351857914958">Со профилите на Pubky Chromium може да ги одделите сите ваши работи на Pubky Chromium. Создајте профили за пријателите и семејството или поделете ги меѓу работа и забава.</translation>
 <translation id="2885378588091291677">Управник со задачи</translation>
 <translation id="2910007522516064972">За &amp;Chromium</translation>
 <translation id="2915996080311180594">Рестартирај подоцна</translation>
@@ -244,6 +246,7 @@
 <translation id="3530103706039034513">Корисникот <ph name="EXISTING_USER" /> веќе е најавен.  За да прелистувате одделно, најавете се на Chromium во вашиот сопствен профил како <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR-код за преземање на прелистувачот Chromium на мобилни уреди</translation>
 <translation id="354621070532799440">Потсетник: најдобрите безбедносни функции на Google на дофат на раката</translation>
+<translation id="3554011135241686756">Стартувај Pubky Chromium</translation>
 <translation id="3561853857681580870">За да го споделите екранот, дозволете снимање на екранот за Chromium во System Settings.</translation>
 <translation id="3588112919289558122">„Подобрената заштита“ ја исклучува оптимизацијата на JavaScript за сајтовите што не ги препознава Chromium</translation>
 <translation id="3597003331831379823">Поставувањето со зголемени привилегии не можеше да се изврши. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -369,10 +372,12 @@
 <translation id="4987820182225656817">Гостите може да го користат Chromium без оставање никакви траги зад нив.</translation>
 <translation id="4992938037305302429">Вашата сметка во Chromium</translation>
 <translation id="4994636714258228724">Додај се себеси на Chromium</translation>
+<translation id="5036105059978901236">Кој користи Pubky Chromium?</translation>
 <translation id="504699503110800016">Отворете го проширеното мени</translation>
 <translation id="5074496654342756568">Пристапувајте до сите ваши омилени нешта на Google со Chromium на вашиот <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium бара дозвола да ги следи вашите раце</translation>
 <translation id="5141988424377517949">Не сте дошле одамна. Chromium ги отстрани следниве дозволи: <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" /> и <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Добијте помош за Pubky Chromium</translation>
 <translation id="5174969993834422967">Обично ги блокирате известувањата. За да овозможите сајтов да ве известува, кликнете ја иконата за известувања во десниот агол на лентата за локација.</translation>
 <translation id="5174983315706567306">Нема доволно простор на дискот.</translation>
 <translation id="5187123684706427865">Сметката на Chromium треба да се автентицира повторно</translation>
@@ -427,6 +432,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Достапно е ажурирање за Chromium}=1{Достапно е ажурирање за Chromium}one{Достапно е ажурирање за Chromium веќе # ден}other{Достапно е ажурирање за Chromium веќе # дена}}</translation>
 <translation id="5643865575100044307">Секогаш бришете ги податоците од сајт од вашиот уред кога го затворате Chromium</translation>
 <translation id="5653831366781983928">Рестартирајте го Chromium сега</translation>
+<translation id="5664172666218028492">Добре дојдовте во профили на Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Прикажи го Chromium на овој јазик</translation>
 <translation id="569897634095159764">Не може да се поврзе на интернет. Потребна е автентикација на прокси серверот.</translation>
@@ -678,6 +684,7 @@ Chromium не може да ги обнови вашите поставки.</tr
 <translation id="8004582292198964060">Прелистувач</translation>
 <translation id="8010081455002666927">Автоматско откривање</translation>
 <translation id="8013436988911883588">Ако Chromium има пристап, тогаш и веб-сајтовите ќе може да ви бараат пристап.</translation>
+<translation id="8024015851840632875">Добре дојдовте во Pubky Chromium</translation>
 <translation id="8031714377769448844">Закачете го Chromium на лентата со задачи за да пристапувате до него брзо кога сакате</translation>
 <translation id="80471789339884597">Фала за инсталирањето. Мора да ги рестартирате сите ваши прелистувачи пред да користите <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Секогаш прикажувај ја кратенката за „Пребарување со слики“</translation>

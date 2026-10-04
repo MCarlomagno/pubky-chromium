@@ -44,6 +44,7 @@
 <translation id="1465192221147974788">Терезені бөлісу үшін жүйе параметрлерінде Chromium-ге экран жазуға рұқсат беріңіз.</translation>
 <translation id="1478370723027452770">Chrome for Testing бойынша анықтама алу</translation>
 <translation id="1497802159252041924">Орнату қатесі: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Тапсырмалар реттегіші – Pubky Chromium</translation>
 <translation id="1518627427551567882">Бұл бет қорғалған</translation>
 <translation id="1524282610922162960">Chromium қойындысын бөлісу</translation>
 <translation id="154404805518949443">Chromium аккаунтына кіру</translation>
@@ -372,6 +373,7 @@
 <translation id="5074496654342756568"><ph name="DEVICE_TYPE" /> құрылғысындағы Chromium-мен Google-дың барлық таңдаулы қызметін пайдаланыңыз.</translation>
 <translation id="5123973130450702873">Chromium қолыңызды бақылауға рұқсат сұрайды.</translation>
 <translation id="5141988424377517949">Жақында кірмедіңіз. Chromium <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" /> рұқсаттарын өшірді.</translation>
+<translation id="5147126173418055786">Pubky Chromium жөнінде анықтама алу</translation>
 <translation id="5174969993834422967">Әдетте хабарландыруларға тыйым саласыз. Бұл сайт сізге хабарландыру жіберсін десеңіз, локация жолағының оң жақ бұрышындағы хабарландыру белгішесін басыңыз.</translation>
 <translation id="5174983315706567306">Диск жады жеткіліксіз.</translation>
 <translation id="5187123684706427865">Chromium аккаунтын қайта аутентификациялау қажет.</translation>
@@ -426,6 +428,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Chromium браузерінің жаңартылған нұсқасы қолжетімді}=1{Chromium браузерінің жаңартылған нұсқасы қолжетімді}other{Chromium браузерінің жаңартылған нұсқасы # күннен бері қолжетімді}}</translation>
 <translation id="5643865575100044307">Chromium браузерін жапқан кезде құрылғыңыздан сайт деректерін үнемі жою</translation>
 <translation id="5653831366781983928">Chromium браузерін қайта іске қосыңыз</translation>
+<translation id="5664172666218028492">Pubky Chromium профильдеріне қош келдіңіз!</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Chromium жүйесін осы тілде көрсету</translation>
 <translation id="569897634095159764">Интернетке қосылу мүмкін емес. Прокси-сервер үшін аутентификация қажет.</translation>
@@ -678,6 +681,7 @@ Chromium параметрлеріңізді қалпына келтіре алм
 <translation id="8004582292198964060">Браузер</translation>
 <translation id="8010081455002666927">Автоанықтау</translation>
 <translation id="8013436988911883588">Chromium браузерінің кіру рұқсаты болса, веб-сайттар сізден кіру рұқсатын сұрайды.</translation>
+<translation id="8024015851840632875">Pubky Chromium жүйесіне қош келдіңіз</translation>
 <translation id="8031714377769448844">Chromium-ді кез келген уақытта жылдам ашу үшін тапсырмалар жолағына бекітіңіз</translation>
 <translation id="80471789339884597">Орнатқаныңыз үшін рақмет. <ph name="BUNDLE_NAME" /> пайдаланбас бұрын барлық браузерді жауып, қайта ашуыңыз керек.</translation>
 <translation id="8054112667659782652">"Сурет іздеу" жылдам пәрменін үнемі көрсету</translation>

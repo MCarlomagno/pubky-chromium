@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">ನಿಮ್ಮ ವಿಂಡೋ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು, ಸಿಸ್ಟಂ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Chromium ಗೆ ಸ್ಕ್ರೀನ್ ರೆಕಾರ್ಡಿಂಗ್ ಮಾಡಲು ಅನುಮತಿಸಿ.</translation>
 <translation id="1478370723027452770">Chrome for Testing ನ ಸಹಾಯ ಪಡೆಯಿರಿ</translation>
 <translation id="1497802159252041924">ಇನ್‌ಸ್ಟಾಲ್ ದೋಷ: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">ಕಾರ್ಯನಿರ್ವಾಹಕ - Pubky Chromium</translation>
 <translation id="1518627427551567882">ಈ ಪುಟವನ್ನು ರಕ್ಷಿಸಲಾಗಿದೆ</translation>
 <translation id="1524282610922162960">Chromium ಟ್ಯಾಬ್ ಹಂಚಿಕೊಳ್ಳಿ</translation>
 <translation id="154404805518949443">Chromium ಗೆ ಸೈನ್ ಇನ್ ಆಗಿ</translation>
@@ -174,6 +175,7 @@
 <translation id="2846251086934905009">ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡುವಾಗ ದೋಷ: ಇನ್‌ಸ್ಟಾಲರ್‌‌ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. ಇನ್‌ಸ್ಟಾಲೇಶನ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ.</translation>
 <translation id="2847479871509788944">Chromium ನಿಂದ ತೆಗೆದುಹಾಕಿ...</translation>
 <translation id="2850691299438350830">ನೀವು ಸೈನ್ ಇನ್ ಮಾಡಿದಾಗ, Chromium ನಲ್ಲಿ ನಿಮ್ಮನ್ನು ಸುರಕ್ಷಿತವಾಗಿರಿಸುತ್ತದೆ ಮತ್ತು ಇತರ Google ಆ್ಯಪ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ಸುರಕ್ಷತೆಯನ್ನು ಸುಧಾರಿಸಲು ಬಳಸಬಹುದು</translation>
+<translation id="2858220351857914958">Pubky Chromium ಪ್ರೊಫೈಲ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು Pubky Chromium ಗೆ ಸಂಬಂಧಿಸಿದ ನಿಮ್ಮ ಎಲ್ಲಾ ಸಂಗತಿಗಳನ್ನು ನೀವು ಪ್ರತ್ಯೇಕವಾಗಿಸಬಹುದು. ಸ್ನೇಹಿತರು ಮತ್ತು ಕುಟುಂಬದವರಿಗಾಗಿ ಪ್ರೊಫೈಲ್‌ಗಳನ್ನು ರಚಿಸಿ ಅಥವಾ ಕೆಲಸ ಮತ್ತು ಮೋಜಿನ ವಿಷಯಗಳನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿಸಿ.</translation>
 <translation id="2885378588091291677">ಕಾರ್ಯ ನಿರ್ವಾಹಕ</translation>
 <translation id="2910007522516064972">&amp;Chromium ಕುರಿತು</translation>
 <translation id="2915996080311180594">ನಂತರ ಮರುಪ್ರಾರಂಭಿಸಿ</translation>
@@ -240,6 +242,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> ಅನ್ನು ಈಗಾಗಲೇ ಸೈನ್ ಇನ್ ಮಾಡಲಾಗಿದೆ.  ನಿಮ್ಮ ಬ್ರೌಸಿಂಗ್ ಅನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿರಿಸಲು, ನಿಮ್ಮ ಸ್ವಂತ ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ <ph name="USER_EMAIL_ADDRESS" /> ನಂತೆ Chromium ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.</translation>
 <translation id="3531741627422851418">ಮೊಬೈಲ್ ಸಾಧನಗಳಲ್ಲಿ Chromium ಬ್ರೌಸರ್ ಅನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು QR ಕೋಡ್</translation>
 <translation id="354621070532799440">ರಿಮೈಂಡರ್: ನಿಮ್ಮ ಜೇಬಿನಲ್ಲಿ Google ನ ಅತ್ಯುತ್ತಮ ಸುರಕ್ಷತಾ ಫೀಚರ್‌ಗಳು</translation>
+<translation id="3554011135241686756">Pubky Chromium ಪ್ರಾರಂಭಿಸಿ</translation>
 <translation id="3561853857681580870">ನಿಮ್ಮ ಸ್ಕ್ರೀನ್‌ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು, ಸಿಸ್ಟಂ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Chromium ಗೆ ಸ್ಕ್ರೀನ್ ರೆಕಾರ್ಡಿಂಗ್ ಮಾಡಲು ಅನುಮತಿಸಿ.</translation>
 <translation id="3588112919289558122">Chromium ಗುರುತಿಸದ ಸೈಟ್‌ಗಳಿಗೆ ವರ್ಧಿತ ಸುರಕ್ಷತೆಯು JavaScript ಆಪ್ಟಿಮೈಸೇಷನ್ ಅನ್ನು ಆಫ್ ಮಾಡುತ್ತದೆ</translation>
 <translation id="3597003331831379823">ಎಲಿವೇಟೆಡ್ ಪ್ರಿವಿಲೇಜಸ್ ಮೂಲಕ ಸೆಟಪ್ ಅನ್ನು ರನ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -365,10 +368,12 @@
 <translation id="4987820182225656817">ಅತಿಥಿಗಳು ಏನನ್ನೂ ಉಳಿಸದೆಯೇ Chromium ಬಳಸಬಹುದು.</translation>
 <translation id="4992938037305302429">Chromium ನಲ್ಲಿನ ನಿಮ್ಮ ಖಾತೆ</translation>
 <translation id="4994636714258228724">ನೀವಾಗಿಯೇ Chromium ಗೆ ಸೇರಿಕೊಳ್ಳಿ</translation>
+<translation id="5036105059978901236">Pubky Chromium ಅನ್ನು ಯಾರು ಬಳಸುತ್ತಿದ್ದಾರೆ?</translation>
 <translation id="504699503110800016">ಓವರ್‌ಫ್ಲೋ ಮೆನು ತೆರೆಯಿರಿ</translation>
 <translation id="5074496654342756568">ನಿಮ್ಮ <ph name="DEVICE_TYPE" /> ನಲ್ಲಿ Chromium ಮೂಲಕ ನಿಮ್ಮ ಎಲ್ಲಾ Google ಮೆಚ್ಚಿನವುಗಳನ್ನು ಆ್ಯಕ್ಸೆಸ್ ಮಾಡಿ</translation>
 <translation id="5123973130450702873">ನಿಮ್ಮ ಹ್ಯಾಂಡ್‌ಗಳನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಲು Chromium ಗೆ ಅನುಮತಿಯ ಅಗತ್ಯವಿದೆ</translation>
 <translation id="5141988424377517949">ನೀವು ಇತ್ತೀಚೆಗೆ ಭೇಟಿ ನೀಡಿಲ್ಲ. <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" /> ಅನ್ನು Chromium ತೆಗೆದುಹಾಕಿದೆ.</translation>
+<translation id="5147126173418055786">Pubky Chromium ಜೊತೆಗೆ ಸಹಾಯ ಪಡೆಯಿರಿ</translation>
 <translation id="5174969993834422967">ನೀವು ಸಾಮಾನ್ಯವಾಗಿ ನೋಟಿಫಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತೀರಿ. ನಿಮಗೆ ಸೂಚನೆ ನೀಡಲು ಈ ಸೈಟ್‌ಗೆ ಅನುಮತಿಸುವುದಕ್ಕಾಗಿ, ನಿಮ್ಮ ಸ್ಥಳ ಪಟ್ಟಿಯ ಬಲ ಮೂಲೆಯಲ್ಲಿರುವ ನೋಟಿಫಿಕೇಶನ್ ಐಕಾನ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ.</translation>
 <translation id="5174983315706567306">ಸಾಕಷ್ಟು ಡಿಸ್ಕ್ ಸ್ಪೇಸ್ ಇಲ್ಲ.</translation>
 <translation id="5187123684706427865">Chromium ಖಾತೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಮರು-ದೃಢೀಕರಣದ ಅಗತ್ಯವಿದೆ</translation>
@@ -423,6 +428,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Chromium ಅಪ್‌ಡೇಟ್ ಲಭ್ಯವಿದೆ}=1{Chromium ಅಪ್‌ಡೇಟ್ ಲಭ್ಯವಿದೆ}one{# ದಿನಗಳ ಮಟ್ಟಿಗೆ Chromium ಅಪ್‌ಡೇಟ್ ಲಭ್ಯವಿದೆ}other{# ದಿನಗಳ ಮಟ್ಟಿಗೆ Chromium ಅಪ್‌ಡೇಟ್ ಲಭ್ಯವಿದೆ}}</translation>
 <translation id="5643865575100044307">ನೀವು Chromium ಅನ್ನು ಮುಚ್ಚಿದಾಗ ನಿಮ್ಮ ಸಾಧನದಿಂದ ಸೈಟ್ ಡೇಟಾವನ್ನು ಯಾವಾಗಲೂ ಅಳಿಸಿ</translation>
 <translation id="5653831366781983928">ಇದೀಗ Chromium ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ</translation>
+<translation id="5664172666218028492">Pubky Chromium ಪ್ರೊಫೈಲ್‌ಗಳಿಗೆ ಸುಸ್ವಾಗತ</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">ಈ ಭಾಷೆಯಲ್ಲಿ Chromium ಪ್ರದರ್ಶಿಸು</translation>
 <translation id="569897634095159764">ಇಂಟರ್ನೆಟ್‌ಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ಪ್ರಾಕ್ಸಿ ಸರ್ವರ್‌ಗೆ ದೃಢೀಕರಣದ ಅಗತ್ಯವಿದೆ.</translation>
@@ -671,6 +677,7 @@
 <translation id="8004582292198964060">ಬ್ರೌಸರ್</translation>
 <translation id="8010081455002666927">ಸ್ವಯಂ ಪತ್ತೆಮಾಡುವಿಕೆ</translation>
 <translation id="8013436988911883588">Chromium ಒಮ್ಮೆ ಪ್ರವೇಶವನ್ನು ಪಡೆದ ಬಳಿಕ, ಪ್ರವೇಶಕ್ಕಾಗಿ ನಿಮ್ಮನ್ನು ಕೇಳಲು ವೆಬ್‍ಸೈಟ್‍ಗಳಿಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.</translation>
+<translation id="8024015851840632875">Pubky Chromium ಗೆ ಸುಸ್ವಾಗತ</translation>
 <translation id="8031714377769448844">ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ತ್ವರಿತವಾಗಿ ಪಡೆಯಲು Chromium ಅನ್ನು ನಿಮ್ಮ ಟಾಸ್ಕ್‌ಬಾರ್‌ಗೆ ಪಿನ್ ಮಾಡಿ</translation>
 <translation id="80471789339884597">ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು. <ph name="BUNDLE_NAME" /> ಅನ್ನು ಬಳಸುವ ಮೊದಲು ನಿಮ್ಮ ಎಲ್ಲಾ ಬ್ರೌಸರ್ ಅನ್ನು ಮರು ಪ್ರಾರಂಭಿಸಬೇಕು.</translation>
 <translation id="8054112667659782652">ಚಿತ್ರದ ಮೂಲಕ ಹುಡುಕಾಟ ಫೀಚರ್‌ನ ಶಾರ್ಟ್‌ಕಟ್ ಅನ್ನು ಯಾವಾಗಲೂ ತೋರಿಸಿ</translation>
