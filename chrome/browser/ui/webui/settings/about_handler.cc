@@ -25,6 +25,9 @@
 #include "base/time/default_clock.h"
 #include "build/build_config.h"
 #include "chrome/browser/browser_process.h"
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+#include "chrome/browser/pubky_update/controller.h"
+#endif
 #include "chrome/browser/chrome_content_browser_client.h"
 #include "chrome/browser/enterprise/browser_management/management_service_factory.h"
 #include "chrome/browser/profiles/profile.h"
@@ -296,10 +299,25 @@ AboutHandler::AboutHandler(Profile* profile)
 }
 
 AboutHandler::~AboutHandler() {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  HandleDetachPubkyUpdate(base::ListValue());
+#endif
   UpgradeDetector::GetInstance()->RemoveObserver(this);
 }
 
 void AboutHandler::RegisterMessages() {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  web_ui()->RegisterMessageCallback("checkPubkyUpdate",
+      base::BindRepeating(&AboutHandler::HandleCheckPubkyUpdate, base::Unretained(this)));
+  web_ui()->RegisterMessageCallback("confirmPubkyUpdate",
+      base::BindRepeating(&AboutHandler::HandleConfirmPubkyUpdate, base::Unretained(this)));
+  web_ui()->RegisterMessageCallback("cancelPubkyUpdate",
+      base::BindRepeating(&AboutHandler::HandleCancelPubkyUpdate, base::Unretained(this)));
+  web_ui()->RegisterMessageCallback("restartToApplyPubkyUpdate",
+      base::BindRepeating(&AboutHandler::HandleRestartPubkyUpdate, base::Unretained(this)));
+  web_ui()->RegisterMessageCallback("detachPubkyUpdate",
+      base::BindRepeating(&AboutHandler::HandleDetachPubkyUpdate, base::Unretained(this)));
+#endif
   web_ui()->RegisterMessageCallback(
       "aboutPageReady", base::BindRepeating(&AboutHandler::HandlePageReady,
                                             base::Unretained(this)));
@@ -425,7 +443,16 @@ void AboutHandler::RegisterMessages() {
 }
 
 void AboutHandler::OnJavascriptAllowed() {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  if (auto* controller = g_browser_process->pubky_update_controller()) {
+    pubky_subscription_ = controller->Observe(
+        base::BindRepeating(&AboutHandler::SendPubkyStatus, weak_factory_.GetWeakPtr()));
+  }
+#endif
   apply_changes_from_upgrade_observer_ = true;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  return;
+#endif
   version_updater_ = VersionUpdater::Create(web_ui()->GetWebContents());
   policy_registrar_ = std::make_unique<policy::PolicyChangeRegistrar>(
       g_browser_process->policy_service(),
@@ -447,6 +474,9 @@ void AboutHandler::OnJavascriptAllowed() {
 }
 
 void AboutHandler::OnJavascriptDisallowed() {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  HandleDetachPubkyUpdate(base::ListValue());
+#endif
   // Invalidate all existing WeakPtrs so that no stale callbacks occur.
   weak_factory_.InvalidateWeakPtrs();
 
@@ -486,6 +516,12 @@ void AboutHandler::OnDeviceAutoUpdatePolicyChanged(
 
 void AboutHandler::HandlePageReady(const base::ListValue& args) {
   AllowJavascript();
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  if (auto* controller = g_browser_process->pubky_update_controller()) {
+    pubky_subscription_ = controller->Observe(
+        base::BindRepeating(&AboutHandler::SendPubkyStatus, weak_factory_.GetWeakPtr()));
+  }
+#endif
 }
 
 void AboutHandler::HandleRefreshUpdateStatus(const base::ListValue& args) {
@@ -506,7 +542,9 @@ void AboutHandler::RefreshUpdateStatus() {
 
 #if BUILDFLAG(IS_MAC)
 void AboutHandler::PromoteUpdater(const base::ListValue& args) {
-  version_updater_->PromoteUpdater();
+  if (version_updater_) {
+    version_updater_->PromoteUpdater();
+  }
 }
 #endif
 
@@ -871,6 +909,10 @@ void AboutHandler::OnExtendedUpdatesSettingChanged() {
 #endif  // BUILDFLAG(IS_CHROMEOS)
 
 void AboutHandler::RequestUpdate() {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  SendPubkyStatus();
+  return;
+#endif
   version_updater_->CheckForUpdate(
       base::BindRepeating(&AboutHandler::SetUpdateStatus,
                           weak_factory_.GetWeakPtr()),
@@ -881,6 +923,69 @@ void AboutHandler::RequestUpdate() {
       VersionUpdater::PromoteCallback());
 #endif  // BUILDFLAG(IS_MAC)
 }
+
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+void AboutHandler::SendPubkyStatus() {
+  if (!IsJavascriptAllowed()) {
+    return;
+  }
+  if (auto* controller = g_browser_process->pubky_update_controller()) {
+    FireWebUIListener("pubky-update-status-changed", controller->GetStatus());
+  } else {
+    base::DictValue status;
+    status.Set("state", "unsupported");
+    FireWebUIListener("pubky-update-status-changed", status);
+  }
+}
+void AboutHandler::HandleCheckPubkyUpdate(const base::ListValue& args) {
+  if (!args.empty()) {
+    return;
+  }
+  AllowJavascript();
+  if (!pubky_subscription_) {
+    return;
+  }
+  if (auto* controller = g_browser_process->pubky_update_controller()) {
+    controller->Check();
+  }
+  SendPubkyStatus();
+}
+void AboutHandler::HandleConfirmPubkyUpdate(const base::ListValue& args) {
+  if (args.size() == 1 && args[0].is_string() && IsJavascriptAllowed() &&
+      pubky_subscription_) {
+    if (auto* controller = g_browser_process->pubky_update_controller()) {
+      controller->Confirm(args[0].GetString());
+    }
+  }
+}
+void AboutHandler::HandleCancelPubkyUpdate(const base::ListValue& args) {
+  if (args.size() == 1 && args[0].is_string() && IsJavascriptAllowed() &&
+      pubky_subscription_) {
+    if (auto* controller = g_browser_process->pubky_update_controller()) {
+      controller->Cancel(args[0].GetString());
+    }
+  }
+}
+void AboutHandler::HandleRestartPubkyUpdate(const base::ListValue& args) {
+  if (args.size() == 1 && args[0].is_string() && IsJavascriptAllowed() &&
+      pubky_subscription_) {
+    if (auto* controller = g_browser_process->pubky_update_controller()) {
+      controller->Restart(args[0].GetString());
+    }
+  }
+}
+void AboutHandler::HandleDetachPubkyUpdate(const base::ListValue& args) {
+  if (!args.empty() || !pubky_subscription_) {
+    return;
+  }
+  pubky_subscription_ = {};
+  if (g_browser_process) {
+    if (auto* controller = g_browser_process->pubky_update_controller()) {
+      controller->Detach();
+    }
+  }
+}
+#endif
 
 void AboutHandler::SetUpdateStatus(VersionUpdater::Status status,
                                    int progress,

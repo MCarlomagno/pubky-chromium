@@ -135,6 +135,7 @@ source_set("browser_process") {
   public_deps = [
     "//build:chromeos_buildflags",
     "//chrome/common:buildflags",
+    "//chrome/common/pubky_update:buildflags",
     "//components/safe_browsing:buildflags",
     "//media:media_buildflags",
     "//ui/base/unowned_user_data",
@@ -922,6 +923,7 @@ source_set("core") {
     ":startup_data",
     ":unexpire_flags",
     ":universal_web_contents_observers",
+    "//chrome/browser/pubky_update",
     "//base/allocator:buildflags",
     "//build/config/linux/dbus:buildflags",
     "//chrome/browser/accessibility",

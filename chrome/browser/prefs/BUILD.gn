@@ -61,6 +61,8 @@ source_set("impl") {
     ":prefs",
     ":util",
     "//chrome/browser:browser_process",
+    "//chrome/browser/pubky_update",
+    "//chrome/common/pubky_update:buildflags",
     "//chrome/browser:browser_process_impl",
     "//chrome/browser:chrome_content_browser_client",
     "//chrome/browser:defaults",

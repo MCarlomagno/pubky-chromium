@@ -71,6 +71,8 @@ source_set("settings") {
     "//chrome/browser/upgrade_detector",
     "//chrome/browser/web_applications",
     "//chrome/common",
+    "//chrome/common/pubky_update:buildflags",
+    "//chrome/browser/pubky_update",
     "//components/content_settings/core/browser",
     "//components/content_settings/core/common",
     "//components/custom_handlers",

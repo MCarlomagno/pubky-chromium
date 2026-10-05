@@ -134,6 +134,9 @@ class TestingBrowserProcess
   GetOriginTrialsSettingsStorage() override;
   ProfileManager* profile_manager() override;
   PrefService* local_state() override;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  pubky_update::Controller* pubky_update_controller() override;
+#endif
   signin::ActivePrimaryAccountsMetricsRecorder*
   active_primary_accounts_metrics_recorder() override;
   variations::VariationsService* variations_service() override;

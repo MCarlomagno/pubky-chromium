@@ -31,11 +31,19 @@ import type {PropertyValues} from 'chrome://resources/lit/v3_0/lit.rollup.js';
 
 import {loadTimeData} from '../i18n_setup.js';
 import {RelaunchMixinLit, RestartType} from '../relaunch_mixin_lit.js';
+// <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+import {routes} from '../route.js';
+// </if>
+import type {Route} from '../router.js';
+import {RouteObserverMixinLit} from '../router.js';
 import type {SettingsPlugin} from '../settings_main/settings_plugin.js';
 
 import {getCss} from './about_page.css.js';
 import {getHtml} from './about_page.html.js';
 import type {AboutPageBrowserProxy, UpdateStatusChangedEvent} from './about_page_browser_proxy.js';
+// <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+import type {PubkyUpdateStatus} from './about_page_browser_proxy.js';
+// </if>
 import {AboutPageBrowserProxyImpl, UpdateStatus} from './about_page_browser_proxy.js';
 // clang-format off
 // <if expr="_google_chrome and is_macosx">
@@ -59,8 +67,8 @@ export interface SettingsAboutPageElement {
 }
 
 const SettingsAboutPageElementBase =
-    RelaunchMixinLit(PrefServiceObserverMixinLit(
-        WebUiListenerMixinLit(I18nMixinLit(CrLitElement))));
+    RouteObserverMixinLit(RelaunchMixinLit(PrefServiceObserverMixinLit(
+        WebUiListenerMixinLit(I18nMixinLit(CrLitElement)))));
 
 export class SettingsAboutPageElement extends SettingsAboutPageElementBase
     implements SettingsPlugin {
@@ -79,6 +87,9 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
   static override get properties() {
     return {
       currentUpdateStatusEvent_: {type: Object},
+      // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+      pubkyStatus_: {type: Object},
+      // </if>
       isManaged_: {type: Boolean},
       managedByIcon_: {type: String},
 
@@ -132,6 +143,55 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
   private aboutBrowserProxy_: AboutPageBrowserProxy =
       AboutPageBrowserProxyImpl.getInstance();
 
+  // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+  protected accessor pubkyStatus_: PubkyUpdateStatus = {
+    state: 'unsupported', id: '', version: '', size: '', error: 0,
+    canCheck: false, canCancel: false, canConfirm: false, canRestart: false,
+  };
+  protected onPubkyCheck_() { this.aboutBrowserProxy_.checkPubkyUpdate(); }
+  protected onPubkyCancel_() {
+    this.aboutBrowserProxy_.cancelPubkyUpdate(this.pubkyStatus_.id);
+  }
+  protected onPubkyConfirm_() {
+    this.aboutBrowserProxy_.confirmPubkyUpdate(this.pubkyStatus_.id);
+  }
+  protected onPubkyRestart_() {
+    this.aboutBrowserProxy_.restartToApplyPubkyUpdate(this.pubkyStatus_.id);
+  }
+  protected pubkyMessage_(): string {
+    if (this.pubkyStatus_.state === 'failed' && this.pubkyStatus_.error === 7) {
+      return this.i18n('pubkyUpdateExpired');
+    }
+    if (this.pubkyStatus_.state === 'failed' && this.pubkyStatus_.error === 6) {
+      return this.i18n('pubkyUpdateReplay');
+    }
+    const keys: {[state: string]: string} = {
+      idle: 'pubkyUpdateIdle', unsupported: 'pubkyUpdateUnsupported',
+      checking: 'pubkyUpdateChecking', available: 'pubkyUpdateAvailable',
+      downloading: 'pubkyUpdateDownloading', ready: 'pubkyUpdateReady',
+      committed: 'pubkyUpdateCommitted', canceled: 'pubkyUpdateCanceled',
+      failed: 'pubkyUpdateFailed',
+      no_newer: 'pubkyUpdateNoNewer',
+    };
+    return this.i18n(keys[this.pubkyStatus_.state] || 'pubkyUpdateFailed');
+  }
+  override disconnectedCallback() {
+    this.aboutBrowserProxy_.detachPubkyUpdate();
+    super.disconnectedCallback();
+  }
+  // </if>
+
+  override currentRouteChanged(_route: Route) {
+    // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+    if (_route !== routes.ABOUT) {
+      this.aboutBrowserProxy_.detachPubkyUpdate();
+    } else if (this.hasUpdated) {
+      this.aboutBrowserProxy_.pageReady();
+      this.aboutBrowserProxy_.refreshUpdateStatus();
+    }
+    // </if>
+  }
+
   override connectedCallback() {
     super.connectedCallback();
 
@@ -182,6 +242,11 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
 
   // <if expr="not is_chromeos">
   private startListening_() {
+    // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+    this.addWebUiListener('pubky-update-status-changed', (status: PubkyUpdateStatus) => {
+      this.pubkyStatus_ = status;
+    });
+    // </if>
     this.addWebUiListener(
         'update-status-changed', this.onUpdateStatusChanged_.bind(this));
     // <if expr="_google_chrome and is_macosx">

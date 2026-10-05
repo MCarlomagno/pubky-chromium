@@ -4,6 +4,11 @@
 
 #include "chrome/browser/prefs/browser_prefs.h"
 
+#include "chrome/common/pubky_update/buildflags.h"
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+#include "chrome/browser/pubky_update/controller.h"
+#endif
+
 #include <array>
 #include <optional>
 #include <string>
@@ -1476,6 +1481,9 @@ std::string GetCountry() {
 }
 
 void RegisterLocalState(PrefRegistrySimple* registry) {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  pubky_update::Controller::RegisterLocalState(registry);
+#endif
   // Call outs to individual subsystems that register Local State (browser-wide)
   // prefs en masse. See RegisterProfilePrefs for per-profile prefs. Please
   // keep this list alphabetized.

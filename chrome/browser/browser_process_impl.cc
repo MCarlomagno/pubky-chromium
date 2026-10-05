@@ -4,6 +4,10 @@
 
 #include "chrome/browser/browser_process_impl.h"
 
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+#include "chrome/browser/pubky_update/controller.h"
+#endif
+
 #include <stddef.h>
 #include <stdio.h>
 
@@ -613,6 +617,11 @@ void BrowserProcessImpl::StartTearDown() {
   // TODO(crbug.com/41222012): Fix the tests that make the check of
   // |tearing_down_| necessary in IsShuttingDown().
   tearing_down_ = true;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  if (pubky_update_controller_) {
+    pubky_update_controller_->Shutdown();
+  }
+#endif
   DCHECK(IsShuttingDown());
 
   features_->PostMainMessageLoopRun();
@@ -994,6 +1003,19 @@ network::NetworkQualityTracker* BrowserProcessImpl::network_quality_tracker() {
   }
   return network_quality_tracker_.get();
 }
+
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+pubky_update::Controller* BrowserProcessImpl::pubky_update_controller() {
+  if (IsShuttingDown()) {
+    return nullptr;
+  }
+  if (!pubky_update_controller_) {
+    pubky_update_controller_ =
+        std::make_unique<pubky_update::Controller>(local_state());
+  }
+  return pubky_update_controller_.get();
+}
+#endif
 
 ProfileManager* BrowserProcessImpl::profile_manager() {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);

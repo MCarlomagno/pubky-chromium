@@ -23,6 +23,7 @@ _grit_defines = [
   "SHARED_INTERMEDIATE_DIR=" + shared_intermediate_dir,
   "_google_chrome=${is_chrome_branded}",
   "_is_chrome_for_testing_branded=${is_chrome_for_testing_branded}",
+  "is_chrome_for_testing=${is_chrome_for_testing}",
 
   # This is related to Chrome OS.
   "reven=${is_reven}",
