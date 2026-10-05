@@ -7,6 +7,7 @@ import argparse
 import logging
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -57,6 +58,21 @@ def gen_control(
             subprocess.check_call(cmd, stdout=f, stderr=subprocess.DEVNULL)
 
     deb_control.unlink()
+
+
+def debian_copyright(
+    config: installer.InstallerConfig, license_text: str
+) -> str:
+    return (
+        "Pubky Chromium is built from the Chromium source code with the changes\n"
+        f"at {config.info_vars['PRODUCTURL']}.\n"
+        "Chromium and those changes are distributed under the BSD-3-Clause\n"
+        "license below. Bundled third-party components keep their own licenses.\n"
+        "Their notices, the same text as chrome://credits, are in\n"
+        f"/usr/share/doc/{config.deb_package_name}/credits.html.\n\n"
+        # //LICENSE is written as a C++ comment; drop the "// " line prefixes.
+        + re.sub(r"^//[ ]?", "", license_text, flags=re.M)
+    )
 
 
 def verify_package(
@@ -120,12 +136,9 @@ def main() -> None:
         inst.prep_staging_common()
         (staging_dir / "DEBIAN").mkdir(parents=True, exist_ok=True)
         (staging_dir / "DEBIAN").chmod(installer.StandardPermissions.EXECUTABLE)
-        (staging_dir / f"usr/share/doc/{config.usr_bin_symlink_name}").mkdir(
-            parents=True, exist_ok=True
-        )
-        (staging_dir / f"usr/share/doc/{config.usr_bin_symlink_name}").chmod(
-            installer.StandardPermissions.EXECUTABLE
-        )
+        doc_dir = staging_dir / f"usr/share/doc/{config.deb_package_name}"
+        doc_dir.mkdir(parents=True, exist_ok=True)
+        doc_dir.chmod(installer.StandardPermissions.EXECUTABLE)
 
         inst.stage_install_common()
 
@@ -134,11 +147,16 @@ def main() -> None:
         # Chrome apt repository, which does not publish this package.
 
         # Chromium's LICENSE and the chrome://credits notices go with the
-        # binaries as package documentation.
-        doc_dir = staging_dir / f"usr/share/doc/{config.usr_bin_symlink_name}"
+        # binaries as package documentation. "copyright" is the file Debian
+        # tools look for; it carries the same BSD license text.
+        license_text = (output_dir / "installer/doc/LICENSE").read_text()
+        (doc_dir / "copyright").write_text(
+            debian_copyright(config, license_text)
+        )
         for src, dst in [("LICENSE", "LICENSE"), ("about_credits.html", "credits.html")]:
             shutil.copyfile(output_dir / "installer/doc" / src, doc_dir / dst)
-            (doc_dir / dst).chmod(installer.StandardPermissions.REGULAR)
+        for f in doc_dir.iterdir():
+            f.chmod(installer.StandardPermissions.REGULAR)
 
         for script in ["postinst", "prerm", "postrm"]:
             dest = staging_dir / "DEBIAN" / script
@@ -165,7 +183,7 @@ def main() -> None:
         )
 
         os.environ["DEB_HOST_ARCH"] = args.arch
-        pkg_name = f"{config.package_orig}-{config.channel}"
+        pkg_name = config.deb_package_name
 
         if deb_control.exists():
             gen_control(

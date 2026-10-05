@@ -312,7 +312,7 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
         <message name="IDS_SHORTCUT_NAME_DEV" desc="Unused in Chromium builds" translateable="false">
         </message>
         <message name="IDS_PRODUCT_DESCRIPTION" desc="Browser description">
-          Chromium is a web browser that runs webpages and applications with lightning speed. It's fast, stable, and easy to use. Browse the web more safely with malware and phishing protection built into Chromium.
+          Pubky Chromium opens websites addressed by Ed25519 public keys, alongside the regular web. It finds them through PKDNS over DNS-over-HTTPS and checks the server against the key in the URL with raw-public-key TLS. It is an experimental build of Chromium, not a Google or Chromium project release.
         </message>
         <message name="IDS_WELCOME_TO_CHROME" desc="Welcoming text announced via screen readers the first time Chrome is launched at the conclusion of installation.">
           Welcome to Chromium; new browser window opened
@@ -2706,18 +2706,9 @@ Chromium is unable to recover your settings.
         </message>
 
         <!-- First Run Experience -->
-        <if expr="is_linux">
-          <then>
-            <message name="IDS_FRE_WELCOME_START_BUTTON_LABEL" desc="This string is found on a primary button that takes the user into the main browser experience. It is a verb-based call to action. (CHAR LIMIT = 20)">
-              Start Pubky Chromium
-            </message>
-          </then>
-          <else>
-            <message name="IDS_FRE_WELCOME_START_BUTTON_LABEL" desc="This string is found on a primary button that takes the user into the main browser experience. It is a verb-based call to action. (CHAR LIMIT = 20)">
-              Start Chromium
-            </message>
-          </else>
-        </if>
+        <message name="IDS_FRE_WELCOME_START_BUTTON_LABEL" desc="This string is found on a primary button that takes the user into the main browser experience. It is a verb-based call to action. (CHAR LIMIT = 20)">
+          Start Pubky Chromium
+        </message>
 
         <message name="IDS_FRE_SIGN_IN_TITLE_0" meaning="Title"
           desc="This string appears as a heading on a full-page screen that asks the user to sign in to Chromium with their Google Account. It appears when the user launches Chromium for the first time. When they sign in, they can personalize and customize Chromium and remember their settings in their Google Account. The tone should be inviting and alluring.">

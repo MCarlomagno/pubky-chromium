@@ -307,7 +307,7 @@ TEST(ShellIntegrationTest, GetDesktopFileContents) {
 #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
        "Icon=google-chrome\n"
 #else
-       "Icon=chromium-browser\n"
+       "Icon=pubky-chromium\n"
 #endif
        "StartupWMClass=gmail.com\n"},
 
@@ -538,7 +538,7 @@ TEST(ShellIntegrationTest, GetDirectoryFileContents) {
 #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
        "Icon=google-chrome\n"
 #else
-       "Icon=chromium-browser\n"
+       "Icon=pubky-chromium\n"
 #endif
       },
   });

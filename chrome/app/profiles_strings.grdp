@@ -1180,7 +1180,7 @@
 
     <!-- First Run Experience strings -->
     <message name="IDS_FRE_WELCOME_TITLE" desc="This string is the main headline of the first onboarding screen intended to introduce users to Google Chrome. It highlights productivity as a core value proposition. The tone should be motivating and professional. (CHAR LIMIT = 45)">
-      The browser that gets more done
+      A browser for censorship-resistant domains
     </message>
 
     <message name="IDS_FRE_SIGN_IN_SUBTITLE_0"

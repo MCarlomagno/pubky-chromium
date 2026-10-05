@@ -583,7 +583,13 @@ template("linux_package") {
   if (is_chrome_branded) {
     package = "google-chrome"
   } else {
-    package = "chromium-browser"
+    package = "pubky-chromium"
+  }
+
+  # Matches deb_package_name in common/installer.py.
+  deb_package = "${package}-${channel}"
+  if (!is_chrome_branded && channel == "stable") {
+    deb_package = package
   }
 
   deb_target_name = "${target_name}_deb"
@@ -593,7 +599,7 @@ template("linux_package") {
     script = "debian/build.py"
 
     inputs = packaging_files
-    outputs = [ "$root_out_dir/${package}-${channel}_${chrome_version_full}-1_${deb_arch}.deb" ]
+    outputs = [ "$root_out_dir/${deb_package}_${chrome_version_full}-1_${deb_arch}.deb" ]
 
     args = [
       "-a",

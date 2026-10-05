@@ -5,14 +5,16 @@
 # This file provides common configuration information for building
 # chromium-browser packages for various platforms.
 
-# Base name of the package.
-PACKAGE="chromium-browser"
+# Base name of the package. Pubky Chromium uses its own package name, install
+# directory and desktop/app IDs so it never shares a file with another
+# Chromium package. The profile directory (~/.config/chromium) is unchanged.
+PACKAGE="pubky-chromium"
 
 # Filename of the main executable (for generating launcher scripts, etc.)
 PROGNAME=chrome
 
 # Base directory for package installation.
-INSTALLDIR=/opt/chromium.org/chromium
+INSTALLDIR=/opt/pubky-chromium
 
 # Directory for device policy enrollments.
 ENROLLMENTDIR=/etc/chromium/policies/enrollment
@@ -21,10 +23,10 @@ ENROLLMENTDIR=/etc/chromium/policies/enrollment
 MENUNAME="Pubky Chromium"
 
 # Brief package description.
-SHORTDESC="Experimental Chromium build with Pubky branding"
+SHORTDESC="A browser for censorship-resistant domains"
 
 # Detailed package description.
-FULLDESC="Pubky Chromium is an experimental build of Chromium from the MCarlomagno/pubky-chromium fork. It is not a Google or Chromium project release and has no automatic updates."
+FULLDESC="Pubky Chromium opens websites addressed by Ed25519 public keys, alongside the regular web. It finds them through PKDNS over DNS-over-HTTPS and checks the server against the key in the URL with raw-public-key TLS. It is an experimental build of Chromium from the MCarlomagno/pubky-chromium project, not a Google or Chromium project release, and it does not update automatically."
 
 # Package maintainer information.
 MAINTNAME="MCarlomagno"
@@ -39,4 +41,5 @@ BUGTRACKERURL="https://github.com/MCarlomagno/pubky-chromium/issues"
 
 HELPURL="https://chromium.googlesource.com/chromium/src/+/main/docs/linux/debugging.md"
 
-RDN="org.chromium.Chromium"
+# Must match version_info::nix::GetAppName(), the XDG portal app ID.
+RDN="io.github.mcarlomagno.PubkyChromium"
