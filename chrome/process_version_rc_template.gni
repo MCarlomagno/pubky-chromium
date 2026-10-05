@@ -46,6 +46,12 @@ template("process_version_rc_template") {
     branding_file_path,
     lastchange_file,
   ]
+
+  # Windows file properties show the Pubky Chromium name. The shared BRANDING
+  # file keeps the upstream values that the Mac bundle ID and paths depend on.
+  if (is_win && branding_path_component == "chromium") {
+    _sources += [ "//chrome/app/theme/chromium/win/BRANDING" ]
+  }
   if (defined(invoker.sources)) {
     _sources += invoker.sources
   }
