@@ -91,12 +91,12 @@ class AdmWriterUnittest(writer_unittest_common.WriterUnittestCommon):
     }, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
   END CATEGORY
 
@@ -124,12 +124,12 @@ chromium_recommended="Chromium - Recommended"''')
     expected_output = '; chromium version: 39.0.0.0\n' + \
         self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
   END CATEGORY
 
@@ -290,7 +290,7 @@ With a newline.""",
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!StringPolicy_Policy
       #if version >= 4
@@ -307,7 +307,7 @@ With a newline.""",
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!StringPolicy_Policy
       #if version >= 4
@@ -358,7 +358,7 @@ StringPolicy_Part="Caption of policy."
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!IntPolicy_Policy
       #if version >= 4
@@ -375,7 +375,7 @@ StringPolicy_Part="Caption of policy."
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!IntPolicy_Policy
       #if version >= 4
@@ -427,7 +427,7 @@ IntPolicy_Part="Caption of policy."
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!IntPolicy_Policy
       #if version >= 4
@@ -444,7 +444,7 @@ IntPolicy_Part="Caption of policy."
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!IntPolicy_Policy
       #if version >= 4
@@ -497,7 +497,7 @@ IntPolicy_Part="Caption of policy."
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!IntPolicy_Policy
       #if version >= 4
@@ -514,7 +514,7 @@ IntPolicy_Part="Caption of policy."
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!IntPolicy_Policy
       #if version >= 4
@@ -747,7 +747,7 @@ With a newline.""",
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!ListPolicy_Policy
       #if version >= 4
@@ -756,7 +756,7 @@ With a newline.""",
       EXPLAIN !!ListPolicy_Explain
 
       PART !!ListPolicy_Part  LISTBOX
-        KEYNAME "Software\\Policies\\Chromium\\ListPolicy"
+        KEYNAME "Software\\Policies\\PubkyChromium\\ListPolicy"
         VALUEPREFIX ""
       END PART
     END POLICY
@@ -764,7 +764,7 @@ With a newline.""",
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!ListPolicy_Policy
       #if version >= 4
@@ -773,7 +773,7 @@ With a newline.""",
       EXPLAIN !!ListPolicy_Explain
 
       PART !!ListPolicy_Part  LISTBOX
-        KEYNAME "Software\\Policies\\Chromium\\Recommended\\ListPolicy"
+        KEYNAME "Software\\Policies\\PubkyChromium\\Recommended\\ListPolicy"
         VALUEPREFIX ""
       END PART
     END POLICY
@@ -823,7 +823,7 @@ With a newline.""",
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!ListPolicy_Policy
       #if version >= 4
@@ -832,7 +832,7 @@ With a newline.""",
       EXPLAIN !!ListPolicy_Explain
 
       PART !!ListPolicy_Part  LISTBOX
-        KEYNAME "Software\\Policies\\Chromium\\ListPolicy"
+        KEYNAME "Software\\Policies\\PubkyChromium\\ListPolicy"
         VALUEPREFIX ""
       END PART
     END POLICY
@@ -840,7 +840,7 @@ With a newline.""",
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!ListPolicy_Policy
       #if version >= 4
@@ -849,7 +849,7 @@ With a newline.""",
       EXPLAIN !!ListPolicy_Explain
 
       PART !!ListPolicy_Part  LISTBOX
-        KEYNAME "Software\\Policies\\Chromium\\Recommended\\ListPolicy"
+        KEYNAME "Software\\Policies\\PubkyChromium\\Recommended\\ListPolicy"
         VALUEPREFIX ""
       END PART
     END POLICY
@@ -891,7 +891,7 @@ ListPolicy_Part="Label of list policy."
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!DictionaryPolicy_Policy
       #if version >= 4
@@ -908,7 +908,7 @@ ListPolicy_Part="Label of list policy."
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!DictionaryPolicy_Policy
       #if version >= 4
@@ -959,7 +959,7 @@ DictionaryPolicy_Part="Caption of policy."
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     POLICY !!ExternalPolicy_Policy
       #if version >= 4
@@ -976,7 +976,7 @@ DictionaryPolicy_Part="Caption of policy."
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     POLICY !!ExternalPolicy_Policy
       #if version >= 4
@@ -1034,12 +1034,12 @@ ExternalPolicy_Part="Caption of policy."
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
   END CATEGORY
 
@@ -1145,7 +1145,7 @@ With a newline."""
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     CATEGORY !!Group1_Category
       POLICY !!Policy1_Policy
@@ -1155,7 +1155,7 @@ With a newline."""
         EXPLAIN !!Policy1_Explain
 
         PART !!Policy1_Part  LISTBOX
-          KEYNAME "Software\\Policies\\Chromium\\Policy1"
+          KEYNAME "Software\\Policies\\PubkyChromium\\Policy1"
           VALUEPREFIX ""
         END PART
       END POLICY
@@ -1177,7 +1177,7 @@ With a newline."""
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     CATEGORY !!Group1_Category
       POLICY !!Policy1_Policy
@@ -1187,7 +1187,7 @@ With a newline."""
         EXPLAIN !!Policy1_Explain
 
         PART !!Policy1_Part  LISTBOX
-          KEYNAME "Software\\Policies\\Chromium\\Recommended\\Policy1"
+          KEYNAME "Software\\Policies\\PubkyChromium\\Recommended\\Policy1"
           VALUEPREFIX ""
         END PART
       END POLICY
@@ -1336,7 +1336,7 @@ EnumPolicy_B_tls1_2_DropDown="tls1.2"
     output = self.GetOutput(policy_json, {'_chromium': '1'}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     CATEGORY !!DeprecatedPolicies_Category
       POLICY !!Policy1_Policy
@@ -1356,7 +1356,7 @@ EnumPolicy_B_tls1_2_DropDown="tls1.2"
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     CATEGORY !!DeprecatedPolicies_Category
       POLICY !!Policy1_Policy
@@ -1412,7 +1412,7 @@ Policy1_Part="Caption of policy1."
                                           'major_version': 84}, 'adm')
     expected_output = self.ConstructOutput(['MACHINE', 'USER'], '''
   CATEGORY !!chromium
-    KEYNAME "Software\\Policies\\Chromium"
+    KEYNAME "Software\\Policies\\PubkyChromium"
 
     CATEGORY !!RemovedPolicies_Category
       POLICY !!Policy1_Policy
@@ -1432,7 +1432,7 @@ Policy1_Part="Caption of policy1."
   END CATEGORY
 
   CATEGORY !!chromium_recommended
-    KEYNAME "Software\\Policies\\Chromium\\Recommended"
+    KEYNAME "Software\\Policies\\PubkyChromium\\Recommended"
 
     CATEGORY !!RemovedPolicies_Category
       POLICY !!Policy1_Policy
