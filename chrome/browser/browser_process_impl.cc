@@ -97,6 +97,7 @@
 #include "chrome/common/chrome_constants.h"
 #include "chrome/common/chrome_features.h"
 #include "chrome/common/chrome_paths.h"
+#include "chrome/common/chrome_version.h"
 #include "chrome/common/pref_names.h"
 #include "chrome/common/url_constants.h"
 #include "chrome/grit/branded_strings.h"
@@ -1636,8 +1637,10 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
   }
   providers.emplace_back(
       /*precedence=*/10u,
+      // KWallet uses this name as the application ID for the stored key, so it
+      // stays on the BRANDING name rather than the displayed product name.
       std::make_unique<os_crypt_async::FreedesktopSecretKeyProvider>(
-          password_store, l10n_util::GetStringUTF8(IDS_PRODUCT_NAME), nullptr));
+          password_store, PRODUCT_FULLNAME_STRING, nullptr));
 #endif  // BUILDFLAG(IS_LINUX)
 
 #if BUILDFLAG(IS_POSIX) && !BUILDFLAG(IS_MAC)

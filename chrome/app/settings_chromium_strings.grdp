@@ -19,11 +19,20 @@
     </then>
     <else>
       <message name="IDS_SETTINGS_ABOUT_PROGRAM" desc="Menu title for the About Chromium page.">
-        About Chromium
+        About Pubky Chromium
       </message>
-      <message name="IDS_SETTINGS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
-        Get help with Chromium
-      </message>
+      <if expr="is_linux">
+        <then>
+          <message name="IDS_SETTINGS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
+            Get help with Pubky Chromium
+          </message>
+        </then>
+        <else>
+          <message name="IDS_SETTINGS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
+            Get help with Chromium
+          </message>
+        </else>
+      </if>
     </else>
   </if>
   <if expr="not is_chromeos">

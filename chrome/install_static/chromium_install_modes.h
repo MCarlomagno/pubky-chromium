@@ -20,8 +20,9 @@ namespace install_static {
 inline constexpr wchar_t kCompanyPathName[] = L"";
 
 // The brand-specific product name to be included as a component of the install
-// and user data directory paths.
-inline constexpr wchar_t kProductPathName[] = L"Chromium";
+// and user data directory paths. Pubky Chromium uses its own name so that it
+// does not share files, registry keys or profiles with upstream Chromium.
+inline constexpr wchar_t kProductPathName[] = L"PubkyChromium";
 
 // The brand-specific safe browsing client name.
 inline constexpr char kSafeBrowsingName[] = "chromium";
@@ -54,28 +55,33 @@ inline constexpr auto kInstallModes = std::to_array<InstallConstants>({
         .logo_suffix = L"",  // No logo suffix for the primary install mode.
         .app_guid =
             L"",  // Empty app_guid since no integration with Google Update.
-        .base_app_name = L"Chromium",              // A distinct base_app_name.
-        .base_app_id = L"Chromium",                // A distinct base_app_id.
-        .browser_prog_id_prefix = L"ChromiumHTM",  // Browser ProgID prefix.
+        // Pubky Chromium registers its own names, ProgIDs, Active Setup GUID
+        // and COM CLSIDs so that it can be installed beside upstream Chromium.
+        // The IIDs below are compiled into the shared IDL and stay unchanged.
+        .base_app_name = L"Pubky Chromium",     // A distinct base_app_name.
+        .base_app_id = L"PubkyChromium",        // A distinct base_app_id.
+        .browser_prog_id_prefix = L"PubkyHTM",  // Browser ProgID prefix.
         .browser_prog_id_description =
-            L"Chromium HTML Document",  // Browser ProgID description.
-        .direct_launch_url_scheme = "chromium",
-        .pdf_prog_id_prefix = L"ChromiumPDF",  // PDF ProgID prefix.
+            L"Pubky Chromium HTML Document",  // Browser ProgID description.
+        .direct_launch_url_scheme = "pubky-chromium",
+        .pdf_prog_id_prefix = L"PubkyPDF",  // PDF ProgID prefix.
         .pdf_prog_id_description =
-            L"Chromium PDF Document",  // PDF ProgID description.
+            L"Pubky Chromium PDF Document",  // PDF ProgID description.
         .active_setup_guid =
-            L"{7D2B3E1D-D096-4594-9D8F-A6667F12E0AC}",  // Active Setup
+            L"{8E92E86A-AE8B-4E7F-9149-86E1FA8DF8B8}",  // Active Setup
                                                         // GUID.
-        .toast_activator_clsid = {0x635EFA6F,
-                                  0x08D6,
-                                  0x4EC9,
-                                  {0xBD, 0x14, 0x8A, 0x0F, 0xDE, 0x97, 0x51,
-                                   0x59}},  // Toast Activator CLSID.
-        .elevator_clsid = {0xD133B120,
-                           0x6DB4,
-                           0x4D6B,
-                           {0x8B, 0xFE, 0x83, 0xBF, 0x8C, 0xA1, 0xB1,
-                            0xB0}},  // Elevator CLSID.
+        .toast_activator_clsid = {0xEFFC8FED,
+                                  0xB819,
+                                  0x43DE,
+                                  {0xA6, 0xC4, 0x07, 0xB7, 0x02, 0x0B, 0xE8,
+                                   0x41}},  // Toast Activator CLSID.
+        // {EFFC8FED-B819-43DE-A6C4-07B7020BE841}
+        .elevator_clsid = {0x93F7D151,
+                           0xA76F,
+                           0x4DEC,
+                           {0xBD, 0xB2, 0x0C, 0xFB, 0x12, 0x2D, 0x43,
+                            0xAC}},  // Elevator CLSID.
+        // {93F7D151-A76F-4DEC-BDB2-0CFB122D43AC}
         .elevator_iid = {0xbb19a0e5,
                          0xc6,
                          0x4966,
@@ -83,11 +89,12 @@ inline constexpr auto kInstallModes = std::to_array<InstallConstants>({
                           0x3a}},  // IElevator IID and TypeLib
         // {BB19A0E5-00C6-4966-94B2-5AFEC6FED93A}.
         .old_elevator_iids = {},
-        .tracing_service_clsid = {0x83f69367,
-                                  0x442d,
-                                  0x447f,
-                                  {0x8b, 0xcc, 0x0e, 0x3f, 0x97, 0xbe, 0x9c,
-                                   0xf2}},  // SystemTraceSession CLSID.
+        .tracing_service_clsid = {0x7FA826DA,
+                                  0xAF56,
+                                  0x4192,
+                                  {0x8E, 0x5C, 0x4A, 0x26, 0xF6, 0xEB, 0xF4,
+                                   0x42}},  // SystemTraceSession CLSID.
+        // {7FA826DA-AF56-4192-8E5C-4A26F6EBF442}
         .tracing_service_iid = {0xe0b03e2d,
                                 0x7682,
                                 0x4d83,

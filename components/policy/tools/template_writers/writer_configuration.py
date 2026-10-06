@@ -34,9 +34,9 @@ def GetConfigurationForBuild(defines):
         'webview_name': 'Chromium WebView',
         'win_config': {
             'win': {
-                'reg_mandatory_key_name': 'Software\\Policies\\Chromium',
+                'reg_mandatory_key_name': 'Software\\Policies\\PubkyChromium',
                 'reg_recommended_key_name':
-                'Software\\Policies\\Chromium\\Recommended',
+                'Software\\Policies\\PubkyChromium\\Recommended',
                 'mandatory_category_path': ['chromium'],
                 'recommended_category_path': ['chromium_recommended'],
                 'category_path_strings': {

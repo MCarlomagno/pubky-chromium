@@ -182,6 +182,10 @@ int main(int argc, char* const argv[]) {
 
     // Generate the InfoPlist.strings file contents.
     std::map<std::string, std::string> infoplist_strings = {
+        // Finder, the Dock and the menu bar show these localized names. The
+        // Info.plist values stay the BRANDING name, as does the bundle path.
+        {"CFBundleDisplayName", name},
+        {"CFBundleName", name},
         {"CFBundleGetInfoString", get_info},
         {"NSHumanReadableCopyright", copyright},
 

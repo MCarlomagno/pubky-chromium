@@ -375,39 +375,39 @@ class VariableExpander:
                     ),
                 }
             )
-        elif mini_installer_product_name == 'Chromium Installer':
+        elif mini_installer_product_name == 'Pubky Chromium Installer':
             self._variable_mapping.update(
                 {
-                    'BRAND': 'Chromium',
+                    'BRAND': 'Pubky Chromium',
                     'BINARIES_UPDATE_REGISTRY_SUBKEY': 'Software\\Chromium Binaries',
-                    'CHROME_DIR': 'Chromium',
-                    'CHROME_HTML_PROG_ID': 'ChromiumHTM',
-                    'CHROME_LONG_NAME': 'Chromium',
-                    'CHROME_PDF_PROG_ID': 'ChromiumPDF',
-                    'CHROME_SHORT_NAME': 'Chromium',
-                    'CHROME_UPDATE_REGISTRY_SUBKEY': 'Software\\Chromium',
-                    'CHROME_CLIENT_STATE_KEY': 'Software\\Chromium',
-                    'CHROME_DIRECT_LAUNCH_SCHEME': 'chromium',
+                    'CHROME_DIR': 'PubkyChromium',
+                    'CHROME_HTML_PROG_ID': 'PubkyHTM',
+                    'CHROME_LONG_NAME': 'Pubky Chromium',
+                    'CHROME_PDF_PROG_ID': 'PubkyPDF',
+                    'CHROME_SHORT_NAME': 'PubkyChromium',
+                    'CHROME_UPDATE_REGISTRY_SUBKEY': 'Software\\PubkyChromium',
+                    'CHROME_CLIENT_STATE_KEY': 'Software\\PubkyChromium',
+                    'CHROME_DIRECT_LAUNCH_SCHEME': 'pubky-chromium',
                     'CHROME_TOAST_ACTIVATOR_CLSID': (
-                        '{635EFA6F-08D6-4EC9-BD14-8A0FDE975159}'
+                        '{EFFC8FED-B819-43DE-A6C4-07B7020BE841}'
                     ),
                     'CHROME_ELEVATOR_CLSID': (
-                        '{D133B120-6DB4-4D6B-8BFE-83BF8CA1B1B0}'
+                        '{93F7D151-A76F-4DEC-BDB2-0CFB122D43AC}'
                     ),
                     'CHROME_ELEVATOR_IID': (
                         '{BB19A0E5-00C6-4966-94B2-5AFEC6FED93A}'
                     ),
-                    'CHROME_ELEVATION_SERVICE_NAME': 'ChromiumElevationService',
+                    'CHROME_ELEVATION_SERVICE_NAME': 'PubkyChromiumElevationService',
                     'CHROME_ELEVATION_SERVICE_DISPLAY_NAME': (
-                        'Chromium Elevation Service (ChromiumElevationService)'
+                        'Pubky Chromium Elevation Service (PubkyChromiumElevationService)'
                     ),
-                    'TRACING_SERVICE_CLSID': '{83F69367-442D-447F-8BCC-0E3F97BE9CF2}',
+                    'TRACING_SERVICE_CLSID': '{7FA826DA-AF56-4192-8E5C-4A26F6EBF442}',
                     'TRACING_SERVICE_STORAGE_DIR': os.path.join(
                         shell.SHGetFolderPath(
                             0, shellcon.CSIDL_WINDOWS, None, 0
                         ),
                         'SystemTemp',
-                        'ChromiumTracing',
+                        'PubkyChromiumTracing',
                     ),
                 }
             )

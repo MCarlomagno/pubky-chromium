@@ -5,38 +5,41 @@
 # This file provides common configuration information for building
 # chromium-browser packages for various platforms.
 
-# Base name of the package.
-PACKAGE="chromium-browser"
+# Base name of the package. Pubky Chromium uses its own package name, install
+# directory and desktop/app IDs so it never shares a file with another
+# Chromium package. The profile directory (~/.config/chromium) is unchanged.
+PACKAGE="pubky-chromium"
 
 # Filename of the main executable (for generating launcher scripts, etc.)
 PROGNAME=chrome
 
 # Base directory for package installation.
-INSTALLDIR=/opt/chromium.org/chromium
+INSTALLDIR=/opt/pubky-chromium
 
 # Directory for device policy enrollments.
 ENROLLMENTDIR=/etc/chromium/policies/enrollment
 
 # Display string for desktop menu/icon.
-MENUNAME="Chromium Web Browser"
+MENUNAME="Pubky Chromium"
 
 # Brief package description.
-SHORTDESC="The web browser from the Chromium projects"
+SHORTDESC="A browser for censorship-resistant domains"
 
 # Detailed package description.
-FULLDESC="Chromium is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+FULLDESC="Pubky Chromium opens websites addressed by Ed25519 public keys, alongside the regular web. It finds them through PKDNS over DNS-over-HTTPS and checks the server against the key in the URL with raw-public-key TLS. It is an experimental build of Chromium from the MCarlomagno/pubky-chromium project, not a Google or Chromium project release, and it does not update automatically."
 
 # Package maintainer information.
-MAINTNAME="Chromium Linux Team"
-MAINTMAIL="chromium-packagers@chromium.org"
-PRODUCTURL="https://www.chromium.org/Home"
+MAINTNAME="MCarlomagno"
+MAINTMAIL="marcoscarlomagno1@gmail.com"
+PRODUCTURL="https://github.com/MCarlomagno/pubky-chromium"
 
 PROJECT_LICENSE="BSD-3-Clause and LGPL-2.1+ and Apache-2.0 and IJG and MIT and GPL-2.0+ and ISC and OpenSSL and (MPL-1.1 or GPL-2.0 or LGPL-2.0)"
 
 DEVELOPER_NAME="The Chromium Authors"
 
-BUGTRACKERURL="https://www.chromium.org/for-testers/bug-reporting-guidelines"
+BUGTRACKERURL="https://github.com/MCarlomagno/pubky-chromium/issues"
 
 HELPURL="https://chromium.googlesource.com/chromium/src/+/main/docs/linux/debugging.md"
 
-RDN="org.chromium.Chromium"
+# Must match version_info::nix::GetAppName(), the XDG portal app ID.
+RDN="io.github.mcarlomagno.PubkyChromium"

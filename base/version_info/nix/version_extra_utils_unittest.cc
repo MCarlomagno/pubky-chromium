@@ -96,7 +96,7 @@ TEST(VersionExtraUtilsTest, GetAppName) {
 #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
   const std::string kExpectedPrefix = "com.google.Chrome";
 #else
-  const std::string kExpectedPrefix = "org.chromium.Chromium";
+  const std::string kExpectedPrefix = "io.github.mcarlomagno.PubkyChromium";
 #endif
 
   EXPECT_CALL(env, GetVar(StrEq(kChromeVersionExtra)))

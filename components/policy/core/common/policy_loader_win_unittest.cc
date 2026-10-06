@@ -420,7 +420,7 @@ class PolicyLoaderWinTest : public PolicyTestBase {
 };
 
 const wchar_t PolicyLoaderWinTest::kTestPolicyKey[] =
-    L"SOFTWARE\\Policies\\Chromium";
+    L"SOFTWARE\\Policies\\PubkyChromium";
 
 TEST_F(PolicyLoaderWinTest, HKLMOverHKCU) {
   RegKey hklm_key(HKEY_LOCAL_MACHINE, kTestPolicyKey, KEY_ALL_ACCESS);

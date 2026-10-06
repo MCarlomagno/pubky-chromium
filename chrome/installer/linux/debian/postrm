@@ -15,22 +15,11 @@ fi
 
 @@include@@../common/variables.include
 
-@@include@@../common/apt.include
-
 @@include@@../common/symlinks.include
 
 remove_udev_symlinks
 
-# Only remove the defaults file if it is not empty. An empty file was probably
-# put there by the sysadmin to disable automatic repository configuration, as
-# per the instructions on the package download page.
-if [ -s "$DEFAULTS_FILE" ]; then
-  # Make sure the package defaults are removed before the repository config,
-  # otherwise it could result in the repository config being removed, but the
-  # package defaults remain and are set to not recreate the repository config.
-  # In that case, future installs won't recreate it and won't get auto-updated.
-  rm "$DEFAULTS_FILE" || exit 1
-fi
-# Remove any Google repository added by the package.
-clean_sources_lists
-uninstall_key
+# Pubky Chromium: postinst creates no /etc/default file, apt source or
+# keyring, so purge leaves those paths alone. Their names are shared with
+# other chromium-browser packages, and removing them here would delete
+# another installation's configuration.

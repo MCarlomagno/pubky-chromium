@@ -13,12 +13,6 @@
     </p>
   </description>
   <url type="homepage">@@PRODUCTURL</url>
-  <screenshots>
-    <screenshot type="default">
-      <image>@@appstream_screenshot_url</image>
-      <caption/>
-    </screenshot>
-  </screenshots>
   <translation/>
   <developer_name>@@DEVELOPER_NAME</developer_name>
   <url type="bugtracker">@@BUGTRACKERURL</url>

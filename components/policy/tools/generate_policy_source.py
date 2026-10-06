@@ -28,7 +28,9 @@ from xml.sax.saxutils import escape as xml_escape
 
 CHROME_POLICY_KEY = 'SOFTWARE\\\\Policies\\\\Google\\\\Chrome'
 CHROME_FOR_TESTING_POLICY_KEY = CHROME_POLICY_KEY + ' for Testing'
-CHROMIUM_POLICY_KEY = 'SOFTWARE\\\\Policies\\\\Chromium'
+# Pubky Chromium reads policy from its own key, matching the
+# SOFTWARE\Policies\<kProductPathName> path that install_static derives.
+CHROMIUM_POLICY_KEY = 'SOFTWARE\\\\Policies\\\\PubkyChromium'
 PLATFORM_STRINGS = {
     'chrome_frame': ['win'],
     'chrome_os': ['chrome_os'],

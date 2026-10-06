@@ -471,7 +471,8 @@ std::string GetIconName() {
 #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
   return "google-chrome";
 #else  // BUILDFLAG(CHROMIUM_BRANDING)
-  return "chromium-browser";
+  // The icon name the pubky-chromium package installs.
+  return "pubky-chromium";
 #endif
 }
 

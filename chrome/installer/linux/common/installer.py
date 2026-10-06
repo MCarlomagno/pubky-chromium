@@ -214,10 +214,7 @@ def gen_changelog(
         ]
     )
 
-    gzlog_dir = (
-        config.staging_dir
-        / f"usr/share/doc/{config.info_vars['PACKAGE']}-{config.channel}"
-    )
+    gzlog_dir = config.staging_dir / f"usr/share/doc/{config.deb_package_name}"
     gzlog_dir.mkdir(parents=True, exist_ok=True)
     gzlog = gzlog_dir / "changelog.gz"
 
@@ -343,6 +340,7 @@ class InstallerConfig:
     package_format: PackageFormat = PackageFormat.DEB
 
     # Deb
+    deb_package_name: str = ""
     deb_pre_depends: str = ""
     deb_depends: str = ""
     deb_provides: str = ""
@@ -524,6 +522,11 @@ class InstallerConfig:
         data["usr_bin_symlink_name"] = (
             f"{data['info_vars']['PACKAGE']}-{channel}"
         )
+        # Pubky Chromium's stable Debian package is plain "pubky-chromium".
+        if branding != "google_chrome" and channel == "stable":
+            data["deb_package_name"] = data["package_orig"]
+        else:
+            data["deb_package_name"] = data["usr_bin_symlink_name"]
         if channel != "stable":
             data["info_vars"]["INSTALLDIR"] += f"-{channel}"
             data["info_vars"]["PACKAGE"] += f"-{channel}"
