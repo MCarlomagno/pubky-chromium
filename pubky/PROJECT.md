@@ -25,7 +25,7 @@ The inherited project documents macOS ARM64 results in `pubky/VERIFICATION.md`. 
 
 Linux x86_64 is the initial reproduction target on the designated Linux builder. A resource-capped trial there is approved; the previous cloud-only assumption is superseded. No cloud purchase is approved. macOS remains an inherited, unverified-by-us platform; macOS-specific changes need actual macOS validation. Windows is part of the first milestone; Windows-specific changes need Windows validation before a release. Mobile is outside the first milestone.
 
-Do not compile Chromium for routine work; compilation is reserved for releases. Each engineer works in its own checkout on its own machine. Release builds run on the designated builder under its host lock, one at a time. Running `gclient sync` or changing dependency pins needs the owner. Never delete or clean an `out/` directory.
+Each engineer works in its own checkout on its own machine. Builds run on the designated builder in one shared, persistent build folder under its host lock, one at a time; never start from an empty build folder. Running `gclient sync` or changing dependency pins needs the owner. Never delete or clean an `out/` directory.
 
 The inherited `pubky/args.gn`, `pubky/gclient.py`, and scripts target macOS ARM64 and use `caffeinate`. Do not run them on Linux as if they were validated Linux commands.
 
@@ -36,7 +36,7 @@ Release checks to preserve:
 - Pubky capability web-platform tests described in `pubky/scripts/test_capabilities.sh`.
 - Live public-key navigation, deliberate wrong-key rejection, and ordinary HTTPS browsing, without DNS/TLS bypass flags.
 
-For routine work, run the tests for the changed code that need no Chromium build (for example Python tests and `PRESUBMIT_test.py`). Passing tests are enough for review. Record the commands, the revision, and the results in the handoff comment. When preparing a release, build with `autoninja -C <output> <target>` and run the release checks above.
+Testing has three levels. Every pull request runs the checks that need no Chromium build, for example Python tests and `PRESUBMIT_test.py`. A pull request or review that touches C++ also builds incrementally in the shared build folder: the changed files (`autoninja -C <output> ../../<path>.cc^`) and the focused test target, then runs the relevant tests with `--gtest_filter`. Check the plan first with `autoninja -n`; if it exceeds about 5,000 steps (roughly an hour at four jobs), record the step count and skip the build. A full build and the release checks above run only when preparing a release. Record the commands, the revision, and the results in the handoff comment.
 
 ## Branches, review, and integration
 
