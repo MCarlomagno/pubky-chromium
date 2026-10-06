@@ -265,7 +265,7 @@ void Controller::Restart(std::string_view id) {
   const auto live_transaction = weak_factory_.GetWeakPtr();
   Notify();
   if (live_transaction) {
-    boundaries_->restart.Run(base::BindOnce(
+    boundaries_->restart.Run(*staged_, base::BindOnce(
         &Controller::OnRestartResult, weak_factory_.GetWeakPtr()));
   }
 }

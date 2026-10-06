@@ -106,6 +106,9 @@ if (build_with_internal_optimization_guide) {
 }
 
 packaging_files_binaries = packaging_files_executables + packaging_files_shlibs
+if (is_linux && target_cpu == "x64") {
+  packaging_files_binaries += [ "$root_out_dir/pubky-update-coordinator" ]
+}
 
 # TODO(mmoss) Any convenient way to get all the relevant build files?
 # (e.g. all locales, resources, etc.)
@@ -501,6 +504,9 @@ group("installer_deps") {
     ":theme_files",
     "//chrome",
   ]
+  if (is_linux && target_cpu == "x64") {
+    public_deps += [ "//chrome/installer/linux/coordinator:pubky_update_coordinator" ]
+  }
   public_deps += [
     "//chrome:packed_resources",
     "//chrome/browser/enterprise/connectors/device_trust/key_management/installer/management_service:chrome_management_service",

@@ -19,6 +19,7 @@
 #include "chrome/browser/download/download_core_service_factory.h"
 #include "chrome/browser/global_features.h"
 #include "chrome/browser/lifetime/application_lifetime.h"
+#include "chrome/browser/lifetime/application_lifetime_desktop.h"
 #include "chrome/browser/lifetime/browser_shutdown.h"
 #include "chrome/browser/profiles/profile_manager.h"
 #include "chrome/browser/ui/browser_manager_service.h"
@@ -174,6 +175,7 @@ void BrowserCloseManager::OnReportDownloadsCancellable(bool proceed) {
     return;
   }
 
+  chrome::OnClosingAllBrowsers(false);
   CancelBrowserClose();
 
   // Open the downloads page for each profile with downloads in progress.

@@ -21,10 +21,22 @@ source_set("pubky_update") {
     sources += [
       "linux/eligibility.cc",
       "linux/eligibility.h",
+      "linux/coordinator.cc",
+      "linux/coordinator.h",
       "linux/stager.cc",
       "linux/stager.h",
     ]
-    deps += [ "//crypto" ]
+    deps += [
+      "//chrome/browser:browser_process",
+      "//chrome/browser/lifetime:lifetime",
+      "//chrome/browser/lifetime:termination_notification",
+      "//chrome/browser/profiles:profile",
+      "//chrome/browser/profiles:profile_manager",
+      "//chrome/browser/sessions",
+      "//chrome/common:buildflags",
+      "//chrome/installer/linux/coordinator:protocol",
+      "//crypto",
+    ]
   }
 }
 
@@ -35,6 +47,7 @@ source_set("unit_tests") {
     sources += [
       "linux/eligibility_unittest.cc",
       "linux/stager_unittest.cc",
+      "//chrome/installer/linux/coordinator/protocol_unittest.cc",
     ]
   }
   deps = [

@@ -61,7 +61,8 @@ class Controller {
     base::RepeatingClosure cancel;
     // Reply only after disarming on abort/failure, or after the normal
     // app-terminating boundary commits the coordinator. EOF is not commitment.
-    base::RepeatingCallback<void(base::OnceCallback<void(RestartResult)>)>
+    base::RepeatingCallback<void(StagedPackage&,
+                                 base::OnceCallback<void(RestartResult)>)>
         restart;
   };
   static std::unique_ptr<Controller> CreateForTesting(
