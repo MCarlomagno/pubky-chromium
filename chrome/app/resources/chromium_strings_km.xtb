@@ -45,6 +45,7 @@
 <translation id="1465192221147974788">ដើម្បី​បង្ហាញ​វិនដូ​របស់អ្នក សូម​អនុញ្ញាតឱ្យ Chromium ថតវីដេអូ​អេក្រង់​នៅក្នុង "ការកំណត់​ប្រព័ន្ធ"។</translation>
 <translation id="1478370723027452770">ទទួលជំនួយទាក់ទងនឹង Chrome for Testing</translation>
 <translation id="1497802159252041924">បញ្ហាក្នុងការដំឡើង៖ <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">កម្មវិធីគ្រប់គ្រងភារកិច្ច - Pubky Chromium</translation>
 <translation id="1518627427551567882">ទំព័រនេះ​ត្រូវបាន​ការពារ</translation>
 <translation id="1524282610922162960">ចែករំលែក​ផ្ទាំង Chromium</translation>
 <translation id="154404805518949443">ចូលគណនី Chromium</translation>
@@ -176,6 +177,7 @@
 <translation id="2846251086934905009">បញ្ហា​ក្នុងការដំឡើង៖ កម្មវិធីដំឡើង​មិនបាន​បញ្ចប់ដំណើរការទេ។ ការដំឡើង​ត្រូវបាន​បោះបង់។</translation>
 <translation id="2847479871509788944">ដកចេញពី Chromium...</translation>
 <translation id="2850691299438350830">រក្សាសុវត្ថិភាព​របស់អ្នក​នៅលើ Chromium និង​អាចប្រើ​សម្រាប់​កែលម្អ​សុវត្ថិភាព​របស់អ្នក​នៅក្នុង​កម្មវិធីរបស់ Google ផ្សេងទៀត នៅពេល​អ្នក​ចូលគណនី</translation>
+<translation id="2858220351857914958">តាមរយៈកម្រង​ព័ត៌មាន Pubky Chromium អ្នកអាច​បែងចែក​អ្វីៗទាំងអស់​របស់អ្នក​នៅលើ Pubky Chromium បាន។ បង្កើត​កម្រងព័ត៌មាន​សម្រាប់​មិត្តភក្ដិ និង​គ្រួសារ ឬបែងចែក​រវាងការងារ និង​ការកម្សាន្ត។</translation>
 <translation id="2885378588091291677">កម្មវិធីគ្រប់គ្រងភារកិច្ច</translation>
 <translation id="2910007522516064972">អំពី Chromium</translation>
 <translation id="2915996080311180594">ចាប់ផ្ដើមឡើងវិញ​ពេលក្រោយ</translation>
@@ -222,11 +224,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">យកឧបករណ៍ Google AI ដែលអ្នកពេញចិត្តតាមខ្លួនពេលធ្វើដំណើរតាមរយៈ Chromium នៅលើ iOS។</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">ចាប់ផ្ដើមឡើងវិញឥឡូវនេះ</translation>
 <translation id="328888136576916638">សោ Google API បានបាត់។ មុខងារមួយចំនួននៃ Chromium នឹងត្រូវបានបិទដំណើរការ។</translation>
 <translation id="3296368748942286671">បន្តដំណើរការកម្មវិធីផ្ទៃខាងក្រោយ នៅពេល Chromium ត្រូវបានបិទ</translation>
 <translation id="3313189106987092621">Chromium នឹង​ប្រាប់អ្នកឱ្យប្រុងប្រយ័ត្ន មុនពេលផ្ទុក​គេហទំព័រ​ដោយប្រើ​ការតភ្ជាប់​ដែលគ្មាន​សុវត្ថិភាព</translation>
 <translation id="3316771292331273802">អ្នកនឹង​ត្រូវបាន​នាំចេញពី​គណនីលើគេហទំព័រ​ភាគច្រើន នៅពេល​ដែលអ្នក​បិទវិនដូ Chromium ទាំងអស់ លើកលែងតែ​គណនី Google របស់អ្នក ប្រសិនបើ​អ្នក​ចូល Chromium។ ដើម្បីឱ្យ​គេហទំព័រ​ចងចាំអ្នក សូម<ph name="SETTINGS_LINK" />។</translation>
+<translation id="3322618165296853161">អំពី Pubky Chromium</translation>
 <translation id="3352986031709923790">ជ្រុង​ខាងលើ​ផ្នែក​ខាងស្ដាំ​នៃ​តំបន់​ស្វែងរក៖ ស្ដាំ <ph name="RIGHT" />% លើ <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">ទិន្នន័យ Chromium នៅក្នុងគណនីរបស់អ្នក</translation>
 <translation id="3375770072980084583">ប្រើ​ពាក្យសម្ងាត់​របស់អ្នក​តាមរយៈ Chromium នៅលើ​ទូរសព្ទ​របស់អ្នក</translation>
@@ -243,6 +247,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> បានចូល​គណនី​ស្រាប់ហើយ។  ដើម្បី​រក្សាការរុករក​របស់អ្នក​ដាច់ដោយឡែក សូម​ចូលគណនីលើ Chromium នៅក្នុង​កម្រងព័ត៌មាន​របស់អ្នកផ្ទាល់​ជា <ph name="USER_EMAIL_ADDRESS" />។</translation>
 <translation id="3531741627422851418">កូដ QR សម្រាប់ទាញយកកម្មវិធីរុករកតាមអ៊ីនធឺណិត Chromium នៅលើឧបករណ៍ចល័ត</translation>
 <translation id="354621070532799440">ការរំលឹក៖ មុខងារសុវត្ថិភាពល្អបំផុតរបស់ Google នៅក្នុងហោប៉ៅរបស់អ្នក</translation>
+<translation id="3554011135241686756">ចាប់ផ្ដើម Pubky Chromium</translation>
 <translation id="3561853857681580870">ដើម្បី​បង្ហាញ​អេក្រង់​របស់អ្នក សូមអនុញ្ញាតឱ្យ Chromium ថតវីដេអូ​អេក្រង់​នៅក្នុង "ការកំណត់​ប្រព័ន្ធ"។</translation>
 <translation id="3588112919289558122">ការការពារ​កម្រិត​ខ្ពស់​បិទ​ការបង្កើន​ប្រសិទ្ធភាព JavaScript សម្រាប់​គេហទំព័រ​ដែល Chromium មិនស្គាល់</translation>
 <translation id="3597003331831379823">មិនអាច​ដំណើរការ​ការរៀបចំ​ដោយប្រើ​ឯកសិទ្ធិបន្ថែម​បានទេ។ <ph name="METAINSTALLER_ERROR" /></translation>
@@ -368,10 +373,12 @@
 <translation id="4987820182225656817">ភ្ញៀវអាចប្រើ Chromium ដោយមិនមានបន្សល់ទុកអ្វីឡើយ។</translation>
 <translation id="4992938037305302429">គណនី​របស់អ្នក​នៅក្នុង Chromium</translation>
 <translation id="4994636714258228724">បន្ថែមខ្លួនអ្នកទៅ Chromium</translation>
+<translation id="5036105059978901236">តើនរណា​កំពុងប្រើ Pubky Chromium?</translation>
 <translation id="504699503110800016">បើកម៉ឺនុយបន្ថែម</translation>
 <translation id="5074496654342756568">ចូលប្រើអ្វីទាំងអស់ដែលអ្នកពេញចិត្តនៅលើ Google តាមរយៈ Chromium នៅលើ <ph name="DEVICE_TYPE" /> របស់អ្នក</translation>
 <translation id="5123973130450702873">Chromium ត្រូវការ​ការអនុញ្ញាត ដើម្បី​តាមដាន​ដៃ​របស់អ្នក</translation>
 <translation id="5141988424377517949">អ្នក​មិនបាន​ចូលមើល​នាពេល​ថ្មីៗនេះទេ។ Chromium បានដក​ការអនុញ្ញាត​ឱ្យប្រើ<ph name="PERMISSION_1" /> <ph name="PERMISSION_2" /> <ph name="PERMISSION_3" />ចេញ។</translation>
+<translation id="5147126173418055786">ទទួលយកជំនួយពី Pubky Chromium</translation>
 <translation id="5174969993834422967">ជាធម្មតា អ្នកទប់ស្កាត់​ការជូនដំណឹង។ ដើម្បីឱ្យ​គេហទំព័រនេះ​ជូនដំណឹង​ដល់អ្នក សូមចុច​រូប​តំណាងការជូនដំណឹង​នៅជ្រុងខាងស្ដាំ​នៃរបារ​ទីតាំង​របស់អ្នក។</translation>
 <translation id="5174983315706567306">មិនមានទំហំ​ថាស​គ្រប់គ្រាន់ទេ។</translation>
 <translation id="5187123684706427865">គណនី Chromium តម្រូវឱ្យមានការផ្ទៀងផ្ទាត់ឡើងវិញ</translation>
@@ -426,6 +433,7 @@
 <translation id="5623402015214259806">{0,plural, =0{មាន​កំណែថ្មីរបស់ Chromium ហើយ}=1{មាន​កំណែថ្មីរបស់ Chromium ហើយ}other{មាន​កំណែថ្មីរបស់ Chromium រយៈពេល # ថ្ងៃហើយ}}</translation>
 <translation id="5643865575100044307">លុប​ទិន្នន័យ​គេហទំព័រ​ពីឧបករណ៍​របស់អ្នក​ជានិច្ច នៅ​ពេលដែល​អ្នកបិទ Chromium</translation>
 <translation id="5653831366781983928">សូមចាប់ផ្ដើម Chromium ឡើងវិញ​ឥឡូវនេះ</translation>
+<translation id="5664172666218028492">សូមស្វាគមន៍​មកកាន់កម្រង​ព័ត៌មាន Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">បង្ហាញ Chromium ជាភាសានេះ</translation>
 <translation id="569897634095159764">មិនអាចភ្ជាប់ទៅអ៊ីនធឺណិតបានទេ។ ម៉ាស៊ីនមេ​ប្រូកស៊ី​តម្រូវឱ្យមាន​ការផ្ទៀងផ្ទាត់។</translation>
@@ -678,6 +686,7 @@ Chromium មិនអាចសង្គ្រោះការកំណត់រ�
 <translation id="8004582292198964060">កម្មវិធីរុករក</translation>
 <translation id="8010081455002666927">ចាប់ដឹង​ដោយស្វ័យប្រវត្តិ</translation>
 <translation id="8013436988911883588">បន្ទាប់ពី Chromium មានសិទ្ធិចូលប្រើហើយ គេហទំព័រ​នឹង​អាច​ស្នើ​សុំ​សិទ្ធិ​ចូល​ប្រើពី​អ្នកបាន។</translation>
+<translation id="8024015851840632875">ស្វាគមន៍មកកាន់ Pubky Chromium</translation>
 <translation id="8031714377769448844">ខ្ទាស់ Chromium ទៅរបារកិច្ចការ​របស់អ្នក ដើម្បី​ទៅកាន់វា​បានរហ័ស​នៅពេលណាក៏បាន</translation>
 <translation id="80471789339884597">សូមអរគុណសម្រាប់ការដំឡើង។ អ្នកត្រូវតែចាប់ផ្ដើមកម្មវិធីរុករកតាមអ៊ីនធឺណិតទាំងអស់របស់អ្នកឡើងវិញ មុនពេលប្រើ <ph name="BUNDLE_NAME" />។</translation>
 <translation id="8054112667659782652">បង្ហាញផ្លូវ​កាត់ការស្វែងរករូបភាពជានិច្ច</translation>

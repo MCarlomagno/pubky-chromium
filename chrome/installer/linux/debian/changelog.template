@@ -1,4 +1,4 @@
-@@PACKAGE-@@channel (@@versionfull) @@channel; urgency=low
+@@deb_package_name (@@versionfull) @@channel; urgency=low
 
   * Build spec: https://chromium.googlesource.com/chromium/src.git/+/@@version/
 

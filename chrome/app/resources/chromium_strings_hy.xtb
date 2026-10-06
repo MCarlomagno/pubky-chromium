@@ -45,6 +45,7 @@
 <translation id="1465192221147974788">Ձեր պատուհանով կիսվելու համար Համակարգի կարգավորումներում թույլատրեք էկրանի տեսագրումը Chromium-ի համար։</translation>
 <translation id="1478370723027452770">Ստանալ օգնություն Chrome for Testing-ի միջոցով</translation>
 <translation id="1497802159252041924">Տեղադրման սխալ՝ <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Խնդիրների կառավարիչ - Pubky Chromium</translation>
 <translation id="1518627427551567882">Այս էջը պաշտպանված է</translation>
 <translation id="1524282610922162960">Կիսվեք Chromium-ի ներդիրով</translation>
 <translation id="154404805518949443">Մուտք գործել Chromium</translation>
@@ -221,6 +222,7 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Օգտագործեք Google-ի ԱԲ գործիքները շարժման մեջ՝ iOS-ի համար Chromium-ի միջոցով։</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">Վերագործարկել հիմա</translation>
 <translation id="328888136576916638">Google API-ի բանալիները չկան: Chromium-ի որոշ գործառույթներ կանջատվեն:</translation>
 <translation id="3296368748942286671">Շարունակել հետնաշերտի հավելվածների աշխատանքը, երբ Chromium-ը փակված է</translation>
@@ -425,6 +427,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Հասանելի է Chromium-ի նոր տարբերակը}=1{Հասանելի է Chromium-ի նոր տարբերակը}one{Chromium-ի նոր տարբերակը # օր է հասանելի է}other{Chromium-ի նոր տարբերակը # օր է հասանելի է}}</translation>
 <translation id="5643865575100044307">Միշտ ջնջել կայքերի տվյալները սարքից՝ Chromium-ը փակելու դեպքում</translation>
 <translation id="5653831366781983928">Վերագործարկեք Chromium-ը</translation>
+<translation id="5664172666218028492">Բարի գալուստ Pubky Chromium պրոֆիլներ</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Chromium-ը ցուցադրել այս լեզվով</translation>
 <translation id="569897634095159764">Հնարավոր չէ միանալ ինտերնետին։ Պրոքսի սերվերն իսկորոշում է պահանջում։</translation>
@@ -677,6 +680,7 @@ Chromium-ին չհաջողվեց վերականգնել ձեր կարգավոր�
 <translation id="8004582292198964060">Դիտարկիչ</translation>
 <translation id="8010081455002666927">Ինքնահայտնաբերում</translation>
 <translation id="8013436988911883588">Երբ Chromium-ը հասանելիություն ստանա, կայքերը կկարողանան ձեզնից հասանելիություն խնդրել։</translation>
+<translation id="8024015851840632875">Բարի գալուստ Pubky Chromium</translation>
 <translation id="8031714377769448844">Ամրացրեք Chromium-ը խնդրագոտու վրա՝ այն ցանկացած պահի արագ բացելու համար</translation>
 <translation id="80471789339884597">Շնորհակալություն տեղադրելու համար։ Նախքան <ph name="BUNDLE_NAME" />-ն օգտագործելը դուք պետք է վերագործարկեք ձեր բոլոր դիտարկիչները։</translation>
 <translation id="8054112667659782652">Միշտ ցույց տալ պատկերով որոնման դյուրանցումը</translation>

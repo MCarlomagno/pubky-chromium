@@ -1788,7 +1788,7 @@ const wchar_t kRegistryChromePolicyKey[] = L"SOFTWARE\\\\Policies\\\\Google\\\\C
 #elif BUILDFLAG(GOOGLE_CHROME_FOR_TESTING_BRANDING)
 const wchar_t kRegistryChromePolicyKey[] = L"SOFTWARE\\\\Policies\\\\Google\\\\Chrome for Testing";
 #else
-const wchar_t kRegistryChromePolicyKey[] = L"SOFTWARE\\\\Policies\\\\Chromium";
+const wchar_t kRegistryChromePolicyKey[] = L"SOFTWARE\\\\Policies\\\\PubkyChromium";
 #endif
 '''
 

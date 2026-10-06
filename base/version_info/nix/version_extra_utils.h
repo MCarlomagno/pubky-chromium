@@ -28,7 +28,7 @@ BASE_EXPORT version_info::Channel GetChannel(base::Environment& env);
 BASE_EXPORT bool IsExtendedStable(base::Environment& env);
 
 // Returns the application name (e.g. "com.google.Chrome.beta" or
-// "org.chromium.Chromium").
+// "io.github.mcarlomagno.PubkyChromium").
 BASE_EXPORT std::string GetAppName(base::Environment& env);
 
 // Returns the session name prefix (e.g. "chrome_beta" or "chromium").

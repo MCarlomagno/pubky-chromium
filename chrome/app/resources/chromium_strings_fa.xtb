@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">‏برای هم‌رسانی پنجره، ضبط صفحه‌نمایش را در «تنظیمات سیستم» برای Chromium مجاز کنید.</translation>
 <translation id="1478370723027452770">‏دریافت راهنمایی درباره Chrome for Testing</translation>
 <translation id="1497802159252041924">خطای نصب: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">‏مدیر وظایف - Pubky Chromium</translation>
 <translation id="1518627427551567882">این صفحه محافظت شده است</translation>
 <translation id="1524282610922162960">‏هم‌رسانی برگه Chromium</translation>
 <translation id="154404805518949443">‏ورود به سیستم Chromium</translation>
@@ -174,6 +175,7 @@
 <translation id="2846251086934905009">خطای نصب: نصب‌کننده کامل نشد. نصب لغو شد.</translation>
 <translation id="2847479871509788944">‏حذف از Chromium...</translation>
 <translation id="2850691299438350830">‏وقتی به سیستم وارد شده باشید، امنیت شما را در Chromium حفظ می‌کند و ممکن است برای بهبود امنیت شما در برنامه‌های دیگر Google استفاده شود</translation>
+<translation id="2858220351857914958">‏با نمایه‌های Pubky Chromium می‌توانید همه چیزهای مربوط به Pubky Chromium را از هم جدا کنید. برای دوستان و اعضای خانواده نمایه ایجاد کنید، یا کار و سرگرمی را ازهم جدا کنید.</translation>
 <translation id="2885378588091291677">مدیر وظایف</translation>
 <translation id="2910007522516064972">‏درباره &amp;Chromium</translation>
 <translation id="2915996080311180594">بازراه‌اندازی در فرصتی دیگر</translation>
@@ -218,11 +220,13 @@
 <translation id="3258596308407688501">‏Chromium نمی‌تواند مسیر داده‌های خود را بخواند یا در آن بنویسد:
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">‏با Chromium در iOS، ابزارهای هوشواره Google دلخواهتان را درحرکت همراه داشته باشید.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">راه‌اندازی مجدد اکنون</translation>
 <translation id="328888136576916638">‏کلیدهای Google API وجود ندارند. برخی از عملکردهای Chromium از کار خواهند افتاد.</translation>
 <translation id="3296368748942286671">‏ادامه اجرای برنامه‌ها در پس‌زمینه هنگامیکه Chromium بسته می‌شود</translation>
 <translation id="3313189106987092621">‏Chromium قبل‌از اینکه هر سایتی را ازطریق اتصال ناامن بار کند به شما هشدار می‌دهد</translation>
 <translation id="3316771292331273802">‏وقتی همه پنجره‌های Chromium را ببندید از سیستم اکثر سایت‌ها خارج خواهید شد، اما اگر به سیستم Chromium وارد شده باشید از «حساب Google» خارج نخواهید شد. برای اینکه سایت‌ها شما را به‌خاطر بسپارند، <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">‏درباره Pubky Chromium</translation>
 <translation id="3352986031709923790">‏گوشه بالا سمت چپ ناحیه جستجو: ‎٪<ph name="RIGHT" /> سمت چپ، ‎٪<ph name="TOP" /> بالا</translation>
 <translation id="3366305173356742781">‏داده‌های Chromium در حساب شما</translation>
 <translation id="3375770072980084583">‏از گذرواژه‌هایتان با Chromium در تلفنتان استفاده کنید</translation>
@@ -239,6 +243,7 @@
 <translation id="3530103706039034513">‏‫<ph name="EXISTING_USER" /> درحال‌حاضر به سیستم وارد شده است.  برای جدا نگه داشتن مرورتان، در نمایه خودتان با حساب <ph name="USER_EMAIL_ADDRESS" /> به سیستم Chromium وارد شوید.</translation>
 <translation id="3531741627422851418">‏رمزینه پاسخ‌سریع برای بارگیری مرورگر Chromium در دستگاه‌های همراه</translation>
 <translation id="354621070532799440">‏یادآور: بهترین ویژگی‌های ایمنی Google در جیب شما</translation>
+<translation id="3554011135241686756">‏شروع Pubky Chromium</translation>
 <translation id="3561853857681580870">‏برای هم‌رسانی صفحه‌نمایش، ضبط صفحه‌نمایش را در «تنظیمات سیستم» برای Chromium مجاز کنید.</translation>
 <translation id="3588112919289558122">‏محافظت بهبودیافته، بهینه‌سازی جاوا اسکریپت را برای سایت‌هایی که Chromium آن‌ها را نمی‌شناسد، خاموش می‌کند</translation>
 <translation id="3597003331831379823">راه‌اندازی با امتیازهای عالی اجرا نشد. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -364,10 +369,12 @@
 <translation id="4987820182225656817">‏مهمان‌ها می توانند از Chromium استفاده کنند بدون این‌که اثری از خود به جا بگذارند.</translation>
 <translation id="4992938037305302429">‏حساب شما در Chromium</translation>
 <translation id="4994636714258228724">‏افرودن خودتان به Chromium</translation>
+<translation id="5036105059978901236">‏چه‌کسی از Pubky Chromium استفاده می‌کند؟</translation>
 <translation id="504699503110800016">باز کردن منو سرریز</translation>
 <translation id="5074496654342756568">‏با Chromium در <ph name="DEVICE_TYPE" /> خود، به همه موارد دلخواه Google دسترسی پیدا کنید</translation>
 <translation id="5123973130450702873">‏‫Chromium برای ردیابی کردن دست‌های شما به اجازه نیاز دارد</translation>
 <translation id="5141988424377517949">‏اخیراً بازدیدی نداشته‌اید. ‫Chromium ‏<ph name="PERMISSION_1" />،‏ <ph name="PERMISSION_2" />،‏ و <ph name="PERMISSION_3" /> را برداشت.</translation>
+<translation id="5147126173418055786">‏دریافت کمک برای Pubky Chromium</translation>
 <translation id="5174969993834422967">معمولاً اعلان‌ها را مسدود می‌کنید. برای اینکه اجازه دهید این سایت اعلان ارسال کند، روی نماد اعلان در گوشه چپ نوار نشانی کلیک کنید.</translation>
 <translation id="5174983315706567306">فضای دیسک کافی نیست.</translation>
 <translation id="5187123684706427865">‏حساب Chromium به اصالت‌سنجی مجدد نیاز دارد</translation>
@@ -422,6 +429,7 @@
 <translation id="5623402015214259806">{0,plural, =0{‏به‌روزرسانی Chromium دردسترس است}=1{‏به‌روزرسانی Chromium دردسترس است}one{‏به‌روزرسانی Chromium از # روز پیش دردسترس است}other{‏به‌روزرسانی Chromium از # روز پیش دردسترس است}}</translation>
 <translation id="5643865575100044307">‏داده‌های سایت همواره بعداز بستن Chromium از دستگاه حذف شود</translation>
 <translation id="5653831366781983928">‏لطفاً اکنون Chromium را بازراه‌اندازی کنید</translation>
+<translation id="5664172666218028492">‏به نمایه‌های Pubky Chromium خوش‌آمدید</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">‏نمایش Chromium به این زبان</translation>
 <translation id="569897634095159764">اتصال به اینترنت برقرار نشد. سرور پروکسی به اصالت‌سنجی نیاز دارد.</translation>
@@ -673,6 +681,7 @@ Chromium قادر به بازیابی تنظیمات شما نیست.</translati
 <translation id="8004582292198964060">مرورگر</translation>
 <translation id="8010081455002666927">شناسایی خودکار</translation>
 <translation id="8013436988911883588">‏وقتی Chromium دسترسی داشته باشد، وب‌سایت‌ها می‌توانند مجوز دسترسی درخواست کنند.</translation>
+<translation id="8024015851840632875">‏به Pubky Chromium خوش آمدید</translation>
 <translation id="8031714377769448844">‏‫Chromium را به نوار وظیفه سنجاق کنید تا هرزمان خواستید سریع‌تر به آن دسترسی داشته باشید</translation>
 <translation id="80471789339884597">بابت نصب از شما سپاس‌گزاریم. قبل‌از استفاده از <ph name="BUNDLE_NAME" />، باید همه مرورگرها را بازراه‌اندازی کنید.</translation>
 <translation id="8054112667659782652">همیشه نشان دادن میان‌بر «جستجوی تصویر»</translation>

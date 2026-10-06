@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">Jos haluat jakaa ikkunan, salli Chromiumin näytön tallennus järjestelmäasetuksista.</translation>
 <translation id="1478370723027452770">Ohjeita Chrome for Testingin käyttöön</translation>
 <translation id="1497802159252041924">Asennusvirhe: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Tehtävänhallinta - Pubky Chromium</translation>
 <translation id="1518627427551567882">Tämä sivu on suojattu</translation>
 <translation id="1524282610922162960">Jaa Chromium-välilehti</translation>
 <translation id="154404805518949443">Kirjaudu Chromiumiin</translation>
@@ -219,6 +220,7 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Ota Googlen tekoälytyökalut iOS:n Chromiumilla mukaan minne menetkin.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">Käynnistä uudelleen</translation>
 <translation id="328888136576916638">Googlen sovellusliittymän avaimet puuttuvat. Jotkin Chromiumin toiminnoista poistetaan käytöstä.</translation>
 <translation id="3296368748942286671">Jätä taustasovellukset käyntiin, kun Chromium suljetaan</translation>
@@ -240,6 +242,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> on jo kirjautunut sisään.  Jos haluat pitää selaamisen erillään, kirjaudu Chromiumiin omalla profiilillasi käyttämällä tiliä <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR-koodi, jolla voi ladata Chromium-selaimen mobiililaitteille</translation>
 <translation id="354621070532799440">Muistutus: Googlen parhaat turvaominaisuudet taskussasi</translation>
+<translation id="3554011135241686756">Käynnistä Pubky Chromium</translation>
 <translation id="3561853857681580870">Jos haluat jakaa näytön, salli Chromiumin näytön tallennus järjestelmäasetuksista.</translation>
 <translation id="3588112919289558122">Parannettu suojaus laittaa JavaScript-optimoinnin pois päältä sivustoilla, joita Chromium ei tunnista</translation>
 <translation id="3597003331831379823">Käyttöönotto laajennetuilla pääsyoikeuksilla epäonnistui. <ph name="METAINSTALLER_ERROR" /></translation>

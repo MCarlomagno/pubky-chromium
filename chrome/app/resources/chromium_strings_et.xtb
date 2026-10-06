@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">Oma akna jagamiseks lubage menüüs System Settings Chromiumi puhul ekraani salvestamine.</translation>
 <translation id="1478370723027452770">Hankige abi seoses brauseriga Chrome for Testing</translation>
 <translation id="1497802159252041924">Installimisviga: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Tegumihaldur – Pubky Chromium</translation>
 <translation id="1518627427551567882">See leht on kaitstud</translation>
 <translation id="1524282610922162960">Chromiumi vahekaardi jagamine</translation>
 <translation id="154404805518949443">Logige Chromiumi sisse</translation>
@@ -219,6 +220,7 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Võtke oma Google'i AI lemmiktööriistad liikvel olles iOS-i Chromiumiga kaasa.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> – Pubky Chromium</translation>
 <translation id="3286538390144397061">Taaskäivitada kohe</translation>
 <translation id="328888136576916638">Google API võtmed on puudu. Teatud Chromiumi funktsioonid keelatakse.</translation>
 <translation id="3296368748942286671">Jätka taustarakenduste käitamist pärast Chromiumi sulgemist</translation>
@@ -240,6 +242,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> on juba sisse logitud.  Sirvimise eraldi hoidmiseks logige Chromiumi sisse omaenda profiilil kasutajana <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR-kood Chromiumi brauseri allalaadimiseks mobiilseadmetes</translation>
 <translation id="354621070532799440">Meeldetuletus: Google'i parimad ohutusfunktsioonid on teie taskus</translation>
+<translation id="3554011135241686756">Käivita Pubky Chromium</translation>
 <translation id="3561853857681580870">Oma ekraani jagamiseks lubage menüüs System Settings Chromiumi puhul ekraani salvestamine.</translation>
 <translation id="3588112919289558122">Täiustatud kaitse lülitab JavaScripti optimeerimise välja saitide puhul, mis on Chromiumi jaoks tundmatud.</translation>
 <translation id="3597003331831379823">Installiprogrammi käitamine administraatoriõigustega ebaõnnestus. <ph name="METAINSTALLER_ERROR" /></translation>

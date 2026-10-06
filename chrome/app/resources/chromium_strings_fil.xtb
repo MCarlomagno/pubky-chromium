@@ -46,6 +46,7 @@ Maaaring hindi available ang ilang tampok at hindi mase-save ang mga pagbabago s
 <translation id="1465192221147974788">Para i-share ang iyong window, payagan ang pag-record ng screen para sa Chromium sa System Settings.</translation>
 <translation id="1478370723027452770">Humingi ng tulong para sa Chrome na Pang-test</translation>
 <translation id="1497802159252041924">Error sa pag-install: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Task Manager - Pubky Chromium</translation>
 <translation id="1518627427551567882">Pinoprotektahan ang page na ito</translation>
 <translation id="1524282610922162960">Magbahagi ng tab ng Chromium</translation>
 <translation id="154404805518949443">Mag-sign in sa Chromium</translation>
@@ -177,6 +178,7 @@ Maaaring hindi available ang ilang tampok at hindi mase-save ang mga pagbabago s
 <translation id="2846251086934905009">Error sa pag-install: Hindi natapos ang installer. Na-abort ang pag-install.</translation>
 <translation id="2847479871509788944">Alisin sa Chromium...</translation>
 <translation id="2850691299438350830">Pinapanatili kang ligtas sa Chromium at puwedeng gamitin para paigtingin ang iyong seguridad sa iba pang Google app kapag naka-sign in ka</translation>
+<translation id="2858220351857914958">Gamit ang mga profile sa Pubky Chromium, magagawa mong paghiwalayin ang lahat ng iyong bagay-bagay sa Pubky Chromium. Gumawa ng mga profile para sa mga kaibigan at kapamilya, o gumawa ng magkahiwalay na profile para sa trabaho at kasiyahan.</translation>
 <translation id="2885378588091291677">Task Manager</translation>
 <translation id="2910007522516064972">Tungkol sa &amp;Chromium</translation>
 <translation id="2915996080311180594">I-restart sa Ibang Pagkakataon</translation>
@@ -222,11 +224,13 @@ Maaaring hindi available ang ilang tampok at hindi mase-save ang mga pagbabago s
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Dalhin ang mga paborito mong Google AI tool nang on the go gamit ang Chromium sa iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">I-restart Ngayon</translation>
 <translation id="328888136576916638">Nawawala ang mga Google API key. Madi-disable ang ilang pagpapagana ng Chromium.</translation>
 <translation id="3296368748942286671">Patuloy na magpatakbo ng background na apps kapag nakasara ang Chromium</translation>
 <translation id="3313189106987092621">Bibigyan ka ng babala ng Chromium bago nito i-load ang anumang site na gumagamit ng hindi secure na koneksyon</translation>
 <translation id="3316771292331273802">Masa-sign out ka sa karamihan ng mga site kapag isinara mo ang lahat ng window ng Chromium, maliban sa iyong Google Account kung naka-sign in ka sa Chromium. Para payagan ang mga site na matandaan ka, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Tungkol sa Pubky Chromium</translation>
 <translation id="3352986031709923790">kanang sulok sa itaas ng lugar para sa paghahanap: kanan <ph name="RIGHT" />%, itaas <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">Data sa Chromium sa iyong account</translation>
 <translation id="3375770072980084583">Gamitin ang iyong mga password sa Chromium sa telepono mo</translation>
@@ -243,6 +247,7 @@ Maaaring hindi available ang ilang tampok at hindi mase-save ang mga pagbabago s
 <translation id="3530103706039034513">Naka-sign in na si <ph name="EXISTING_USER" />.  Para panatilihing hiwalay ang iyong pag-browse, mag-sign in sa Chromium sa sarili mong profile bilang <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR code para ma-download ang Chromium browser sa mga mobile device</translation>
 <translation id="354621070532799440">Paalala: Pinakamahuhusay na pangkaligtasang feature ng Google na madadala mo kahit saan</translation>
+<translation id="3554011135241686756">Simulan ang Pubky Chromium</translation>
 <translation id="3561853857681580870">Para i-share ang iyong screen, payagan ang pag-record ng screen para sa Chromium sa System Settings.</translation>
 <translation id="3588112919289558122">Ino-off ng pinaigting na proteksyon ang pag-optimize ng JavaScript para sa mga site na hindi nakikilala ng Chromium</translation>
 <translation id="3597003331831379823">Hindi napagana ang pag-set up na may mga mas mataas na pribilehiyo. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -368,10 +373,12 @@ Maaaring hindi available ang ilang tampok at hindi mase-save ang mga pagbabago s
 <translation id="4987820182225656817">Makakagamit ng Chromium ang mga bisita nang hindi nag-iiwan ng anumang bakas.</translation>
 <translation id="4992938037305302429">Iyong Account sa Chromium</translation>
 <translation id="4994636714258228724">Idagdag ang iyong sarili sa Chromium</translation>
+<translation id="5036105059978901236">Sino ang gumagamit ng Pubky Chromium?</translation>
 <translation id="504699503110800016">Buksan ang overflow menu</translation>
 <translation id="5074496654342756568">I-access ang lahat ng iyong paborito sa Google gamit ang Chromium sa <ph name="DEVICE_TYPE" /> mo</translation>
 <translation id="5123973130450702873">Kailangan ng Chromium ng pahintulot para i-track ang iyong mga kamay</translation>
 <translation id="5141988424377517949">Hindi mo ito binisita kamakailan. Inalis ng Chromium ang <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Humingi ng tulong sa Pubky Chromium</translation>
 <translation id="5174969993834422967">Kadalasan mong bina-block ang mga notification. Para hayaan ang site na itong abisuhan ka, i-click ang icon ng notification sa kanang sulok ng iyong bar ng lokasyon.</translation>
 <translation id="5174983315706567306">Hindi sapat ang disk space.</translation>
 <translation id="5187123684706427865">Nagre-require ang Chromium account ng pag-authenticate ulit</translation>
@@ -426,6 +433,7 @@ Kung hindi gumagana ang page na ito gaya ng inaasahan, subukang payagan ang pag-
 <translation id="5623402015214259806">{0,plural, =0{May available na update sa Chromium}=1{May available na update sa Chromium}one{# araw nang may available na update sa Chromium}other{# na araw nang may available na update sa Chromium}}</translation>
 <translation id="5643865575100044307">Palaging i-delete ang data ng site mula sa iyong device kapag isinasara mo ang Chromium</translation>
 <translation id="5653831366781983928">Paki-restart ang Chromium ngayon</translation>
+<translation id="5664172666218028492">Welcome sa mga profile sa Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Ipakita ang Chromium sa wikang ito</translation>
 <translation id="569897634095159764">Hindi makakonekta sa Internet. Nagre-require ng pag-authenticate ang proxy server.</translation>
@@ -678,6 +686,7 @@ Hindi mabawi ng Chromium ang iyong mga setting.</translation>
 <translation id="8004582292198964060">Browser</translation>
 <translation id="8010081455002666927">I-autodetect</translation>
 <translation id="8013436988911883588">Kapag mayroon nang access ang Chromium, makakahingi na ang mga website ng access sa iyo.</translation>
+<translation id="8024015851840632875">Maligayang Pagdating sa Pubky Chromium</translation>
 <translation id="8031714377769448844">I-pin ang Chromium sa iyong taskbar para mabilis itong mapuntahan anumang oras</translation>
 <translation id="80471789339884597">Salamat sa pag-install. Dapat mong i-restart ang lahat ng iyong browser bago gamitin ang <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Palaging ipakita ang shortcut ng Paghahanap ng Larawan</translation>

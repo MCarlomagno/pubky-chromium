@@ -44,6 +44,7 @@
 <translation id="1465192221147974788">‏اپنی ونڈو کا اشتراک کرنے کیلئے، سسٹم کی ترتیبات میں Chromium کیلئے اسکرین ریکارڈنگ کی اجازت دیں۔</translation>
 <translation id="1478370723027452770">‏Chrome for Testing کے سلسلے میں مدد حاصل کریں</translation>
 <translation id="1497802159252041924">انسٹال کی خرابی: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">‏ٹاسک مینیجر - Pubky Chromium</translation>
 <translation id="1518627427551567882">یہ صفحہ محفوظ ہے</translation>
 <translation id="1524282610922162960">‏ایک Chromium ٹیب کا اشتراک کریں</translation>
 <translation id="154404805518949443">‏‫Chromium میں سائن ان کریں</translation>
@@ -175,6 +176,7 @@
 <translation id="2846251086934905009">انسٹالر سے متعلق خرابی: انسٹالر مکممل نہیں ہوا۔ انسٹالر کو منسوخ کر دیا گیا۔</translation>
 <translation id="2847479871509788944">‏Chromium سے ہٹائیں…</translation>
 <translation id="2850691299438350830">‏آپ کے سائن ان ہونے پر آپ کو Chromium پر محفوظ رکھتا ہے اور دیگر Google ایپس میں آپ کی سیکیورٹی کو بہتر بنانے کے لیے استعمال کیا جا سکتا ہے</translation>
+<translation id="2858220351857914958">‏‫Pubky Chromium کی پروفائلز کی مدد سے، آپ Pubky Chromium کی اپنی سبھی چیزوں کو الگ کر سکتے ہیں۔ دوستوں اور فیملی کیلئے پروفائلز تخلیق کریں یا کام اور تفریح کو الگ کریں۔</translation>
 <translation id="2885378588091291677">ٹاسک مینیجر</translation>
 <translation id="2910007522516064972">‏Chromium&amp; کے بارے میں</translation>
 <translation id="2915996080311180594">بعد میں ری سٹارٹ کریں</translation>
@@ -220,11 +222,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">‏‫iOS پر Chromium کے ساتھ اپنے پسندیدہ Google AI ٹولز کو چلتے پھرتے استعمال کریں۔</translation>
+<translation id="3277656637916811544">‎<ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">ابھی ری اسٹارٹ کریں</translation>
 <translation id="328888136576916638">‏Google API کلیدیں دستیاب نہیں ہیں۔ Chromium کی کچھ فعالیت غیر فعال ہو جائے گی۔</translation>
 <translation id="3296368748942286671">‏Chromium بند ہو جانے پر پس منظر کی ایپس چلانا جاری رکھیں</translation>
 <translation id="3313189106987092621">‏غیر محفوظ کنکشن کا استعمال کر کے کسی بھی سائٹ کو لوڈ کرنے سے پہلے Chromium آپ کو متنبہ کرے گا</translation>
 <translation id="3316771292331273802">‏اگر آپ Chromium میں سائن ان ہیں تو اپنے Google اکاؤنٹ کے علاوہ، سبھی Chromium ونڈوز بند کرنے پر آپ بیشتر سائٹس سے سائن آؤٹ ہو جائیں گے۔ سائٹس کو آپ کی معلومات یاد رکھنے کی اجازت دینے کے لیے، <ph name="SETTINGS_LINK" /> پر جائیں۔</translation>
+<translation id="3322618165296853161">‏Pubky Chromium کے بارے میں</translation>
 <translation id="3352986031709923790">تلاش کے حلقے کا اوپری بایاں کونا: <ph name="RIGHT" /> فیصد بائیں، <ph name="TOP" /> فیصد اوپر</translation>
 <translation id="3366305173356742781">‏آپ کے اکاؤنٹ میں Chromium ڈیٹا</translation>
 <translation id="3375770072980084583">‏اپنے فون پر Chromium کے ساتھ اپنے پاس ورڈز استعمال کریں</translation>
@@ -241,6 +245,7 @@
 <translation id="3530103706039034513">‏<ph name="EXISTING_USER" /> پہلے سے ہی سائن ان ہے۔  اپنی براؤزنگ کو الگ رکھنے کے لیے، اپنی پروفائل میں Chromium میں بطور <ph name="USER_EMAIL_ADDRESS" /> سائن ان کریں۔</translation>
 <translation id="3531741627422851418">‏موبائل آلات پر Chromium براؤزر ڈاؤن لوڈ کرنے کے لیے QR کوڈ</translation>
 <translation id="354621070532799440">‏یاد دہانی: Google کی بہترین حفاظتی خصوصیات آپ کی جیب میں ہے</translation>
+<translation id="3554011135241686756">‏‫Pubky Chromium شروع کریں</translation>
 <translation id="3561853857681580870">‏اپنی اسکرین کا اشتراک کرنے کیلئے، سسٹم کی ترتیبات میں Chromium کیلئے اسکرین ریکارڈنگ کی اجازت دیں۔</translation>
 <translation id="3588112919289558122">‏بہتر کردہ حفاظت ان سائٹس کے لیے JavaScript آپٹیمائزیشن کو آف کر دیتی ہے جنہیں Chromium نہیں پہچانتا ہے</translation>
 <translation id="3597003331831379823">زیادہ مراعات کے ساتھ سیٹ اپ کو چلانے میں ناکام۔ <ph name="METAINSTALLER_ERROR" /></translation>
@@ -366,10 +371,12 @@
 <translation id="4987820182225656817">‏مہمان کسی چیز کو پیچھے چھوڑے بغیر Chromium کو استعمال کر سکتے ہیں۔</translation>
 <translation id="4992938037305302429">‏‫Chromium میں آپ کا اکاؤنٹ</translation>
 <translation id="4994636714258228724">‏خود کو Chromium میں شامل کریں</translation>
+<translation id="5036105059978901236">‏Pubky Chromium کون استعمال کر رہا ہے؟</translation>
 <translation id="504699503110800016">اوورفلو مینیو کھولیں</translation>
 <translation id="5074496654342756568">‏اپنے <ph name="DEVICE_TYPE" /> پر Chromium کے ساتھ اپنے تمام Google پسندیدہ تک رسائی حاصل کریں</translation>
 <translation id="5123973130450702873">‏آپ کے ہاتھوں کو ٹریک کرنے کے لیے Chromium کو اجازت درکار ہے</translation>
 <translation id="5141988424377517949">‏آپ نے حال ہی میں ملاحظہ نہیں کیا ہے۔ ‫Chromium نے <ph name="PERMISSION_1" />، <ph name="PERMISSION_2" />، <ph name="PERMISSION_3" /> کو ہٹا دیا۔</translation>
+<translation id="5147126173418055786">‏Pubky Chromium کے بارے میں مدد حاصل کریں</translation>
 <translation id="5174969993834422967">آپ عام طور پر اطلاعات کو مسدود کرتے ہیں۔ اس سائٹ کو آپ کو مطلع کرنے کی اجازت دینے کے لیے، اپنے مقام بار کے دائیں کونے میں نوٹیفکیشن آئیکن پر کلک کریں۔</translation>
 <translation id="5174983315706567306">ڈسک میں کافی اسپیس نہیں ہے۔</translation>
 <translation id="5187123684706427865">‏‫Chromium اکاؤنٹ میں دوبارہ تصدیق درکار ہے</translation>
@@ -424,6 +431,7 @@
 <translation id="5623402015214259806">{0,plural, =0{‏Chromium کا اپ ڈیٹ دستیاب ہے}=1{‏Chromium کا اپ ڈیٹ دستیاب ہے}other{‏Chromium کا اپ ڈیٹ # دن سے دستیاب ہے}}</translation>
 <translation id="5643865575100044307">‏جب آپ Chromium کو بند کرتے ہیں تو ہمیشہ اپنے آلے سے سائٹ کا ڈیٹا حذف کریں</translation>
 <translation id="5653831366781983928">‏براہ کرم ابھی Chromium کو ری اسٹارٹ کریں</translation>
+<translation id="5664172666218028492">‏Pubky Chromium کی پروفائلز میں خوش آمدید</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">‏Chromium کو اس زبان میں ڈسپلے کریں</translation>
 <translation id="569897634095159764">انٹرنیٹ سے منسلک ہونے سے قاصر۔ پراکسی سرور کیلئے تصدیق درکار ہے۔</translation>
@@ -676,6 +684,7 @@ Chromium آپ کی ترتیبات کو بازیافت کرنے سے قاصر ہ�
 <translation id="8004582292198964060">براؤزر</translation>
 <translation id="8010081455002666927">خودکار طور پر پتا لگائیں</translation>
 <translation id="8013436988911883588">‏Chromium کو رسائی مل جانے کے بعد، ویب سائٹس آپ سے رسائی طلب کر سکیں گی۔</translation>
+<translation id="8024015851840632875">‏Pubky Chromium میں خوش آمدید</translation>
 <translation id="8031714377769448844">‏کسی بھی وقت تیزی سے حاصل کرنے کے لیے Chromium کو اپنے ٹاسک بار میں پن کریں</translation>
 <translation id="80471789339884597">انسٹال کرنے کا شکریہ۔ آپ کو <ph name="BUNDLE_NAME" /> استعمال کرنے سے پہلے اپنے تمام براؤزرز لازمی طور سے ری اسٹارٹ کرنا چاہیے۔</translation>
 <translation id="8054112667659782652">ہمیشہ تصاویر کا استعمال کر کے تلاش کا شارٹ کٹ دکھائیں</translation>

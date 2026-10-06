@@ -362,7 +362,7 @@ class InstallStaticUtilTest
     static constexpr wchar_t kPolicyKey[] =
         L"Software\\Policies\\Google\\Chrome";
 #else
-    static constexpr wchar_t kPolicyKey[] = L"Software\\Policies\\Chromium";
+    static constexpr wchar_t kPolicyKey[] = L"Software\\Policies\\PubkyChromium";
 #endif
 
     ASSERT_EQ(ERROR_SUCCESS,
@@ -417,7 +417,7 @@ TEST_P(InstallStaticUtilTest, GetChromeInstallSubDirectory) {
   // The directory strings for the brand's install modes; parallel to
   // kInstallModes.
   static constexpr auto kInstallDirs = std::to_array<const wchar_t*>({
-      L"Chromium",
+      L"PubkyChromium",
   });
 #endif
   static_assert(std::size(kInstallDirs) == NUM_INSTALL_MODES,
@@ -446,7 +446,7 @@ TEST_P(InstallStaticUtilTest, GetRegistryPath) {
   // The registry path strings for the brand's install modes; parallel to
   // kInstallModes.
   static constexpr auto kRegistryPaths = std::to_array<const wchar_t*>({
-      L"Software\\Chromium",
+      L"Software\\PubkyChromium",
   });
 #endif
   static_assert(std::size(kRegistryPaths) == NUM_INSTALL_MODES,
@@ -484,7 +484,7 @@ TEST_P(InstallStaticUtilTest, GetUninstallRegistryPath) {
   // kInstallModes.
   static constexpr auto kUninstallRegistryPaths =
       std::to_array<const wchar_t*>({
-          L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Chromium",
+          L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\PubkyChromium",
       });
 #endif
   static_assert(std::size(kUninstallRegistryPaths) == NUM_INSTALL_MODES,
@@ -531,7 +531,7 @@ TEST_P(InstallStaticUtilTest, GetBaseAppId) {
 #else
   // The base app ids for the brand's install modes; parallel to kInstallModes.
   static constexpr auto kBaseAppIds = std::to_array<const wchar_t*>({
-      L"Chromium",
+      L"PubkyChromium",
   });
 #endif
   static_assert(std::size(kBaseAppIds) == NUM_INSTALL_MODES,

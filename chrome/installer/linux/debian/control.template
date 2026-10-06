@@ -1,11 +1,12 @@
-Source: @@PACKAGE-@@channel
+Source: @@deb_package_name
 Section: web
 Priority: optional
 Maintainer: @@MAINTNAME <@@MAINTMAIL>
 Build-Depends: dpkg-dev, devscripts, fakeroot, xz-utils
 Standards-Version: 3.8.0
+Homepage: @@PRODUCTURL
 
-Package: @@PACKAGE-@@channel
+Package: @@deb_package_name
 Provides: @@deb_provides
 Pre-Depends: @@deb_pre_depends
 Depends: @@deb_depends

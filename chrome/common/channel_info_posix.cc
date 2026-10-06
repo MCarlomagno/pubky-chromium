@@ -148,7 +148,8 @@ std::string GetDesktopName(base::Environment* env) {
   if (name.has_value() && !name.value().empty()) {
     return name.value();
   }
-  return "chromium-browser.desktop";
+  // Pubky Chromium's Linux package installs pubky-chromium.desktop.
+  return "pubky-chromium.desktop";
 #endif
 }
 #endif  // BUILDFLAG(IS_LINUX)

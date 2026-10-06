@@ -42,6 +42,7 @@
 <translation id="1465192221147974788">Чтобы запустить демонстрацию окна, в системных настройках разрешите Chromium записывать видео с экрана.</translation>
 <translation id="1478370723027452770">Справка о Chrome для тестирования</translation>
 <translation id="1497802159252041924">Ошибка установки: <ph name="INSTALL_ERROR" />.</translation>
+<translation id="1511563837468275295">Диспетчер задач – Pubky Chromium</translation>
 <translation id="1518627427551567882">Эта страница защищена</translation>
 <translation id="1524282610922162960">Откройте доступ к вкладке Chromium</translation>
 <translation id="154404805518949443">Войти в Chromium</translation>
@@ -216,11 +217,13 @@
 <translation id="3234316605225071811">Затем Chromium спросит, хотите ли вы использовать сохраненные данные для автозаполнения форм в дальнейшем.</translation>
 <translation id="3258596308407688501">Chromium не может выполнять операции чтения и записи в своем каталоге: <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Любимые ИИ-инструменты от Google всегда под рукой в Chromium на iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> – Pubky Chromium</translation>
 <translation id="3286538390144397061">Перезапустить сейчас</translation>
 <translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Chromium могут не работать.</translation>
 <translation id="3296368748942286671">Продолжить выполнение фоновых приложений после закрытия Chromium</translation>
 <translation id="3313189106987092621">Chromium будет предупреждать вас о переходе на любой сайт с незащищенным соединением</translation>
 <translation id="3316771292331273802">Если вы закроете все окна Chromium, то выйдете из системы на большинстве сайтов. Вы останетесь в аккаунте Google, если ранее вошли в Chromium. Разрешить сайтам сохранять ваши данные можно <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">О Pubky Chromium</translation>
 <translation id="3352986031709923790">правый верхний угол области поиска: <ph name="RIGHT" /> % справа, <ph name="TOP" /> % сверху</translation>
 <translation id="3366305173356742781">Данные Chromium в вашем аккаунте</translation>
 <translation id="3375770072980084583">Используйте пароли в Chromium на телефоне</translation>
@@ -237,6 +240,7 @@
 <translation id="3530103706039034513">Активный профиль пользователя: <ph name="EXISTING_USER" />.  Чтобы данные о вашей работе в браузере хранились отдельно, войдите в собственный профиль Chromium (<ph name="USER_EMAIL_ADDRESS" />).</translation>
 <translation id="3531741627422851418">QR-код для скачивания браузера Chromium на мобильное устройство</translation>
 <translation id="354621070532799440">Напоминание: лучшие функции безопасности Google в вашем телефоне</translation>
+<translation id="3554011135241686756">Запустить Pubky Chromium</translation>
 <translation id="3561853857681580870">Чтобы запустить демонстрацию экрана, в системных настройках разрешите Chromium записывать с него видео.</translation>
 <translation id="3588112919289558122">Улучшенная защита отключает оптимизацию JavaScript для сайтов, которые Chromium не распознаёт</translation>
 <translation id="3597003331831379823">Не удалось запустить настройку с повышенными привилегиями. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -362,10 +366,12 @@
 <translation id="4987820182225656817">Используйте Chromium в гостевом режиме, если не хотите сохранять данные о посещенных сайтах.</translation>
 <translation id="4992938037305302429">Ваш аккаунт в Chromium</translation>
 <translation id="4994636714258228724">Добавить пользователя Chromium</translation>
+<translation id="5036105059978901236">Кто использует Pubky Chromium?</translation>
 <translation id="504699503110800016">Откройте дополнительное меню.</translation>
 <translation id="5074496654342756568">Пользуйтесь любимыми инструментами Google в Chromium на <ph name="DEVICE_TYPE" />.</translation>
 <translation id="5123973130450702873">Chromium необходимо разрешение на отслеживание рук</translation>
 <translation id="5141988424377517949">Вы давно не посещали этот сайт. Браузер Chromium отозвал разрешения "<ph name="PERMISSION_1" />", "<ph name="PERMISSION_2" />" и "<ph name="PERMISSION_3" />".</translation>
+<translation id="5147126173418055786">Справка Pubky Chromium</translation>
 <translation id="5174969993834422967">Обычно вы блокируете уведомления. Чтобы получать их с этого сайта, нажмите на значок оповещений в правом верхнем углу адресной строки.</translation>
 <translation id="5174983315706567306">Недостаточно места на диске.</translation>
 <translation id="5187123684706427865">Необходимо снова войти в аккаунт Chromium</translation>
@@ -420,6 +426,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Доступно обновление Chromium}=1{Доступно обновление Chromium}one{Обновление Chromium доступно # день}few{Обновление Chromium доступно # дня}many{Обновление Chromium доступно # дней}other{Обновление Chromium доступно # дня}}</translation>
 <translation id="5643865575100044307">Всегда удалять с устройства данные сайтов при закрытии Chromium</translation>
 <translation id="5653831366781983928">Перезапустите Chromium</translation>
+<translation id="5664172666218028492">Представляем профили Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Отображать Chromium на этом языке</translation>
 <translation id="569897634095159764">Не удалось подключиться к интернету. Прокси-сервер требует пройти аутентификацию.</translation>
@@ -670,6 +677,7 @@
 <translation id="8004582292198964060">Браузер</translation>
 <translation id="8010081455002666927">Автоопределение</translation>
 <translation id="8013436988911883588">Когда вы предоставите доступ Chromium, веб-сайты также смогут запрашивать у вас доступ.</translation>
+<translation id="8024015851840632875">Добро пожаловать в Pubky Chromium</translation>
 <translation id="8031714377769448844">Для быстрого доступа закрепите Chromium на панели задач.</translation>
 <translation id="80471789339884597">Спасибо, что установили <ph name="BUNDLE_NAME" />. Чтобы изменения вступили в силу, перезапустите все открытые браузеры.</translation>
 <translation id="8054112667659782652">Всегда показывать ярлык поиска по изображениям</translation>

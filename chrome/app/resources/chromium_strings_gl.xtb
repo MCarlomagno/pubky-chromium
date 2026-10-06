@@ -45,6 +45,7 @@
 <translation id="1465192221147974788">Para compartir a ventá, vai á configuración do sistema e activa a función de gravación de pantalla para Chromium.</translation>
 <translation id="1478370723027452770">Recibir axuda con Chrome for Testing</translation>
 <translation id="1497802159252041924">Erro de instalación: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Xestor de tarefas: Pubky Chromium</translation>
 <translation id="1518627427551567882">Esta páxina está protexida</translation>
 <translation id="1524282610922162960">Compartir unha pestana de Chromium</translation>
 <translation id="154404805518949443">Iniciar sesión en Chromium</translation>
@@ -221,11 +222,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Esteas onde esteas, leva contigo as túas ferramentas de IA de Google favoritas con Chromium en iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" />: Pubky Chromium</translation>
 <translation id="3286538390144397061">Reiniciar agora</translation>
 <translation id="328888136576916638">Non se atopan as claves da API de Google. Desactivaranse algunhas funcións de Chromium.</translation>
 <translation id="3296368748942286671">Continuar executando aplicacións en segundo plano cando se peche Chromium</translation>
 <translation id="3313189106987092621">Chromium mostrarache unha advertencia antes de cargar un sitio cunha conexión pouco segura</translation>
 <translation id="3316771292331273802">Pecharase a túa sesión na maioría dos sitios cando peches todas as ventás de Chromium, excepto a túa Conta de Google se tes a sesión iniciada en Chromium. Permitir que os sitios te lembren, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Acerca de Pubky Chromium</translation>
 <translation id="3352986031709923790">esquina superior dereita da área de busca: <ph name="RIGHT" /> % á dereita, <ph name="TOP" /> % arriba</translation>
 <translation id="3366305173356742781">Datos de Chromium na túa conta</translation>
 <translation id="3375770072980084583">Usa os teus contrasinais con Chromium no teléfono</translation>
@@ -242,6 +245,7 @@
 <translation id="3530103706039034513">A sesión está iniciada como <ph name="EXISTING_USER" />.  Se queres navegar de forma independente, inicia sesión en Chromium co teu propio perfil como <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">Código QR para descargar o navegador Chromium en dispositivos móbiles</translation>
 <translation id="354621070532799440">Recordatorio: As mellores funcións de seguranza de Google no teu peto</translation>
+<translation id="3554011135241686756">Iniciar Pubky Chromium</translation>
 <translation id="3561853857681580870">Para compartir a pantalla, vai á configuración do sistema e activa a función de gravación de pantalla para Chromium.</translation>
 <translation id="3588112919289558122">Coa protección mellorada, desactívase a optimización de JavaScript para os sitios que Chromium non recoñece</translation>
 <translation id="3597003331831379823">Produciuse un erro ao executar a configuración con privilexios avanzados. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -367,10 +371,12 @@
 <translation id="4987820182225656817">Os invitados poden utilizar Chromium sen perder información.</translation>
 <translation id="4992938037305302429">A túa conta en Chromium</translation>
 <translation id="4994636714258228724">Engádete a Chromium</translation>
+<translation id="5036105059978901236">Quen está utilizando Pubky Chromium?</translation>
 <translation id="504699503110800016">Abrir o menú adicional</translation>
 <translation id="5074496654342756568">Accede a todos os teus servizos favoritos de Google con Chromium no teu dispositivo <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium necesita permiso para facer un seguimento das mans</translation>
 <translation id="5141988424377517949">Levas un tempo sen entrar. Chromium quitou os seguintes permisos: <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" /> e <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Obter axuda sobre Pubky Chromium</translation>
 <translation id="5174969993834422967">Adoitas bloquear as notificacións. Para permitir que este sitio che envíe notificacións, fai clic na icona de notificación que está no canto dereito da barra de localización.</translation>
 <translation id="5174983315706567306">Non queda espazo suficiente no disco.</translation>
 <translation id="5187123684706427865">Para poder usar a conta de Chromium, é necesario volver autenticarse</translation>
@@ -425,6 +431,7 @@ Proba a permitila se esta páxina non funciona como debería.</translation>
 <translation id="5623402015214259806">{0,plural, =0{Hai unha actualización de Chromium dispoñible}=1{Hai unha actualización de Chromium dispoñible}other{Hai unha actualización de Chromium que leva dispoñible # días}}</translation>
 <translation id="5643865575100044307">Eliminar sempre do dispositivo os datos dos sitios cando peches Chromium</translation>
 <translation id="5653831366781983928">Reinicia Chromium agora</translation>
+<translation id="5664172666218028492">Dámosche a benvida aos perfís de Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Mostrar Chromium neste idioma</translation>
 <translation id="569897634095159764">Non se puido establecer conexión con Internet. O servidor proxy require autenticación.</translation>
@@ -677,6 +684,7 @@ Chromium non pode recuperar a túa configuración.</translation>
 <translation id="8004582292198964060">Navegador</translation>
 <translation id="8010081455002666927">Detectar automaticamente</translation>
 <translation id="8013436988911883588">Unha vez que Chromium teña acceso, os sitios web poderán solicitalo tamén.</translation>
+<translation id="8024015851840632875">Dámosche a benvida a Pubky Chromium</translation>
 <translation id="8031714377769448844">Fixa Chromium na barra de tarefas para acceder máis rápido en calquera momento</translation>
 <translation id="80471789339884597">Grazas por levar a cabo a instalación. Para utilizar <ph name="BUNDLE_NAME" />, debes reiniciar todos os teus navegadores.</translation>
 <translation id="8054112667659782652">Mostrar sempre atallo da busca de imaxes</translation>

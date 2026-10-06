@@ -39,7 +39,9 @@ std::string GetAppName(base::Environment& env) {
 #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
   static constexpr std::string_view kAppName = "com.google.Chrome";
 #else
-  static constexpr std::string_view kAppName = "org.chromium.Chromium";
+  // Matches the RDN desktop file name in the pubky-chromium Linux package.
+  static constexpr std::string_view kAppName =
+      "io.github.mcarlomagno.PubkyChromium";
 #endif
 
   std::string_view suffix;

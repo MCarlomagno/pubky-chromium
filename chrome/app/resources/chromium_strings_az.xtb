@@ -45,6 +45,7 @@ Bəzi funksiyalar əlçatmaz ola bilər ki, nəticədə tərcihlərə edilən d�
 <translation id="1465192221147974788">Pəncərəni paylaşmaq üçün Sistem Ayarlarında Chromium üzrə ekranın qeydə alınmasına icazə verin.</translation>
 <translation id="1478370723027452770">Sınaq üçün Chrome ilə bağlı kömək alın</translation>
 <translation id="1497802159252041924">Quraşdırma xətası: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Tapşırıq Meneceri - Pubky Chromium</translation>
 <translation id="1518627427551567882">Bu səhifə qorunur</translation>
 <translation id="1524282610922162960">Chromium tabı paylaşın</translation>
 <translation id="154404805518949443">Chromium-a daxil olun</translation>
@@ -176,6 +177,7 @@ Bəzi funksiyalar əlçatmaz ola bilər ki, nəticədə tərcihlərə edilən d�
 <translation id="2846251086934905009">Quraşdırma xətası: Quraşdırıcı prosesi tamamlanmadı. Quraşdırma dayandırıldı.</translation>
 <translation id="2847479871509788944">Chromium'dan silin...</translation>
 <translation id="2850691299438350830">Daxil olduğunuzda Chromium'da sizi qoruyur və digər Google tətbiqlərində təhlükəsizliyinizi artırmaq üçün istifadə edilə bilər</translation>
+<translation id="2858220351857914958">Pubky Chromium profilləri ilə bütün Pubky Chromium elementlərinizi ayıra bilərsiniz. Dostlarınız və ailəniz üçün profillər yaradın, yaxud iş və əyləncə olaraq ayırın.</translation>
 <translation id="2885378588091291677">Tapşırıq Meneceri</translation>
 <translation id="2910007522516064972">Chromium haqqında</translation>
 <translation id="2915996080311180594">Sonra yenidən başladın</translation>
@@ -219,11 +221,13 @@ Bəzi funksiyalar əlçatmaz ola bilər ki, nəticədə tərcihlərə edilən d�
 <translation id="3234316605225071811">Sonra Chromium formaları avtomatik doldurmaq üçün yadda saxlanmış məlumatdan istifadə etmək istəyib-istəmədiyinizi soruşa bilər</translation>
 <translation id="3258596308407688501">Chromium öz data direktivini oxuya və yaza bilməz:  <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">iOS-da Chromium vasitəsilə sevimli Google Sİ alətlərinizdən istənilən vaxt, istənilən yerdə istifadə edin.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">İndi yenidən başladın</translation>
 <translation id="328888136576916638">Google API açarları çatışmır. Chromium'un bəzi funksionallığı deaktiv ediləcək.</translation>
 <translation id="3296368748942286671">Chromium bağlı olduqda arxa fon tətbiqləri işləsin?</translation>
 <translation id="3313189106987092621">Chromium təhlükəli bağlantı ilə sayt yükləməzdən əvvəl xəbərdarlıq edəcək</translation>
 <translation id="3316771292331273802">Chromium-a daxil olsanız, Google Hesabı istisna olmaqla bütün Chromium pəncərələrini bağladıqda əksər saytlardan çıxacaqsınız. Saytların sizi xatırlaması üçün <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Pubky Chromium haqqında</translation>
 <translation id="3352986031709923790">axtarış sahəsinin yuxarı sağ küncü: <ph name="RIGHT" />% sağ, <ph name="TOP" />% yuxarı</translation>
 <translation id="3366305173356742781">Hesabdakı Chromium datası</translation>
 <translation id="3375770072980084583">Telefonda Chromium ilə parollardan istifadə edin</translation>
@@ -365,10 +369,12 @@ Bəzi funksiyalar əlçatmaz ola bilər ki, nəticədə tərcihlərə edilən d�
 <translation id="4987820182225656817">Qonaqlar geridə heç nə buraxmadan Chromium istifadə edə bilər.</translation>
 <translation id="4992938037305302429">Chromium-dakı Hesabınız</translation>
 <translation id="4994636714258228724">Özünüzü Chromium'a əlavə edin</translation>
+<translation id="5036105059978901236">Pubky Chromium'u kim istifadə edir?</translation>
 <translation id="504699503110800016">Əlavə menyunu açın</translation>
 <translation id="5074496654342756568"><ph name="DEVICE_TYPE" /> cihazında Chromium ilə bütün Google sevimlilərinizə daxil olun</translation>
 <translation id="5123973130450702873">Chromium əllərinizi izləmək üçün icazə istəyir</translation>
 <translation id="5141988424377517949">Bu yaxınlarda daxil olmamısınız. Chromium sildi: <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Pubky Chromium ilə yardım alın</translation>
 <translation id="5174969993834422967">Adətən bildirişləri bloklayırsınız. Bu saytın sizi xəbərdar etməsi üçün məkan panelinin sağ küncündəki bildiriş işarəsinə klikləyin.</translation>
 <translation id="5174983315706567306">Kifayət qədər disk ölçüsü yoxdur.</translation>
 <translation id="5187123684706427865">Chromium hesabı təkrar doğrulama tələb edir</translation>
@@ -423,6 +429,7 @@ Bu səhifə gözlənildiyi kimi işləmirsə, optimallaşdırmaya icazə verməy
 <translation id="5623402015214259806">{0,plural, =0{Chromium güncəlləməsi əlçatandır}=1{Chromium güncəlləməsi əlçatandır}other{Chromium güncəlləməsi # gün ərzində əlçatan olub}}</translation>
 <translation id="5643865575100044307">Chromium-u bağladıqda sayt datasını cihazdan silin</translation>
 <translation id="5653831366781983928">Chromium'u indi başladın</translation>
+<translation id="5664172666218028492">Pubky Chromium profillərinə xoş gəlmisiniz</translation>
 <translation id="5690427481109656848">Google MMC</translation>
 <translation id="5698481217667032250">Chromium'u bu dildə görüntüləyin</translation>
 <translation id="569897634095159764">İnternetə qoşulmaq olmur. Proksi serveri identifikasiya tələb edir.</translation>
@@ -673,6 +680,7 @@ Bəzilərini silənə qədər yeni əlfəcinləri hesabınızda yadda saxlamaq o
 <translation id="8004582292198964060">Brauzer</translation>
 <translation id="8010081455002666927">Avto-aşkarlama</translation>
 <translation id="8013436988911883588">Chromium'un giriş imkanı olduqda veb saytlar giriş üçün Sizdən icazə istəyəcək.</translation>
+<translation id="8024015851840632875">Pubky Chromium'a xoş gəlmisiniz</translation>
 <translation id="8031714377769448844">İstənilən vaxt tez daxil olmaq üçün Chromium-u tapşırıqlar panelinə bərkidin</translation>
 <translation id="80471789339884597">Quraşdırdığınız üçün təşəkkür edirik. <ph name="BUNDLE_NAME" /> istifadə etməzdən əvvəl bütün brauzerlərinizi yenidən başlatmalısınız.</translation>
 <translation id="8054112667659782652">Şəkil Axtarışı qısayolunu həmişə göstərin</translation>

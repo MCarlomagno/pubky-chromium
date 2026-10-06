@@ -7,6 +7,7 @@ import argparse
 import logging
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -57,6 +58,21 @@ def gen_control(
             subprocess.check_call(cmd, stdout=f, stderr=subprocess.DEVNULL)
 
     deb_control.unlink()
+
+
+def debian_copyright(
+    config: installer.InstallerConfig, license_text: str
+) -> str:
+    return (
+        "Pubky Chromium is built from the Chromium source code with the changes\n"
+        f"at {config.info_vars['PRODUCTURL']}.\n"
+        "Chromium and those changes are distributed under the BSD-3-Clause\n"
+        "license below. Bundled third-party components keep their own licenses.\n"
+        "Their notices, the same text as chrome://credits, are in\n"
+        f"/usr/share/doc/{config.deb_package_name}/credits.html.\n\n"
+        # //LICENSE is written as a C++ comment; drop the "// " line prefixes.
+        + re.sub(r"^//[ ]?", "", license_text, flags=re.M)
+    )
 
 
 def verify_package(
@@ -120,46 +136,27 @@ def main() -> None:
         inst.prep_staging_common()
         (staging_dir / "DEBIAN").mkdir(parents=True, exist_ok=True)
         (staging_dir / "DEBIAN").chmod(installer.StandardPermissions.EXECUTABLE)
-        (staging_dir / "etc/cron.daily").mkdir(parents=True, exist_ok=True)
-        (staging_dir / "etc/cron.daily").chmod(
-            installer.StandardPermissions.EXECUTABLE
-        )
-        (staging_dir / f"usr/share/doc/{config.usr_bin_symlink_name}").mkdir(
-            parents=True, exist_ok=True
-        )
-        (staging_dir / f"usr/share/doc/{config.usr_bin_symlink_name}").chmod(
-            installer.StandardPermissions.EXECUTABLE
-        )
+        doc_dir = staging_dir / f"usr/share/doc/{config.deb_package_name}"
+        doc_dir.mkdir(parents=True, exist_ok=True)
+        doc_dir.chmod(installer.StandardPermissions.EXECUTABLE)
 
         inst.stage_install_common()
 
         logging.info(f"Staging Debian install files in '{staging_dir}'...")
-        install_dir = staging_dir / config.info_vars["INSTALLDIR"].lstrip("/")
-        cron_dir = install_dir / "cron"
-        cron_dir.mkdir(parents=True, exist_ok=True)
-        cron_dir.chmod(installer.StandardPermissions.EXECUTABLE)
+        # Pubky Chromium ships no daily cron job: upstream's re-adds Google's
+        # Chrome apt repository, which does not publish this package.
 
-        cron_file = cron_dir / config.info_vars["PACKAGE"]
-        installer.process_template(
-            output_dir / "installer/common/repo.cron",
-            cron_file,
-            config.get_template_context(),
+        # Chromium's LICENSE and the chrome://credits notices go with the
+        # binaries as package documentation. "copyright" is the file Debian
+        # tools look for; it carries the same BSD license text.
+        license_text = (output_dir / "installer/doc/LICENSE").read_text()
+        (doc_dir / "copyright").write_text(
+            debian_copyright(config, license_text)
         )
-        cron_file.chmod(installer.StandardPermissions.EXECUTABLE)
-
-        cron_daily_link = (
-            staging_dir / "etc/cron.daily" / config.info_vars["PACKAGE"]
-        )
-        if cron_daily_link.is_symlink() or cron_daily_link.exists():
-            cron_daily_link.unlink()
-        os.symlink(
-            os.path.join(
-                config.info_vars["INSTALLDIR"],
-                "cron",
-                config.info_vars["PACKAGE"],
-            ),
-            cron_daily_link,
-        )
+        for src, dst in [("LICENSE", "LICENSE"), ("about_credits.html", "credits.html")]:
+            shutil.copyfile(output_dir / "installer/doc" / src, doc_dir / dst)
+        for f in doc_dir.iterdir():
+            f.chmod(installer.StandardPermissions.REGULAR)
 
         for script in ["postinst", "prerm", "postrm"]:
             dest = staging_dir / "DEBIAN" / script
@@ -186,7 +183,7 @@ def main() -> None:
         )
 
         os.environ["DEB_HOST_ARCH"] = args.arch
-        pkg_name = f"{config.package_orig}-{config.channel}"
+        pkg_name = config.deb_package_name
 
         if deb_control.exists():
             gen_control(

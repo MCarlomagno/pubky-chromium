@@ -44,6 +44,7 @@ Niektoré funkcie nemusia byť k dispozícii a zmeny vykonané v predvoľbách s
 <translation id="1465192221147974788">Ak chcete zdieľať okno, povoľte prehliadaču Chromium nahrávať obrazovku v nastaveniach systému.</translation>
 <translation id="1478370723027452770">Získať pomoc s verziou Chrome for Testing</translation>
 <translation id="1497802159252041924">Chyba inštalácie: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Správca úloh – Pubky Chromium</translation>
 <translation id="1518627427551567882">Táto stránka je chránená</translation>
 <translation id="1524282610922162960">Zdieľajte kartu prehliadača Chromium</translation>
 <translation id="154404805518949443">Prihlásiť sa do prehliadača Chromium</translation>
@@ -175,6 +176,7 @@ Niektoré funkcie nemusia byť k dispozícii a zmeny vykonané v predvoľbách s
 <translation id="2846251086934905009">Chyba inštalácie: inštalátor nebol dokončený. Inštalácia bola prerušená.</translation>
 <translation id="2847479871509788944">Odstrániť z prehliadača Chromium...</translation>
 <translation id="2850691299438350830">Chráni vás v prehliadači Chromium a môže zlepšiť zabezpečenie v ďalších aplikáciách Googlu, keď sa prihlásite.</translation>
+<translation id="2858220351857914958">Profilmi prehliadača Pubky Chromium môžete oddeliť všetok svoj obsah v prehliadači Pubky Chromium. Vytvorte profily pre rodinu aj priateľov alebo si rozdeľte obsah na prácu a zábavu.</translation>
 <translation id="2885378588091291677">Správca úloh</translation>
 <translation id="2910007522516064972">Informácie o prehliadači &amp;Chromium</translation>
 <translation id="2915996080311180594">Reštartovať neskôr</translation>
@@ -220,11 +222,13 @@ Niektoré funkcie nemusia byť k dispozícii a zmeny vykonané v predvoľbách s
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Majte svoje obľúbené nástroje umelej inteligencie od Googlu vždy so sebou v prehliadači Chromium pre iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> – Pubky Chromium</translation>
 <translation id="3286538390144397061">Reštartovať</translation>
 <translation id="328888136576916638">Chýbajú kľúče rozhrania Google API. Niektoré funkcie prehliadača Google Chromium budú zakázané.</translation>
 <translation id="3296368748942286671">Po zatvorení prehliadača Chromium ponechať spustené aplikácie na pozadí</translation>
 <translation id="3313189106987092621">Chromium vás bude pred načítaním webu používajúceho nezabezpečené pripojenie upozorňovať</translation>
 <translation id="3316771292331273802">Po zavretí všetkých okien prehliadača Chromium vás odhlásime z väčšiny webov. Neplatí to však pre váš účet Google v prípade, že ste sa prihlásili do prehliadača Chromium. Ak chcete, aby si vás weby pamätali, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Informácie o prehliadači Pubky Chromium</translation>
 <translation id="3352986031709923790">pravý horný roh oblasti vyhľadávania: vpravo <ph name="RIGHT" /> %, hore <ph name="TOP" /> %</translation>
 <translation id="3366305173356742781">Údaje prehliadača Chromium vo vašom účte</translation>
 <translation id="3375770072980084583">Používajte heslá v prehliadači Chromium v telefóne</translation>
@@ -241,6 +245,7 @@ Niektoré funkcie nemusia byť k dispozícii a zmeny vykonané v predvoľbách s
 <translation id="3530103706039034513">Používateľ <ph name="EXISTING_USER" /> je už prihlásený.  Ak chcete, aby bolo vaše prehliadanie naďalej samostatné, prihláste sa vo svojom profile do prehliadača Chromium účtom <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR kód na stiahnutie prehliadača Chromium v mobilných zariadeniach</translation>
 <translation id="354621070532799440">Pripomenutie: najlepšie bezpečnostné funkcie Googlu vo vrecku</translation>
+<translation id="3554011135241686756">Spustiť prehliadač Pubky Chromium</translation>
 <translation id="3561853857681580870">Ak chcete zdieľať obrazovku, povoľte prehliadaču Chromium nahrávať obrazovku v nastaveniach systému.</translation>
 <translation id="3588112919289558122">Rozšírená ochrana vypína optimalizáciu JavaScriptu pre weby, ktoré Chromium nerozpoznáva</translation>
 <translation id="3597003331831379823">Nastavenie s vyššími oprávneniami sa nepodarilo spustiť. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -366,10 +371,12 @@ Niektoré funkcie nemusia byť k dispozícii a zmeny vykonané v predvoľbách s
 <translation id="4987820182225656817">Hostia môžu používať prehliadač Chromium bez toho, aby po sebe zanechali akékoľvek informácie.</translation>
 <translation id="4992938037305302429">Váš účet v prehliadači Chromium</translation>
 <translation id="4994636714258228724">Pridajte si účet do prehliadača Chromium</translation>
+<translation id="5036105059978901236">Kto používa Pubky Chromium?</translation>
 <translation id="504699503110800016">Otvorte rozšírenú ponuku</translation>
 <translation id="5074496654342756568">Získajte prístup k všetkým svojim obľúbeným službám Googlu pomocou prehliadača Chromium v zariadení <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium vyžaduje povolenie sledovať vaše ruky</translation>
 <translation id="5141988424377517949">Tento web ste v poslednom čase nenavštívili. Chromium odstránil povolenia <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Pomoc s prehliadačom Pubky Chromium</translation>
 <translation id="5174969993834422967">Upozornenia zvyčajne blokujete. Ak chcete tomuto webu povoliť odosielanie upozornení, kliknite na ikonu upozornení v pravom rohu panela s polohou.</translation>
 <translation id="5174983315706567306">Na disku nie je dostatok miesta.</translation>
 <translation id="5187123684706427865">Účet Chromium vyžaduje opätovné overenie</translation>
@@ -424,6 +431,7 @@ Ak stránka nefunguje podľa očakávaní, skúste optimalizáciu povoliť.</tra
 <translation id="5623402015214259806">{0,plural, =0{Je k dispozícii aktualizácia prehliadača Chromium}=1{Je k dispozícii aktualizácia prehliadača Chromium}few{Aktualizácia prehliadača Chromium je k dispozícii už # dni}many{Aktualizácia prehliadača Chromium je k dispozícii už # dňa}other{Aktualizácia prehliadača Chromium je k dispozícii už # dní}}</translation>
 <translation id="5643865575100044307">Pred zavretím prehliadača Chromium vždy odstraňujte dáta webov zo zariadenia</translation>
 <translation id="5653831366781983928">Reštartujte Chromium</translation>
+<translation id="5664172666218028492">Vitajte v profiloch prehliadača Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Zobraziť Chromium v tomto jazyku</translation>
 <translation id="569897634095159764">Nepodarilo sa pripojiť k internetu. Proxy server vyžaduje overenie.</translation>
@@ -676,6 +684,7 @@ Prehliadač Chromium nedokáže obnoviť vaše nastavenia.</translation>
 <translation id="8004582292198964060">Prehliadač</translation>
 <translation id="8010081455002666927">Zisťovať automaticky</translation>
 <translation id="8013436988911883588">Keď Chromium získa prístup, weby vás budú môcť žiadať o prístup.</translation>
+<translation id="8024015851840632875">Vitajte v prehliadači Pubky Chromium</translation>
 <translation id="8031714377769448844">Pripnite si Chromium na panel aplikácií, aby ste k nemu mali kedykoľvek rýchly prístup</translation>
 <translation id="80471789339884597">Ďakujeme za inštaláciu. Než začnete aplikáciu <ph name="BUNDLE_NAME" /> používať, musíte reštartovať všetky svoje prehliadače.</translation>
 <translation id="8054112667659782652">Vždy zobrazovať odkaz na vyhľadávanie podľa obrázkov</translation>

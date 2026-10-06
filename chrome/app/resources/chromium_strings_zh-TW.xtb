@@ -42,6 +42,7 @@
 <translation id="1465192221147974788">如要分享視窗內容，請前往「系統設定」允許 Chromium 螢幕錄影。</translation>
 <translation id="1478370723027452770">查看 Chrome for Testing 相關說明</translation>
 <translation id="1497802159252041924">安裝錯誤：<ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">工作管理員 - Pubky Chromium</translation>
 <translation id="1518627427551567882">這是受保護的頁面</translation>
 <translation id="1524282610922162960">分享 Chromium 分頁</translation>
 <translation id="154404805518949443">登入 Chromium</translation>
@@ -173,6 +174,7 @@
 <translation id="2846251086934905009">安裝錯誤：安裝程式未完整執行。安裝作業已取消。</translation>
 <translation id="2847479871509788944">從 Chromium 中移除...</translation>
 <translation id="2850691299438350830">在已登入帳戶的狀態下，能確保你持續享有安全無虞的 Chromium 使用體驗，也有助於提升其他 Google 應用程式的安全機制</translation>
+<translation id="2858220351857914958">你可以運用 Pubky Chromium 設定檔分隔各種 Pubky Chromium 資料，例如建立親朋好友各自的專屬設定檔，或是依工作和娛樂需要建立不同設定檔。</translation>
 <translation id="2885378588091291677">工作管理員</translation>
 <translation id="2910007522516064972">關於 Chromium(&amp;C)</translation>
 <translation id="2915996080311180594">稍後再重新啟動</translation>
@@ -218,11 +220,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">在 iOS 使用 Chromium，喜愛的 Google AI 工具隨身帶著走。</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">立即重新啟動</translation>
 <translation id="328888136576916638">缺少 Google API 金鑰，系統將停用 Chromium 的部分功能。</translation>
 <translation id="3296368748942286671">在 Chromium 關閉時繼續執行背景應用程式</translation>
 <translation id="3313189106987092621">在使用不安全的連線載入任何網站前，Chromium 會發出警告</translation>
 <translation id="3316771292331273802">關閉所有 Chromium 視窗後，系統會將你登出大部分網站，但如果你已登入 Chromium，Google 帳戶就會維持登入狀態。如要允許網站記住你的資訊，請<ph name="SETTINGS_LINK" />。</translation>
+<translation id="3322618165296853161">關於 Pubky Chromium</translation>
 <translation id="3352986031709923790">搜尋區域的右上角：右側 <ph name="RIGHT" />%，頂端 <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">帳戶中的 Chromium 資料</translation>
 <translation id="3375770072980084583">在手機上使用 Chromium 存取密碼</translation>
@@ -239,6 +243,7 @@
 <translation id="3530103706039034513">目前登入的帳戶為：<ph name="EXISTING_USER" />。如要分開保存你的瀏覽資料，請在 Chromium 中登入你的設定檔 (<ph name="USER_EMAIL_ADDRESS" />)。</translation>
 <translation id="3531741627422851418">QR code，可連結至 Chromium 瀏覽器行動版的下載頁面</translation>
 <translation id="354621070532799440">提醒：將 Google 最頂尖的安全防護功能帶在身邊</translation>
+<translation id="3554011135241686756">啟用 Pubky Chromium</translation>
 <translation id="3561853857681580870">如要分享螢幕內容，請前往「系統設定」允許 Chromium 螢幕錄影。</translation>
 <translation id="3588112919289558122">強化防護會針對 Chromium 無法辨識的網站關閉 JavaScript 最佳化功能</translation>
 <translation id="3597003331831379823">無法以進階權限執行設定。<ph name="METAINSTALLER_ERROR" /></translation>
@@ -364,10 +369,12 @@
 <translation id="4987820182225656817">以訪客身分使用 Chromium 不會留下任何記錄。</translation>
 <translation id="4992938037305302429">你在 Chromium 中的帳戶</translation>
 <translation id="4994636714258228724">新增為 Chromium 使用者</translation>
+<translation id="5036105059978901236">誰在使用 Pubky Chromium？</translation>
 <translation id="504699503110800016">開啟溢位選單</translation>
 <translation id="5074496654342756568">在 <ph name="DEVICE_TYPE" /> 上使用 Chromium，隨時存取喜愛的所有 Google 服務</translation>
 <translation id="5123973130450702873">Chromium 需要相關權限才能追蹤手勢</translation>
 <translation id="5141988424377517949">由於近期並未造訪，Chromium 已移除<ph name="PERMISSION_1" />、<ph name="PERMISSION_2" />和<ph name="PERMISSION_3" />權限。</translation>
+<translation id="5147126173418055786">前往 Pubky Chromium 說明頁面</translation>
 <translation id="5174969993834422967">系統已按照你的使用習慣封鎖通知。如要允許這個網站傳送通知，請點選網址列右上角的通知圖示。</translation>
 <translation id="5174983315706567306">磁碟空間不足。</translation>
 <translation id="5187123684706427865">Chromium 帳戶需要重新驗證</translation>
@@ -420,6 +427,7 @@
 <translation id="5623402015214259806">{0,plural, =0{有可用的 Chromium 更新}=1{有可用的 Chromium 更新}other{Chromium 更新已發布 # 天}}</translation>
 <translation id="5643865575100044307">在 Chromium 關閉後一律刪除裝置上的網站資料</translation>
 <translation id="5653831366781983928">請立即重新啟動 Chromium</translation>
+<translation id="5664172666218028492">歡迎使用 Pubky Chromium 設定檔</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">將 Chromium 的介面文字設為這種語言</translation>
 <translation id="569897634095159764">無法連線至網際網路。Proxy 伺服器需要驗證。</translation>
@@ -672,6 +680,7 @@ Chromium 無法復原你的設定。</translation>
 <translation id="8004582292198964060">瀏覽器</translation>
 <translation id="8010081455002666927">自動偵測</translation>
 <translation id="8013436988911883588">Chromium 取得存取權後，網站將可要求你授予存取權。</translation>
+<translation id="8024015851840632875">歡迎使用 Pubky Chromium</translation>
 <translation id="8031714377769448844">將 Chromium 釘選到工作列，隨時都能快速存取</translation>
 <translation id="80471789339884597">感謝你安裝本服務。你必須重新啟動所有瀏覽器，才能使用 <ph name="BUNDLE_NAME" />。</translation>
 <translation id="8054112667659782652">一律顯示「圖片搜尋」捷徑</translation>

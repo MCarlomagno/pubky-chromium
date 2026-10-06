@@ -44,6 +44,7 @@
 <translation id="1465192221147974788">Per compartir la finestra, permet que Chromium gravi la pantalla a Configuració del sistema.</translation>
 <translation id="1478370723027452770">Obtén ajuda amb Chrome for Testing</translation>
 <translation id="1497802159252041924">Error d'instal·lació: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Gestor de tasques: Pubky Chromium</translation>
 <translation id="1518627427551567882">Aquesta pàgina està protegida</translation>
 <translation id="1524282610922162960">Comparteix una pestanya de Chromium</translation>
 <translation id="154404805518949443">Inicia la sessió a Chromium</translation>
@@ -175,6 +176,7 @@
 <translation id="2846251086934905009">Error d'instal·lació: l'instal·lador no ha completat el procés. La instal·lació s'ha anul·lat.</translation>
 <translation id="2847479871509788944">Suprimeix de Chromium...</translation>
 <translation id="2850691299438350830">Et protegeix a Chromium i és possible que s'utilitzi per millorar la teva seguretat en altres aplicacions de Google quan tinguis la sessió iniciada</translation>
+<translation id="2858220351857914958">Els perfils de Pubky Chromium et permeten separar tot el contingut de Pubky Chromium. Crea perfils per a amics i familiars, o separa la feina de la diversió.</translation>
 <translation id="2885378588091291677">Gestor de tasques</translation>
 <translation id="2910007522516064972">Quant a &amp;Chromium</translation>
 <translation id="2915996080311180594">Reinicia més tard</translation>
@@ -220,11 +222,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Mentre et desplaces, porta amb tu les teves eines d'IA de Google preferides amb Chromium a iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" />: Pubky Chromium</translation>
 <translation id="3286538390144397061">Reinicia ara</translation>
 <translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Chromium.</translation>
 <translation id="3296368748942286671">Continua executant les aplicacions en segon pla quan es tanqui Chromium</translation>
 <translation id="3313189106987092621">Chromium t'avisarà abans de carregar qualsevol lloc web amb una connexió no segura</translation>
 <translation id="3316771292331273802">Quan tanquis totes les finestres de Chromium, se't tancarà la sessió de la majoria de llocs web, tret del teu Compte de Google si tens la sessió iniciada a Chromium. Perquè els llocs web et recordin, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Sobre Pubky Chromium</translation>
 <translation id="3352986031709923790">extrem superior dret de l'àrea de cerca: <ph name="RIGHT" /> % per la dreta i <ph name="TOP" /> % per dalt</translation>
 <translation id="3366305173356742781">Dades de Chromium al teu compte</translation>
 <translation id="3375770072980084583">Utilitza les teves contrasenyes amb Chromium al telèfon</translation>
@@ -241,6 +245,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> ja ha iniciat la sessió.  Per mantenir la navegació per separat, inicia la sessió a Chromium amb el teu perfil com a <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">Codi QR per baixar el navegador Chromium en dispositius mòbils</translation>
 <translation id="354621070532799440">Recordatori: les millors funcions de seguretat de Google a la butxaca</translation>
+<translation id="3554011135241686756">Inicia Pubky Chromium</translation>
 <translation id="3561853857681580870">Per compartir la pantalla, permet que Chromium gravi la pantalla a Configuració del sistema.</translation>
 <translation id="3588112919289558122">La protecció millorada desactiva l'optimització de JavaScript per als llocs web que Chromium no reconeix</translation>
 <translation id="3597003331831379823">No s'ha pogut executar la configuració amb privilegis elevats. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -366,10 +371,12 @@
 <translation id="4987820182225656817">Els convidats poden utilitzar Chromium sense deixar-hi rastre.</translation>
 <translation id="4992938037305302429">El teu compte a Chromium</translation>
 <translation id="4994636714258228724">Afegeix-me a Chromium</translation>
+<translation id="5036105059978901236">Qui està utilitzant Pubky Chromium?</translation>
 <translation id="504699503110800016">Obre el menú de desbordament</translation>
 <translation id="5074496654342756568">Accedeix a tots els teus preferits de Google amb Chromium des del teu <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium necessita permís per fer un seguiment de les teves mans</translation>
 <translation id="5141988424377517949">No l'has visitat recentment. Chromium ha suprimit <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" /> i <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Obtén ajuda per a Pubky Chromium</translation>
 <translation id="5174969993834422967">Normalment bloqueges les notificacions. Per permetre que aquest lloc web et mostri notificacions, fes clic a la icona de notificacions que hi ha a l'extrem dret de la barra d'ubicacions.</translation>
 <translation id="5174983315706567306">No hi ha prou espai de disc.</translation>
 <translation id="5187123684706427865">El compte de Chromium requereix una reautenticació</translation>
@@ -424,6 +431,7 @@ Si aquesta pàgina no funciona de la manera prevista, prova de permetre l'optimi
 <translation id="5623402015214259806">{0,plural, =0{Hi ha una actualització de Chromium disponible}=1{Hi ha una actualització de Chromium disponible}other{Fa # dies que hi ha una actualització de Chromium disponible}}</translation>
 <translation id="5643865575100044307">Suprimeix sempre les dades dels llocs web del dispositiu quan tanquis Chromium</translation>
 <translation id="5653831366781983928">Reinicia Chromium ara</translation>
+<translation id="5664172666218028492">Et donem la benvinguda als perfils de Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Mostra Chromium en aquest idioma</translation>
 <translation id="569897634095159764">No es pot connectar a Internet. El servidor intermediari necessita autenticació.</translation>
@@ -676,6 +684,7 @@ Chromium no pot recuperar la configuració.</translation>
 <translation id="8004582292198964060">Navegador</translation>
 <translation id="8010081455002666927">Detecta automàticament</translation>
 <translation id="8013436988911883588">Un cop Chromium tingui accés, els llocs web et podran demanar accés.</translation>
+<translation id="8024015851840632875">Us donem la benvinguda a Pubky Chromium</translation>
 <translation id="8031714377769448844">Fixa Chromium a la barra de tasques per accedir-hi ràpidament en qualsevol moment</translation>
 <translation id="80471789339884597">T'agraïm la instal·lació. Has de reiniciar tots els navegadors abans d'utilitzar <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Mostra sempre la drecera de la cerca d'imatges</translation>

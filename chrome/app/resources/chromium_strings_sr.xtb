@@ -46,6 +46,7 @@
 <translation id="1465192221147974788">Да бисте делили прозор, дозволите снимање екрана за Chromium у подешавањима система.</translation>
 <translation id="1478370723027452770">Потражите помоћ за верзију Chrome for Testing</translation>
 <translation id="1497802159252041924">Грешка при инсталацији: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Менаџер задатака – Pubky Chromium</translation>
 <translation id="1518627427551567882">Ова страница је заштићена</translation>
 <translation id="1524282610922162960">Делите Chromium картицу</translation>
 <translation id="154404805518949443">Пријави ме у Chromium</translation>
@@ -177,6 +178,7 @@
 <translation id="2846251086934905009">Грешка при инсталацији: Програм за инсталацију није завршио инсталацију. Инсталација је отказана.</translation>
 <translation id="2847479871509788944">Уклони из Chromium-а...</translation>
 <translation id="2850691299438350830">Штити вас у Chromium-у и може да се користи за побољшање безбедности у другим Google апликацијама када сте пријављени.</translation>
+<translation id="2858220351857914958">Помоћу Pubky Chromium профила можете да раздвојите све Pubky Chromium садржаје. Направите профиле за пријатеље и породицу или раздвојите посао и забаву.</translation>
 <translation id="2885378588091291677">Менаџер задатака</translation>
 <translation id="2910007522516064972">О &amp;Chromium-у</translation>
 <translation id="2915996080311180594">Рестартуј касније</translation>
@@ -222,6 +224,7 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Носите омиљене Google AI алатке са собом уз Chromium на iOS-у.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> – Pubky Chromium</translation>
 <translation id="3286538390144397061">Рестартуј одмах</translation>
 <translation id="328888136576916638">Недостају шифре за Google API. Неке функције Chromium-а ће бити онемогућене.</translation>
 <translation id="3296368748942286671">Настави са покретањем апликација у позадини када се Chromium затвори</translation>
@@ -243,6 +246,7 @@
 <translation id="3530103706039034513">Корисник <ph name="EXISTING_USER" /> је већ пријављен.  Да би вам прегледање било раздвојено, пријавите се у Chromium преко свог профила као <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR кôд за преузимање Chromium прегледача на мобилним уређајима</translation>
 <translation id="354621070532799440">Подсетник: Најбоље Google безбедносне функције у вашем џепу</translation>
+<translation id="3554011135241686756">Покрени Pubky Chromium</translation>
 <translation id="3561853857681580870">Да бисте делили екран, дозволите снимање екрана за Chromium у подешавањима система.</translation>
 <translation id="3588112919289558122">Побољшана заштита искључује оптимизацију JavaScript-а за сајтове које Chromium не препознаје</translation>
 <translation id="3597003331831379823">Покретање подешавања са пуним привилегијама није успело. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -368,10 +372,12 @@
 <translation id="4987820182225656817">Гости могу да користе Chromium а да не остављају никакве трагове.</translation>
 <translation id="4992938037305302429">Ваш налог у Chromium-у</translation>
 <translation id="4994636714258228724">Додајте себе у Chromium</translation>
+<translation id="5036105059978901236">Ко користи Pubky Chromium?</translation>
 <translation id="504699503110800016">Отворите преклопни мени</translation>
 <translation id="5074496654342756568">Приступајте свим омиљеним Google садржајима уз Chromium на уређају <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium-у треба дозвола за праћење руку</translation>
 <translation id="5141988424377517949">Нисте скоро посећивали сајт. Chromium је уклонио дозволе <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Пронађите помоћ за Pubky Chromium</translation>
 <translation id="5174969993834422967">Обично блокирате обавештења. Да бисте дозволили овом сајту да вас обавештава, кликните на икону обавештења у десном углу траке за локацију.</translation>
 <translation id="5174983315706567306">Нема довољно простора на диску.</translation>
 <translation id="5187123684706427865">Chromium налог захтева поновну потврду идентитета</translation>
@@ -426,6 +432,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Ажурирање за Chromium је доступно}=1{Ажурирање за Chromium је доступно}one{Ажурирање за Chromium је доступно већ # дан}few{Ажурирање за Chromium је доступно већ # дана}other{Ажурирање за Chromium је доступно већ # дана}}</translation>
 <translation id="5643865575100044307">Увек избришите податке о сајтовима са уређаја када затворите Chromium</translation>
 <translation id="5653831366781983928">Рестартујте Chromium</translation>
+<translation id="5664172666218028492">Добро дошли у Pubky Chromium профиле</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Приказуј Chromium на овом језику</translation>
 <translation id="569897634095159764">Повезивање са интернетом није успело. Прокси сервер захтева потврду идентитета.</translation>
@@ -678,6 +685,7 @@ Chromium не може да врати подешавања.</translation>
 <translation id="8004582292198964060">Прегледач</translation>
 <translation id="8010081455002666927">Аутоматско откривање</translation>
 <translation id="8013436988911883588">Када Chromium добије приступ, веб-сајтови ће моћи да затраже приступ.</translation>
+<translation id="8024015851840632875">Добро дошли у Pubky Chromium</translation>
 <translation id="8031714377769448844">Закачите Chromium на траку задатака да бисте му брзо приступали у сваком тренутку</translation>
 <translation id="80471789339884597">Хвала вам на инсталацији. Морате да рестартујете све прегледаче пре него што почнете да користите <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Увек приказуј пречицу за претрагу слика</translation>

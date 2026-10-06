@@ -44,6 +44,7 @@
 <translation id="1465192221147974788">ඔබේ කවුළුව බෙදා ගැනීමට, පද්ධති සැකසීම් තුළ Chromium සඳහා තිර පටිගත කිරීමට ඉඩ දෙන්න.</translation>
 <translation id="1478370723027452770">පරීක්ෂා කිරීම සඳහා Chrome සමග උදවු ලබා ගන්න</translation>
 <translation id="1497802159252041924">ස්ථාපනය කිරීමේ දෝෂයක්: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">කාර්ය කළමනාකරු - Pubky Chromium</translation>
 <translation id="1518627427551567882">මෙම පිටුව ආරක්ෂිතයි.</translation>
 <translation id="1524282610922162960">Chromium පටිත්තක් බෙදා ගන්න</translation>
 <translation id="154404805518949443">Chromium වෙත පිවිසෙන්න</translation>
@@ -175,6 +176,7 @@
 <translation id="2846251086934905009">ස්ථාපන දෝෂය: ස්ථාපකය සම්පූර්ණ කර නැත. ස්ථාපනය නතර කර ඇත.</translation>
 <translation id="2847479871509788944">Chromium වෙතින් ඉවත් කරන්න...</translation>
 <translation id="2850691299438350830">ඔබ පුරා සිටින විට Chromium හි ඔබව ආරක්ෂිතව තබා ගන්නා අතර අනෙකුත් Google යෙදුම් තුළ ඔබගේ ආරක්ෂාව වැඩි දියුණු කිරීමට භාවිත කළ හැකිය</translation>
+<translation id="2858220351857914958">Pubky Chromium පැතිකඩවල් සමඟ ඔබට ඔබේ සියලු Pubky Chromium දේවල් වෙන් කළ හැක. මිතුරන් සහ පවුලේ අය සඳහා පැතිකඩ තනන්න, නැතහොත් රැකියාව සහ විනෝදය අතර බෙදන්න.</translation>
 <translation id="2885378588091291677">කාර්ය කළමණාකරු</translation>
 <translation id="2910007522516064972">&amp;Chromium පිළිබඳ</translation>
 <translation id="2915996080311180594">පසුව යළි අරඹන්න</translation>
@@ -220,11 +222,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">iOS හි Chromium සමග ඔබේ ප්‍රියතම Google AI මෙවලම් යන ගමන් රැගෙන යන්න.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">දැන් යළි අාරම්භ කරන්න</translation>
 <translation id="328888136576916638">Google API යතුරු අහිමිව ඇත. Chromium හි ඇතැම් ක්‍රියාකාරීත්ව අක්‍රීය වනු ඇත.</translation>
 <translation id="3296368748942286671">Chromium වසා ඇති විට පසුබිම් යෙදුම් ධාවනය අඛණ්ඩව කරන්න</translation>
 <translation id="3313189106987092621">අනාරක්ෂිත සම්බන්ධතාවයක් භාවිතයෙන් ඕනෑම අඩවියක් පූරණය කිරීමට පෙර Chromium ඔබට අනතුරු අඟවනු ඇත</translation>
 <translation id="3316771292331273802">ඔබ Chromium වෙත පුරනය වී ඇති නම් ඔබේ Google ගිණුම හැර, ඔබ සියලු Chromium කවුළු වසා දැමූ විට ඔබ බොහෝ අඩවිවලින් වරනු ලැබේ. අඩවිවලට ඔබව මතක තබා ගැනීමට ඉඩ දීමට, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Pubky Chromium පිළිබඳ</translation>
 <translation id="3352986031709923790">සෙවීම් ප්‍රදේශයේ ඉහළම දකුණු කෙළවර: දකුණ <ph name="RIGHT" />%, ඉහළ <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">ඔබේ ගිණුමේ Chromium දත්ත</translation>
 <translation id="3375770072980084583">ඔබේ දුරකථනයේ Chromium සමග ඔබේ මුරපද භාවිතා කරන්න</translation>
@@ -241,6 +245,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> දැනටමත් පුරනය වී නැත.  ඔබේ බ්‍රවුස් කිරීම වෙනම තබා ගැනීමට, <ph name="USER_EMAIL_ADDRESS" /> ලෙස ඔබේම පැතිකඩෙන් Chromium හට පුරන්න.</translation>
 <translation id="3531741627422851418">ජංගම උපාංගවල Chromium බ්‍රව්සරය බාගැනීමට QR කේතය</translation>
 <translation id="354621070532799440">සිහිකැඳවීම: ඔබේ සාක්කුවේ Google හි හොඳම ආරක්ෂක විශේෂාංග</translation>
+<translation id="3554011135241686756">Pubky Chromium ආරම්භ කරන්න</translation>
 <translation id="3561853857681580870">ඔබේ තිරය බෙදා ගැනීමට, පද්ධති සැකසීම් තුළ Chromium සඳහා තිර පටිගත කිරීමට ඉඩ දෙන්න.</translation>
 <translation id="3588112919289558122">Chromium හඳුනා නොගන්නා අඩවි සඳහා වැඩිදියුණු කළ ආරක්ෂාව JavaScript ප්‍රශස්තකරණය ක්‍රියාවිරහිත කරයි</translation>
 <translation id="3597003331831379823">උසස් වරප්‍රසාද සහිත පිහිටුවීම් ධාවනය කිරීමට අසමත් විය. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -366,10 +371,12 @@
 <translation id="4987820182225656817">අමුත්තන්ට කිසිවක් තබා යෑමෙන් තොරව Chromium භාවිත කළ හැක.</translation>
 <translation id="4992938037305302429">Chromium හි ඔබේ ගිණුම</translation>
 <translation id="4994636714258228724">ඔබව Chromium වෙත එක් කරන්න</translation>
+<translation id="5036105059978901236">Pubky Chromium භාවිත කරමින් සිටින්නේ කවුද?</translation>
 <translation id="504699503110800016">ඉතිරියන මෙනුව විවෘත කරන්න</translation>
 <translation id="5074496654342756568">ඔබේ <ph name="DEVICE_TYPE" /> හි Chromium සමග ඔබේ සියලු Google ප්‍රියතමයන් වෙත ප්‍රවේශ වන්න</translation>
 <translation id="5123973130450702873">Chromium හට ඔබේ අත් නිරීක්ෂණය කිරීමට අවසරය අවශ්‍යයි</translation>
 <translation id="5141988424377517949">ඔබ මෑත පැමිණ නැත. Chromium <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" /> ඉවත් කළා.</translation>
+<translation id="5147126173418055786">Pubky Chromium සමගින් උදවු ලබා ගන්න</translation>
 <translation id="5174969993834422967">ඔබ සාමාන්‍යයෙන් දැනුම් දීම් අවහිර කරයි. මෙම අඩවිය ඔබට දැනුම් දීමට ඉඩ දීමට, ඔබේ ස්ථාන තීරුවේ දකුණු කෙළවරේ ඇති දැනුම්දීම් නිරූපකය ක්ලික් කරන්න.</translation>
 <translation id="5174983315706567306">ප්‍රමාණවත් තැටි ඉඩක් නැත.</translation>
 <translation id="5187123684706427865">Chromium ගිණුමට නැවත සත්‍යාපනය අවශ්‍යයි</translation>
@@ -424,6 +431,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Chromium යාවත්කාලීනයක් තිබේ}=1{Chromium යාවත්කාලීනයක් තිබේ}one{දින # ක් තුළ Chromium යාවත්කාලීනයක් ලැබී ඇත}other{දින # ක් තුළ Chromium යාවත්කාලීනයක් ලැබී ඇත}}</translation>
 <translation id="5643865575100044307">ඔබ Chromium වසා දැමූ විට සැම විටම ඔබේ උපාංගයෙන් අඩවි දත්ත මකන්න</translation>
 <translation id="5653831366781983928">දැන් Chromium යළි අරඹන්න</translation>
+<translation id="5664172666218028492">Pubky Chromium පැතිකඩවල් වෙත සාදරයෙන් පිළිගනිමු</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">මෙම භාෂාවෙන් Chromium දර්ශනය කරන්න</translation>
 <translation id="569897634095159764">අන්තර්ජාලය වෙත සම්බන්ධ වීමට නොහැකි වේ. ප්‍රොක්සි සේවාදායකයට සත්‍යාපනය අවශ්‍යයි.</translation>
@@ -675,6 +683,7 @@ Chromium හට ඔබගේ සැකසුම් ප්‍රතිසාධ�
 <translation id="8004582292198964060">බ්‍රවුසරය</translation>
 <translation id="8010081455002666927">ස්වයං-අනාවරණය</translation>
 <translation id="8013436988911883588">Chromium හට ප්‍රවේශය ඇති විට, වෙබ් අඩවි හට ඔබගෙන් ප්‍රවේශය සඳහා ඉල්ලීමට හැකිය.</translation>
+<translation id="8024015851840632875">Pubky Chromium වෙත සාදරයෙන් පිළිගනිමු</translation>
 <translation id="8031714377769448844">ඕනෑම වේලාවක ඉක්මනින් ලබා ගැනීමට Chromium ඔබේ කාර්ය තීරුවට අමුණන්න</translation>
 <translation id="80471789339884597">ස්ථාපනය කිරීම වෙනුවෙන් ස්තුතියි. ඔබ <ph name="BUNDLE_NAME" /> භාවිත කිරීමට පෙර ඔබගේ සියලුම බ්‍රව්සර යළි ආරම්භ කළ යුතුය.</translation>
 <translation id="8054112667659782652">සෑම විටම රූප සෙවීම් කෙටිමඟ පෙන්වන්න</translation>

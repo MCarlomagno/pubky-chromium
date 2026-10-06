@@ -45,6 +45,7 @@
 <translation id="1465192221147974788">Каб абагуліць акно, у сістэмных наладах дазвольце браўзеру Chromium запіс экрана.</translation>
 <translation id="1478370723027452770">Атрымаць даведку па Chrome for Testing</translation>
 <translation id="1497802159252041924">Памылка ўсталявання: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Менеджар заданняў – Pubky Chromium</translation>
 <translation id="1518627427551567882">Гэта старонка абаронена</translation>
 <translation id="1524282610922162960">Абагульце ўкладку Chromium</translation>
 <translation id="154404805518949443">Увайсці ў Chromium</translation>
@@ -221,11 +222,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Выкарыстоўвайце любімыя інструменты на аснове AI ад Google ў любым месцы дзякуючы Chromium на iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> – Pubky Chromium</translation>
 <translation id="3286538390144397061">Перазапусціць</translation>
 <translation id="328888136576916638">Адсутнічаюць ключы Google API. Некаторыя функцыі Chromium будуць выключаны.</translation>
 <translation id="3296368748942286671">Працягваць выконваць фонавыя праграмы, калі Chromium закрыты</translation>
 <translation id="3313189106987092621">Chromium будзе папярэджваць вас, перш чым загружаць сайт праз неабароненае падключэнне</translation>
 <translation id="3316771292331273802">Калі вы закрыеце ўсе вокны Chromium, то выйдзеце з большасці сайтаў, але застаняцеся ва Уліковым запісе Google, калі раней выканалі ўваход у Chromium. Каб дазволіць сайтам запамінаць вас, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Пра Pubky Chromium</translation>
 <translation id="3352986031709923790">верхні правы вугал поля пошуку: <ph name="RIGHT" />% справа, <ph name="TOP" />% зверху</translation>
 <translation id="3366305173356742781">Даныя Chromium у вашым уліковым запісе</translation>
 <translation id="3375770072980084583">Выкарыстоўвайце свае паролі ў Chromium на тэлефоне</translation>
@@ -242,6 +245,7 @@
 <translation id="3530103706039034513">Карыстальнік <ph name="EXISTING_USER" /> ужо ўвайшоў.  Каб аддзяліць сваю працу ў інтэрнэце ад працы іншых карыстальнікаў, увайдзіце ў Chromium ва ўласны профіль як <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR-код для спампоўвання браўзера Chromium на мабільныя прылады</translation>
 <translation id="354621070532799440">Напамін: найлепшыя функцыі бяспекі Google заўсёды з вамі</translation>
+<translation id="3554011135241686756">Запусціць Pubky Chromium</translation>
 <translation id="3561853857681580870">Каб абагуліць экран, у сістэмных наладах дазвольце браўзеру Chromium запіс экрана.</translation>
 <translation id="3588112919289558122">Пры выкарыстанні палепшанай абароны аптымізацыя JavaScript адключаецца для сайтаў, якія не распазнаюцца Chromium</translation>
 <translation id="3597003331831379823">Не ўдалося запусціць наладжванне з пашыранымі правамі. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -367,10 +371,12 @@
 <translation id="4987820182225656817">Госці могуць выкарыстоўваць Chromium, не пакідаючы нічога пасля сябе.</translation>
 <translation id="4992938037305302429">Ваш уліковы запіс у Chromium</translation>
 <translation id="4994636714258228724">Дадаць мяне ў Chromium</translation>
+<translation id="5036105059978901236">Хто выкарыстоўвае Pubky Chromium?</translation>
 <translation id="504699503110800016">Адкрыйце меню з пашырэннем</translation>
 <translation id="5074496654342756568">Атрымлівайце доступ да ўсіх абраных сэрвісаў Google з дапамогай Chromium на прыладзе "<ph name="DEVICE_TYPE" />"</translation>
 <translation id="5123973130450702873">Chromium запытвае дазвол на адсочванне рухаў рук</translation>
 <translation id="5141988424377517949">Вы даўно не наведвалі сайт. Браўзер Chromium адклікаў наступныя дазволы: <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" /> і <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Атрымаць дапамогу па Pubky Chromium</translation>
 <translation id="5174969993834422967">Звычайна вы блакіруеце апавяшчэнні. Каб даць дазвол гэтаму сайту на паказ апавяшчэнняў, націсніце значок апавяшчэнняў у правым вугле панэлі месцазнаходжання.</translation>
 <translation id="5174983315706567306">Недастаткова месца на дыску.</translation>
 <translation id="5187123684706427865">Патрабуецца паўторная аўтэнтыфікацыя ўліковага запісу Chromium</translation>
@@ -425,6 +431,7 @@
 <translation id="5623402015214259806">{0,plural, =0{Ёсць абнаўленне Chromium}=1{Ёсць абнаўленне Chromium}one{Абнаўленне Chromium выйшла # дзень таму}few{Абнаўленне Chromium выйшла # дні таму}many{Абнаўленне Chromium выйшла # дзён таму}other{Абнаўленне Chromium выйшла # дня таму}}</translation>
 <translation id="5643865575100044307">Заўсёды выдаляць даныя сайтаў з прылады пры закрыцці Chromium</translation>
 <translation id="5653831366781983928">Перазапусціце Chromium</translation>
+<translation id="5664172666218028492">Вітаем у профілях Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Паказваць інтэрфейс браўзера Chromium на гэтай мове</translation>
 <translation id="569897634095159764">Не ўдалося падключыцца да інтэрнэту. Проксі-сервер патрабуе прайсці аўтэнтыфікацыю.</translation>
@@ -677,6 +684,7 @@
 <translation id="8004582292198964060">Браўзер</translation>
 <translation id="8010081455002666927">Аўтавызначэнне</translation>
 <translation id="8013436988911883588">Як толькі Chromium атрымае дазвол, вэб-сайты змогуць запытваць у вас доступ.</translation>
+<translation id="8024015851840632875">Вас вітае Pubky Chromium</translation>
 <translation id="8031714377769448844">Замацуйце Chromium на панэлі задач для хуткага доступу да праграмы</translation>
 <translation id="80471789339884597">Дзякуй, што ўсталявалі <ph name="BUNDLE_NAME" />. Каб завяршыць усталяванне, перазапусціце ўсе свае браўзеры.</translation>
 <translation id="8054112667659782652">Заўсёды паказваць ярлык для пошуку відарысаў</translation>

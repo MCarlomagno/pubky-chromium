@@ -44,6 +44,7 @@ peranti Bluetooth. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"
 <translation id="1465192221147974788">Untuk berkongsi tetingkap anda, benarkan rakaman skrin untuk Chromium dalam Tetapan Sistem.</translation>
 <translation id="1478370723027452770">Dapatkan bantuan tentang Chrome for Testing</translation>
 <translation id="1497802159252041924">Ralat pemasangan: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Pengurus Tugas - Pubky Chromium</translation>
 <translation id="1518627427551567882">Halaman ini dilindungi</translation>
 <translation id="1524282610922162960">Kongsi tab Chromium</translation>
 <translation id="154404805518949443">Log masuk ke Chromium</translation>
@@ -175,6 +176,7 @@ peranti Bluetooth. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"
 <translation id="2846251086934905009">Ralat pemasangan: Proses pemasang tidak selesai. Pemasangan telah dihenti paksa.</translation>
 <translation id="2847479871509788944">Alih keluar daripada Chromium...</translation>
 <translation id="2850691299438350830">Memastikan anda selamat pada Chromium dan mungkin digunakan untuk meningkatkan keselamatan anda dalam apl Google yang lain apabila anda log masuk</translation>
+<translation id="2858220351857914958">Dengan profil Pubky Chromium, anda dapat mengasingkan semua bahan Pubky Chromium anda. Buat profil untuk rakan dan keluarga atau asingkan pekerjaan daripada keseronokan.</translation>
 <translation id="2885378588091291677">Pengurus Tugas</translation>
 <translation id="2910007522516064972">Mengenai &amp;Chromium</translation>
 <translation id="2915996080311180594">Mulakan Semula Kemudian</translation>
@@ -220,11 +222,13 @@ peranti Bluetooth. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Bawa alatan Google AI kegemaran anda semasa dalam perjalanan dengan Chromium pada iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">Mulakan Semula Sekarang</translation>
 <translation id="328888136576916638">Kunci API Google tiada. Sesetengah fungsi Chromium akan dilumpuhkan.</translation>
 <translation id="3296368748942286671">Terus menjalankan apl latar belakang apabila Chromium ditutup</translation>
 <translation id="3313189106987092621">Chromium akan memberi anda amaran sebelum memuatkan sebarang laman menggunakan sambungan yang tidak selamat</translation>
 <translation id="3316771292331273802">Anda akan dilog keluar daripada kebanyakan laman apabila anda menutup semua tetingkap Chromium, kecuali Google Account anda jika anda log masuk ke Chromium. Untuk membenarkan laman mengingati anda, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Mengenai Pubky Chromium</translation>
 <translation id="3352986031709923790">penjuru atas sebelah kanan kawasan carian: kanan <ph name="RIGHT" />%, atas <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">Data Chromium pada akaun anda</translation>
 <translation id="3375770072980084583">Gunakan kata laluan anda dengan Chromium pada telefon anda</translation>
@@ -241,6 +245,7 @@ peranti Bluetooth. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> sudah log masuk.  Untuk memastikan penyemakan imbas anda terpisah, log masuk ke Chromium dalam profil anda sendiri sebagai <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">Kod QR untuk memuat turun penyemak imbas Chromium pada peranti mudah alih</translation>
 <translation id="354621070532799440">Peringatan: Ciri keselamatan terbaik Google dalam poket anda</translation>
+<translation id="3554011135241686756">Mulakan Pubky Chromium</translation>
 <translation id="3561853857681580870">Untuk berkongsi skrin anda, benarkan rakaman skrin untuk Chromium dalam Tetapan Sistem.</translation>
 <translation id="3588112919289558122">Perlindungan dipertingkat mematikan pengoptimuman JavaScript untuk laman yang tidak dikenali oleh Chromium</translation>
 <translation id="3597003331831379823">Gagal untuk menjalankan persediaan dengan keistimewaan dipertingkat. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -366,10 +371,12 @@ peranti Bluetooth. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"
 <translation id="4987820182225656817">Tetamu boleh menggunakan Chromium tanpa meninggalkan apa-apa.</translation>
 <translation id="4992938037305302429">Akaun Anda dalam Chromium</translation>
 <translation id="4994636714258228724">Tambahkan diri anda kepada Chromium</translation>
+<translation id="5036105059978901236">Siapakah yang sedang menggunakan Pubky Chromium?</translation>
 <translation id="504699503110800016">Buka menu limpahan</translation>
 <translation id="5074496654342756568">Akses semua kegemaran Google anda dengan Chromium pada <ph name="DEVICE_TYPE" /> anda</translation>
 <translation id="5123973130450702873">Chromium memerlukan kebenaran untuk menjejaki tangan anda</translation>
 <translation id="5141988424377517949">Anda belum melawati laman web ini baru-baru ini. Chromium mengalih keluar <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Dapatkan bantuan berkenaan Pubky Chromium</translation>
 <translation id="5174969993834422967">Anda biasanya menyekat pemberitahuan. Untuk membenarkan laman ini memaklumi anda, klik ikon pemberitahuan pada penjuru kanan bar lokasi anda.</translation>
 <translation id="5174983315706567306">Ruang cakera tidak mencukupi.</translation>
 <translation id="5187123684706427865">Akaun Chromium memerlukan pengesahan semula</translation>
@@ -424,6 +431,7 @@ Jika halaman ini tidak berfungsi seperti yang dijangkakan, cuba benarkan pengopt
 <translation id="5623402015214259806">{0,plural, =0{Kemas kini Chromium tersedia}=1{Kemas kini Chromium tersedia}other{Kemas kini Chromium telah tersedia selama # hari}}</translation>
 <translation id="5643865575100044307">Sentiasa padamkan data laman daripada peranti anda apabila anda menutup Chromium</translation>
 <translation id="5653831366781983928">Sila mulakan semula Chromium sekarang</translation>
+<translation id="5664172666218028492">Selamat datang ke profil Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Paparkan Chromium dalam bahasa ini</translation>
 <translation id="569897634095159764">Tidak dapat disambungkan kepada Internet. Pelayan proksi memerlukan pengesahan.</translation>
@@ -676,6 +684,7 @@ Chromium tidak dapat mengembalikan tetapan anda.</translation>
 <translation id="8004582292198964060">Penyemak Imbas</translation>
 <translation id="8010081455002666927">Autokesan</translation>
 <translation id="8013436988911883588">Sebaik sahaja Chromium mendapat akses, laman web akan dapat meminta akses daripada anda.</translation>
+<translation id="8024015851840632875">Selamat datang ke Pubky Chromium</translation>
 <translation id="8031714377769448844">Sematkan Chromium pada bar tugas anda untuk menemukan Chromium dengan pantas pada bila-bila masa</translation>
 <translation id="80471789339884597">Terima kasih kerana memasang. Anda perlu memulakan semula semua penyemak imbas anda sebelum menggunakan <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Pintasan Sentiasa paparkan Carian Imej</translation>

@@ -42,6 +42,7 @@
 <translation id="1465192221147974788">若要共享窗口，请在“系统设置”中为 Chromium 启用屏幕录制功能。</translation>
 <translation id="1478370723027452770">获取 Chrome for Testing 方面的帮助</translation>
 <translation id="1497802159252041924">安装时出错：<ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">任务管理器 - Pubky Chromium</translation>
 <translation id="1518627427551567882">此页面受保护</translation>
 <translation id="1524282610922162960">共享 Chromium 标签页</translation>
 <translation id="154404805518949443">登录 Chromium</translation>
@@ -173,6 +174,7 @@
 <translation id="2846251086934905009">安装时出错：安装程序进程未完成。已中止安装。</translation>
 <translation id="2847479871509788944">从Chromium中移除…</translation>
 <translation id="2850691299438350830">保护您在 Chromium 中免受安全威胁，登录状态下还可让您更安全地使用其他 Google 应用</translation>
+<translation id="2858220351857914958">借助 Pubky Chromium 个人资料，您可将所有 Pubky Chromium 内容分门别类。您可为朋友和家人创建专属资料，或者将工作和娱乐用资料分开。</translation>
 <translation id="2885378588091291677">任务管理器</translation>
 <translation id="2910007522516064972">关于 Chromium(&amp;C)</translation>
 <translation id="2915996080311180594">暂不重启</translation>
@@ -218,11 +220,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">iOS 版 Chromium 伴您同行，随时随地玩转常用 Google AI 工具。</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">立即重新启动</translation>
 <translation id="328888136576916638">缺少 Google API 密钥，因此 Chromium 的部分功能将无法使用。</translation>
 <translation id="3296368748942286671">关闭 Chromium 后继续运行后台应用</translation>
 <translation id="3313189106987092621">Chromium 会在使用不安全的连接加载网站前向您发出警告</translation>
 <translation id="3316771292331273802">关闭所有 Chromium 窗口后，您将会从大多数网站退出账号；但如果您已登录 Chromium，则您的 Google 账号不会退出。若要让网站记住您，请<ph name="SETTINGS_LINK" />。</translation>
+<translation id="3322618165296853161">关于 Pubky Chromium</translation>
 <translation id="3352986031709923790">搜索区域的右上角：右侧 <ph name="RIGHT" />%，顶部 <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">您账号中的 Chromium 数据</translation>
 <translation id="3375770072980084583">借助 Chromium 在手机上使用您的密码</translation>
@@ -239,6 +243,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" />已登录。若要单独存储您的浏览数据，请使用您自己的个人资料 (<ph name="USER_EMAIL_ADDRESS" />) 登录 Chromium。</translation>
 <translation id="3531741627422851418">用于在移动设备上下载 Chromium 浏览器的二维码</translation>
 <translation id="354621070532799440">温馨提示：Google 顶级安全防护，随身守护</translation>
+<translation id="3554011135241686756">启动 Pubky Chromium</translation>
 <translation id="3561853857681580870">若要共享屏幕，请在“系统设置”中为 Chromium 启用屏幕录制功能。</translation>
 <translation id="3588112919289558122">增强型保护会为 Chromium 无法识别的网站关闭 JavaScript 优化功能</translation>
 <translation id="3597003331831379823">未能以提升的权限运行设置。<ph name="METAINSTALLER_ERROR" /></translation>
@@ -365,10 +370,12 @@
 <translation id="4987820182225656817">访客使用Chromium不会留下任何痕迹。</translation>
 <translation id="4992938037305302429">设置 Chromium 账号</translation>
 <translation id="4994636714258228724">将您自己添加到Chromium</translation>
+<translation id="5036105059978901236">谁在使用 Pubky Chromium？</translation>
 <translation id="504699503110800016">打开菜单</translation>
 <translation id="5074496654342756568"><ph name="DEVICE_TYPE" /> 版 Chromium 在手，所有常用 Google 服务触手可及</translation>
 <translation id="5123973130450702873">Chromium 需要获得权限，才能跟踪您的手部动作</translation>
 <translation id="5141988424377517949">您近期未访问过该网站，因此 Chromium 撤消了该网站的<ph name="PERMISSION_1" />权限、<ph name="PERMISSION_2" />权限和<ph name="PERMISSION_3" />权限。</translation>
+<translation id="5147126173418055786">获取有关 Pubky Chromium 的帮助</translation>
 <translation id="5174969993834422967">您通常会屏蔽通知。要允许此网站向您发送通知，请点击位置栏右侧的通知图标。</translation>
 <translation id="5174983315706567306">磁盘可用空间不足。</translation>
 <translation id="5187123684706427865">Chromium 账号需要重新验证身份</translation>
@@ -423,6 +430,7 @@
 <translation id="5623402015214259806">{0,plural, =0{有一项可用的 Chromium 更新}=1{有一项可用的 Chromium 更新}other{有一项可用的 Chromium 更新（已发布 # 天）}}</translation>
 <translation id="5643865575100044307">始终在关闭 Chromium 时删除设备上的网站数据</translation>
 <translation id="5653831366781983928">请立即重启 Chromium</translation>
+<translation id="5664172666218028492">欢迎使用 Pubky Chromium 个人资料</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">以这种语言显示 Chromium</translation>
 <translation id="569897634095159764">无法连接到互联网。代理服务器要求进行身份验证。</translation>
@@ -675,6 +683,7 @@ Chromium 无法恢复您的设置。</translation>
 <translation id="8004582292198964060">浏览器</translation>
 <translation id="8010081455002666927">自动检测</translation>
 <translation id="8013436988911883588">一旦 Chromium 获得了使用权限，网站便能请求您向其授予使用权限。</translation>
+<translation id="8024015851840632875">欢迎使用 Pubky Chromium</translation>
 <translation id="8031714377769448844">将 Chromium 固定到任务栏，即可随时快速访问</translation>
 <translation id="80471789339884597">感谢您完成安装。您必须重启所有浏览器才能使用 <ph name="BUNDLE_NAME" />。</translation>
 <translation id="8054112667659782652">始终显示图片搜索快捷方式</translation>

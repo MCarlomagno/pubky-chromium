@@ -43,6 +43,7 @@
 <translation id="1465192221147974788">Da biste dijelili prozor, u postavkama sustava dopustite snimanje zaslona za Chromium.</translation>
 <translation id="1478370723027452770">Zatražite pomoć za Chrome for Testing</translation>
 <translation id="1497802159252041924">Instalacijska pogreška: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Upravitelj zadataka – Pubky Chromium</translation>
 <translation id="1518627427551567882">Ova je stranica zaštićena</translation>
 <translation id="1524282610922162960">Dijeljenje kartice Chromium</translation>
 <translation id="154404805518949443">Prijava na Chromium</translation>
@@ -219,11 +220,13 @@
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Imajte pristup svojim omiljenim Googleovim AI alatima u pokretu uz Chromium na iOS-u.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> – Pubky Chromium</translation>
 <translation id="3286538390144397061">Ponovo pokreni sad</translation>
 <translation id="328888136576916638">Nedostaju ključevi Google API-ja. Neke funkcije Chromiuma bit će onemogućene.</translation>
 <translation id="3296368748942286671">Nastavi izvršavati ​​pozadinske aplikacije po zatvaranju preglednika Chromium</translation>
 <translation id="3313189106987092621">Chromium će vas upozoriti prije učitavanja bilo koje web-lokacije putem nesigurne veze</translation>
 <translation id="3316771292331273802">Kad zatvorite sve prozore Chromiuma, odjavit ćete se s većine web-lokacija osim Google računa ako ste prijavljeni na Chromium. Da bi vas web-lokacije zapamtile, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">O pregledniku Pubky Chromium</translation>
 <translation id="3352986031709923790">gornji desni kut područja za pretraživanje: desno <ph name="RIGHT" />%, vrh <ph name="TOP" />%</translation>
 <translation id="3366305173356742781">Podaci Chromiuma na vašem računu</translation>
 <translation id="3375770072980084583">Upotrebljavajte zaporke uz Chromium na telefonu</translation>
@@ -240,6 +243,7 @@
 <translation id="3530103706039034513"><ph name="EXISTING_USER" /> već je prijavljen/a.  Da bi vaše pregledavanje ostalo odvojeno, prijavite se na Chromium na svojem profilu kao <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">QR kôd za preuzimanje preglednika Chromium na mobilne uređaje</translation>
 <translation id="354621070532799440">Podsjetnik: najbolje Googleove sigurnosne značajke u vašem džepu</translation>
+<translation id="3554011135241686756">Pokreni Pubky Chromium</translation>
 <translation id="3561853857681580870">Da biste dijelili zaslon, u postavkama sustava dopustite snimanje zaslona za Chromium.</translation>
 <translation id="3588112919289558122">Poboljšana zaštita isključuje optimizaciju JavaScripta za web-lokacije koje Chromium ne prepoznaje</translation>
 <translation id="3597003331831379823">Pokretanje postavljanja s dodatnim ovlastima nije uspjelo. <ph name="METAINSTALLER_ERROR" />.</translation>
@@ -365,6 +369,7 @@
 <translation id="4987820182225656817">Gosti mogu upotrebljavati Chromium bez ostavljanja tragova o upotrebi.</translation>
 <translation id="4992938037305302429">Vaš račun u Chromiumu</translation>
 <translation id="4994636714258228724">Dodajte sebe kao korisnika Chromiuma</translation>
+<translation id="5036105059978901236">Tko upotrebljava Pubky Chromium?</translation>
 <translation id="504699503110800016">Otvorite dodatni izbornik</translation>
 <translation id="5074496654342756568">Pristupite svim svojim Googleovim favoritima uz Chromium na uređaju <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Chromium treba dopuštenje za praćenje pokreta vaših ruku</translation>
@@ -675,6 +680,7 @@ Chromium ne može oporaviti vaše postavke.</translation>
 <translation id="8004582292198964060">Preglednik</translation>
 <translation id="8010081455002666927">Automatsko otkrivanje</translation>
 <translation id="8013436988911883588">Kada Chromium dobije pristup, web-lokacije će vas moći tražiti pristup.</translation>
+<translation id="8024015851840632875">Dobro došli u Pubky Chromium</translation>
 <translation id="8031714377769448844">Prikvačite Chromium na traku sa zadacima da biste mu brzo pristupili kad god želite</translation>
 <translation id="80471789339884597">Zahvaljujemo što ste izvršili instaliranje. Da biste mogli koristiti <ph name="BUNDLE_NAME" />, morate ponovno pokrenuti sve preglednike.</translation>
 <translation id="8054112667659782652">Uvijek prikaži prečac za pretraživanje slika</translation>

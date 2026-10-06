@@ -45,6 +45,7 @@ Mae'n bosib na fydd rhai nodweddion ar gael ac ni fydd newidiadau o ran dewisiad
 <translation id="1465192221147974788">I rannu'ch ffenestr, caniatewch recordio sgrîn ar gyfer Chromium yn y Gosodiadau System.</translation>
 <translation id="1478370723027452770">Cael help gyda Chrome for Testing</translation>
 <translation id="1497802159252041924">Gwall gosod: <ph name="INSTALL_ERROR" /></translation>
+<translation id="1511563837468275295">Rheolydd Tasgau - Pubky Chromium</translation>
 <translation id="1518627427551567882">Mae'r dudalen hon wedi'i warchod</translation>
 <translation id="1524282610922162960">Rhannu tab Chromium</translation>
 <translation id="154404805518949443">Mewngofnodi i Chromium</translation>
@@ -176,6 +177,7 @@ Mae'n bosib na fydd rhai nodweddion ar gael ac ni fydd newidiadau o ran dewisiad
 <translation id="2846251086934905009">Gwall gosod: Ni wnaeth y gosodwr orffen. Mae'r gosodiad wedi'i derfynu.</translation>
 <translation id="2847479871509788944">Tynnu o Chromium...</translation>
 <translation id="2850691299438350830">Yn eich cadw'n ddiogel ar Chromium a gellir ei ddefnyddio i wella'ch diogelwch mewn apiau Google eraill pan fyddwch wedi'ch mewngofnodi</translation>
+<translation id="2858220351857914958">Gallwch wahanu eich holl bethau Pubky Chromium gyda phroffiliau Pubky Chromium. Creu proffiliau ar gyfer eich ffrindiau a'ch teulu, neu rannu rhwng gwaith a hwyl.</translation>
 <translation id="2885378588091291677">Rheolwr Tasgau</translation>
 <translation id="2910007522516064972">Ynghylch &amp;Chromium</translation>
 <translation id="2915996080311180594">Ailddechrau'n Ddiweddarach</translation>
@@ -221,11 +223,13 @@ Mae'n bosib na fydd rhai nodweddion ar gael ac ni fydd newidiadau o ran dewisiad
 
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="3263249950597659484">Ewch â'ch hoff offer AI Google gyda chi wrth fynd gyda Chromium ar iOS.</translation>
+<translation id="3277656637916811544"><ph name="PAGE_TITLE" /> - Pubky Chromium</translation>
 <translation id="3286538390144397061">Ailddechrau Nawr</translation>
 <translation id="328888136576916638">Mae allweddi API Google ar goll. Bydd rhywfaint o swyddogaeth Chromium wedi'i hanalluogi.</translation>
 <translation id="3296368748942286671">Parhau i redeg apiau cefndir pan fydd Chromium ar gau</translation>
 <translation id="3313189106987092621">Bydd Chromium yn eich rhybuddio cyn llwytho unrhyw wefan gan ddefnyddio cysylltiad anniogel</translation>
 <translation id="3316771292331273802">Byddwch yn cael eich allgofnodi o'r rhan fwyaf o wefannau pan fyddwch yn cau holl ffenestri Chromium, ac eithrio eich Cyfrif Google os ydych wedi mewngofnodi i Chromium. I adael i wefannau eich cofio, <ph name="SETTINGS_LINK" />.</translation>
+<translation id="3322618165296853161">Ynghylch Pubky Chromium</translation>
 <translation id="3352986031709923790">cornel dde uchaf yr ardal chwilio: <ph name="RIGHT" />% i'r dde, <ph name="TOP" />% ar y brig</translation>
 <translation id="3366305173356742781">Data Chromium yn eich cyfrif</translation>
 <translation id="3375770072980084583">Defnyddiwch eich cyfrineiriau gyda Chromium ar eich ffôn</translation>
@@ -242,6 +246,7 @@ Mae'n bosib na fydd rhai nodweddion ar gael ac ni fydd newidiadau o ran dewisiad
 <translation id="3530103706039034513">Mae <ph name="EXISTING_USER" /> eisoes wedi mewngofnodi.  I gadw'ch pori ar wahân, mewngofnodwch i Chromium yn eich proffil eich hun fel <ph name="USER_EMAIL_ADDRESS" />.</translation>
 <translation id="3531741627422851418">Cod QR i lawrlwytho porwr Chromium ar ddyfeisiau symudol</translation>
 <translation id="354621070532799440">Atgoffwr: Nodweddion diogelwch gorau Google yn eich poced</translation>
+<translation id="3554011135241686756">Cychwyn Pubky Chromium</translation>
 <translation id="3561853857681580870">I rannu'ch sgrîn, caniatewch recordio sgrîn ar gyfer Chromium yn y Gosodiadau System.</translation>
 <translation id="3588112919289558122">Mae gwell amddiffyniad yn diffodd optimeiddio JavaScript ar gyfer gwefannau nad yw Chromium yn eu hadnabod</translation>
 <translation id="3597003331831379823">Wedi methu rhedeg gosod gyda breintiau uwch. <ph name="METAINSTALLER_ERROR" /></translation>
@@ -367,10 +372,12 @@ Mae'n bosib na fydd rhai nodweddion ar gael ac ni fydd newidiadau o ran dewisiad
 <translation id="4987820182225656817">Gall gwesteion ddefnyddio Chromium heb adael unrhyw beth ar ôl.</translation>
 <translation id="4992938037305302429">Eich Cyfrif yn Chromium</translation>
 <translation id="4994636714258228724">Ychwanegu eich hun at Chromium</translation>
+<translation id="5036105059978901236">Pwy sy'n defnyddio Pubky Chromium?</translation>
 <translation id="504699503110800016">Agor y ddewislen gorlif</translation>
 <translation id="5074496654342756568">Cael mynediad at eich holl ffefrynnau Google gyda Chromium ar eich <ph name="DEVICE_TYPE" /></translation>
 <translation id="5123973130450702873">Mae angen caniatâd i olrhain eich dwylo ar Chromium</translation>
 <translation id="5141988424377517949">Nid ydych wedi ymweld yn ddiweddar. Mae Chromium wedi tynnu <ph name="PERMISSION_1" />, <ph name="PERMISSION_2" />, <ph name="PERMISSION_3" />.</translation>
+<translation id="5147126173418055786">Cael help gyda Pubky Chromium</translation>
 <translation id="5174969993834422967">Rydych fel arfer yn rhwystro hysbysiadau. I adael i'r wefan hon eich hysbysu, cliciwch yr eicon hysbysu ar gornel dde eich bar lleoliad.</translation>
 <translation id="5174983315706567306">Does dim digon o le ar y ddisg.</translation>
 <translation id="5187123684706427865">Mae angen ail-ddilysu'r cyfrif Chromium</translation>
@@ -425,6 +432,7 @@ Os nad yw'r dudalen hon yn gweithio fel y disgwylir, rhowch gynnig ar ganiatáu 
 <translation id="5623402015214259806">{0,plural, =0{Mae diweddariad Cromiwm ar gael}=1{Mae diweddariad Cromiwm ar gael}two{Mae diweddariad Chromium wedi bod ar gael ers # ddiwrnod}few{Mae diweddariad Chromium wedi bod ar gael ers # diwrnod}many{Mae diweddariad Chromium wedi bod ar gael ers # diwrnod}other{Mae diweddariad Chromium wedi bod ar gael ers # diwrnod}}</translation>
 <translation id="5643865575100044307">Dileu data gwefan o'ch dyfais bob amser pan fyddwch yn cau Chromium</translation>
 <translation id="5653831366781983928">Ailgychwynnwch Chromium nawr</translation>
+<translation id="5664172666218028492">Croeso i broffiliau Pubky Chromium</translation>
 <translation id="5690427481109656848">Google LLC</translation>
 <translation id="5698481217667032250">Dangos Chromium yn yr iaith hon</translation>
 <translation id="569897634095159764">Methu â chysylltu â'r Rhyngrwyd. Mae angen dilysu'r dirprwy weinydd.</translation>
@@ -677,6 +685,7 @@ Ni all Chromium adfer eich gosodiadau.</translation>
 <translation id="8004582292198964060">Porwr</translation>
 <translation id="8010081455002666927">Awto-ganfod</translation>
 <translation id="8013436988911883588">Unwaith y bydd gan Chromium fynediad, bydd gwefannau yn gallu gofyn i chi am fynediad.</translation>
+<translation id="8024015851840632875">Croeso i Pubky Chromium</translation>
 <translation id="8031714377769448844">Pinio Chromium i'ch bar tasgau i'w gyrraedd yn gyflym unrhyw bryd</translation>
 <translation id="80471789339884597">Diolch am osod. Rhaid i chi ailgychwyn eich holl borwyr cyn defnyddio <ph name="BUNDLE_NAME" />.</translation>
 <translation id="8054112667659782652">Dangos llwybr byr Chwilio Lluniau bob amser</translation>
