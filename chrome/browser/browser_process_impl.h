@@ -321,11 +321,13 @@ class BrowserProcessImpl : public BrowserProcess,
   // Must be destroyed before |browser_policy_connector_|.
   bool created_profile_manager_ = false;
   std::unique_ptr<ProfileManager> profile_manager_;
-#if BUILDFLAG(PUBKY_UPDATE_UI)
-  std::unique_ptr<pubky_update::Controller> pubky_update_controller_;
-#endif
 
   const std::unique_ptr<PrefService> local_state_;
+
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  // Must be destroyed before |local_state_|.
+  std::unique_ptr<pubky_update::Controller> pubky_update_controller_;
+#endif
 
   // Must be destroyed before |local_state_|.
   std::unique_ptr<signin::ActivePrimaryAccountsMetricsRecorder>

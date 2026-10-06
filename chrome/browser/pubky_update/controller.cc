@@ -102,8 +102,17 @@ void Controller::FetchMetadata() {
           description: "Fetches a signed, fixed-target release catalog. No package download."
           trigger: "Only an explicit Check for updates action in About."
           data: "No account, profile or browser identifiers."
+          user_data {
+            type: NONE
+          }
           destination: OTHER
           destination_other: "The fixed MCarlomagno/pubky-chromium raw GitHub feed."
+          internal {
+            contacts {
+              owners: "chrome/browser/OWNERS"
+            }
+          }
+          last_reviewed: "2026-10-06"
         }
         policy {
           cookies_allowed: NO

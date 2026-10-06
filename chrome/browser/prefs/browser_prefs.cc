@@ -4,11 +4,6 @@
 
 #include "chrome/browser/prefs/browser_prefs.h"
 
-#include "chrome/common/pubky_update/buildflags.h"
-#if BUILDFLAG(PUBKY_UPDATE_UI)
-#include "chrome/browser/pubky_update/controller.h"
-#endif
-
 #include <array>
 #include <optional>
 #include <string>
@@ -112,6 +107,7 @@
 #include "chrome/browser/webauthn/webauthn_pref_names.h"
 #include "chrome/common/buildflags.h"
 #include "chrome/common/pref_names.h"
+#include "chrome/common/pubky_update/buildflags.h"
 #include "chrome/common/secure_origin_allowlist.h"
 #include "components/autofill/core/common/autofill_prefs.h"
 #include "components/blocked_content/safe_browsing_triggered_popup_blocker.h"
@@ -235,6 +231,10 @@
 #include "rlz/buildflags/buildflags.h"
 #include "ui/accessibility/accessibility_prefs.h"
 #include "ui/webui/buildflags.h"
+
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+#include "chrome/browser/pubky_update/controller.h"
+#endif
 
 #if BUILDFLAG(ENABLE_WEBUI_NTP)
 #include "chrome/browser/new_tab_page/modules/v2/most_relevant_tab_resumption/most_relevant_tab_resumption_page_handler.h"

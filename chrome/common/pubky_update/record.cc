@@ -140,16 +140,16 @@ RecordResult VerifyRecord(std::string_view envelope,
   auto get = [&](std::string_view field) -> const std::string& {
     return *dict->FindString(field);
   };
-  const bool linux = target == Target::kLinuxX64;
+  const bool is_linux = target == Target::kLinuxX64;
   if (get("repository") != "MCarlomagno/pubky-chromium" ||
       get("product") != "Pubky Chromium" || get("channel") != "experimental" ||
       get("architecture") != "x64" ||
-      get("platform") != (linux ? "linux" : "windows") ||
-      get("package_id") != (linux ? "pubky-chromium" : "PubkyChromium")) {
+      get("platform") != (is_linux ? "linux" : "windows") ||
+      get("package_id") != (is_linux ? "pubky-chromium" : "PubkyChromium")) {
     return Fail(RecordError::kTarget);
   }
   if (!Segment(get("tag")) || !Segment(get("asset")) ||
-      !base::EndsWith(get("asset"), linux ? ".deb" : ".exe") ||
+      !base::EndsWith(get("asset"), is_linux ? ".deb" : ".exe") ||
       !Hex(get("sha256"), 64) || !Hex(get("source_revision"), 40)) {
     return Fail(RecordError::kSchema);
   }
@@ -169,7 +169,7 @@ RecordResult VerifyRecord(std::string_view envelope,
   // helpers must still read and compare the actual installed package/PE version.
   if (!Version(record.version, get("product_version")) ||
       !Version(upstream, get("upstream_version")) ||
-      record.native_version != get("product_version") + (linux ? "-1" : "") ||
+      record.native_version != get("product_version") + (is_linux ? "-1" : "") ||
       !running.IsValid() || !installed.IsValid() ||
       !Version(running, running.GetString()) ||
       !Version(installed, installed.GetString())) {

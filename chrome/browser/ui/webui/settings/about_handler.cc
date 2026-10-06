@@ -450,10 +450,9 @@ void AboutHandler::OnJavascriptAllowed() {
   }
 #endif
   apply_changes_from_upgrade_observer_ = true;
-#if BUILDFLAG(PUBKY_UPDATE_UI)
-  return;
-#endif
+#if !BUILDFLAG(PUBKY_UPDATE_UI) || !BUILDFLAG(IS_MAC)
   version_updater_ = VersionUpdater::Create(web_ui()->GetWebContents());
+#endif
   policy_registrar_ = std::make_unique<policy::PolicyChangeRegistrar>(
       g_browser_process->policy_service(),
       policy::PolicyNamespace(policy::POLICY_DOMAIN_CHROME, std::string()));
@@ -911,8 +910,9 @@ void AboutHandler::OnExtendedUpdatesSettingChanged() {
 void AboutHandler::RequestUpdate() {
 #if BUILDFLAG(PUBKY_UPDATE_UI)
   SendPubkyStatus();
-  return;
 #endif
+  // Linux/Windows use VersionUpdaterBasic, which only reads local restart state.
+#if !BUILDFLAG(PUBKY_UPDATE_UI) || !BUILDFLAG(IS_MAC)
   version_updater_->CheckForUpdate(
       base::BindRepeating(&AboutHandler::SetUpdateStatus,
                           weak_factory_.GetWeakPtr()),
@@ -922,6 +922,7 @@ void AboutHandler::RequestUpdate() {
 #else
       VersionUpdater::PromoteCallback());
 #endif  // BUILDFLAG(IS_MAC)
+#endif  // !BUILDFLAG(PUBKY_UPDATE_UI) || !BUILDFLAG(IS_MAC)
 }
 
 #if BUILDFLAG(PUBKY_UPDATE_UI)

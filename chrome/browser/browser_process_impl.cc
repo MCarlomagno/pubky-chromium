@@ -4,10 +4,6 @@
 
 #include "chrome/browser/browser_process_impl.h"
 
-#if BUILDFLAG(PUBKY_UPDATE_UI)
-#include "chrome/browser/pubky_update/controller.h"
-#endif
-
 #include <stddef.h>
 #include <stdio.h>
 
@@ -85,6 +81,9 @@
 #include "chrome/browser/printing/background_printing_manager.h"
 #include "chrome/browser/printing/print_job_manager.h"
 #include "chrome/browser/profiles/profile_manager.h"
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+#include "chrome/browser/pubky_update/controller.h"
+#endif
 #include "chrome/browser/resource_coordinator/resource_coordinator_parts.h"
 #include "chrome/browser/serial/serial_policy_allowed_ports.h"
 #include "chrome/browser/shell_integration.h"

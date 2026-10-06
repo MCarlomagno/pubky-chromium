@@ -37,16 +37,16 @@ inline std::string Timestamp(base::Time time) {
                             e.day_of_month, e.hour, e.minute, e.second);
 }
 inline base::DictValue Record(base::Time now, Target target = Target::kLinuxX64) {
-  const bool linux = target == Target::kLinuxX64;
+  const bool is_linux = target == Target::kLinuxX64;
   base::DictValue r;
   r.Set("architecture", "x64");
-  r.Set("asset", linux ? "pubky.deb" : "mini_installer.exe");
+  r.Set("asset", is_linux ? "pubky.deb" : "mini_installer.exe");
   r.Set("channel", "experimental");
   r.Set("expires_at", Timestamp(now + base::Days(30)));
   r.Set("issued_at", Timestamp(now - base::Minutes(1)));
-  r.Set("native_version", linux ? "156.0.8073.1-1" : "156.0.8073.1");
-  r.Set("package_id", linux ? "pubky-chromium" : "PubkyChromium");
-  r.Set("platform", linux ? "linux" : "windows");
+  r.Set("native_version", is_linux ? "156.0.8073.1-1" : "156.0.8073.1");
+  r.Set("package_id", is_linux ? "pubky-chromium" : "PubkyChromium");
+  r.Set("platform", is_linux ? "linux" : "windows");
   r.Set("product", "Pubky Chromium");
   r.Set("product_version", "156.0.8073.1");
   r.Set("repository", "MCarlomagno/pubky-chromium");
@@ -57,7 +57,7 @@ inline base::DictValue Record(base::Time now, Target target = Target::kLinuxX64)
   r.Set("tag", "v156.0.8073.1");
   r.Set("upstream_version", "156.0.8073.0");
   r.Set("url", std::string("https://github.com/MCarlomagno/pubky-chromium/releases/download/v156.0.8073.1/") +
-                   (linux ? "pubky.deb" : "mini_installer.exe"));
+                   (is_linux ? "pubky.deb" : "mini_installer.exe"));
   return r;
 }
 inline std::string Envelope(std::string_view payload,

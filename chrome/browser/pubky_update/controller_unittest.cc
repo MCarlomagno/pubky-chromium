@@ -8,6 +8,7 @@
 
 #include "base/functional/bind.h"
 #include "base/functional/callback_helpers.h"
+#include "base/test/bind.h"
 #include "base/test/task_environment.h"
 #include "chrome/common/pubky_update/test_record.h"
 #include "components/prefs/testing_pref_service.h"
@@ -156,7 +157,7 @@ TEST_F(PubkyUpdateControllerTest, FailureRetryAndExplicitRestart) {
   EXPECT_EQ("committed", State());
 }
 TEST_F(PubkyUpdateControllerTest, NotificationCancellationPreventsBoundaryWork) {
-  auto tab = controller_->Observe(base::BindRepeating([this] {
+  auto tab = controller_->Observe(base::BindLambdaForTesting([this] {
     if (State() == "checking" || State() == "downloading") {
       controller_->Cancel(Id());
     }
@@ -166,7 +167,7 @@ TEST_F(PubkyUpdateControllerTest, NotificationCancellationPreventsBoundaryWork) 
   EXPECT_EQ(0, fetches_);
   tab = {};
   Offer();
-  tab = controller_->Observe(base::BindRepeating([this] {
+  tab = controller_->Observe(base::BindLambdaForTesting([this] {
     if (State() == "downloading") {
       controller_->Cancel(Id());
     }
