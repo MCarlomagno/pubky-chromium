@@ -12,10 +12,11 @@ Adopted source revision: `77445742d82c8cfc482b2fea0476fe5f84d16032` from `Severi
 
 The inherited project documents macOS ARM64 results in `pubky/VERIFICATION.md`. Those are the source author's results, not independent Linux validation by this project. The current `navigator.pubky` interface reports built-in capabilities; it is not a privileged session API.
 
-## Scope and permissions
+## Scope and standing approvals
 
 - Autonomous work is limited to this fork and explicitly approved goals. Before any repository action outside this fork, request owner approval naming the repository, purpose, and actions. Record possible external dependencies here or in this project's issues; do not open external issues, comments, branches, or PRs without permission.
-- An approved plan can proceed through implementation, testing, independent review, repair, and merge without another owner prompt for the same decisions. Record the agreement and acceptance checks in the issue or decision record before dispatch.
+- An approved issue carries these standing approvals: a branch off `pubky` named `s0/<issue>-<description>`, builds of the touched targets on the designated builder under its host lock, the pinned checks listed below, and a pull request against `pubky`. Do not ask for them again. Everything else in this list still needs the owner.
+- GitHub issues are the work queue. The owner labels an issue or PR `ready` plus `mini-1` or `mini-2` to dispatch it to that engineer; the queue sync sets `in-progress`, and the engineer's result moves it to `review` (waiting for the owner) or `blocked` (stopped after two failed attempts, with the reason in a comment).
 - Questions and exploratory ideas are discussion, not authorization. New product, protocol, architecture, security, or privacy decisions go to the owner with a recommendation and alternatives.
 - No new paid infrastructure, releases, deployment, or credential sharing is authorized. Use existing resources within their approved limits.
 - Internal conversations and private source material must not be copied into public issues, commits, or artifacts. Public claims need public evidence or explicit disclosure approval.
@@ -24,9 +25,9 @@ The inherited project documents macOS ARM64 results in `pubky/VERIFICATION.md`. 
 
 Linux x86_64 is the initial reproduction target on the designated Linux builder. A resource-capped trial there is approved; the previous cloud-only assumption is superseded. No cloud purchase is approved. macOS remains an inherited, unverified-by-us platform; macOS-specific changes need actual macOS validation. Windows and mobile are outside the first milestone.
 
-Before fetching dependencies or building, record the checkout/dependency/output isolation plan, resource limits, exact revision, commands, and any required outside-repository download permission. A Git worktree does not by itself isolate Chromium's `gclient`/`DEPS` dependencies. Never share writable build outputs between tasks. Heavy Linux builds use the designated host lock and run one at a time.
+Builds run in the designated builder's canonical checkout under its host lock, one at a time. Engineers fetch and check out their branch there; creating another checkout, running `gclient sync`, or changing dependency pins needs the owner. Never delete or clean an `out/` directory.
 
-The inherited `pubky/args.gn`, `pubky/gclient.py`, and scripts target macOS ARM64 and use `caffeinate`. Do not run them on Linux as if they were validated Linux commands. The S0 build-plan issue must establish the Linux invocation and tests before the first build.
+The inherited `pubky/args.gn`, `pubky/gclient.py`, and scripts target macOS ARM64 and use `caffeinate`. Do not run them on Linux as if they were validated Linux commands.
 
 Existing check targets to preserve:
 
@@ -35,7 +36,7 @@ Existing check targets to preserve:
 - Pubky capability web-platform tests described in `pubky/scripts/test_capabilities.sh`.
 - Live public-key navigation, deliberate wrong-key rejection, and ordinary HTTPS browsing, without DNS/TLS bypass flags.
 
-Use `gn gen` and `autoninja -C <isolated-output> -j <approved-limit> <target>` with recorded Linux arguments; these placeholders describe the build contract, not a completed or runnable Linux setup. Record literal commands, results, revision, and relevant artifact hashes in each validation handoff. A full Linux baseline build belongs to the subsequent baseline work; S0 must provide the prerequisites and measured checkout/setup evidence or explicitly approved amendments to that gate.
+Build only the targets a change touches with `autoninja -C <output> <target>`, then run the checks above that apply. Record the commands, the revision, and the results in the handoff comment.
 
 ## Branches, review, and integration
 
@@ -43,11 +44,11 @@ Use one branch per issue, based on the pinned development branch, named `s0/<iss
 
 An issue is Ready only when its goal, boundaries, dependencies, acceptance checks, and approval context are sufficient to execute. Independent work can proceed in parallel. Shared protocol/interface changes, dependency upgrades, broad refactors, and builds must be coordinated; review takes priority over starting another implementation.
 
-Authors self-review and exercise the relevant behavior. A different engineer reviews the exact final revision, checking both the diff and the evidence. The author does not merge their own work. New commits invalidate affected review/test evidence. Integration is sequential, with dependent changes checked against the new base.
+Authors self-review and exercise the behavior they changed. The owner reviews and merges pull requests; a second engineer reviews only when the owner labels the PR `ready` with the other machine's label. New commits invalidate affected review evidence. Integration is sequential, with dependent changes checked against the new base.
 
-Autonomous merging requires agreement with the approved scope, independent approval, and passing required checks. Missing CI is not evidence of a pass. Documentation-only changes require accurate source references, consistent instructions, and verification of the published diff; they must not claim unrun builds. Do not waive failures or weaken tests to make progress. Escalate after two failed attempts or two unsuccessful review/repair cycles, with the failure and what can continue.
+Engineers do not merge. Missing CI is not evidence of a pass. Documentation-only changes must not claim unrun builds. Do not waive failures or weaken tests to make progress. Stop after two failed attempts or two unsuccessful review/repair cycles and report the failure and what can continue.
 
-Because engineers share one GitHub account, agent cross-review is not a separate GitHub approval identity. Review evidence must name the reviewing engineer and exact commit. Findings, author replies, and decisions belong on the PR. Agreement must be supported by code, contracts, or execution evidence, not by agents talking each other into approval.
+Engineers share one GitHub account, so a review comment names the reviewing engineer and the exact commit. Findings, author replies, and decisions belong on the PR.
 
 ## S0 acceptance ledger
 
