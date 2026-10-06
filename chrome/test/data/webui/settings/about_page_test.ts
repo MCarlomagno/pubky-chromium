@@ -122,7 +122,7 @@ suite('AllBuilds', function() {
     assertEquals(
         loadTimeData.getString('pubkyUpdateCommitted'),
         page.shadowRoot.querySelector('#pubkyUpdate [role="status"]')!
-            .textContent!.trim());
+            .textContent.trim());
     webUIListenerCallback('pubky-update-status-changed', {
       state: 'ready', id: 'retry-2', version: '156.0.8073.1', size: '123', error: 0,
       canCheck: false, canCancel: true, canConfirm: false, canRestart: true,
@@ -131,7 +131,7 @@ suite('AllBuilds', function() {
     assertEquals(
         loadTimeData.getString('pubkyUpdateReady'),
         page.shadowRoot.querySelector('#pubkyUpdate [role="status"]')!
-            .textContent!.trim());
+            .textContent.trim());
     assertEquals(0, aboutBrowserProxy.getCallCount('restartToApplyPubkyUpdate'));
     page.shadowRoot.querySelector<HTMLElement>('#pubkyRestart')!.click();
     assertEquals(
