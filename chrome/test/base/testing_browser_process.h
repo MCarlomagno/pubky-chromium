@@ -136,6 +136,9 @@ class TestingBrowserProcess
   PrefService* local_state() override;
 #if BUILDFLAG(PUBKY_UPDATE_UI)
   pubky_update::Controller* pubky_update_controller() override;
+  void SetPubkyUpdateControllerForTesting(pubky_update::Controller* controller) {
+    pubky_update_controller_ = controller;
+  }
 #endif
   signin::ActivePrimaryAccountsMetricsRecorder*
   active_primary_accounts_metrics_recorder() override;
@@ -307,6 +310,9 @@ class TestingBrowserProcess
   std::unique_ptr<TestingProfileManager> testing_profile_manager_;
 
   std::unique_ptr<TestingPrefServiceSimple> testing_local_state_;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  raw_ptr<pubky_update::Controller> pubky_update_controller_ = nullptr;
+#endif
 
 #if BUILDFLAG(ENABLE_CHROME_NOTIFICATIONS)
   std::unique_ptr<NotificationUIManager> notification_ui_manager_;

@@ -401,7 +401,7 @@ void TestingBrowserProcess::SetVariationsService(
 
 #if BUILDFLAG(PUBKY_UPDATE_UI)
 pubky_update::Controller* TestingBrowserProcess::pubky_update_controller() {
-  return nullptr;
+  return pubky_update_controller_;
 }
 #endif
 
