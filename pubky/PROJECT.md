@@ -15,7 +15,7 @@ The inherited project documents macOS ARM64 results in `pubky/VERIFICATION.md`. 
 ## Scope and standing approvals
 
 - Autonomous work is limited to this fork and explicitly approved goals. Before any repository action outside this fork, request owner approval naming the repository, purpose, and actions. Record possible external dependencies here or in this project's issues; do not open external issues, comments, branches, or PRs without permission.
-- An approved issue carries these standing approvals: a branch off `pubky` named `s0/<issue>-<description>`, builds of the touched targets on the designated builder under its host lock, the pinned checks listed below, and a pull request against `pubky`. Do not ask for them again. Everything else in this list still needs the owner.
+- An approved issue carries these standing approvals: a branch off `pubky` named `s0/<issue>-<description>`, the tests that apply to the change, and a pull request against `pubky`. Do not ask for them again. Everything else in this list still needs the owner.
 - GitHub issues are the work queue. The owner labels an issue or PR `ready` plus `mini-1` or `mini-2` to dispatch it to that engineer; the queue sync sets `in-progress`, and the engineer's result moves it to `review` (waiting for the owner) or `blocked` (stopped after two failed attempts, with the reason in a comment).
 - Questions and exploratory ideas are discussion, not authorization. New product, protocol, architecture, security, or privacy decisions go to the owner with a recommendation and alternatives.
 - No new paid infrastructure, releases, deployment, or credential sharing is authorized. Use existing resources within their approved limits.
@@ -23,20 +23,20 @@ The inherited project documents macOS ARM64 results in `pubky/VERIFICATION.md`. 
 
 ## Target platforms and build gate
 
-Linux x86_64 is the initial reproduction target on the designated Linux builder. A resource-capped trial there is approved; the previous cloud-only assumption is superseded. No cloud purchase is approved. macOS remains an inherited, unverified-by-us platform; macOS-specific changes need actual macOS validation. Windows and mobile are outside the first milestone.
+Linux x86_64 is the initial reproduction target on the designated Linux builder. A resource-capped trial there is approved; the previous cloud-only assumption is superseded. No cloud purchase is approved. macOS remains an inherited, unverified-by-us platform; macOS-specific changes need actual macOS validation. Windows is part of the first milestone; Windows-specific changes need Windows validation before a release. Mobile is outside the first milestone.
 
-Builds run in the designated builder's canonical checkout under its host lock, one at a time. Engineers fetch and check out their branch there; creating another checkout, running `gclient sync`, or changing dependency pins needs the owner. Never delete or clean an `out/` directory.
+Do not compile Chromium for routine work; compilation is reserved for releases. Each engineer works in its own checkout on its own machine. Release builds run on the designated builder under its host lock, one at a time. Running `gclient sync` or changing dependency pins needs the owner. Never delete or clean an `out/` directory.
 
 The inherited `pubky/args.gn`, `pubky/gclient.py`, and scripts target macOS ARM64 and use `caffeinate`. Do not run them on Linux as if they were validated Linux commands.
 
-Existing check targets to preserve:
+Release checks to preserve:
 
 - `net_unittests`, focused filter: `SSLClientSocketTest.Pubky*:HttpResponseInfoTest.*:DnsResponseResultExtractorTest.*:HostCacheTest.Pubky*:DnsTransactionTest.Pubky*:HostResolverManagerTest.Pubky*`.
 - `third_party/blink/renderer/platform:pubky_browser_unittests` and its produced `pubky_browser_unittests` executable.
 - Pubky capability web-platform tests described in `pubky/scripts/test_capabilities.sh`.
 - Live public-key navigation, deliberate wrong-key rejection, and ordinary HTTPS browsing, without DNS/TLS bypass flags.
 
-Build only the targets a change touches with `autoninja -C <output> <target>`, then run the checks above that apply. Record the commands, the revision, and the results in the handoff comment.
+For routine work, run the tests for the changed code that need no Chromium build (for example Python tests and `PRESUBMIT_test.py`). Passing tests are enough for review. Record the commands, the revision, and the results in the handoff comment. When preparing a release, build with `autoninja -C <output> <target>` and run the release checks above.
 
 ## Branches, review, and integration
 
@@ -46,7 +46,7 @@ An issue is Ready only when its goal, boundaries, dependencies, acceptance check
 
 Authors self-review and exercise the behavior they changed. The owner reviews and merges pull requests; a second engineer reviews only when the owner labels the PR `ready` with the other machine's label. New commits invalidate affected review evidence. Integration is sequential, with dependent changes checked against the new base.
 
-Engineers do not merge. Missing CI is not evidence of a pass. Documentation-only changes must not claim unrun builds. Do not waive failures or weaken tests to make progress. Stop after two failed attempts or two unsuccessful review/repair cycles and report the failure and what can continue.
+Engineers do not merge. Documentation-only pull requests merge without review. Missing CI is not evidence of a pass. Documentation-only changes must not claim unrun builds. Do not waive failures or weaken tests to make progress. Stop after two failed attempts or two unsuccessful review/repair cycles and report the failure and what can continue.
 
 Engineers share one GitHub account, so a review comment names the reviewing engineer and the exact commit. Findings, author replies, and decisions belong on the PR.
 
