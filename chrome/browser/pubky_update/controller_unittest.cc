@@ -5,6 +5,7 @@
 #include "chrome/browser/pubky_update/controller.h"
 
 #include <algorithm>
+#include <optional>
 
 #include "base/functional/bind.h"
 #include "base/functional/callback_helpers.h"
@@ -49,7 +50,15 @@ class PubkyUpdateControllerTest : public testing::Test {
         [](PubkyUpdateControllerTest* self) { ++self->cancels_; },
         base::Unretained(this));
     boundaries.restart = base::BindRepeating(
-        [](PubkyUpdateControllerTest* self) { ++self->restarts_; },
+        [](PubkyUpdateControllerTest* self,
+           base::OnceCallback<void(Controller::RestartResult)> reply) {
+          ++self->restarts_;
+          if (self->immediate_restart_result_) {
+            std::move(reply).Run(*self->immediate_restart_result_);
+          } else {
+            self->restart_reply_ = std::move(reply);
+          }
+        },
         base::Unretained(this));
     controller_ = Controller::CreateForTesting(&prefs_, std::move(boundaries));
   }
@@ -59,12 +68,19 @@ class PubkyUpdateControllerTest : public testing::Test {
     controller_->Check();
     std::move(metadata_reply_).Run(test::Envelope(test::Record(base::Time::Now())));
   }
+  void Ready() {
+    Offer();
+    controller_->Confirm(Id());
+    std::move(download_reply_).Run(true);
+  }
   base::test::TaskEnvironment task_environment_{
       base::test::TaskEnvironment::TimeSource::MOCK_TIME};
   TestingPrefServiceSimple prefs_;
   int fetches_ = 0, downloads_ = 0, cancels_ = 0, restarts_ = 0;
   base::OnceCallback<void(std::string)> metadata_reply_;
   base::OnceCallback<void(bool)> download_reply_;
+  base::OnceCallback<void(Controller::RestartResult)> restart_reply_;
+  std::optional<Controller::RestartResult> immediate_restart_result_;
   std::unique_ptr<Controller> controller_;
 };
 TEST_F(PubkyUpdateControllerTest, LocalReadsAndProductionAreInert) {
@@ -154,7 +170,106 @@ TEST_F(PubkyUpdateControllerTest, FailureRetryAndExplicitRestart) {
   controller_->Restart(id);
   controller_->Restart(id);
   EXPECT_EQ(1, restarts_);
+  EXPECT_EQ("restarting", State());
+  std::move(restart_reply_).Run(Controller::RestartResult::kCommitted);
   EXPECT_EQ("committed", State());
+}
+TEST_F(PubkyUpdateControllerTest, AbortedRestartRequiresFreshConsent) {
+  Ready();
+  const auto id = Id();
+  controller_->Restart(id);
+  EXPECT_TRUE(Id().empty());
+  EXPECT_FALSE(controller_->GetStatus().FindBool("canRestart").value());
+  EXPECT_FALSE(controller_->GetStatus().FindBool("canCancel").value());
+  std::move(restart_reply_).Run(Controller::RestartResult::kAborted);
+  EXPECT_EQ("ready", State());
+  EXPECT_TRUE(controller_->GetStatus().FindBool("canRestart").value());
+  EXPECT_TRUE(controller_->GetStatus().FindBool("canCancel").value());
+  EXPECT_NE(id, Id());
+  EXPECT_FALSE(Id().empty());
+  EXPECT_EQ(0, cancels_);
+  controller_->Restart(id);
+  EXPECT_EQ(1, restarts_);
+  controller_->Restart(Id());
+  EXPECT_EQ(2, restarts_);
+  std::move(restart_reply_).Run(Controller::RestartResult::kCommitted);
+  EXPECT_EQ("committed", State());
+  controller_->Shutdown();
+  EXPECT_EQ(0, cancels_);
+}
+TEST_F(PubkyUpdateControllerTest, SynchronousAbortRestoresFreshConsent) {
+  Ready();
+  const auto id = Id();
+  immediate_restart_result_ = Controller::RestartResult::kAborted;
+  controller_->Restart(id);
+  EXPECT_EQ("ready", State());
+  EXPECT_NE(id, Id());
+  EXPECT_TRUE(controller_->GetStatus().FindBool("canRestart").value());
+  EXPECT_EQ(1, restarts_);
+  controller_->Restart(id);
+  EXPECT_EQ(1, restarts_);
+}
+TEST_F(PubkyUpdateControllerTest, FailedRestartCleansTransactionAndAllowsCheck) {
+  Ready();
+  const auto id = Id();
+  controller_->Restart(id);
+  std::move(restart_reply_).Run(Controller::RestartResult::kFailed);
+  EXPECT_EQ("failed", State());
+  EXPECT_EQ(1, cancels_);
+  EXPECT_TRUE(Id().empty());
+  EXPECT_TRUE(controller_->GetStatus().FindString("version")->empty());
+  EXPECT_TRUE(controller_->GetStatus().FindBool("canCheck").value());
+  controller_->Restart(id);
+  EXPECT_EQ(1, restarts_);
+  Offer();
+  EXPECT_EQ("available", State());
+}
+TEST_F(PubkyUpdateControllerTest, AbortAfterExpiryCannotRestoreReady) {
+  Ready();
+  controller_->Restart(Id());
+  task_environment_.AdvanceClock(base::Days(31));
+  std::move(restart_reply_).Run(Controller::RestartResult::kAborted);
+  EXPECT_EQ("failed", State());
+  EXPECT_EQ(static_cast<int>(RecordError::kExpired),
+            controller_->GetStatus().FindInt("error").value());
+  EXPECT_EQ(1, cancels_);
+  EXPECT_FALSE(controller_->GetStatus().FindBool("canRestart").value());
+}
+TEST_F(PubkyUpdateControllerTest, ShutdownDisarmsPendingRestartAndDropsReply) {
+  Ready();
+  controller_->Restart(Id());
+  controller_->Shutdown();
+  EXPECT_EQ(1, cancels_);
+  std::move(restart_reply_).Run(Controller::RestartResult::kCommitted);
+  EXPECT_EQ("unsupported", State());
+  EXPECT_FALSE(controller_->GetStatus().FindBool("canRestart").value());
+  controller_->Shutdown();
+  EXPECT_EQ(1, cancels_);
+}
+TEST_F(PubkyUpdateControllerTest, ShutdownNotificationPreventsRestartBoundary) {
+  Ready();
+  auto tab = controller_->Observe(base::BindLambdaForTesting([this] {
+    if (State() == "restarting") {
+      controller_->Shutdown();
+    }
+  }));
+  controller_->Restart(Id());
+  EXPECT_EQ(0, restarts_);
+  EXPECT_EQ(1, cancels_);
+  EXPECT_EQ("unsupported", State());
+}
+TEST_F(PubkyUpdateControllerTest, AbortNotificationCanCancelRetainedOffer) {
+  Ready();
+  controller_->Restart(Id());
+  auto tab = controller_->Observe(base::BindLambdaForTesting([this] {
+    if (State() == "ready") {
+      controller_->Cancel(Id());
+    }
+  }));
+  std::move(restart_reply_).Run(Controller::RestartResult::kAborted);
+  EXPECT_EQ("canceled", State());
+  EXPECT_EQ(1, cancels_);
+  EXPECT_EQ(1, restarts_);
 }
 TEST_F(PubkyUpdateControllerTest, NotificationCancellationPreventsBoundaryWork) {
   auto tab = controller_->Observe(base::BindLambdaForTesting([this] {

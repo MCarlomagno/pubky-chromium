@@ -169,7 +169,8 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
       idle: 'pubkyUpdateIdle', unsupported: 'pubkyUpdateUnsupported',
       checking: 'pubkyUpdateChecking', available: 'pubkyUpdateAvailable',
       downloading: 'pubkyUpdateDownloading', ready: 'pubkyUpdateReady',
-      committed: 'pubkyUpdateCommitted', canceled: 'pubkyUpdateCanceled',
+      restarting: 'pubkyUpdateCommitted', committed: 'pubkyUpdateCommitted',
+      canceled: 'pubkyUpdateCanceled',
       failed: 'pubkyUpdateFailed',
       no_newer: 'pubkyUpdateNoNewer',
     };

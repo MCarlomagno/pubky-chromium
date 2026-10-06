@@ -1,6 +1,6 @@
 # Signed catalog v1
 
-This branch implements common verifier/controller/About plumbing. Production is disabled. It contains no approved production key, Linux/Windows installer helper or Mac adapter. The network loader is exercised by repository test boundaries only; the real About handler receives the inert process controller. Test callbacks model download verification/restart, and never count as an installed update.
+This branch implements common verifier/controller/About plumbing, including the restart outcome contract needed by native adapters. Production is disabled. It contains no approved production key, Linux/Windows installer helper or Mac adapter. The network loader is exercised by repository test boundaries only; the real About handler receives the inert process controller. Test callbacks model download verification/restart, and never count as an installed update.
 
 ## Bytes
 
@@ -30,6 +30,10 @@ Fixed feeds are the PLAN's experimental `linux-x64.json` and `windows-x64.json` 
 The process controller owns Local State floors, the offer, opaque ID and cancellation. About attachment, refresh and UpgradeDetector notification call only cached status. Explicit Check is the only metadata-request entry. Duplicate checks/confirmation, stale IDs and callbacks after cancellation are rejected. Two subscribed tabs share the same controller; the last tab detaching cancels unconfirmed work. Confirmed test-boundary work survives detachment but is canceled on teardown. Check/confirm/restart notifications retain weak transaction lifetime guards. Restart commitment is distinct from success; no production shutdown/install path was added.
 
 Only `CreateForTesting`, guarded by `CHECK_IS_TEST`, can supply a key/network factory/native callbacks. No renderer argument, preference or command-line flag activates it. Production presents the disabled explanation and cannot confirm/restart. Google, ChromeOS, Android and all CfT configurations retain their upstream update path. GRIT now receives the existing `is_chrome_for_testing` GN argument so unbranded CfT is excluded as well.
+
+The restart boundary takes a one-shot `RestartResult` reply. Consent enters `restarting`, disables transaction actions and clears the old consent ID. `kAborted` means the adapter has disarmed its transaction after rejected normal closure; the controller returns to `ready` with a fresh ID and visible Restart/Cancel actions. It does not automatically try closure again. Expiration while waiting instead fails and cleans the transaction. `kFailed` cleans it and permits a new explicit Check. `kCommitted` acknowledges the normal app-terminating boundary, never installation success. Shutdown before that acknowledgement cancels the pending transaction and invalidates late replies.
+
+Future Linux code must disarm before replying `kAborted` or `kFailed`, commit only at Chromium's normal termination boundary and separately wait for actual origin-process exit in the coordinator. Pipe EOF or a crash must not synthesize `kCommitted`. This contract does not implement `AttemptExit`, beforeunload observation, pipes, a coordinator, privilege reauthentication or package installation; the Linux milestone is still incomplete.
 
 ## Public release-input tool
 

@@ -30,6 +30,8 @@ namespace pubky_update {
 // UI-thread, process-wide owner. No production adapter/key is shipped yet.
 class Controller {
  public:
+  enum class RestartResult { kAborted, kFailed, kCommitted };
+
   explicit Controller(PrefService* local_state);
   ~Controller();
   static void RegisterLocalState(PrefRegistrySimple* registry);
@@ -55,7 +57,10 @@ class Controller {
     base::RepeatingCallback<void(const Record&, base::OnceCallback<void(bool)>)>
         download_and_verify;
     base::RepeatingClosure cancel;
-    base::RepeatingClosure restart;
+    // Reply only after disarming on abort/failure, or after the normal
+    // app-terminating boundary commits the coordinator. EOF is not commitment.
+    base::RepeatingCallback<void(base::OnceCallback<void(RestartResult)>)>
+        restart;
   };
   static std::unique_ptr<Controller> CreateForTesting(
       PrefService* local_state, TestBoundaries boundaries);
@@ -65,6 +70,7 @@ class Controller {
   void FetchMetadata();
   void OnMetadata(std::optional<std::string> envelope);
   void OnVerified(bool success);
+  void OnRestartResult(RestartResult result);
   void Notify();
   bool Matches(std::string_view id) const;
   std::string FloorPref() const;

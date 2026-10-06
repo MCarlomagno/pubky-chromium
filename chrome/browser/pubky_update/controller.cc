@@ -241,14 +241,45 @@ void Controller::Restart(std::string_view id) {
     }
     return;
   }
-  // No production restart/install path exists in this milestone. A test mock
-  // observes explicit commitment; never report installation success here.
-  state_ = "committed";
+  // Consent starts normal closure; beforeunload can still reject it.
+  state_ = "restarting";
   id_.clear();
   const auto live_transaction = weak_factory_.GetWeakPtr();
   Notify();
   if (live_transaction) {
-    boundaries_->restart.Run();
+    boundaries_->restart.Run(base::BindOnce(
+        &Controller::OnRestartResult, weak_factory_.GetWeakPtr()));
+  }
+}
+void Controller::OnRestartResult(RestartResult result) {
+  DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+  if (shutdown_ || state_ != "restarting") {
+    return;
+  }
+  if (result == RestartResult::kCommitted) {
+    // This acknowledges normal termination, not successful installation.
+    state_ = "committed";
+    Notify();
+    return;
+  }
+  weak_factory_.InvalidateWeakPtrs();
+  if (result == RestartResult::kAborted &&
+      base::Time::Now() < offer_->expires_at) {
+    state_ = "ready";
+    // Retrying requires fresh consent; a queued click from the prior attempt
+    // must not restart the newly disarmed transaction.
+    id_ = base::UnguessableToken::Create().ToString();
+    Notify();
+    return;
+  }
+  error_ = base::Time::Now() >= offer_->expires_at ? RecordError::kExpired
+                                                : RecordError::kNone;
+  state_ = "failed";
+  offer_.reset();
+  const auto live_failure = weak_factory_.GetWeakPtr();
+  boundaries_->cancel.Run();
+  if (live_failure) {
+    Notify();
   }
 }
 void Controller::Detach() {
