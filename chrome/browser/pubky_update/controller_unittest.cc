@@ -41,9 +41,10 @@ class PubkyUpdateControllerTest : public testing::Test {
         }, base::Unretained(this));
     boundaries.download_and_verify = base::BindRepeating(
         [](PubkyUpdateControllerTest* self, const Record& record,
-           base::OnceCallback<void(bool)> reply) {
+           base::OnceCallback<void(StageResult)> reply) {
           EXPECT_EQ("156.0.8073.1", record.version.GetString());
           ++self->downloads_;
+          self->download_record_ = record;
           self->download_reply_ = std::move(reply);
         }, base::Unretained(this));
     boundaries.cancel = base::BindRepeating(
@@ -71,14 +72,25 @@ class PubkyUpdateControllerTest : public testing::Test {
   void Ready() {
     Offer();
     controller_->Confirm(Id());
-    std::move(download_reply_).Run(true);
+    std::move(download_reply_).Run(Staged());
+  }
+  StageResult Staged() {
+    StagedPackage package;
+    package.path = base::FilePath(FILE_PATH_LITERAL("/fake/package"));
+    package.size = download_record_->size;
+    package.sha256 = download_record_->sha256;
+    package.envelope = download_record_->authenticated_envelope;
+    StageResult result;
+    result.package = std::move(package);
+    return result;
   }
   base::test::TaskEnvironment task_environment_{
       base::test::TaskEnvironment::TimeSource::MOCK_TIME};
   TestingPrefServiceSimple prefs_;
   int fetches_ = 0, downloads_ = 0, cancels_ = 0, restarts_ = 0;
   base::OnceCallback<void(std::string)> metadata_reply_;
-  base::OnceCallback<void(bool)> download_reply_;
+  base::OnceCallback<void(StageResult)> download_reply_;
+  std::optional<Record> download_record_;
   base::OnceCallback<void(Controller::RestartResult)> restart_reply_;
   std::optional<Controller::RestartResult> immediate_restart_result_;
   std::unique_ptr<Controller> controller_;
@@ -116,7 +128,7 @@ TEST_F(PubkyUpdateControllerTest, DuplicateStaleConsentAndCancel) {
   controller_->Cancel("stale");
   EXPECT_EQ("downloading", State());
   controller_->Cancel(id);
-  std::move(download_reply_).Run(true);
+  std::move(download_reply_).Run(Staged());
   EXPECT_EQ("canceled", State());
   EXPECT_EQ(0, restarts_);
   EXPECT_EQ("156.0.8073.1", prefs_.GetString("pubky_update.linux_x64.offered_floor"));
@@ -145,7 +157,7 @@ TEST_F(PubkyUpdateControllerTest, ConfirmedWorkSurvivesDetachButNotShutdown) {
   controller_->Detach();
   EXPECT_EQ("downloading", State());
   controller_->Shutdown();
-  std::move(download_reply_).Run(true);
+  std::move(download_reply_).Run(Staged());
   EXPECT_EQ("unsupported", State());
   EXPECT_EQ(0, restarts_);
 }
@@ -156,14 +168,14 @@ TEST_F(PubkyUpdateControllerTest, FailureRetryAndExplicitRestart) {
   Offer();
   auto id = Id();
   controller_->Confirm(id);
-  std::move(download_reply_).Run(false);
+  std::move(download_reply_).Run({});
   EXPECT_EQ("failed", State());
   controller_->Restart(id);
   EXPECT_EQ(0, restarts_);
   Offer();
   id = Id();
   controller_->Confirm(id);
-  std::move(download_reply_).Run(true);
+  std::move(download_reply_).Run(Staged());
   EXPECT_EQ("ready", State());
   controller_->Restart("stale");
   EXPECT_EQ(0, restarts_);
@@ -297,6 +309,35 @@ TEST_F(PubkyUpdateControllerTest, CorruptFloorFailsClosed) {
   EXPECT_EQ("failed", State());
   EXPECT_EQ(0, downloads_);
 }
+TEST_F(PubkyUpdateControllerTest, RejectsStagedResultNotBoundToOffer) {
+  for (int field = 0; field < 5; ++field) {
+    Offer();
+    controller_->Confirm(Id());
+    auto result = Staged();
+    switch (field) {
+      case 0: result.package->path.clear(); break;
+      case 1: ++result.package->size; break;
+      case 2: result.package->sha256 = std::string(64, 'b'); break;
+      case 3: result.package->envelope += "\n"; break;
+      case 4: result.eligibility = EligibilityReason::kLowSpace; break;
+    }
+    std::move(download_reply_).Run(std::move(result));
+    EXPECT_EQ("failed", State());
+    EXPECT_FALSE(controller_->GetStatus().FindBool("canRestart").value());
+  }
+  EXPECT_EQ(static_cast<int>(EligibilityReason::kLowSpace),
+            controller_->GetStatus().FindInt("eligibilityReason").value());
+}
+TEST_F(PubkyUpdateControllerTest, ExpiryDuringDownloadCannotBecomeReady) {
+  Offer();
+  controller_->Confirm(Id());
+  task_environment_.AdvanceClock(base::Days(31));
+  std::move(download_reply_).Run(Staged());
+  EXPECT_EQ("failed", State());
+  EXPECT_EQ(static_cast<int>(RecordError::kExpired),
+            controller_->GetStatus().FindInt("error").value());
+  EXPECT_FALSE(controller_->GetStatus().FindBool("canRestart").value());
+}
 TEST_F(PubkyUpdateControllerTest, ExpiryIsRecheckedAtConsent) {
   Offer();
   auto id = Id();
@@ -307,7 +348,7 @@ TEST_F(PubkyUpdateControllerTest, ExpiryIsRecheckedAtConsent) {
   Offer();
   id = Id();
   controller_->Confirm(id);
-  std::move(download_reply_).Run(true);
+  std::move(download_reply_).Run(Staged());
   task_environment_.AdvanceClock(base::Days(31));
   controller_->Restart(id);
   EXPECT_EQ("failed", State());
