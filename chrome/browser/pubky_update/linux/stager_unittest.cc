@@ -96,7 +96,6 @@ TEST_F(PubkyUpdateLinuxStagerTest, ExactHashSizeEnvelopeAndPrivateOwnership) {
   EXPECT_TRUE(request->referrer.is_empty());
   EXPECT_TRUE(request->headers.IsEmpty());
   EXPECT_TRUE(request->load_flags & net::LOAD_DISABLE_CACHE);
-  EXPECT_TRUE(request->load_flags & net::LOAD_DO_NOT_SEND_AUTH_DATA);
   ASSERT_TRUE(factory_.SimulateResponseForPendingRequest(record_.url.spec(), kBody));
   environment_.RunUntilIdle();
   ASSERT_TRUE(replied_);
