@@ -1,6 +1,6 @@
 # Signed catalog v1
 
-This branch implements common verifier/controller/About plumbing, including the restart outcome contract needed by native adapters. Production is disabled. It contains no approved production key, Linux/Windows installer helper or Mac adapter. The network loader is exercised by repository test boundaries only; the real About handler receives the inert process controller. Test callbacks model download verification/restart, and never count as an installed update.
+This branch implements common verifier/controller/About plumbing, the restart outcome contract, the Windows adapter and the owner's production key (`kProductionPublicKey` in `chrome/common/pubky_update/record.h`). A build without a valid pinned key stays disabled, and the public test key is never accepted as one. Windows registers its adapter with the browser's controller. Linux and Mac have no complete adapter, so their About page stays disabled.
 
 ## Bytes
 
