@@ -86,6 +86,10 @@
 #if BUILDFLAG(IS_WIN)
 #include "base/version_info/version_info.h"
 #include "chrome/browser/pubky_update/windows_adapter.h"
+#elif BUILDFLAG(IS_LINUX)
+#include "base/version_info/version_info.h"
+#include "chrome/browser/pubky_update/linux/coordinator.h"
+#include "chrome/browser/pubky_update/linux/stager.h"
 #endif
 #endif
 #include "chrome/browser/resource_coordinator/resource_coordinator_parts.h"
@@ -1025,6 +1029,23 @@ pubky_update::Controller* BrowserProcessImpl::pubky_update_controller() {
     boundaries.installed = boundaries.running;
     boundaries.metadata_factory = shared_url_loader_factory();
     pubky_update_adapter_->BindTo(boundaries);
+    pubky_update_controller_ =
+        pubky_update::Controller::Create(local_state(), std::move(boundaries));
+#elif BUILDFLAG(IS_LINUX)
+    base::FilePath user_data_dir;
+    base::PathService::Get(chrome::DIR_USER_DATA, &user_data_dir);
+    pubky_update::Controller::TestBoundaries boundaries;
+    boundaries.target = pubky_update::Target::kLinuxX64;
+    // The root helper rechecks the installed package version before dpkg.
+    boundaries.running = version_info::GetVersion();
+    boundaries.installed = boundaries.running;
+    boundaries.metadata_factory = shared_url_loader_factory();
+    pubky_update_stager_ = std::make_unique<pubky_update::LinuxStager>(
+        user_data_dir, boundaries.running, shared_url_loader_factory());
+    pubky_update_coordinator_ =
+        std::make_unique<pubky_update::LinuxCoordinator>();
+    pubky_update_stager_->BindTo(boundaries);
+    pubky_update_coordinator_->BindTo(boundaries);
     pubky_update_controller_ =
         pubky_update::Controller::Create(local_state(), std::move(boundaries));
 #else

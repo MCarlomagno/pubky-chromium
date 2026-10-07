@@ -10,7 +10,6 @@
 #include <unistd.h>
 
 #include "base/containers/span.h"
-#include "base/check_is_test.h"
 #include "base/command_line.h"
 #include "base/files/file_util.h"
 #include "base/functional/bind.h"
@@ -45,8 +44,7 @@ bool CopyField(char (&field)[N], const std::string& value) {
 LinuxCoordinator::LinuxCoordinator() = default;
 LinuxCoordinator::~LinuxCoordinator() { Abort(); }
 
-void LinuxCoordinator::BindForTesting(Controller::TestBoundaries& boundaries) {
-  CHECK_IS_TEST();
+void LinuxCoordinator::BindTo(Controller::TestBoundaries& boundaries) {
   boundaries.cancel = base::BindRepeating(
       [](LinuxCoordinator* self, base::RepeatingClosure cancel) {
         self->Abort();

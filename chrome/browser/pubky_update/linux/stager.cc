@@ -115,8 +115,7 @@ LinuxStager::LinuxStager(
       probe_(base::BindRepeating(&ProbeLinuxEligibility, std::move(running),
                                 user_data_dir)) {}
 LinuxStager::~LinuxStager() { Cancel(); }
-void LinuxStager::BindForTesting(Controller::TestBoundaries& boundaries) {
-  CHECK_IS_TEST();
+void LinuxStager::BindTo(Controller::TestBoundaries& boundaries) {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
   boundaries.download_and_verify = base::BindRepeating(
       &LinuxStager::Start, boundary_weak_factory_.GetWeakPtr());
