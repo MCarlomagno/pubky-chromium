@@ -196,6 +196,7 @@ action("mini_installer_archive") {
     "//chrome/browser/extensions/default_extensions",
     "//chrome/chrome_elf",
     "//chrome/common/win:eventlog_provider",
+    "//chrome/installer/pubky_update:pubky_update_helper",
     "//chrome/installer/setup",
     "//third_party/icu:icudata",
   ]

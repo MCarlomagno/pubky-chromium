@@ -1,0 +1,47 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+assert(is_win)
+
+source_set("lib") {
+  sources = [
+    "helper_win.cc",
+    "helper_win.h",
+  ]
+  public_deps = [ "//base" ]
+  deps = [
+    "//chrome/common/pubky_update:record",
+    "//chrome/installer/util:constants",
+    "//crypto",
+  ]
+}
+
+executable("pubky_update_helper") {
+  sources = [ "helper_main_win.cc" ]
+  configs -= [ "//build/config/win:console" ]
+  configs += [ "//build/config/win:windowed" ]
+  deps = [
+    ":lib",
+    "//base",
+    "//build/win:default_exe_manifest",
+    "//chrome/install_static:install_static_util",
+    "//chrome/install_static:primary_module",
+    "//chrome/installer/util:with_no_strings",
+  ]
+}
+
+source_set("unit_tests") {
+  testonly = true
+  sources = [ "helper_win_unittest.cc" ]
+  deps = [
+    ":lib",
+    "//base",
+    "//base/test:test_support",
+    "//chrome/common/pubky_update:record",
+    "//chrome/common/pubky_update:test_support",
+    "//chrome/installer/util:constants",
+    "//crypto",
+    "//testing/gtest",
+  ]
+}

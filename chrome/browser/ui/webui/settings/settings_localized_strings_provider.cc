@@ -321,6 +321,8 @@ void AddAboutStrings(content::WebUIDataSource* html_source, Profile* profile) {
     {"pubkyUpdateAvailable", IDS_SETTINGS_PUBKY_UPDATE_AVAILABLE},
     {"pubkyUpdateDownloading", IDS_SETTINGS_PUBKY_UPDATE_DOWNLOADING},
     {"pubkyUpdateReady", IDS_SETTINGS_PUBKY_UPDATE_READY},
+    {"pubkyUpdateInstalling", IDS_SETTINGS_PUBKY_UPDATE_INSTALLING},
+    {"pubkyUpdateInstallFailed", IDS_SETTINGS_PUBKY_UPDATE_INSTALL_FAILED},
     {"pubkyUpdateCommitted", IDS_SETTINGS_PUBKY_UPDATE_COMMITTED},
     {"pubkyUpdateCanceled", IDS_SETTINGS_PUBKY_UPDATE_CANCELED},
     {"pubkyUpdateFailed", IDS_SETTINGS_PUBKY_UPDATE_FAILED},

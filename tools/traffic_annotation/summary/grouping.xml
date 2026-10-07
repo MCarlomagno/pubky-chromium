@@ -431,6 +431,7 @@ after discussions on the right group.
       <annotation id="data_sharing_service_block_person"/>
       <annotation id="data_sharing_service_leave_group"/>
       <annotation id="data_sharing_service_join_group"/>
+      <annotation id="pubky_explicit_update_package"/>
     </sender>
   </group>
   <group name="Admin Features">

@@ -73,7 +73,7 @@ bool Timestamp(std::string_view text, base::Time* time) {
 }
 bool SecureUrl(const GURL& url) {
   return url.is_valid() && url.SchemeIs("https") && !url.has_username() &&
-         !url.has_password() && !url.has_port() && !url.has_fragment();
+         !url.has_password() && !url.has_port() && !url.has_ref();
 }
 RecordResult Fail(RecordError error) { return {.error = error}; }
 }  // namespace

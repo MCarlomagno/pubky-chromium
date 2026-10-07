@@ -549,4 +549,5 @@ Refer to README.md for content description and update process.
  <item id="data_sharing_service_block_person" added_in_milestone="133" content_hash_code="06956fce" os_list="linux,windows,android,chromeos" file_path="components/data_sharing/internal/data_sharing_network_loader_impl.cc" />
  <item id="data_sharing_service_leave_group" added_in_milestone="133" content_hash_code="044d5af8" os_list="linux,windows,android,chromeos" file_path="components/data_sharing/internal/data_sharing_network_loader_impl.cc" />
  <item id="data_sharing_service_join_group" added_in_milestone="133" content_hash_code="0609a53c" os_list="linux,windows,android,chromeos" file_path="components/data_sharing/internal/data_sharing_network_loader_impl.cc" />
+ <item id="pubky_explicit_update_package" added_in_milestone="156" content_hash_code="07e9f1ef" os_list="windows" file_path="chrome/browser/pubky_update/windows_adapter.cc" />
 </annotations>

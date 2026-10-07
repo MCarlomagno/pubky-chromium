@@ -27,6 +27,8 @@ class SimpleURLLoader;
 }
 namespace pubky_update {
 
+enum class InstallOutcome { kReady, kDeclined, kFailed };
+
 // UI-thread, process-wide owner. No production adapter/key is shipped yet.
 class Controller {
  public:
@@ -56,6 +58,11 @@ class Controller {
         fetch;
     base::RepeatingCallback<void(const Record&, base::OnceCallback<void(bool)>)>
         download_and_verify;
+    // Windows installs after verification, before restart consent. Cancel is
+    // not offered once this starts. The int is a native error code.
+    base::RepeatingCallback<void(const Record&,
+                                 base::OnceCallback<void(InstallOutcome, int)>)>
+        install;
     base::RepeatingClosure cancel;
     // Reply only after disarming on abort/failure, or after the normal
     // app-terminating boundary commits the coordinator. EOF is not commitment.
@@ -70,6 +77,7 @@ class Controller {
   void FetchMetadata();
   void OnMetadata(std::optional<std::string> envelope);
   void OnVerified(bool success);
+  void OnInstalled(InstallOutcome outcome, int error);
   void OnRestartResult(RestartResult result);
   void Notify();
   bool Matches(std::string_view id) const;
@@ -79,6 +87,7 @@ class Controller {
   std::string state_ = "unsupported";
   std::string id_;
   RecordError error_ = RecordError::kNone;
+  int install_error_ = 0;
   std::optional<Record> offer_;
   bool shutdown_ = false;
   int redirects_ = 0;
