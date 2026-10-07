@@ -9,6 +9,9 @@ if (is_mac) {
     outputs = [
       "$root_out_dir/sparkle/Sparkle.framework",
       "$target_out_dir/extract.stamp",
+
+      # The link config lists the binary as an input, so GN needs a producer.
+      "$root_out_dir/sparkle/Sparkle.framework/Sparkle",
     ]
     args = [
       rebase_path(inputs[0], root_build_dir),
@@ -24,7 +27,9 @@ if (is_mac) {
   }
 
   source_set("sparkle") {
-    all_dependent_configs = [ ":link" ]
+    # Only direct dependents import Sparkle; the framework link flags still
+    # propagate to the final binary.
+    public_configs = [ ":link" ]
     public_deps = [ ":extract" ]
   }
 }
