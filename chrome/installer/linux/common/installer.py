@@ -654,14 +654,27 @@ class InstallerConfig:
             and self.channel == "stable"
             and self.arch == "amd64"
         ):
-            artifacts.append(
+            artifacts.extend([
                 Artifact(
                     "pubky-update-coordinator",
                     "pubky-update-coordinator",
                     ArtifactType.BINARY,
                     StandardPermissions.EXECUTABLE,
-                )
-            )
+                ),
+                Artifact(
+                    "pubky-update-helper",
+                    "pubky-update-helper",
+                    ArtifactType.BINARY,
+                    StandardPermissions.EXECUTABLE,
+                ),
+                Artifact(
+                    "installer/common/org.pubky.chromium.update.policy",
+                    "usr/share/polkit-1/actions/org.pubky.chromium.update.policy",
+                    ArtifactType.RESOURCE,
+                    StandardPermissions.REGULAR,
+                    dst_base="staging_dir",
+                ),
+            ])
         if self.include_setuid_sandbox:
             artifacts.append(
                 Artifact(
