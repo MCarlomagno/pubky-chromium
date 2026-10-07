@@ -76,15 +76,15 @@ export function getHtml(this: SettingsAboutPageElement) {
           $i18n{pubkyUpdateBytes})</div>` : ''}
     </div>
     <cr-button id="pubkyCheck" ?disabled="${!this.pubkyStatus_.canCheck}"
-        @click="${this.onPubkyCheck_}">$i18n{pubkyUpdateCheck}</cr-button>
+        @click="${this.onPubkyCheckClick_}">$i18n{pubkyUpdateCheck}</cr-button>
     ${this.pubkyStatus_.canConfirm ? html`
-      <cr-button id="pubkyConfirm" @click="${this.onPubkyConfirm_}">
+      <cr-button id="pubkyConfirm" @click="${this.onPubkyConfirmClick_}">
         $i18n{pubkyUpdateConfirm}</cr-button>` : ''}
     ${this.pubkyStatus_.canCancel ? html`
-      <cr-button id="pubkyCancel" @click="${this.onPubkyCancel_}">
+      <cr-button id="pubkyCancel" @click="${this.onPubkyCancelClick_}">
         $i18n{pubkyUpdateCancel}</cr-button>` : ''}
     ${this.pubkyStatus_.canRestart ? html`
-      <cr-button id="pubkyRestart" @click="${this.onPubkyRestart_}">
+      <cr-button id="pubkyRestart" @click="${this.onPubkyRestartClick_}">
         $i18n{pubkyUpdateRestart}</cr-button>` : ''}
   </div>
 </if>
