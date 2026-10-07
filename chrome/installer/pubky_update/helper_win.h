@@ -33,7 +33,7 @@ inline constexpr wchar_t kAcceptedFloorValue[] = L"PubkyUpdateAcceptedFloor";
 enum HelperResult : int {
   kHelperInstalled = 0,
   kHelperBadArguments = 1,
-  // No production key is compiled in, so every record is refused.
+  // No valid key is compiled in, so every record is refused.
   kHelperDisabled = 2,
   // Wrong privilege, or the helper does not belong to the registered install.
   kHelperScope = 3,
@@ -55,7 +55,7 @@ struct HelperContext {
   HelperContext& operator=(HelperContext&&);
   ~HelperContext();
 
-  // Raw Ed25519 key. Empty until the owner's approved key is pinned.
+  // Raw Ed25519 key. Empty refuses every record.
   std::vector<uint8_t> public_key;
   bool system_install = false;
   bool elevated = false;
