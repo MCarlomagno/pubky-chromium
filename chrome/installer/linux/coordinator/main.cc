@@ -2,6 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#ifdef UNSAFE_BUFFERS_BUILD
+// The transaction is a fixed-size struct read from a pipe.
+#pragma allow_unsafe_buffers
+#pragma allow_unsafe_libc_calls
+#endif
+
 #include "chrome/installer/linux/coordinator/protocol.h"
 
 #include <unistd.h>
