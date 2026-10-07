@@ -1,6 +1,6 @@
 # Signed catalog v1
 
-This branch implements common verifier/controller/About plumbing, including the restart outcome contract needed by native adapters. Production is disabled. It contains no approved production key, Linux/Windows installer helper or Mac adapter. The network loader is exercised by repository test boundaries only; the real About handler receives the inert process controller. Test callbacks model download verification/restart, and never count as an installed update.
+This branch implements common verifier/controller/About plumbing, the restart outcome contract and Linux L1 eligibility/package staging. Production is disabled. It contains no approved production key, Linux coordinator, Linux/Windows installer helper or Mac adapter. The real About handler receives the inert process controller. Native test boundaries can bind the Linux stager, but cannot perform an installed update.
 
 ## Bytes
 
@@ -25,7 +25,7 @@ Validity timestamps use exact `YYYY-MM-DDTHH:MM:SSZ` calendar values. Lifetime i
 
 ## Transport and consent
 
-Fixed feeds are the PLAN's experimental `linux-x64.json` and `windows-x64.json` on `update-manifests-v1` at raw.githubusercontent.com. Metadata requests have omitted credentials, no auth data/referrer or custom headers, disabled cache, a 30-second timeout and a 128 KiB download bound. Every redirect must return to the same pinned URL, with at most three redirects. Package redirect policy permits only HTTPS release-assets.githubusercontent.com and objects.githubusercontent.com; native package download/enforcement is not implemented here.
+Fixed feeds are the PLAN's experimental `linux-x64.json` and `windows-x64.json` on `update-manifests-v1` at raw.githubusercontent.com. Metadata requests have omitted credentials, no auth data/referrer or custom headers, disabled cache, a 30-second timeout and a 128 KiB download bound. Every redirect must return to the same pinned URL, with at most three redirects. Package redirects permit only HTTPS release-assets.githubusercontent.com and objects.githubusercontent.com, at most three redirects. Linux L1 uses the same policy for its bounded native package loader.
 
 The process controller owns Local State floors, the offer, opaque ID and cancellation. About attachment, refresh and UpgradeDetector notification call only cached status. Explicit Check is the only metadata-request entry. Duplicate checks/confirmation, stale IDs and callbacks after cancellation are rejected. Two subscribed tabs share the same controller; the last tab detaching cancels unconfirmed work. Confirmed test-boundary work survives detachment but is canceled on teardown. Check/confirm/restart notifications retain weak transaction lifetime guards. Restart commitment is distinct from success; no production shutdown/install path was added.
 
@@ -58,6 +58,6 @@ Use `--target windows` and the `.exe` package/identity for Windows. Public key/s
 
 `testdata/` contains a public OpenSSL-generated catalog fixture using RFC 8032 section 7.1 TEST 1 key material. It is not a production release, digest or key. Native `PubkyUpdateRecordTest.PublicOpenSslFixture` reads the same bytes to check Chromium interoperability; that native test must run before claiming cross-verifier success. Its data dependency is declared in GN. The test-only helper contains the published RFC seed for signed malformed-record tests and is in a `testonly` target, never browser code.
 
-Builder commands (not run here): build `unit_tests` and run `PubkyUpdateRecordTest.*:PubkyUpdateControllerTest.*:PubkyUpdateTransportTest.*`; build/run the existing `SettingsAboutPageTest.AllBuilds` WebUI suite. Follow the owned-output/four-job/build-lock policy. Missing GN/dependencies/output are recorded in the task handoff, not replaced by source-grep checks.
+Builder commands (not run here): build `unit_tests` and run `PubkyUpdateRecordTest.*:PubkyUpdateControllerTest.*:PubkyUpdateTransportTest.*:PubkyUpdateLinuxEligibilityTest.*:PubkyUpdateLinuxStagerTest.*`; build/run the existing `SettingsAboutPageTest.AllBuilds` WebUI suite. Follow the owned-output/four-job/build-lock policy. Missing GN/dependencies/output are recorded in the task handoff, not replaced by source-grep checks.
 
-Next assignments still need complete Linux dpkg/polkit/coordinator, Windows installation/elevation/in-use readback, and Mac Sparkle/packaging/cancellation paths. They must provide actual native installed-version/eligibility checks, bound package download and digest verification, protected reauthentication, installer results and normal consent-aware shutdown. No release/version allocation, updater-enabled build or installed-product claim is made by this milestone.
+Next assignments still need complete Linux dpkg/polkit/coordinator, Windows installation/elevation/in-use readback, and Mac Sparkle/packaging/cancellation paths. Linux L1 provides user-side eligibility and bounded staging only; the helper must independently reauthenticate protected snapshots and recheck native installation state before mutation. No release/version allocation, updater-enabled build or installed-product claim is made by this milestone.

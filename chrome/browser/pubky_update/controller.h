@@ -17,6 +17,7 @@
 #include "base/memory/weak_ptr.h"
 #include "base/sequence_checker.h"
 #include "base/values.h"
+#include "chrome/browser/pubky_update/staged_package.h"
 #include "chrome/common/pubky_update/record.h"
 #include "services/network/public/cpp/shared_url_loader_factory.h"
 
@@ -54,7 +55,8 @@ class Controller {
     scoped_refptr<network::SharedURLLoaderFactory> metadata_factory;
     base::RepeatingCallback<void(GURL, base::OnceCallback<void(std::string)>)>
         fetch;
-    base::RepeatingCallback<void(const Record&, base::OnceCallback<void(bool)>)>
+    base::RepeatingCallback<void(const Record&,
+                                base::OnceCallback<void(StageResult)>)>
         download_and_verify;
     base::RepeatingClosure cancel;
     // Reply only after disarming on abort/failure, or after the normal
@@ -69,7 +71,7 @@ class Controller {
   void OnRecord(std::string envelope);
   void FetchMetadata();
   void OnMetadata(std::optional<std::string> envelope);
-  void OnVerified(bool success);
+  void OnVerified(StageResult result);
   void OnRestartResult(RestartResult result);
   void Notify();
   bool Matches(std::string_view id) const;
@@ -80,6 +82,8 @@ class Controller {
   std::string id_;
   RecordError error_ = RecordError::kNone;
   std::optional<Record> offer_;
+  std::optional<StagedPackage> staged_;
+  EligibilityReason eligibility_ = EligibilityReason::kEligible;
   bool shutdown_ = false;
   int redirects_ = 0;
   std::unique_ptr<network::SimpleURLLoader> metadata_loader_;

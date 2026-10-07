@@ -6,6 +6,7 @@ source_set("pubky_update") {
   sources = [
     "controller.cc",
     "controller.h",
+    "staged_package.h",
   ]
   public_deps = [
     "//base",
@@ -16,11 +17,26 @@ source_set("pubky_update") {
     "//components/prefs",
     "//net",
   ]
+  if (is_linux && !is_chromeos) {
+    sources += [
+      "linux/eligibility.cc",
+      "linux/eligibility.h",
+      "linux/stager.cc",
+      "linux/stager.h",
+    ]
+    deps += [ "//crypto" ]
+  }
 }
 
 source_set("unit_tests") {
   testonly = true
   sources = [ "controller_unittest.cc" ]
+  if (is_linux && !is_chromeos) {
+    sources += [
+      "linux/eligibility_unittest.cc",
+      "linux/stager_unittest.cc",
+    ]
+  }
   deps = [
     ":pubky_update",
     "//base",
