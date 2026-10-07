@@ -38,6 +38,21 @@ source_set("pubky_update") {
       "//crypto",
     ]
   }
+  if (is_win) {
+    sources += [
+      "windows_adapter.cc",
+      "windows_adapter.h",
+    ]
+    deps += [
+      "//base/version_info",
+      "//chrome/browser/lifetime",
+      "//chrome/browser/lifetime:termination_notification",
+      "//chrome/install_static:install_static_util",
+      "//chrome/installer/pubky_update:lib",
+      "//chrome/installer/util:with_no_strings",
+      "//crypto",
+    ]
+  }
 }
 
 source_set("unit_tests") {
@@ -65,5 +80,12 @@ source_set("unit_tests") {
   ]
   if (is_linux && !is_chromeos) {
     deps += [ "//chrome/installer/linux/coordinator:helper_validation" ]
+  }
+  if (is_win) {
+    sources += [ "windows_adapter_unittest.cc" ]
+    deps += [
+      "//chrome/installer/pubky_update:lib",
+      "//chrome/installer/util:with_no_strings",
+    ]
   }
 }

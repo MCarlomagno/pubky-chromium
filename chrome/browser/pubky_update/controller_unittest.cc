@@ -27,6 +27,9 @@ class PubkyUpdateControllerTest : public testing::Test {
  protected:
   PubkyUpdateControllerTest() {
     Controller::RegisterLocalState(prefs_.registry());
+    controller_ = Controller::CreateForTesting(&prefs_, Boundaries());
+  }
+  Controller::TestBoundaries Boundaries() {
     Controller::TestBoundaries boundaries;
     auto key = test::PublicKey();
     std::ranges::copy(key, boundaries.public_key.begin());
@@ -62,7 +65,7 @@ class PubkyUpdateControllerTest : public testing::Test {
           }
         },
         base::Unretained(this));
-    controller_ = Controller::CreateForTesting(&prefs_, std::move(boundaries));
+    return boundaries;
   }
   std::string Id() { return *controller_->GetStatus().FindString("id"); }
   std::string State() { return *controller_->GetStatus().FindString("state"); }
@@ -355,6 +358,65 @@ TEST_F(PubkyUpdateControllerTest, ExpiryIsRecheckedAtConsent) {
   EXPECT_EQ("failed", State());
   EXPECT_EQ(0, restarts_);
 }
+TEST_F(PubkyUpdateControllerTest, InstallBoundaryOwnsReadyAndRestart) {
+  base::OnceCallback<void(InstallOutcome, int)> install_reply;
+  Controller::TestBoundaries boundaries = Boundaries();
+  boundaries.install = base::BindLambdaForTesting(
+      [&](const Record& record,
+          base::OnceCallback<void(InstallOutcome, int)> reply) {
+        EXPECT_EQ("156.0.8073.1", record.version.GetString());
+        install_reply = std::move(reply);
+      });
+  controller_ = Controller::CreateForTesting(&prefs_, std::move(boundaries));
+  auto status = [&] { return controller_->GetStatus(); };
+
+  Offer();
+  auto id = Id();
+  controller_->Confirm(id);
+  std::move(download_reply_).Run(Staged());
+  EXPECT_EQ("installing", State());
+  ASSERT_TRUE(install_reply);
+  // Native mutation may have started; it cannot be canceled or restarted.
+  EXPECT_FALSE(*status().FindBool("canCancel"));
+  EXPECT_FALSE(*status().FindBool("canCheck"));
+  controller_->Cancel(id);
+  controller_->Restart(id);
+  EXPECT_EQ("installing", State());
+  std::move(install_reply).Run(InstallOutcome::kFailed, 1031);
+  EXPECT_EQ("install_failed", State());
+  EXPECT_EQ(1031, status().FindInt("installError"));
+  EXPECT_TRUE(*status().FindBool("canCheck"));
+
+  // Refusing the permission prompt is a cancellation.
+  Offer();
+  controller_->Confirm(Id());
+  std::move(download_reply_).Run(Staged());
+  std::move(install_reply).Run(InstallOutcome::kDeclined, 0);
+  EXPECT_EQ("canceled", State());
+  EXPECT_EQ("", Id());
+
+  Offer();
+  id = Id();
+  controller_->Confirm(id);
+  std::move(download_reply_).Run(Staged());
+  std::move(install_reply).Run(InstallOutcome::kReady, 0);
+  EXPECT_EQ("ready", State());
+  EXPECT_FALSE(*status().FindBool("canCancel"));
+  EXPECT_TRUE(*status().FindBool("canRestart"));
+  // The update is already installed, so record expiry no longer matters,
+  // even when beforeunload cancels the first restart.
+  task_environment_.AdvanceClock(base::Days(31));
+  controller_->Restart(id);
+  controller_->Restart(id);
+  EXPECT_EQ(1, restarts_);
+  std::move(restart_reply_).Run(Controller::RestartResult::kAborted);
+  EXPECT_EQ("ready", State());
+  EXPECT_NE(id, Id());
+  controller_->Restart(Id());
+  std::move(restart_reply_).Run(Controller::RestartResult::kCommitted);
+  EXPECT_EQ(2, restarts_);
+  EXPECT_EQ("committed", State());
+}
 TEST(PubkyUpdateTransportTest, OnlyExplicitCheckStartsBoundedCredentiallessRequest) {
   base::test::TaskEnvironment environment;
   TestingPrefServiceSimple prefs;
@@ -415,6 +477,33 @@ TEST(PubkyUpdateTransportTest, OnlyExplicitCheckStartsBoundedCredentiallessReque
     EXPECT_EQ(static_cast<int>(RecordError::kOrigin),
               controller->GetStatus().FindInt("error").value());
   }
+}
+TEST(PubkyUpdateTransportTest, ProductionTrustsOnlyThePinnedKey) {
+  base::test::TaskEnvironment environment;
+  TestingPrefServiceSimple prefs;
+  Controller::RegisterLocalState(prefs.registry());
+  network::TestURLLoaderFactory factory;
+  Controller::TestBoundaries boundaries;
+  boundaries.target = Target::kWindowsX64;
+  std::ranges::copy(test::PublicKey(), boundaries.public_key.begin());
+  boundaries.running = base::Version("156.0.8073.0");
+  boundaries.installed = boundaries.running;
+  bool hooked = false;
+  boundaries.fetch = base::BindLambdaForTesting(
+      [&](GURL, base::OnceCallback<void(std::string)>) { hooked = true; });
+  boundaries.metadata_factory = factory.GetSafeWeakWrapper();
+  boundaries.cancel = base::DoNothing();
+  auto controller = Controller::Create(&prefs, std::move(boundaries));
+  controller->Check();
+  EXPECT_FALSE(hooked);
+  // A record signed with the public test key fails under the production key.
+  ASSERT_TRUE(factory.SimulateResponseForPendingRequest(
+      FeedUrl(Target::kWindowsX64).spec(),
+      test::Envelope(test::Record(base::Time::Now(), Target::kWindowsX64))));
+  environment.RunUntilIdle();
+  EXPECT_EQ("failed", *controller->GetStatus().FindString("state"));
+  EXPECT_EQ(static_cast<int>(RecordError::kSignature),
+            controller->GetStatus().FindInt("error").value());
 }
 }  // namespace
 }  // namespace pubky_update

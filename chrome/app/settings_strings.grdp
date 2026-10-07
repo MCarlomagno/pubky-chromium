@@ -376,6 +376,8 @@
       <message name="IDS_SETTINGS_PUBKY_UPDATE_AVAILABLE" desc="About status when a newer authenticated update is available.">A signed update is available. Download and installation require your approval.</message>
       <message name="IDS_SETTINGS_PUBKY_UPDATE_DOWNLOADING" desc="About status during an explicitly approved download.">Downloading and verifying the update…</message>
       <message name="IDS_SETTINGS_PUBKY_UPDATE_READY" desc="About status awaiting explicit restart consent.">Ready to restart and apply the verified update.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_INSTALLING" desc="About status while the native installer stages a verified Windows update. It cannot be canceled.">Installing the verified update. This step can't be canceled; you can keep browsing.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_INSTALL_FAILED" desc="About status when the native installer did not produce the expected update. The placeholder is a numeric installer error code.">The update could not be installed (error <ph name="ERROR_CODE">$1<ex>1060</ex></ph>). Check again to retry.</message>
       <message name="IDS_SETTINGS_PUBKY_UPDATE_COMMITTED" desc="About status after restart consent, before confirmed installation success.">Waiting for the normal browser shutdown. Installation has not been confirmed.</message>
       <message name="IDS_SETTINGS_PUBKY_UPDATE_CANCELED" desc="About status after update cancellation.">Update canceled. You can check again.</message>
       <message name="IDS_SETTINGS_PUBKY_UPDATE_FAILED" desc="About status after an update authentication or download failure.">The update could not be authenticated or prepared. No installation was started. Check again to retry.</message>
