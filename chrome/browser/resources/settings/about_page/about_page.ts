@@ -165,10 +165,15 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
     if (this.pubkyStatus_.state === 'failed' && this.pubkyStatus_.error === 6) {
       return this.i18n('pubkyUpdateReplay');
     }
+    if (this.pubkyStatus_.state === 'install_failed') {
+      return this.i18n(
+          'pubkyUpdateInstallFailed', String(this.pubkyStatus_.installError));
+    }
     const keys: {[state: string]: string} = {
       idle: 'pubkyUpdateIdle', unsupported: 'pubkyUpdateUnsupported',
       checking: 'pubkyUpdateChecking', available: 'pubkyUpdateAvailable',
-      downloading: 'pubkyUpdateDownloading', ready: 'pubkyUpdateReady',
+      downloading: 'pubkyUpdateDownloading', installing: 'pubkyUpdateInstalling',
+      ready: 'pubkyUpdateReady',
       restarting: 'pubkyUpdateCommitted', committed: 'pubkyUpdateCommitted',
       canceled: 'pubkyUpdateCanceled',
       failed: 'pubkyUpdateFailed',
