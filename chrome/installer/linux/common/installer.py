@@ -660,12 +660,14 @@ class InstallerConfig:
                     "pubky-update-coordinator",
                     ArtifactType.BINARY,
                     StandardPermissions.EXECUTABLE,
+                    strip=True,
                 ),
                 Artifact(
                     "pubky-update-helper",
                     "pubky-update-helper",
                     ArtifactType.BINARY,
                     StandardPermissions.EXECUTABLE,
+                    strip=True,
                 ),
                 Artifact(
                     "installer/common/org.pubky.chromium.update.policy",
