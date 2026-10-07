@@ -25,6 +25,7 @@ executable("pubky_update_helper") {
     ":lib",
     "//base",
     "//build/win:default_exe_manifest",
+    "//chrome/common/pubky_update:record",
     "//chrome/install_static:install_static_util",
     "//chrome/install_static:primary_module",
     "//chrome/installer/util:with_no_strings",

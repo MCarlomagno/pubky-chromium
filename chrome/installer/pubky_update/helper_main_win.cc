@@ -15,6 +15,7 @@
 #include "base/process/launch.h"
 #include "base/process/process.h"
 #include "base/process/process_info.h"
+#include "chrome/common/pubky_update/record.h"
 #include "chrome/install_static/install_util.h"
 #include "chrome/install_static/product_install_details.h"
 #include "chrome/installer/pubky_update/helper_win.h"
@@ -42,8 +43,9 @@ extern "C" int WINAPI wWinMain(HINSTANCE, HINSTANCE, wchar_t*, int) {
   install_static::InitializeProductDetailsForPrimaryModule();
 
   pubky_update::HelperContext context;
-  // The owner's approved public key is pinned here for an updater-enabled
-  // release. Until then the helper refuses every record.
+  if (const auto key = pubky_update::ProductionPublicKey()) {
+    context.public_key.assign(key->begin(), key->end());
+  }
   context.system_install = install_static::IsSystemInstall();
   context.elevated = base::IsCurrentProcessElevated();
   context.helper_exe = base::PathService::CheckedGet(base::FILE_EXE);
