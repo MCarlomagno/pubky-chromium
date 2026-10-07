@@ -22,13 +22,14 @@
 namespace {
 
 bool ReadTransaction(pubky_update::Transaction* transaction) {
-  auto bytes = base::as_writable_bytes(base::span(transaction, 1));
+  base::span<uint8_t> bytes =
+      base::as_writable_bytes(base::span_from_ref(*transaction));
   while (!bytes.empty()) {
     const ssize_t count = HANDLE_EINTR(read(pubky_update::kTransactionPipe, bytes.data(), bytes.size()));
     if (count <= 0) {
       return false;
     }
-    bytes = bytes.subspan(count);
+    bytes = bytes.subspan(static_cast<size_t>(count));
   }
   char extra = 0;
   if (HANDLE_EINTR(read(pubky_update::kTransactionPipe, &extra, 1)) != 0) {

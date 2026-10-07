@@ -379,7 +379,7 @@ TEST(PubkyUpdateTransportTest, OnlyExplicitCheckStartsBoundedCredentiallessReque
   EXPECT_EQ(network::mojom::CredentialsMode::kOmit, request->credentials_mode);
   EXPECT_TRUE(request->referrer.is_empty());
   EXPECT_TRUE(request->headers.IsEmpty());
-  EXPECT_TRUE(request->load_flags & net::LOAD_DO_NOT_SEND_AUTH_DATA);
+  EXPECT_TRUE(request->load_flags & net::LOAD_DISABLE_CACHE);
   ASSERT_TRUE(factory.SimulateResponseForPendingRequest(
       FeedUrl(Target::kLinuxX64).spec(), test::Envelope(test::Record(base::Time::Now()))));
   environment.RunUntilIdle();
