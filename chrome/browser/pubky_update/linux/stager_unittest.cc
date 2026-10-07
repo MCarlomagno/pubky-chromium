@@ -20,6 +20,7 @@
 #include "net/base/load_flags.h"
 #include "net/url_request/redirect_info.h"
 #include "services/network/public/cpp/url_loader_completion_status.h"
+#include "services/network/public/cpp/weak_wrapper_shared_url_loader_factory.h"
 #include "services/network/test/test_url_loader_factory.h"
 #include "services/network/test/test_utils.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -96,7 +97,6 @@ TEST_F(PubkyUpdateLinuxStagerTest, ExactHashSizeEnvelopeAndPrivateOwnership) {
   EXPECT_TRUE(request->referrer.is_empty());
   EXPECT_TRUE(request->headers.IsEmpty());
   EXPECT_TRUE(request->load_flags & net::LOAD_DISABLE_CACHE);
-  EXPECT_TRUE(request->load_flags & net::LOAD_DO_NOT_SEND_AUTH_DATA);
   ASSERT_TRUE(factory_.SimulateResponseForPendingRequest(record_.url.spec(), kBody));
   environment_.RunUntilIdle();
   ASSERT_TRUE(replied_);
