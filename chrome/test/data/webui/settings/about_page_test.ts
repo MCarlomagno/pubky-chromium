@@ -82,6 +82,72 @@ suite('AllBuilds', function() {
 
   // <if expr="not is_chromeos">
   const SPINNER_ICON: string = 'chrome://resources/images/throbber_small.svg';
+  // <if expr="not _google_chrome and not is_chrome_for_testing and not is_android">
+  test('PubkyCachedAttachmentAndExplicitConsent', async function() {
+    assertEquals(0, aboutBrowserProxy.getCallCount('checkPubkyUpdate'));
+    assertEquals(0, aboutBrowserProxy.getCallCount('confirmPubkyUpdate'));
+    assertEquals(0, aboutBrowserProxy.getCallCount('restartToApplyPubkyUpdate'));
+    aboutBrowserProxy.refreshUpdateStatus();
+    assertEquals(0, aboutBrowserProxy.getCallCount('checkPubkyUpdate'));
+    const check = page.shadowRoot.querySelector<HTMLElement>('#pubkyCheck')!;
+    assertTrue(check.hasAttribute('disabled'));
+    assertEquals(null, page.shadowRoot.querySelector('#pubkyConfirm'));
+    assertEquals(null, page.shadowRoot.querySelector('#pubkyRestart'));
+    webUIListenerCallback('pubky-update-status-changed', {
+      state: 'idle', id: '', version: '', size: '', error: 0,
+      canCheck: true, canCancel: false, canConfirm: false, canRestart: false,
+    });
+    await microtasksFinished();
+    check.click();
+    await aboutBrowserProxy.whenCalled('checkPubkyUpdate');
+    assertEquals(0, aboutBrowserProxy.getCallCount('confirmPubkyUpdate'));
+    webUIListenerCallback('pubky-update-status-changed', {
+      state: 'available', id: 'offer-1', version: '156.0.8073.1', size: '123', error: 0,
+      canCheck: false, canCancel: true, canConfirm: true, canRestart: false,
+    });
+    await microtasksFinished();
+    page.shadowRoot.querySelector<HTMLElement>('#pubkyConfirm')!.click();
+    assertEquals('offer-1', await aboutBrowserProxy.whenCalled('confirmPubkyUpdate'));
+    page.shadowRoot.querySelector<HTMLElement>('#pubkyCancel')!.click();
+    assertEquals('offer-1', await aboutBrowserProxy.whenCalled('cancelPubkyUpdate'));
+    assertEquals(0, lifetimeBrowserProxy.getCallCount('relaunch'));
+  });
+  test('PubkyAbortedRestartShowsRetryWithFreshConsent', async function() {
+    webUIListenerCallback('pubky-update-status-changed', {
+      state: 'restarting', id: '', version: '156.0.8073.1', size: '123', error: 0,
+      canCheck: false, canCancel: false, canConfirm: false, canRestart: false,
+    });
+    await microtasksFinished();
+    assertEquals(null, page.shadowRoot.querySelector('#pubkyRestart'));
+    assertEquals(
+        loadTimeData.getString('pubkyUpdateCommitted'),
+        page.shadowRoot.querySelector('#pubkyUpdate [role="status"]')!
+            .textContent!.trim());
+    webUIListenerCallback('pubky-update-status-changed', {
+      state: 'ready', id: 'retry-2', version: '156.0.8073.1', size: '123', error: 0,
+      canCheck: false, canCancel: true, canConfirm: false, canRestart: true,
+    });
+    await microtasksFinished();
+    assertEquals(
+        loadTimeData.getString('pubkyUpdateReady'),
+        page.shadowRoot.querySelector('#pubkyUpdate [role="status"]')!
+            .textContent!.trim());
+    assertEquals(0, aboutBrowserProxy.getCallCount('restartToApplyPubkyUpdate'));
+    page.shadowRoot.querySelector<HTMLElement>('#pubkyRestart')!.click();
+    assertEquals(
+        'retry-2', await aboutBrowserProxy.whenCalled('restartToApplyPubkyUpdate'));
+    assertEquals(0, aboutBrowserProxy.getCallCount('checkPubkyUpdate'));
+    assertEquals(0, lifetimeBrowserProxy.getCallCount('relaunch'));
+  });
+  test('PubkyNavigationDetachesWithoutChecking', async function() {
+    Router.getInstance().navigateTo(routes.BASIC);
+    await aboutBrowserProxy.whenCalled('detachPubkyUpdate');
+    assertEquals(0, aboutBrowserProxy.getCallCount('checkPubkyUpdate'));
+    Router.getInstance().navigateTo(routes.ABOUT);
+    await microtasksFinished();
+    assertEquals(0, aboutBrowserProxy.getCallCount('checkPubkyUpdate'));
+  });
+  // </if>
 
   async function assertSpinnerVisible(visible: boolean) {
     const img = page.shadowRoot.querySelector<HTMLImageElement>(
