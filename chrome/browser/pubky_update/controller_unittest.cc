@@ -52,6 +52,7 @@ class PubkyUpdateControllerTest : public testing::Test {
         base::Unretained(this));
     boundaries.restart = base::BindRepeating(
         [](PubkyUpdateControllerTest* self,
+           StagedPackage&,
            base::OnceCallback<void(Controller::RestartResult)> reply) {
           ++self->restarts_;
           if (self->immediate_restart_result_) {

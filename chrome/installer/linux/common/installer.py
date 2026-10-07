@@ -648,6 +648,20 @@ class InstallerConfig:
                 is_optional=True,
             ),
         ]
+        if (
+            self.package_format == PackageFormat.DEB
+            and self.package_orig == "pubky-chromium"
+            and self.channel == "stable"
+            and self.arch == "amd64"
+        ):
+            artifacts.append(
+                Artifact(
+                    "pubky-update-coordinator",
+                    "pubky-update-coordinator",
+                    ArtifactType.BINARY,
+                    StandardPermissions.EXECUTABLE,
+                )
+            )
         if self.include_setuid_sandbox:
             artifacts.append(
                 Artifact(

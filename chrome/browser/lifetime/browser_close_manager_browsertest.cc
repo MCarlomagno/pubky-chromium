@@ -1045,11 +1045,20 @@ IN_PROC_BROWSER_TEST_F(BrowserCloseManagerBrowserTest,
 // Test shutdown with a download in progress.
 IN_PROC_BROWSER_TEST_F(BrowserCloseManagerBrowserTest, TestWithDownloads) {
   ASSERT_NO_FATAL_FAILURE(CreateStalledDownload(browser()));
+  int canceled_closes = 0;
+  auto subscription = chrome::AddClosingAllBrowsersCallback(base::BindRepeating(
+      [](int* count, bool closing) {
+        if (!closing) {
+          ++*count;
+        }
+      },
+      &canceled_closes));
   content::TestNavigationObserver navigation_observer(
       browser()->tab_strip_model()->GetActiveWebContents(), 1);
   TestBrowserCloseManager::AttemptClose(
       TestBrowserCloseManager::USER_CHOICE_USER_CANCELS_CLOSE);
   EXPECT_FALSE(browser_shutdown::IsTryingToQuit());
+  EXPECT_EQ(1, canceled_closes);
   navigation_observer.Wait();
   EXPECT_EQ(GURL(chrome::kChromeUIDownloadsURL), browser()
                                                      ->tab_strip_model()
