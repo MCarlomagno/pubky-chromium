@@ -17,6 +17,8 @@
 #include "base/memory/weak_ptr.h"
 #include "base/sequence_checker.h"
 #include "base/values.h"
+#include "build/build_config.h"
+#include "chrome/common/pubky_update/buildflags.h"
 #include "chrome/common/pubky_update/record.h"
 #include "services/network/public/cpp/shared_url_loader_factory.h"
 
@@ -26,6 +28,9 @@ namespace network {
 class SimpleURLLoader;
 }
 namespace pubky_update {
+#if BUILDFLAG(IS_MAC)
+class MacAdapter;
+#endif
 
 // UI-thread, process-wide owner. No production adapter/key is shipped yet.
 class Controller {
@@ -43,6 +48,9 @@ class Controller {
   void Restart(std::string_view id);
   void Detach();
   void Shutdown();
+#if BUILDFLAG(IS_MAC)
+  bool MacMayQuit();
+#endif
 
   // Only native unit tests can supply these boundaries. No command-line,
   // preference or WebUI entry point can supply trust or execute code.
@@ -76,6 +84,9 @@ class Controller {
   std::string FloorPref() const;
   const raw_ptr<PrefService> local_state_;
   std::optional<TestBoundaries> boundaries_;
+#if BUILDFLAG(IS_MAC)
+  std::unique_ptr<MacAdapter> mac_adapter_;
+#endif
   std::string state_ = "unsupported";
   std::string id_;
   RecordError error_ = RecordError::kNone;

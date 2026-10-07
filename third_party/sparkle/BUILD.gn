@@ -1,0 +1,30 @@
+# Copyright 2026 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if (is_mac) {
+  action("extract") {
+    script = "extract.py"
+    inputs = [ "Sparkle-2.10.0.tar.xz" ]
+    outputs = [
+      "$root_out_dir/sparkle/Sparkle.framework",
+      "$target_out_dir/extract.stamp",
+    ]
+    args = [
+      rebase_path(inputs[0], root_build_dir),
+      rebase_path("$root_out_dir/sparkle", root_build_dir),
+      rebase_path(outputs[1], root_build_dir),
+    ]
+  }
+
+  config("link") {
+    framework_dirs = [ "$root_out_dir/sparkle" ]
+    frameworks = [ "Sparkle.framework" ]
+    inputs = [ "$root_out_dir/sparkle/Sparkle.framework/Sparkle" ]
+  }
+
+  source_set("sparkle") {
+    all_dependent_configs = [ ":link" ]
+    public_deps = [ ":extract" ]
+  }
+}

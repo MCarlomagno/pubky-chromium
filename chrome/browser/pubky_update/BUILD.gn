@@ -9,6 +9,7 @@ source_set("pubky_update") {
   ]
   public_deps = [
     "//base",
+    "//chrome/common/pubky_update:buildflags",
     "//chrome/common/pubky_update:record",
     "//services/network/public/cpp",
   ]
@@ -16,6 +17,15 @@ source_set("pubky_update") {
     "//components/prefs",
     "//net",
   ]
+  if (is_mac) {
+    sources += [
+      "mac_adapter.h",
+      "mac_adapter.mm",
+      "mac_feed_policy.cc",
+      "mac_feed_policy.h",
+    ]
+    deps += [ "//third_party/sparkle:sparkle" ]
+  }
 }
 
 source_set("unit_tests") {
@@ -33,4 +43,7 @@ source_set("unit_tests") {
     "//services/network:test_support",
     "//testing/gtest",
   ]
+  if (is_mac) {
+    sources += [ "mac_feed_policy_unittest.cc" ]
+  }
 }

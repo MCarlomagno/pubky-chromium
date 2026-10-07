@@ -4,6 +4,10 @@
 
 #include "chrome/browser/pubky_update/controller.h"
 
+#if BUILDFLAG(IS_MAC)
+#include "chrome/browser/pubky_update/mac_adapter.h"
+#endif
+
 #include "base/check_is_test.h"
 #include "base/functional/bind.h"
 #include "base/strings/string_number_conversions.h"
@@ -23,16 +27,27 @@ namespace {
 constexpr char kLinuxFloor[] = "pubky_update.linux_x64.offered_floor";
 constexpr char kWindowsFloor[] = "pubky_update.windows_x64.offered_floor";
 }
-Controller::Controller(PrefService* local_state) : local_state_(local_state) {}
+Controller::Controller(PrefService* local_state) : local_state_(local_state) {
+#if BUILDFLAG(IS_MAC) && BUILDFLAG(PUBKY_MAC_UPDATE_ENABLED)
+  mac_adapter_ = std::make_unique<MacAdapter>(
+      local_state, base::BindRepeating(&Controller::Notify, base::Unretained(this)));
+#endif
+}
 Controller::~Controller() { Shutdown(); }
 void Controller::RegisterLocalState(PrefRegistrySimple* registry) {
   registry->RegisterStringPref(kLinuxFloor, "");
   registry->RegisterStringPref(kWindowsFloor, "");
+#if BUILDFLAG(IS_MAC)
+  MacAdapter::RegisterLocalState(registry);
+#endif
 }
 std::unique_ptr<Controller> Controller::CreateForTesting(
     PrefService* local_state, TestBoundaries boundaries) {
   CHECK_IS_TEST();
   auto controller = std::make_unique<Controller>(local_state);
+#if BUILDFLAG(IS_MAC)
+  controller->mac_adapter_.reset();
+#endif
   controller->boundaries_ = std::move(boundaries);
   controller->state_ = "idle";
   return controller;
@@ -42,6 +57,11 @@ std::string Controller::FloorPref() const {
 }
 base::DictValue Controller::GetStatus() const {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    return mac_adapter_->GetStatus();
+  }
+#endif
   base::DictValue status;
   status.Set("state", state_);
   status.Set("id", id_);
@@ -69,6 +89,12 @@ bool Controller::Matches(std::string_view id) const {
 }
 void Controller::Check() {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    mac_adapter_->Check();
+    return;
+  }
+#endif
   if (!GetStatus().FindBool("canCheck").value_or(false)) {
     return;
   }
@@ -182,6 +208,12 @@ void Controller::OnRecord(std::string envelope) {
 }
 void Controller::Confirm(std::string_view id) {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    mac_adapter_->Confirm(id);
+    return;
+  }
+#endif
   if (!Matches(id) || !GetStatus().FindBool("canConfirm").value_or(false)) {
     return;
   }
@@ -209,6 +241,12 @@ void Controller::OnVerified(bool success) {
 }
 void Controller::Cancel(std::string_view id) {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    mac_adapter_->Cancel(id);
+    return;
+  }
+#endif
   if (!Matches(id) || !GetStatus().FindBool("canCancel").value_or(false)) {
     return;
   }
@@ -225,6 +263,12 @@ void Controller::Cancel(std::string_view id) {
 }
 void Controller::Restart(std::string_view id) {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    mac_adapter_->Restart(id);
+    return;
+  }
+#endif
   if (!Matches(id) || !GetStatus().FindBool("canRestart").value_or(false)) {
     return;
   }
@@ -284,6 +328,14 @@ void Controller::OnRestartResult(RestartResult result) {
 }
 void Controller::Detach() {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    if (observers_.empty()) {
+      mac_adapter_->Detach();
+    }
+    return;
+  }
+#endif
   // Another About tab may still own the unconfirmed offer.
   if (observers_.empty() && (state_ == "checking" || state_ == "available")) {
     Cancel(id_);
@@ -294,6 +346,13 @@ void Controller::Shutdown() {
   if (shutdown_) {
     return;
   }
+#if BUILDFLAG(IS_MAC)
+  if (mac_adapter_) {
+    shutdown_ = true;
+    mac_adapter_->Shutdown();
+    return;
+  }
+#endif
   weak_factory_.InvalidateWeakPtrs();
   const bool cancel = boundaries_ && state_ != "committed";
   metadata_loader_.reset();
@@ -306,4 +365,9 @@ void Controller::Shutdown() {
     boundaries_->cancel.Run();
   }
 }
+#if BUILDFLAG(IS_MAC)
+bool Controller::MacMayQuit() {
+  return !mac_adapter_ || mac_adapter_->MayQuit();
+}
+#endif
 }  // namespace pubky_update
