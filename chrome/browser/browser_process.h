@@ -28,6 +28,7 @@
 #include "base/functional/callback_forward.h"
 #include "base/memory/scoped_refptr.h"
 #include "build/build_config.h"
+#include "chrome/common/pubky_update/buildflags.h"
 #include "chrome/common/buildflags.h"
 #include "components/safe_browsing/buildflags.h"
 #include "media/media_buildflags.h"
@@ -141,6 +142,10 @@ namespace ui {
 class UnownedUserDataHost;
 }  // namespace ui
 
+namespace pubky_update {
+class Controller;
+}
+
 // NOT THREAD SAFE, call only from the main thread.
 // These functions shouldn't return NULL unless otherwise noted.
 class BrowserProcess {
@@ -177,6 +182,9 @@ class BrowserProcess {
   virtual metrics::MetricsService* metrics_service() = 0;
   virtual ProfileManager* profile_manager() = 0;
   virtual PrefService* local_state() = 0;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  virtual pubky_update::Controller* pubky_update_controller() = 0;
+#endif
   virtual scoped_refptr<network::SharedURLLoaderFactory>
   shared_url_loader_factory() = 0;
   virtual signin::ActivePrimaryAccountsMetricsRecorder*

@@ -399,6 +399,12 @@ void TestingBrowserProcess::SetVariationsService(
   variations_service_ = variations_service;
 }
 
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+pubky_update::Controller* TestingBrowserProcess::pubky_update_controller() {
+  return pubky_update_controller_;
+}
+#endif
+
 PrefService* TestingBrowserProcess::local_state() {
   return testing_local_state_.get();
 }

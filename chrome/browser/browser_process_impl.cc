@@ -81,6 +81,9 @@
 #include "chrome/browser/printing/background_printing_manager.h"
 #include "chrome/browser/printing/print_job_manager.h"
 #include "chrome/browser/profiles/profile_manager.h"
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+#include "chrome/browser/pubky_update/controller.h"
+#endif
 #include "chrome/browser/resource_coordinator/resource_coordinator_parts.h"
 #include "chrome/browser/serial/serial_policy_allowed_ports.h"
 #include "chrome/browser/shell_integration.h"
@@ -613,6 +616,11 @@ void BrowserProcessImpl::StartTearDown() {
   // TODO(crbug.com/41222012): Fix the tests that make the check of
   // |tearing_down_| necessary in IsShuttingDown().
   tearing_down_ = true;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  if (pubky_update_controller_) {
+    pubky_update_controller_->Shutdown();
+  }
+#endif
   DCHECK(IsShuttingDown());
 
   features_->PostMainMessageLoopRun();
@@ -994,6 +1002,19 @@ network::NetworkQualityTracker* BrowserProcessImpl::network_quality_tracker() {
   }
   return network_quality_tracker_.get();
 }
+
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+pubky_update::Controller* BrowserProcessImpl::pubky_update_controller() {
+  if (IsShuttingDown()) {
+    return nullptr;
+  }
+  if (!pubky_update_controller_) {
+    pubky_update_controller_ =
+        std::make_unique<pubky_update::Controller>(local_state());
+  }
+  return pubky_update_controller_.get();
+}
+#endif
 
 ProfileManager* BrowserProcessImpl::profile_manager() {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
