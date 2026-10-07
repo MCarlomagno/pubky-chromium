@@ -7,6 +7,7 @@
 
 #include "base/callback_list.h"
 #include "base/files/scoped_file.h"
+#include "base/memory/raw_ptr.h"
 #include "chrome/browser/pubky_update/controller.h"
 
 namespace pubky_update {
@@ -14,7 +15,7 @@ namespace pubky_update {
 // One pending consent, owned by the browser process; no production binding yet.
 class LinuxCoordinator {
  public:
-  LinuxCoordinator() = default;
+  LinuxCoordinator();
   ~LinuxCoordinator();
   LinuxCoordinator(const LinuxCoordinator&) = delete;
   LinuxCoordinator& operator=(const LinuxCoordinator&) = delete;
@@ -30,7 +31,7 @@ class LinuxCoordinator {
   base::CallbackListSubscription terminating_;
   base::CallbackListSubscription closing_;
   base::OnceCallback<void(Controller::RestartResult)> reply_;
-  StagedPackage* package_ = nullptr;
+  raw_ptr<StagedPackage> package_ = nullptr;
 };
 
 }  // namespace pubky_update

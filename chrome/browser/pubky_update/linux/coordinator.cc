@@ -9,8 +9,7 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-#include <cstring>
-
+#include "base/containers/span.h"
 #include "base/check_is_test.h"
 #include "base/command_line.h"
 #include "base/files/file_util.h"
@@ -38,11 +37,12 @@ bool CopyField(char (&field)[N], const std::string& value) {
   if (value.size() >= N || value.find('\0') != std::string::npos) {
     return false;
   }
-  memcpy(field, value.data(), value.size());
+  base::span(field).first(value.size()).copy_from(base::span(value));
   return true;
 }
 }  // namespace
 
+LinuxCoordinator::LinuxCoordinator() = default;
 LinuxCoordinator::~LinuxCoordinator() { Abort(); }
 
 void LinuxCoordinator::BindForTesting(Controller::TestBoundaries& boundaries) {
