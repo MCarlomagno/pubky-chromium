@@ -83,6 +83,10 @@
 #include "chrome/browser/profiles/profile_manager.h"
 #if BUILDFLAG(PUBKY_UPDATE_UI)
 #include "chrome/browser/pubky_update/controller.h"
+#if BUILDFLAG(IS_WIN)
+#include "base/version_info/version_info.h"
+#include "chrome/browser/pubky_update/windows_adapter.h"
+#endif
 #endif
 #include "chrome/browser/resource_coordinator/resource_coordinator_parts.h"
 #include "chrome/browser/serial/serial_policy_allowed_ports.h"
@@ -1009,8 +1013,33 @@ pubky_update::Controller* BrowserProcessImpl::pubky_update_controller() {
     return nullptr;
   }
   if (!pubky_update_controller_) {
+#if BUILDFLAG(IS_WIN)
+    pubky_update_adapter_ = std::make_unique<pubky_update::WindowsAdapter>(
+        shared_url_loader_factory(),
+        pubky_update::WindowsAdapter::DefaultNative());
+    auto* adapter = pubky_update_adapter_.get();
+    pubky_update::Controller::TestBoundaries boundaries;
+    boundaries.target = pubky_update::Target::kWindowsX64;
+    // ponytail: offers compare against the running version only; the helper
+    // rechecks the registered version before installing.
+    boundaries.running = version_info::GetVersion();
+    boundaries.installed = boundaries.running;
+    boundaries.metadata_factory = shared_url_loader_factory();
+    boundaries.download_and_verify = base::BindRepeating(
+        &pubky_update::WindowsAdapter::DownloadAndVerify,
+        base::Unretained(adapter));
+    boundaries.install = base::BindRepeating(
+        &pubky_update::WindowsAdapter::Install, base::Unretained(adapter));
+    boundaries.cancel = base::BindRepeating(
+        &pubky_update::WindowsAdapter::Cancel, base::Unretained(adapter));
+    boundaries.restart = base::BindRepeating(
+        &pubky_update::WindowsAdapter::Restart, base::Unretained(adapter));
+    pubky_update_controller_ =
+        pubky_update::Controller::Create(local_state(), std::move(boundaries));
+#else
     pubky_update_controller_ =
         std::make_unique<pubky_update::Controller>(local_state());
+#endif
   }
   return pubky_update_controller_.get();
 }

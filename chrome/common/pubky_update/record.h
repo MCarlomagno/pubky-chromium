@@ -5,6 +5,7 @@
 #ifndef CHROME_COMMON_PUBKY_UPDATE_RECORD_H_
 #define CHROME_COMMON_PUBKY_UPDATE_RECORD_H_
 
+#include <array>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -38,6 +39,14 @@ struct RecordResult {
   std::optional<Record> record;
   RecordError error = RecordError::kNone;
 };
+
+// The owner's approved production key, pinned at compile time.
+inline constexpr char kProductionPublicKey[] =
+    "RGzK2rB/P4diYxd70MkBDc4FDUO0JikBqrFaSWTVOfI=";
+// Strict base64 of 32 raw Ed25519 bytes. Anything else, including the public
+// RFC 8032 test key, yields nullopt so the updater stays disabled.
+std::optional<std::array<uint8_t, 32>> DecodePinnedKey(std::string_view base64);
+std::optional<std::array<uint8_t, 32>> ProductionPublicKey();
 
 GURL FeedUrl(Target target);
 bool IsPackageRedirectAllowed(const GURL& url);
