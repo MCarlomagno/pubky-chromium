@@ -97,7 +97,7 @@ int main(int argc, char**) {
                           0600);
   if (result >= 0) {
     const std::string text = success ? "installed\n" : "failed\n";
-    write(result, text.data(), text.size());
+    base::WriteFileDescriptor(result, text);
     close(result);
   }
   if (!staging.Delete()) {

@@ -19,6 +19,7 @@
 #include <vector>
 
 #include "base/base64.h"
+#include "base/compiler_specific.h"
 #include "base/containers/span.h"
 #include "base/files/file_util.h"
 #include "base/files/scoped_file.h"
@@ -45,7 +46,7 @@ bool WriteAll(int fd, base::span<const uint8_t> bytes) {
   while (!bytes.empty()) {
     const ssize_t n = HANDLE_EINTR(write(fd, bytes.data(), bytes.size()));
     if (n <= 0) return false;
-    bytes = bytes.subspan(n);
+    bytes = bytes.subspan(static_cast<size_t>(n));
   }
   return true;
 }
@@ -67,9 +68,10 @@ bool CopyBounded(int source, const std::string& destination, size_t max,
     if (n < 0 || static_cast<size_t>(n) > max - total) return false;
     if (n == 0) break;
     total += n;
-    hash->Update(base::span(buffer).first(n));
+    const auto chunk = base::span(buffer).first(static_cast<size_t>(n));
+    hash->Update(chunk);
     if (contents) contents->append(reinterpret_cast<const char*>(buffer.data()), n);
-    if (!WriteAll(output.get(), base::span(buffer).first(n))) return false;
+    if (!WriteAll(output.get(), chunk)) return false;
   }
   if (total != static_cast<uint64_t>(input.st_size) || fsync(output.get()))
     return false;
@@ -237,5 +239,6 @@ int main(int argc, char** argv) {
   struct passwd* account = getpwuid(uid);
   if (!account || account->pw_uid != uid || account->pw_shell[0] == '\0')
     return 1;
-  return Install(argv[1], uid);
+  // SAFETY: argc == 2 was checked above.
+  return Install(UNSAFE_BUFFERS(argv[1]), uid);
 }
