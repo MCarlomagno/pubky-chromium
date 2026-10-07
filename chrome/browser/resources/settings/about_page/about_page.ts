@@ -148,14 +148,14 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
     state: 'unsupported', id: '', version: '', size: '', error: 0,
     canCheck: false, canCancel: false, canConfirm: false, canRestart: false,
   };
-  protected onPubkyCheck_() { this.aboutBrowserProxy_.checkPubkyUpdate(); }
-  protected onPubkyCancel_() {
+  protected onPubkyCheckClick_() { this.aboutBrowserProxy_.checkPubkyUpdate(); }
+  protected onPubkyCancelClick_() {
     this.aboutBrowserProxy_.cancelPubkyUpdate(this.pubkyStatus_.id);
   }
-  protected onPubkyConfirm_() {
+  protected onPubkyConfirmClick_() {
     this.aboutBrowserProxy_.confirmPubkyUpdate(this.pubkyStatus_.id);
   }
-  protected onPubkyRestart_() {
+  protected onPubkyRestartClick_() {
     this.aboutBrowserProxy_.restartToApplyPubkyUpdate(this.pubkyStatus_.id);
   }
   protected pubkyMessage_(): string {
@@ -165,20 +165,21 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
     if (this.pubkyStatus_.state === 'failed' && this.pubkyStatus_.error === 6) {
       return this.i18n('pubkyUpdateReplay');
     }
+    if (this.pubkyStatus_.state === 'install_failed') {
+      return this.i18n(
+          'pubkyUpdateInstallFailed', String(this.pubkyStatus_.installError));
+    }
     const keys: {[state: string]: string} = {
       idle: 'pubkyUpdateIdle', unsupported: 'pubkyUpdateUnsupported',
       checking: 'pubkyUpdateChecking', available: 'pubkyUpdateAvailable',
-      downloading: 'pubkyUpdateDownloading', ready: 'pubkyUpdateReady',
+      downloading: 'pubkyUpdateDownloading', installing: 'pubkyUpdateInstalling',
+      ready: 'pubkyUpdateReady',
       restarting: 'pubkyUpdateCommitted', committed: 'pubkyUpdateCommitted',
       canceled: 'pubkyUpdateCanceled',
       failed: 'pubkyUpdateFailed',
       no_newer: 'pubkyUpdateNoNewer',
     };
     return this.i18n(keys[this.pubkyStatus_.state] || 'pubkyUpdateFailed');
-  }
-  override disconnectedCallback() {
-    this.aboutBrowserProxy_.detachPubkyUpdate();
-    super.disconnectedCallback();
   }
   // </if>
 
@@ -206,6 +207,13 @@ export class SettingsAboutPageElement extends SettingsAboutPageElementBase
     this.mirrorPref('feedback_allowed', 'feedbackAllowedPref_');
     // </if>
   }
+
+  // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+  override disconnectedCallback() {
+    this.aboutBrowserProxy_.detachPubkyUpdate();
+    super.disconnectedCallback();
+  }
+  // </if>
 
   // <if expr="not is_chromeos">
   override willUpdate(changedProperties: PropertyValues<this>) {

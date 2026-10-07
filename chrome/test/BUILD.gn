@@ -5690,6 +5690,7 @@ test("unit_tests") {
       "//chrome/chrome_elf:constants",
       "//chrome/common/notifications",
       "//chrome/install_static:install_static_util",
+      "//chrome/installer/pubky_update:unit_tests",
       "//chrome/installer/setup:lib",
       "//chrome/installer/util:strings",
       "//chrome/installer/util:with_no_strings",
