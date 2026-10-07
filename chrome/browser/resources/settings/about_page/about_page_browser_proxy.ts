@@ -51,6 +51,8 @@ export interface PubkyUpdateStatus {
   error: number;
   // Native eligibility reason, cached only. Production activation is absent.
   eligibilityReason?: number;
+  // Native installer error code, for install_failed.
+  installError?: number;
   canCheck: boolean;
   canCancel: boolean;
   canConfirm: boolean;
