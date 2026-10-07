@@ -120,6 +120,7 @@ class WindowsAdapter {
   WindowsAdapter& operator=(const WindowsAdapter&) = delete;
   ~WindowsAdapter();
 
+  void BindTo(Controller::TestBoundaries& boundaries);
   void DownloadAndVerify(const Record& record,
                          base::OnceCallback<void(bool)> done);
   void Install(const Record& record,

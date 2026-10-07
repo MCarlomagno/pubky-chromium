@@ -363,15 +363,7 @@ TEST_F(PubkyUpdateWindowsAdapterTest, ControllerFlow) {
       [&](GURL, base::OnceCallback<void(std::string)> reply) {
         std::move(reply).Run(envelope_);
       });
-  WindowsAdapter* adapter = adapter_.get();
-  boundaries.download_and_verify = base::BindRepeating(
-      &WindowsAdapter::DownloadAndVerify, base::Unretained(adapter));
-  boundaries.install =
-      base::BindRepeating(&WindowsAdapter::Install, base::Unretained(adapter));
-  boundaries.cancel =
-      base::BindRepeating(&WindowsAdapter::Cancel, base::Unretained(adapter));
-  boundaries.restart =
-      base::BindRepeating(&WindowsAdapter::Restart, base::Unretained(adapter));
+  adapter_->BindTo(boundaries);
   auto controller = Controller::CreateForTesting(&prefs, std::move(boundaries));
   auto status = [&] { return controller->GetStatus(); };
 
