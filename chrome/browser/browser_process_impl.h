@@ -58,6 +58,10 @@ class SiteIsolationPrefsObserver;
 class SystemNotificationHelper;
 class StartupData;
 
+namespace pubky_update {
+class WindowsAdapter;
+}  // namespace pubky_update
+
 namespace speech {
 class SpeechRecognitionSmallExpertModelInstaller;
 }  // namespace speech
@@ -325,6 +329,10 @@ class BrowserProcessImpl : public BrowserProcess,
   const std::unique_ptr<PrefService> local_state_;
 
 #if BUILDFLAG(PUBKY_UPDATE_UI)
+#if BUILDFLAG(IS_WIN)
+  // Bound into the controller; must outlive it.
+  std::unique_ptr<pubky_update::WindowsAdapter> pubky_update_adapter_;
+#endif
   // Must be destroyed before |local_state_|.
   std::unique_ptr<pubky_update::Controller> pubky_update_controller_;
 #endif

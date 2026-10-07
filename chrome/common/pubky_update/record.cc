@@ -78,6 +78,22 @@ bool SecureUrl(const GURL& url) {
 RecordResult Fail(RecordError error) { return {.error = error}; }
 }  // namespace
 
+std::optional<std::array<uint8_t, 32>> DecodePinnedKey(std::string_view base64) {
+  // RFC 8032 section 7.1 TEST 1, used by the public fixtures.
+  constexpr std::string_view kTestKey =
+      "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=";
+  std::string bytes;
+  if (base64 == kTestKey || !StrictBase64(base64, &bytes) || bytes.size() != 32) {
+    return std::nullopt;
+  }
+  std::array<uint8_t, 32> key;
+  std::ranges::copy(bytes, key.begin());
+  return key;
+}
+std::optional<std::array<uint8_t, 32>> ProductionPublicKey() {
+  return DecodePinnedKey(kProductionPublicKey);
+}
+
 GURL FeedUrl(Target target) {
   return GURL(base::StrCat({
       "https://raw.githubusercontent.com/MCarlomagno/pubky-chromium/",
