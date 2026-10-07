@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "chrome/browser/ui/webui/settings/settings_localized_strings_provider.h"
+#include "chrome/common/pubky_update/buildflags.h"
 
 #include <string>
 
@@ -312,6 +313,28 @@ void AddA11yStrings(content::WebUIDataSource* html_source) {
 }
 
 void AddAboutStrings(content::WebUIDataSource* html_source, Profile* profile) {
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  static constexpr webui::LocalizedString kPubkyStrings[] = {
+    {"pubkyUpdateUnsupported", IDS_SETTINGS_PUBKY_UPDATE_UNSUPPORTED},
+    {"pubkyUpdateIdle", IDS_SETTINGS_PUBKY_UPDATE_IDLE},
+    {"pubkyUpdateChecking", IDS_SETTINGS_PUBKY_UPDATE_CHECKING},
+    {"pubkyUpdateAvailable", IDS_SETTINGS_PUBKY_UPDATE_AVAILABLE},
+    {"pubkyUpdateDownloading", IDS_SETTINGS_PUBKY_UPDATE_DOWNLOADING},
+    {"pubkyUpdateReady", IDS_SETTINGS_PUBKY_UPDATE_READY},
+    {"pubkyUpdateCommitted", IDS_SETTINGS_PUBKY_UPDATE_COMMITTED},
+    {"pubkyUpdateCanceled", IDS_SETTINGS_PUBKY_UPDATE_CANCELED},
+    {"pubkyUpdateFailed", IDS_SETTINGS_PUBKY_UPDATE_FAILED},
+    {"pubkyUpdateCheck", IDS_SETTINGS_PUBKY_UPDATE_CHECK},
+    {"pubkyUpdateNoNewer", IDS_SETTINGS_PUBKY_UPDATE_NO_NEWER},
+    {"pubkyUpdateExpired", IDS_SETTINGS_PUBKY_UPDATE_EXPIRED},
+    {"pubkyUpdateReplay", IDS_SETTINGS_PUBKY_UPDATE_REPLAY},
+    {"pubkyUpdateConfirm", IDS_SETTINGS_PUBKY_UPDATE_CONFIRM},
+    {"pubkyUpdateCancel", IDS_SETTINGS_PUBKY_UPDATE_CANCEL},
+    {"pubkyUpdateRestart", IDS_SETTINGS_PUBKY_UPDATE_RESTART},
+    {"pubkyUpdateBytes", IDS_SETTINGS_PUBKY_UPDATE_BYTES},
+  };
+  html_source->AddLocalizedStrings(kPubkyStrings);
+#endif
   // Top level About Page strings.
   static constexpr webui::LocalizedString kLocalizedStrings[] = {
       {"aboutProductLogoAlt", IDS_SHORT_PRODUCT_LOGO_ALT_TEXT},

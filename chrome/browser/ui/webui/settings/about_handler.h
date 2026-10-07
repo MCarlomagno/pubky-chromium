@@ -9,6 +9,8 @@
 #include <string>
 
 #include "base/memory/raw_ptr.h"
+#include "base/callback_list.h"
+#include "chrome/common/pubky_update/buildflags.h"
 #include "base/memory/weak_ptr.h"
 #include "base/values.h"
 #include "build/build_config.h"
@@ -67,6 +69,15 @@ class AboutHandler : public settings::SettingsPageUIHandler,
   // (if one is available).
   void HandleRefreshUpdateStatus(const base::ListValue& args);
   void RefreshUpdateStatus();
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  void SendPubkyStatus();
+  void HandleCheckPubkyUpdate(const base::ListValue& args);
+  void HandleConfirmPubkyUpdate(const base::ListValue& args);
+  void HandleCancelPubkyUpdate(const base::ListValue& args);
+  void HandleRestartPubkyUpdate(const base::ListValue& args);
+  void HandleDetachPubkyUpdate(const base::ListValue& args);
+  base::CallbackListSubscription pubky_subscription_;
+#endif
 
 #if BUILDFLAG(IS_MAC)
   // Promotes the updater for all users.

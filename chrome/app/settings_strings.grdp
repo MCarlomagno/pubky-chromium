@@ -367,6 +367,28 @@
       </message>
     </if>
 
+    <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_UNSUPPORTED" desc="About status when authenticated installed updates are not enabled in this build.">
+        Installed updates are not enabled in this build. A production update key and platform installer are required.
+      </message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_IDLE" desc="About status before an explicit update check.">Updates are checked only when you choose Check for updates.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_CHECKING" desc="About status during a signed metadata request.">Checking signed update metadata…</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_AVAILABLE" desc="About status when a newer authenticated update is available.">A signed update is available. Download and installation require your approval.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_DOWNLOADING" desc="About status during an explicitly approved download.">Downloading and verifying the update…</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_READY" desc="About status awaiting explicit restart consent.">Ready to restart and apply the verified update.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_COMMITTED" desc="About status after restart consent, before confirmed installation success.">Waiting for the normal browser shutdown. Installation has not been confirmed.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_CANCELED" desc="About status after update cancellation.">Update canceled. You can check again.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_FAILED" desc="About status after an update authentication or download failure.">The update could not be authenticated or prepared. No installation was started. Check again to retry.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_CHECK" desc="Explicit signed update check button.">Check for updates</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_NO_NEWER" desc="Result of a valid signed check without a newer version.">No newer signed update was found.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_EXPIRED" desc="Signed update validity or clock error.">The signed update metadata is expired or its dates are invalid. Check your clock or retry after the feed is refreshed.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_REPLAY" desc="Signed update below the locally recorded version floor.">This update is older than a previously authenticated offer, or the local version record is invalid. No installation was started.</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_CONFIRM" desc="Consent button for downloading and installing the displayed authenticated update.">Download and install</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_CANCEL" desc="Cancel a pending update button.">Cancel update</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_RESTART" desc="Explicit restart and apply consent button.">Restart and apply</message>
+      <message name="IDS_SETTINGS_PUBKY_UPDATE_BYTES" desc="Unit following the authenticated package byte count.">bytes</message>
+    </if>
+
     <!-- Common -->
     <message name="IDS_SETTINGS_ADVANCED" desc="Name of the settings page which displays advanced preferences.">
       Advanced

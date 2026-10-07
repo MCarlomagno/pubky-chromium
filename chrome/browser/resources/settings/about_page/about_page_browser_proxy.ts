@@ -42,9 +42,29 @@ export interface UpdateStatusChangedEvent {
   version?: string;
   size?: string;
 }
+// <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+export interface PubkyUpdateStatus {
+  state: string;
+  id: string;
+  version: string;
+  size: string;
+  error: number;
+  canCheck: boolean;
+  canCancel: boolean;
+  canConfirm: boolean;
+  canRestart: boolean;
+}
+// </if>
 
 
 export interface AboutPageBrowserProxy {
+  // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+  checkPubkyUpdate(): void;
+  confirmPubkyUpdate(id: string): void;
+  cancelPubkyUpdate(id: string): void;
+  restartToApplyPubkyUpdate(id: string): void;
+  detachPubkyUpdate(): void;
+  // </if>
   /**
    * Indicates to the browser that the page is ready.
    */
@@ -76,6 +96,15 @@ export interface AboutPageBrowserProxy {
 }
 
 export class AboutPageBrowserProxyImpl implements AboutPageBrowserProxy {
+  // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+  checkPubkyUpdate() { chrome.send('checkPubkyUpdate'); }
+  confirmPubkyUpdate(id: string) { chrome.send('confirmPubkyUpdate', [id]); }
+  cancelPubkyUpdate(id: string) { chrome.send('cancelPubkyUpdate', [id]); }
+  restartToApplyPubkyUpdate(id: string) {
+    chrome.send('restartToApplyPubkyUpdate', [id]);
+  }
+  detachPubkyUpdate() { chrome.send('detachPubkyUpdate'); }
+  // </if>
   pageReady() {
     chrome.send('aboutPageReady');
   }

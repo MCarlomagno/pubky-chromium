@@ -67,6 +67,27 @@ export function getHtml(this: SettingsAboutPageElement) {
     </span>
 </if>
   </div>
+<if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+  <div class="cr-row two-line" id="pubkyUpdate">
+    <div class="flex cr-padded-text">
+      <div role="status" aria-live="polite">${this.pubkyMessage_()}</div>
+      ${this.pubkyStatus_.version ? html`
+        <div>${this.pubkyStatus_.version} (${this.pubkyStatus_.size}
+          $i18n{pubkyUpdateBytes})</div>` : ''}
+    </div>
+    <cr-button id="pubkyCheck" ?disabled="${!this.pubkyStatus_.canCheck}"
+        @click="${this.onPubkyCheck_}">$i18n{pubkyUpdateCheck}</cr-button>
+    ${this.pubkyStatus_.canConfirm ? html`
+      <cr-button id="pubkyConfirm" @click="${this.onPubkyConfirm_}">
+        $i18n{pubkyUpdateConfirm}</cr-button>` : ''}
+    ${this.pubkyStatus_.canCancel ? html`
+      <cr-button id="pubkyCancel" @click="${this.onPubkyCancel_}">
+        $i18n{pubkyUpdateCancel}</cr-button>` : ''}
+    ${this.pubkyStatus_.canRestart ? html`
+      <cr-button id="pubkyRestart" @click="${this.onPubkyRestart_}">
+        $i18n{pubkyUpdateRestart}</cr-button>` : ''}
+  </div>
+</if>
 <if expr="_google_chrome and is_macosx">
   ${!this.promoteUpdaterStatus_.hidden ? html`
     <div id="promoteUpdater"

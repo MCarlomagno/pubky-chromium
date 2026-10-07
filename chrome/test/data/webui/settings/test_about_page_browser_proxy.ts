@@ -14,6 +14,10 @@ export class TestAboutPageBrowserProxy extends TestBrowserProxy implements
   constructor() {
     super([
       'pageReady', 'refreshUpdateStatus', 'openHelpPage', 'openFeedbackDialog',
+      // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+      'checkPubkyUpdate', 'confirmPubkyUpdate', 'cancelPubkyUpdate',
+      'restartToApplyPubkyUpdate', 'detachPubkyUpdate',
+      // </if>
 
       // <if expr="is_macosx">
       'promoteUpdater',
@@ -44,6 +48,15 @@ export class TestAboutPageBrowserProxy extends TestBrowserProxy implements
   openHelpPage() {
     this.methodCalled('openHelpPage');
   }
+  // <if expr="not _google_chrome and not is_chrome_for_testing and not is_chromeos and not is_android">
+  checkPubkyUpdate() { this.methodCalled('checkPubkyUpdate'); }
+  confirmPubkyUpdate(id: string) { this.methodCalled('confirmPubkyUpdate', id); }
+  cancelPubkyUpdate(id: string) { this.methodCalled('cancelPubkyUpdate', id); }
+  restartToApplyPubkyUpdate(id: string) {
+    this.methodCalled('restartToApplyPubkyUpdate', id);
+  }
+  detachPubkyUpdate() { this.methodCalled('detachPubkyUpdate'); }
+  // </if>
 
   // <if expr="is_macosx">
   promoteUpdater() {

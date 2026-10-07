@@ -178,6 +178,9 @@ class BrowserProcessImpl : public BrowserProcess,
   GetOriginTrialsSettingsStorage() override;
   ProfileManager* profile_manager() override;
   PrefService* local_state() override;
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  pubky_update::Controller* pubky_update_controller() override;
+#endif
   signin::ActivePrimaryAccountsMetricsRecorder*
   active_primary_accounts_metrics_recorder() override;
   variations::VariationsService* variations_service() override;
@@ -320,6 +323,11 @@ class BrowserProcessImpl : public BrowserProcess,
   std::unique_ptr<ProfileManager> profile_manager_;
 
   const std::unique_ptr<PrefService> local_state_;
+
+#if BUILDFLAG(PUBKY_UPDATE_UI)
+  // Must be destroyed before |local_state_|.
+  std::unique_ptr<pubky_update::Controller> pubky_update_controller_;
+#endif
 
   // Must be destroyed before |local_state_|.
   std::unique_ptr<signin::ActivePrimaryAccountsMetricsRecorder>
