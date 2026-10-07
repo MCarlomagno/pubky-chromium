@@ -9,6 +9,7 @@
 
 #include <string>
 
+#include "base/memory/raw_ptr.h"
 #include "base/strings/sys_string_conversions.h"
 #include "base/strings/string_number_conversions.h"
 #include "base/time/time.h"
@@ -278,7 +279,7 @@ class MacAdapter::Impl {
     }
   }
 
-  PrefService* prefs_;
+  raw_ptr<PrefService> prefs_;
   base::RepeatingClosure changed_;
   __strong PubkySparkleDriver* driver_ = nil;
   __strong SPUUpdater* updater_ = nil;
@@ -315,6 +316,7 @@ bool MacAdapter::MayQuit() { return impl_->MayQuit(); }
 }  // namespace pubky_update
 
 @implementation PubkySparkleDriver
+@synthesize owner = _owner;
 - (NSString*)feedURLStringForUpdater:(SPUUpdater*)updater {
   return [NSString stringWithUTF8String:pubky_update::kFeedUrl];
 }

@@ -46,7 +46,7 @@ bool AcceptMacFeedItem(std::string_view version,
       url.find('%') != std::string::npos || !base::EndsWith(url, ".zip")) {
     return false;
   }
-  const std::string_view path(url.data() + prefix.size(), url.size() - prefix.size());
+  const std::string_view path = std::string_view(url).substr(prefix.size());
   const size_t separator = path.find('/');
   return separator != std::string_view::npos && separator > 0 &&
          separator + 1 < path.size() &&
