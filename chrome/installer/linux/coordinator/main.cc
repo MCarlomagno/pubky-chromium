@@ -6,10 +6,12 @@
 
 #include <unistd.h>
 
-#include <cstring>
+#include <algorithm>
+#include <iterator>
 #include <string>
 #include <vector>
 
+#include "base/containers/span.h"
 #include "base/files/file_path.h"
 #include "base/files/file_util.h"
 #include "base/files/scoped_temp_dir.h"
@@ -18,23 +20,24 @@
 namespace {
 
 bool ReadTransaction(pubky_update::Transaction* transaction) {
-  auto* bytes = reinterpret_cast<char*>(transaction);
-  size_t left = sizeof(*transaction);
-  while (left) {
-    const ssize_t count = HANDLE_EINTR(read(pubky_update::kTransactionPipe, bytes, left));
+  auto bytes = base::as_writable_bytes(base::span(transaction, 1));
+  while (!bytes.empty()) {
+    const ssize_t count = HANDLE_EINTR(read(pubky_update::kTransactionPipe, bytes.data(), bytes.size()));
     if (count <= 0) {
       return false;
     }
-    bytes += count;
-    left -= count;
+    bytes = bytes.subspan(count);
   }
   char extra = 0;
   if (HANDLE_EINTR(read(pubky_update::kTransactionPipe, &extra, 1)) != 0) {
     return false;
   }
-  return memchr(transaction->staging_dir, 0, sizeof(transaction->staging_dir)) &&
-         memchr(transaction->user_data_dir, 0, sizeof(transaction->user_data_dir)) &&
-         memchr(transaction->profile_dir, 0, sizeof(transaction->profile_dir));
+  return std::ranges::find(transaction->staging_dir, '\0') !=
+             std::end(transaction->staging_dir) &&
+         std::ranges::find(transaction->user_data_dir, '\0') !=
+             std::end(transaction->user_data_dir) &&
+         std::ranges::find(transaction->profile_dir, '\0') !=
+             std::end(transaction->profile_dir);
 }
 
 }  // namespace
