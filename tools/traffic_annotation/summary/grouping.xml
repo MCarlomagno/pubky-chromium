@@ -417,6 +417,7 @@ after discussions on the right group.
       <annotation id="browser_actuator_transport"/>
       <annotation id="iwa_dev_ui_web_bundle"/>
       <annotation id="ttc_model_execution"/>
+      <annotation id="pubky_explicit_update_package"/>
     </sender>
   </group>
   <group name="Admin Features">

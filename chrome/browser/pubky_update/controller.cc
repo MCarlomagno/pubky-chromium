@@ -52,6 +52,19 @@ std::unique_ptr<Controller> Controller::CreateForTesting(
   controller->state_ = "idle";
   return controller;
 }
+std::unique_ptr<Controller> Controller::Create(PrefService* local_state,
+                                               TestBoundaries boundaries) {
+  auto controller = std::make_unique<Controller>(local_state);
+  const auto key = ProductionPublicKey();
+  if (!key) {
+    return controller;
+  }
+  boundaries.public_key = *key;
+  boundaries.fetch.Reset();
+  controller->boundaries_ = std::move(boundaries);
+  controller->state_ = "idle";
+  return controller;
+}
 std::string Controller::FloorPref() const {
   return boundaries_->target == Target::kLinuxX64 ? kLinuxFloor : kWindowsFloor;
 }
@@ -66,16 +79,22 @@ base::DictValue Controller::GetStatus() const {
   status.Set("state", state_);
   status.Set("id", id_);
   status.Set("error", static_cast<int>(error_));
+  status.Set("installError", install_error_);
   status.Set("version", offer_ ? offer_->version.GetString() : "");
   status.Set("size", offer_ ? base::NumberToString(offer_->size) : "");
   status.Set("canCheck", !shutdown_ && boundaries_.has_value() &&
                             (state_ == "idle" || state_ == "failed" ||
-                             state_ == "canceled" || state_ == "no_newer"));
+                             state_ == "canceled" || state_ == "no_newer" ||
+                             state_ == "install_failed"));
   status.Set("canConfirm", !shutdown_ && state_ == "available" &&
                               boundaries_->download_and_verify);
-  status.Set("canCancel", !shutdown_ &&
-                             (state_ == "checking" || state_ == "available" ||
-                              state_ == "downloading" || state_ == "ready"));
+  // A Windows update is already installed when it is ready; only restart is
+  // left, so there is nothing to cancel.
+  status.Set("canCancel",
+             !shutdown_ &&
+                 (state_ == "checking" || state_ == "available" ||
+                  state_ == "downloading" ||
+                  (state_ == "ready" && !boundaries_->install)));
   status.Set("canRestart", !shutdown_ && state_ == "ready" && boundaries_->restart);
   return status;
 }
@@ -101,6 +120,7 @@ void Controller::Check() {
   weak_factory_.InvalidateWeakPtrs();
   offer_.reset();
   error_ = RecordError::kNone;
+  install_error_ = 0;
   id_ = base::UnguessableToken::Create().ToString();
   state_ = "checking";
   // A listener may synchronously cancel; do not start work after that consent
@@ -236,7 +256,35 @@ void Controller::OnVerified(bool success) {
   if (state_ != "downloading" || shutdown_) {
     return;
   }
+  if (success && boundaries_->install) {
+    state_ = "installing";
+    const auto live_install = weak_factory_.GetWeakPtr();
+    Notify();
+    if (live_install && state_ == "installing") {
+      boundaries_->install.Run(*offer_, base::BindOnce(&Controller::OnInstalled,
+                                                       weak_factory_.GetWeakPtr()));
+    }
+    return;
+  }
   state_ = success ? "ready" : "failed";
+  Notify();
+}
+void Controller::OnInstalled(InstallOutcome outcome, int error) {
+  DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+  if (state_ != "installing" || shutdown_) {
+    return;
+  }
+  install_error_ = error;
+  if (outcome == InstallOutcome::kReady) {
+    state_ = "ready";
+  } else if (outcome == InstallOutcome::kDeclined) {
+    // Refusing the OS permission prompt is an ordinary cancellation.
+    state_ = "canceled";
+    id_.clear();
+    offer_.reset();
+  } else {
+    state_ = "install_failed";
+  }
   Notify();
 }
 void Controller::Cancel(std::string_view id) {
@@ -272,7 +320,9 @@ void Controller::Restart(std::string_view id) {
   if (!Matches(id) || !GetStatus().FindBool("canRestart").value_or(false)) {
     return;
   }
-  if (base::Time::Now() >= offer_->expires_at) {
+  // An installed Windows update applies on any restart, so expiry no longer
+  // matters there.
+  if (!boundaries_->install && base::Time::Now() >= offer_->expires_at) {
     weak_factory_.InvalidateWeakPtrs();
     id_.clear();
     offer_.reset();
@@ -307,8 +357,10 @@ void Controller::OnRestartResult(RestartResult result) {
     return;
   }
   weak_factory_.InvalidateWeakPtrs();
+  // An installed Windows update stays installed, so only its restart is
+  // retried; expiry no longer matters there.
   if (result == RestartResult::kAborted &&
-      base::Time::Now() < offer_->expires_at) {
+      (boundaries_->install || base::Time::Now() < offer_->expires_at)) {
     state_ = "ready";
     // Retrying requires fresh consent; a queued click from the prior attempt
     // must not restart the newly disarmed transaction.

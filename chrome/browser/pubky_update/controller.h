@@ -32,6 +32,8 @@ namespace pubky_update {
 class MacAdapter;
 #endif
 
+enum class InstallOutcome { kReady, kDeclined, kFailed };
+
 // UI-thread, process-wide owner. The macOS adapter is disabled by default.
 class Controller {
  public:
@@ -52,7 +54,7 @@ class Controller {
   bool MacMayQuit();
 #endif
 
-  // Only native unit tests can supply these boundaries. No command-line,
+  // Native adapter boundaries, from unit tests or Create(). No command-line,
   // preference or WebUI entry point can supply trust or execute code.
   struct TestBoundaries {
     Target target = Target::kLinuxX64;
@@ -64,6 +66,11 @@ class Controller {
         fetch;
     base::RepeatingCallback<void(const Record&, base::OnceCallback<void(bool)>)>
         download_and_verify;
+    // Windows installs after verification, before restart consent. Cancel is
+    // not offered once this starts. The int is a native error code.
+    base::RepeatingCallback<void(const Record&,
+                                 base::OnceCallback<void(InstallOutcome, int)>)>
+        install;
     base::RepeatingClosure cancel;
     // Reply only after disarming on abort/failure, or after the normal
     // app-terminating boundary commits the coordinator. EOF is not commitment.
@@ -72,12 +79,18 @@ class Controller {
   };
   static std::unique_ptr<Controller> CreateForTesting(
       PrefService* local_state, TestBoundaries boundaries);
+  // Browser-supplied native adapter. The caller's key and fetch hook are
+  // ignored: only ProductionPublicKey() is trusted, and without it the
+  // controller stays unsupported.
+  static std::unique_ptr<Controller> Create(PrefService* local_state,
+                                            TestBoundaries boundaries);
 
  private:
   void OnRecord(std::string envelope);
   void FetchMetadata();
   void OnMetadata(std::optional<std::string> envelope);
   void OnVerified(bool success);
+  void OnInstalled(InstallOutcome outcome, int error);
   void OnRestartResult(RestartResult result);
   void Notify();
   bool Matches(std::string_view id) const;
@@ -90,6 +103,7 @@ class Controller {
   std::string state_ = "unsupported";
   std::string id_;
   RecordError error_ = RecordError::kNone;
+  int install_error_ = 0;
   std::optional<Record> offer_;
   bool shutdown_ = false;
   int redirects_ = 0;

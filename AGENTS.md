@@ -1,11 +1,10 @@
 # Agent instructions
 
-Read `pubky/PROJECT.md` before working on this fork. It defines approved scope, the S0 gates, build constraints, and review/merge requirements. Read the assigned issue and applicable decision records in full before changing code.
+Read `pubky/PROJECT.md` for the approved scope and the standing approvals. Read the assigned issue or PR in full before changing code.
 
-- Work only on explicitly approved goals in `MCarlomagno/pubky-chromium`.
-- Ask the owner before any repository action outside this fork. A dependency is not permission to act in its repository.
-- Keep private team discussions, credentials, and personal infrastructure details out of public changes.
-- Use the smallest correct change, reuse existing code, and validate real behavior. Never weaken tests or security controls to pass a gate.
-- The inherited macOS scripts are not validated Linux instructions. Do not fetch external dependencies or run Chromium builds until the issue supplies the approved access, isolation, and resource plan.
-- Use an independent engineer for review. Preserve exact-revision evidence and do not merge your own work.
-- Return new scope, architecture, protocol, security, privacy, spending, or release decisions to the owner. Do not re-request approval for routine implementation of an already recorded agreement.
+- Work only on this fork, `MCarlomagno/pubky-chromium`, on the assigned goal, whether it came as an issue or as a direct assignment. Any action outside the fork needs the owner's approval first.
+- The standing approvals in PROJECT.md cover routine work: a branch per issue, the tests that apply, and pull requests. Do not ask for them again. Build only incrementally in the shared build folder, within about an hour; full builds are for releases.
+- Make the smallest correct change and reuse existing code. Verify the behavior you changed; do not re-verify what the issue or PR already records. Never weaken tests or security controls to pass a check.
+- Stop after two failed attempts at the same step. Report the exact error and what is left instead of retrying in a loop.
+- Hand off with one comment on the issue or PR: PR link, what changed, what tests ran, and what is left. Keep private team details, infrastructure paths, and credentials out of public changes.
+- Decisions on scope, architecture, protocol, security, privacy, spending, or release go to the owner with a recommendation and alternatives.

@@ -24,7 +24,22 @@ source_set("pubky_update") {
       "mac_feed_policy.cc",
       "mac_feed_policy.h",
     ]
-    deps += [ "//third_party/sparkle:sparkle" ]
+    deps += [ "//third_party/sparkle" ]
+  }
+  if (is_win) {
+    sources += [
+      "windows_adapter.cc",
+      "windows_adapter.h",
+    ]
+    deps += [
+      "//base/version_info",
+      "//chrome/browser/lifetime",
+      "//chrome/browser/lifetime:termination_notification",
+      "//chrome/install_static:install_static_util",
+      "//chrome/installer/pubky_update:lib",
+      "//chrome/installer/util:with_no_strings",
+      "//crypto",
+    ]
   }
 }
 
@@ -45,5 +60,12 @@ source_set("unit_tests") {
   ]
   if (is_mac) {
     sources += [ "mac_feed_policy_unittest.cc" ]
+  }
+  if (is_win) {
+    sources += [ "windows_adapter_unittest.cc" ]
+    deps += [
+      "//chrome/installer/pubky_update:lib",
+      "//chrome/installer/util:with_no_strings",
+    ]
   }
 }
