@@ -32,7 +32,7 @@ namespace pubky_update {
 class MacAdapter;
 #endif
 
-// UI-thread, process-wide owner. No production adapter/key is shipped yet.
+// UI-thread, process-wide owner. The macOS adapter is disabled by default.
 class Controller {
  public:
   enum class RestartResult { kAborted, kFailed, kCommitted };
