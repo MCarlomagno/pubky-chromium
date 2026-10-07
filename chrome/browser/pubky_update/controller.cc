@@ -37,6 +37,19 @@ std::unique_ptr<Controller> Controller::CreateForTesting(
   controller->state_ = "idle";
   return controller;
 }
+std::unique_ptr<Controller> Controller::Create(PrefService* local_state,
+                                               TestBoundaries boundaries) {
+  auto controller = std::make_unique<Controller>(local_state);
+  const auto key = ProductionPublicKey();
+  if (!key) {
+    return controller;
+  }
+  boundaries.public_key = *key;
+  boundaries.fetch.Reset();
+  controller->boundaries_ = std::move(boundaries);
+  controller->state_ = "idle";
+  return controller;
+}
 std::string Controller::FloorPref() const {
   return boundaries_->target == Target::kLinuxX64 ? kLinuxFloor : kWindowsFloor;
 }

@@ -7,6 +7,7 @@
 #include "base/base_paths.h"
 #include "base/files/file_util.h"
 #include "base/path_service.h"
+#include "base/strings/string_number_conversions.h"
 #include "chrome/common/pubky_update/test_record.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -117,6 +118,26 @@ TEST_F(PubkyUpdateRecordTest, PublicOpenSslFixture) {
       base::Version("156.0.8073.0"), base::Version("156.0.8073.0"), base::Version(), time);
   ASSERT_TRUE(result.record);
   EXPECT_EQ("156.0.8073.1", result.record->version.GetString());
+}
+TEST_F(PubkyUpdateRecordTest, ProductionKeyFailsClosed) {
+  const auto key = ProductionPublicKey();
+  ASSERT_TRUE(key);
+  EXPECT_EQ("446ccadab07f3f876263177bd0c9010dce050d43b4262901aab15a4964d539f2",
+            base::HexEncodeLower(*key));
+  // A build without the key, or with a malformed or test key, is disabled.
+  for (std::string_view pinned :
+       {"", "RGzK2rB/P4diYxd70MkBDc4FDUO0JikBqrFaSWTVOfI",
+        "RGzK2rB/P4diYxd70MkBDc4FDUO0JikBqrFaSWTVOfI=\n", "AAAA",
+        "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo="}) {
+    EXPECT_FALSE(DecodePinnedKey(pinned)) << pinned;
+  }
+  for (auto target : {Target::kLinuxX64, Target::kWindowsX64}) {
+    EXPECT_EQ(RecordError::kSignature,
+              VerifyRecord(test::Envelope(test::Record(now_, target)), *key,
+                           target, base::Version("156.0.8073.0"),
+                           base::Version("156.0.8073.0"), base::Version(), now_)
+                  .error);
+  }
 }
 }  // namespace
 }  // namespace pubky_update

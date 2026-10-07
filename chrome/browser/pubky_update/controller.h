@@ -30,7 +30,7 @@ namespace pubky_update {
 
 enum class InstallOutcome { kReady, kDeclined, kFailed };
 
-// UI-thread, process-wide owner. No production adapter/key is shipped yet.
+// UI-thread, process-wide owner.
 class Controller {
  public:
   enum class RestartResult { kAborted, kFailed, kCommitted };
@@ -47,7 +47,7 @@ class Controller {
   void Detach();
   void Shutdown();
 
-  // Only native unit tests can supply these boundaries. No command-line,
+  // Native adapter boundaries, from unit tests or Create(). No command-line,
   // preference or WebUI entry point can supply trust or execute code.
   struct TestBoundaries {
     Target target = Target::kLinuxX64;
@@ -74,6 +74,11 @@ class Controller {
   };
   static std::unique_ptr<Controller> CreateForTesting(
       PrefService* local_state, TestBoundaries boundaries);
+  // Browser-supplied native adapter. The caller's key and fetch hook are
+  // ignored: only ProductionPublicKey() is trusted, and without it the
+  // controller stays unsupported.
+  static std::unique_ptr<Controller> Create(PrefService* local_state,
+                                            TestBoundaries boundaries);
 
  private:
   void OnRecord(std::string envelope);

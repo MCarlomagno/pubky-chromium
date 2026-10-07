@@ -478,5 +478,32 @@ TEST(PubkyUpdateTransportTest, OnlyExplicitCheckStartsBoundedCredentiallessReque
               controller->GetStatus().FindInt("error").value());
   }
 }
+TEST(PubkyUpdateTransportTest, ProductionTrustsOnlyThePinnedKey) {
+  base::test::TaskEnvironment environment;
+  TestingPrefServiceSimple prefs;
+  Controller::RegisterLocalState(prefs.registry());
+  network::TestURLLoaderFactory factory;
+  Controller::TestBoundaries boundaries;
+  boundaries.target = Target::kWindowsX64;
+  std::ranges::copy(test::PublicKey(), boundaries.public_key.begin());
+  boundaries.running = base::Version("156.0.8073.0");
+  boundaries.installed = boundaries.running;
+  bool hooked = false;
+  boundaries.fetch = base::BindLambdaForTesting(
+      [&](GURL, base::OnceCallback<void(std::string)>) { hooked = true; });
+  boundaries.metadata_factory = factory.GetSafeWeakWrapper();
+  boundaries.cancel = base::DoNothing();
+  auto controller = Controller::Create(&prefs, std::move(boundaries));
+  controller->Check();
+  EXPECT_FALSE(hooked);
+  // A record signed with the public test key fails under the production key.
+  ASSERT_TRUE(factory.SimulateResponseForPendingRequest(
+      FeedUrl(Target::kWindowsX64).spec(),
+      test::Envelope(test::Record(base::Time::Now(), Target::kWindowsX64))));
+  environment.RunUntilIdle();
+  EXPECT_EQ("failed", *controller->GetStatus().FindString("state"));
+  EXPECT_EQ(static_cast<int>(RecordError::kSignature),
+            controller->GetStatus().FindInt("error").value());
+}
 }  // namespace
 }  // namespace pubky_update

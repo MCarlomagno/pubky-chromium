@@ -1,6 +1,6 @@
 # Signed catalog v1
 
-This branch implements common verifier/controller/About plumbing, the restart outcome contract and Linux L1 eligibility/package staging. Production is disabled. It contains no approved production key, Linux coordinator, Linux/Windows installer helper or Mac adapter. The real About handler receives the inert process controller. Native test boundaries can bind the Linux stager, but cannot perform an installed update.
+This release branch combines the common verifier/controller/About plumbing, the restart outcome contract, Linux L1 eligibility/staging and the L2 exit coordinator, the Windows adapter and the owner's production key (`kProductionPublicKey` in `chrome/common/pubky_update/record.h`). A build without a valid pinned key stays disabled, and the public test key is never accepted as one. Windows registers its adapter with the browser's controller. Linux has no privileged installer (L3) and Mac has no adapter, so their About page stays disabled.
 
 ## Bytes
 
