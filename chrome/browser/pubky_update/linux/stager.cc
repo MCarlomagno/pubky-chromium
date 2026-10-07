@@ -176,7 +176,7 @@ void LinuxStager::OnPrepared(Record record, StageResult result) {
   request->method = "GET";
   request->credentials_mode = network::mojom::CredentialsMode::kOmit;
   request->referrer_policy = net::ReferrerPolicy::NO_REFERRER;
-  request->load_flags = net::LOAD_DISABLE_CACHE | net::LOAD_DO_NOT_SEND_AUTH_DATA;
+  request->load_flags = net::LOAD_DISABLE_CACHE;
   loader_ = network::SimpleURLLoader::Create(std::move(request), annotation);
   redirects_ = 0;
   loader_->SetTimeoutDuration(base::Minutes(10));
