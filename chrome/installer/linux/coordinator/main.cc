@@ -5,6 +5,8 @@
 #include "chrome/installer/linux/coordinator/protocol.h"
 
 #include <unistd.h>
+#include <fcntl.h>
+#include <sys/wait.h>
 
 #include <algorithm>
 #include <iterator>
@@ -73,7 +75,31 @@ int main(int argc, char**) {
     case pubky_update::GateResult::kCommitted:
       break;
   }
-  // L3 will invoke the authenticated installer here; never install in L2.
+  const pid_t installer = fork();
+  if (installer == 0) {
+    close(pubky_update::kCoordinatorPipe);
+    close(pubky_update::kOriginPidfd);
+    close(pubky_update::kTransactionPipe);
+    const char* args[] = {"/usr/bin/pkexec",
+                          "/opt/pubky-chromium/pubky-update-helper",
+                          transaction.staging_dir, nullptr};
+    execv(args[0], const_cast<char* const*>(args));
+    _exit(127);
+  }
+  int status = 0;
+  const bool success = installer > 0 &&
+      waitpid(installer, &status, 0) == installer && WIFEXITED(status) &&
+      WEXITSTATUS(status) == 0;
+  // Only the unprivileged coordinator records the result or starts the browser.
+  const auto result_file = user_data_dir.AppendASCII("pubky-update-result");
+  const int result = open(result_file.value().c_str(),
+                          O_WRONLY | O_CREAT | O_TRUNC | O_NOFOLLOW | O_CLOEXEC,
+                          0600);
+  if (result >= 0) {
+    const std::string text = success ? "installed\n" : "failed\n";
+    base::WriteFileDescriptor(result, text);
+    close(result);
+  }
   if (!staging.Delete()) {
     return 1;
   }

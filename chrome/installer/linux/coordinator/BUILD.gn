@@ -10,6 +10,25 @@ source_set("protocol") {
   deps = [ "//base" ]
 }
 
+source_set("helper_validation") {
+  sources = [
+    "helper.cc",
+    "helper.h",
+  ]
+  deps = [ "//base" ]
+}
+
+executable("pubky_update_helper") {
+  output_name = "pubky-update-helper"
+  sources = [ "helper_main.cc" ]
+  deps = [
+    ":helper_validation",
+    "//base",
+    "//chrome/common/pubky_update:record",
+    "//crypto",
+  ]
+}
+
 executable("pubky_update_coordinator") {
   output_name = "pubky-update-coordinator"
   sources = [ "main.cc" ]
