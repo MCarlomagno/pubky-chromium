@@ -123,6 +123,9 @@ def main() -> None:
         with deb_common_deps_file.open("r") as f:
             common_deps = f.read().strip().replace("\n", ", ")
         config.common_deps = common_deps
+        if (args.branding == "chromium" and args.channel == "stable"
+                and args.arch == "amd64"):
+            config.common_deps += ", pkexec, apt"
         config.common_predeps = "dpkg (>= 1.14.0)"
 
         inst = installer.Installer(config)

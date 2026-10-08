@@ -113,7 +113,7 @@ class DebPackageTest(unittest.TestCase):
         self.assertIn("/usr/share/doc/pubky-chromium/credits.html", text)
         self.assertIn("BSD-3-Clause", text)
 
-    def testCoordinatorOnlyInPubkyStableAmd64Deb(self):
+    def testUpdaterOnlyInPubkyStableAmd64Deb(self):
         for branding, channel, expected in [
             ("chromium", "stable", True),
             ("chromium", "beta", False),
@@ -121,15 +121,20 @@ class DebPackageTest(unittest.TestCase):
         ]:
             config = self.config(branding, channel)
             artifacts = config.get_binary_artifacts()
-            coordinator = [a for a in artifacts if a.dst == "pubky-update-coordinator"]
-            self.assertEqual(expected, bool(coordinator))
-            if coordinator:
-                self.assertEqual(installer.StandardPermissions.EXECUTABLE, coordinator[0].mode)
+            for name, mode in [
+                ("pubky-update-coordinator", installer.StandardPermissions.EXECUTABLE),
+                ("pubky-update-helper", installer.StandardPermissions.EXECUTABLE),
+                ("usr/share/polkit-1/actions/org.pubky.chromium.update.policy",
+                 installer.StandardPermissions.REGULAR),
+            ]:
+                artifact = [a for a in artifacts if a.dst == name]
+                self.assertEqual(expected, bool(artifact))
+                if artifact:
+                    self.assertEqual(mode, artifact[0].mode)
         config = self.config("chromium", "stable")
         config.arch = "arm64"
-        self.assertFalse(
-            [a for a in config.get_binary_artifacts() if a.dst == "pubky-update-coordinator"]
-        )
+        self.assertFalse([a for a in config.get_binary_artifacts()
+                          if "pubky-update-" in str(a.dst) or "polkit-1" in str(a.dst)])
 
 
 if __name__ == "__main__":
