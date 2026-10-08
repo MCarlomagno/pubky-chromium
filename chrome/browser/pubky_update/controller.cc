@@ -59,6 +59,7 @@ base::DictValue Controller::GetStatus() const {
   status.Set("state", state_);
   status.Set("id", id_);
   status.Set("error", static_cast<int>(error_));
+  status.Set("eligibilityReason", static_cast<int>(eligibility_));
   status.Set("installError", install_error_);
   status.Set("version", offer_ ? offer_->version.GetString() : "");
   status.Set("size", offer_ ? base::NumberToString(offer_->size) : "");
@@ -94,6 +95,8 @@ void Controller::Check() {
   weak_factory_.InvalidateWeakPtrs();
   offer_.reset();
   error_ = RecordError::kNone;
+  staged_.reset();
+  eligibility_ = EligibilityReason::kEligible;
   install_error_ = 0;
   id_ = base::UnguessableToken::Create().ToString();
   state_ = "checking";
@@ -219,10 +222,23 @@ void Controller::Confirm(std::string_view id) {
         base::BindOnce(&Controller::OnVerified, weak_factory_.GetWeakPtr()));
   }
 }
-void Controller::OnVerified(bool success) {
+void Controller::OnVerified(StageResult result) {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
   if (state_ != "downloading" || shutdown_) {
     return;
+  }
+  eligibility_ = result.eligibility;
+  if (base::Time::Now() >= offer_->expires_at) {
+    error_ = RecordError::kExpired;
+  }
+  const bool success = result.package &&
+      eligibility_ == EligibilityReason::kEligible &&
+      !result.package->path.empty() && result.package->size == offer_->size &&
+      result.package->sha256 == offer_->sha256 &&
+      result.package->envelope == offer_->authenticated_envelope &&
+      error_ != RecordError::kExpired;
+  if (success) {
+    staged_ = std::move(result.package);
   }
   if (success && boundaries_->install) {
     state_ = "installing";
@@ -262,6 +278,7 @@ void Controller::Cancel(std::string_view id) {
   }
   weak_factory_.InvalidateWeakPtrs();
   state_ = "canceled";
+  staged_.reset();
   metadata_loader_.reset();
   id_.clear();
   offer_.reset();
@@ -280,6 +297,7 @@ void Controller::Restart(std::string_view id) {
   // matters there.
   if (!boundaries_->install && base::Time::Now() >= offer_->expires_at) {
     weak_factory_.InvalidateWeakPtrs();
+    staged_.reset();
     id_.clear();
     offer_.reset();
     state_ = "failed";
@@ -328,6 +346,7 @@ void Controller::OnRestartResult(RestartResult result) {
                                                 : RecordError::kNone;
   state_ = "failed";
   offer_.reset();
+  staged_.reset();
   const auto live_failure = weak_factory_.GetWeakPtr();
   boundaries_->cancel.Run();
   if (live_failure) {
@@ -353,6 +372,7 @@ void Controller::Shutdown() {
   id_.clear();
   offer_.reset();
   state_ = "unsupported";
+  staged_.reset();
   // Finish local teardown before calling a boundary that may reenter us.
   if (cancel) {
     boundaries_->cancel.Run();

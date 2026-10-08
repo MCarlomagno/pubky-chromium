@@ -1017,7 +1017,6 @@ pubky_update::Controller* BrowserProcessImpl::pubky_update_controller() {
     pubky_update_adapter_ = std::make_unique<pubky_update::WindowsAdapter>(
         shared_url_loader_factory(),
         pubky_update::WindowsAdapter::DefaultNative());
-    auto* adapter = pubky_update_adapter_.get();
     pubky_update::Controller::TestBoundaries boundaries;
     boundaries.target = pubky_update::Target::kWindowsX64;
     // ponytail: offers compare against the running version only; the helper
@@ -1025,15 +1024,7 @@ pubky_update::Controller* BrowserProcessImpl::pubky_update_controller() {
     boundaries.running = version_info::GetVersion();
     boundaries.installed = boundaries.running;
     boundaries.metadata_factory = shared_url_loader_factory();
-    boundaries.download_and_verify = base::BindRepeating(
-        &pubky_update::WindowsAdapter::DownloadAndVerify,
-        base::Unretained(adapter));
-    boundaries.install = base::BindRepeating(
-        &pubky_update::WindowsAdapter::Install, base::Unretained(adapter));
-    boundaries.cancel = base::BindRepeating(
-        &pubky_update::WindowsAdapter::Cancel, base::Unretained(adapter));
-    boundaries.restart = base::BindRepeating(
-        &pubky_update::WindowsAdapter::Restart, base::Unretained(adapter));
+    pubky_update_adapter_->BindTo(boundaries);
     pubky_update_controller_ =
         pubky_update::Controller::Create(local_state(), std::move(boundaries));
 #else
