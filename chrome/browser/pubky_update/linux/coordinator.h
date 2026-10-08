@@ -12,7 +12,7 @@
 
 namespace pubky_update {
 
-// One pending consent, owned by the browser process; no production binding yet.
+// One pending consent, owned by the browser process.
 class LinuxCoordinator {
  public:
   LinuxCoordinator();
@@ -20,7 +20,7 @@ class LinuxCoordinator {
   LinuxCoordinator(const LinuxCoordinator&) = delete;
   LinuxCoordinator& operator=(const LinuxCoordinator&) = delete;
 
-  void BindForTesting(Controller::TestBoundaries& boundaries);
+  void BindTo(Controller::TestBoundaries& boundaries);
   void Begin(StagedPackage& package,
              base::OnceCallback<void(Controller::RestartResult)> reply);
   void Abort();

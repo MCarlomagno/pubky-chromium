@@ -59,6 +59,8 @@ class SystemNotificationHelper;
 class StartupData;
 
 namespace pubky_update {
+class LinuxCoordinator;
+class LinuxStager;
 class WindowsAdapter;
 }  // namespace pubky_update
 
@@ -332,6 +334,10 @@ class BrowserProcessImpl : public BrowserProcess,
 #if BUILDFLAG(IS_WIN)
   // Bound into the controller; must outlive it.
   std::unique_ptr<pubky_update::WindowsAdapter> pubky_update_adapter_;
+#elif BUILDFLAG(IS_LINUX)
+  // Bound into the controller; must outlive it.
+  std::unique_ptr<pubky_update::LinuxStager> pubky_update_stager_;
+  std::unique_ptr<pubky_update::LinuxCoordinator> pubky_update_coordinator_;
 #endif
   // Must be destroyed before |local_state_|.
   std::unique_ptr<pubky_update::Controller> pubky_update_controller_;

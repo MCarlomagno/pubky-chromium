@@ -12,7 +12,7 @@
 
 namespace pubky_update {
 // Browser-sequence owner, one download at a time. The controller must be
-// destroyed before this owner. No production registration exists in L1.
+// destroyed before this owner.
 class LinuxStager {
  public:
   using EligibilityProbe = base::RepeatingCallback<EligibilityReason(int)>;
@@ -20,7 +20,7 @@ class LinuxStager {
               base::Version running,
               scoped_refptr<network::SharedURLLoaderFactory> factory);
   ~LinuxStager();
-  void BindForTesting(Controller::TestBoundaries& boundaries);
+  void BindTo(Controller::TestBoundaries& boundaries);
   void SetEligibilityProbeForTesting(EligibilityProbe probe);
   void Start(const Record& record, base::OnceCallback<void(StageResult)> reply);
   void Cancel();

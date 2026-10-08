@@ -204,7 +204,7 @@ TEST_F(PubkyUpdateLinuxStagerTest, ControllerReadyOnlyAfterRealStagingAndEligibi
       [](std::string envelope, GURL, base::OnceCallback<void(std::string)> reply) {
         std::move(reply).Run(std::move(envelope));
       }, envelope_);
-  stager_->BindForTesting(boundaries);
+  stager_->BindTo(boundaries);
   auto controller = Controller::CreateForTesting(&prefs, std::move(boundaries));
   controller->Check();
   EXPECT_EQ(0, factory_.NumPending());
