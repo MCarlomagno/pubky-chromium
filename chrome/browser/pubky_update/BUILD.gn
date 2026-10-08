@@ -6,6 +6,7 @@ source_set("pubky_update") {
   sources = [
     "controller.cc",
     "controller.h",
+    "staged_package.h",
   ]
   public_deps = [
     "//base",
@@ -17,6 +18,27 @@ source_set("pubky_update") {
     "//components/prefs",
     "//net",
   ]
+  if (is_linux && !is_chromeos) {
+    sources += [
+      "linux/eligibility.cc",
+      "linux/eligibility.h",
+      "linux/coordinator.cc",
+      "linux/coordinator.h",
+      "linux/stager.cc",
+      "linux/stager.h",
+    ]
+    deps += [
+      "//chrome/browser:browser_process",
+      "//chrome/browser/lifetime:lifetime",
+      "//chrome/browser/lifetime:termination_notification",
+      "//chrome/browser/profiles:profile",
+      "//chrome/browser/profiles:profile_manager",
+      "//chrome/browser/sessions",
+      "//chrome/common:buildflags",
+      "//chrome/installer/linux/coordinator:protocol",
+      "//crypto",
+    ]
+  }
   if (is_mac) {
     sources += [
       "mac_adapter.h",
@@ -46,6 +68,14 @@ source_set("pubky_update") {
 source_set("unit_tests") {
   testonly = true
   sources = [ "controller_unittest.cc" ]
+  if (is_linux && !is_chromeos) {
+    sources += [
+      "linux/eligibility_unittest.cc",
+      "linux/stager_unittest.cc",
+      "//chrome/installer/linux/coordinator/helper_unittest.cc",
+      "//chrome/installer/linux/coordinator/protocol_unittest.cc",
+    ]
+  }
   deps = [
     ":pubky_update",
     "//base",
@@ -58,6 +88,9 @@ source_set("unit_tests") {
     "//services/network:test_support",
     "//testing/gtest",
   ]
+  if (is_linux && !is_chromeos) {
+    deps += [ "//chrome/installer/linux/coordinator:helper_validation" ]
+  }
   if (is_mac) {
     sources += [ "mac_feed_policy_unittest.cc" ]
   }

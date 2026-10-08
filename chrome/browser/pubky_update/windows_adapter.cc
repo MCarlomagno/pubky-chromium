@@ -240,6 +240,41 @@ WindowsAdapter::~WindowsAdapter() {
   Cancel();
 }
 
+void WindowsAdapter::BindTo(Controller::TestBoundaries& boundaries) {
+  boundaries.download_and_verify = base::BindRepeating(
+      [](WindowsAdapter* adapter, const Record& record,
+         base::OnceCallback<void(StageResult)> done) {
+        adapter->DownloadAndVerify(
+            record, base::BindOnce(
+                        [](WindowsAdapter* adapter, Record record,
+                           base::OnceCallback<void(StageResult)> done,
+                           bool verified) {
+                          StageResult result;
+                          if (verified) {
+                            StagedPackage package;
+                            package.path = adapter->staging_.Append(kInstallerName);
+                            package.size = record.size;
+                            package.sha256 = record.sha256;
+                            package.envelope = record.authenticated_envelope;
+                            result.package.emplace(std::move(package));
+                          }
+                          std::move(done).Run(std::move(result));
+                        },
+                        base::Unretained(adapter), record, std::move(done)));
+      },
+      base::Unretained(this));
+  boundaries.install =
+      base::BindRepeating(&WindowsAdapter::Install, base::Unretained(this));
+  boundaries.cancel =
+      base::BindRepeating(&WindowsAdapter::Cancel, base::Unretained(this));
+  boundaries.restart = base::BindRepeating(
+      [](WindowsAdapter* adapter, StagedPackage&,
+         base::OnceCallback<void(Controller::RestartResult)> done) {
+        adapter->Restart(std::move(done));
+      },
+      base::Unretained(this));
+}
+
 void WindowsAdapter::DownloadAndVerify(const Record& record,
                                        base::OnceCallback<void(bool)> done) {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);

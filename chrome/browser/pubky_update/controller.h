@@ -18,6 +18,7 @@
 #include "base/sequence_checker.h"
 #include "base/values.h"
 #include "build/build_config.h"
+#include "chrome/browser/pubky_update/staged_package.h"
 #include "chrome/common/pubky_update/buildflags.h"
 #include "chrome/common/pubky_update/record.h"
 #include "services/network/public/cpp/shared_url_loader_factory.h"
@@ -64,7 +65,8 @@ class Controller {
     scoped_refptr<network::SharedURLLoaderFactory> metadata_factory;
     base::RepeatingCallback<void(GURL, base::OnceCallback<void(std::string)>)>
         fetch;
-    base::RepeatingCallback<void(const Record&, base::OnceCallback<void(bool)>)>
+    base::RepeatingCallback<void(const Record&,
+                                base::OnceCallback<void(StageResult)>)>
         download_and_verify;
     // Windows installs after verification, before restart consent. Cancel is
     // not offered once this starts. The int is a native error code.
@@ -74,7 +76,8 @@ class Controller {
     base::RepeatingClosure cancel;
     // Reply only after disarming on abort/failure, or after the normal
     // app-terminating boundary commits the coordinator. EOF is not commitment.
-    base::RepeatingCallback<void(base::OnceCallback<void(RestartResult)>)>
+    base::RepeatingCallback<void(StagedPackage&,
+                                 base::OnceCallback<void(RestartResult)>)>
         restart;
   };
   static std::unique_ptr<Controller> CreateForTesting(
@@ -89,7 +92,7 @@ class Controller {
   void OnRecord(std::string envelope);
   void FetchMetadata();
   void OnMetadata(std::optional<std::string> envelope);
-  void OnVerified(bool success);
+  void OnVerified(StageResult result);
   void OnInstalled(InstallOutcome outcome, int error);
   void OnRestartResult(RestartResult result);
   void Notify();
@@ -105,6 +108,8 @@ class Controller {
   RecordError error_ = RecordError::kNone;
   int install_error_ = 0;
   std::optional<Record> offer_;
+  std::optional<StagedPackage> staged_;
+  EligibilityReason eligibility_ = EligibilityReason::kEligible;
   bool shutdown_ = false;
   int redirects_ = 0;
   std::unique_ptr<network::SimpleURLLoader> metadata_loader_;
