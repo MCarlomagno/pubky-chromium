@@ -113,6 +113,24 @@ class DebPackageTest(unittest.TestCase):
         self.assertIn("/usr/share/doc/pubky-chromium/credits.html", text)
         self.assertIn("BSD-3-Clause", text)
 
+    def testCoordinatorOnlyInPubkyStableAmd64Deb(self):
+        for branding, channel, expected in [
+            ("chromium", "stable", True),
+            ("chromium", "beta", False),
+            ("google_chrome", "stable", False),
+        ]:
+            config = self.config(branding, channel)
+            artifacts = config.get_binary_artifacts()
+            coordinator = [a for a in artifacts if a.dst == "pubky-update-coordinator"]
+            self.assertEqual(expected, bool(coordinator))
+            if coordinator:
+                self.assertEqual(installer.StandardPermissions.EXECUTABLE, coordinator[0].mode)
+        config = self.config("chromium", "stable")
+        config.arch = "arm64"
+        self.assertFalse(
+            [a for a in config.get_binary_artifacts() if a.dst == "pubky-update-coordinator"]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
