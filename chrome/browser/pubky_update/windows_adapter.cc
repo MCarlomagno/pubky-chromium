@@ -267,8 +267,12 @@ void WindowsAdapter::BindTo(Controller::TestBoundaries& boundaries) {
       base::BindRepeating(&WindowsAdapter::Install, base::Unretained(this));
   boundaries.cancel =
       base::BindRepeating(&WindowsAdapter::Cancel, base::Unretained(this));
-  boundaries.restart =
-      base::BindRepeating(&WindowsAdapter::Restart, base::Unretained(this));
+  boundaries.restart = base::BindRepeating(
+      [](WindowsAdapter* adapter, StagedPackage&,
+         base::OnceCallback<void(Controller::RestartResult)> done) {
+        adapter->Restart(std::move(done));
+      },
+      base::Unretained(this));
 }
 
 void WindowsAdapter::DownloadAndVerify(const Record& record,
