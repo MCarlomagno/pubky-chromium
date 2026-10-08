@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:pubky="https://github.com/MCarlomagno/pubky-chromium">
+  <channel>
+    <title>Pubky Chromium experimental, macOS arm64</title>
+    <item>
+      <title>Pubky Chromium 156.0.8073.2</title>
+      <sparkle:version>8073.2</sparkle:version>
+      <sparkle:shortVersionString>156.0.8073.2</sparkle:shortVersionString>
+      <sparkle:channel>experimental</sparkle:channel>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+      <pubky:repository>MCarlomagno/pubky-chromium</pubky:repository>
+      <pubky:product>Pubky Chromium</pubky:product>
+      <pubky:platform>macos</pubky:platform>
+      <pubky:architecture>arm64</pubky:architecture>
+      <pubky:channel>experimental</pubky:channel>
+      <pubky:issued_at>2026-10-08T05:21:26Z</pubky:issued_at>
+      <pubky:expires_at>2027-04-06T05:21:26Z</pubky:expires_at>
+      <enclosure url="https://github.com/MCarlomagno/pubky-chromium/releases/download/pubky-macos-156.0.8073.2/pubky-chromium-156.0.8073.2-macos-arm64.zip" length="230953651" type="application/octet-stream" sparkle:edSignature="tszezHBNONXI2SCDDg2ISddOa4T2OqWZsXXINfjXiA6YnvsOAgtLXRQT/HotPeEe4KeA5a+Slxsfh/Ra1bVrDw=="/>
+    </item>
+  </channel>
+</rss>
+<!-- sparkle-signatures:
+edSignature: XRntNMoudgr3fDsnud0p/IZ2bXyCFiZqMei7FfsCgKtip0uLa9uFBc9rVoCZzjH+YU5xvkxFaSPMrzIYGBqeCA==
+length: 1390
+-->
