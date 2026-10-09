@@ -67,6 +67,7 @@
 #include "chrome/browser/profiles/profile_manager_observer.h"
 #include "chrome/browser/profiles/profile_observer.h"
 #include "chrome/browser/profiles/profiles_state.h"
+#include "chrome/browser/pubky_update/controller.h"
 #include "chrome/browser/sessions/session_restore.h"
 #include "chrome/browser/sessions/session_service.h"
 #include "chrome/browser/sessions/session_service_factory.h"
@@ -938,6 +939,15 @@ class AppControllerProfileObserver : public ProfileAttributesStorage::Observer,
   if ([self confirmQuitIfNeeded] == ConfirmQuitResultAborted) {
     return;
   }
+#if BUILDFLAG(PUBKY_UPDATE_UI) && BUILDFLAG(PUBKY_MAC_UPDATE_ENABLED)
+  if (g_browser_process) {
+    if (auto* controller = g_browser_process->pubky_update_controller()) {
+      if (!controller->MacMayQuit()) {
+        return;
+      }
+    }
+  }
+#endif
 
   // If termination is already underway (and this is a redundant attempt to
   // quit) then there's nothing to be done.
