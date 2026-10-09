@@ -1430,6 +1430,9 @@ if (is_win) {
       chrome_dylib_version,
       "-current_version",
       chrome_dylib_version,
+
+      # Sparkle.framework is in Contents/Frameworks, next to this framework.
+      "-Wl,-rpath,@loader_path/../../..",
     ]
 
     if (!is_component_build) {
