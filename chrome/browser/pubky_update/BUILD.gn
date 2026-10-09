@@ -10,6 +10,7 @@ source_set("pubky_update") {
   ]
   public_deps = [
     "//base",
+    "//chrome/common/pubky_update:buildflags",
     "//chrome/common/pubky_update:record",
     "//services/network/public/cpp",
   ]
@@ -37,6 +38,15 @@ source_set("pubky_update") {
       "//chrome/installer/linux/coordinator:protocol",
       "//crypto",
     ]
+  }
+  if (is_mac) {
+    sources += [
+      "mac_adapter.h",
+      "mac_adapter.mm",
+      "mac_feed_policy.cc",
+      "mac_feed_policy.h",
+    ]
+    deps += [ "//third_party/sparkle" ]
   }
   if (is_win) {
     sources += [
@@ -80,6 +90,9 @@ source_set("unit_tests") {
   ]
   if (is_linux && !is_chromeos) {
     deps += [ "//chrome/installer/linux/coordinator:helper_validation" ]
+  }
+  if (is_mac) {
+    sources += [ "mac_feed_policy_unittest.cc" ]
   }
   if (is_win) {
     sources += [ "windows_adapter_unittest.cc" ]

@@ -7,9 +7,15 @@ import("//build/config/chrome_build.gni")
 
 pubky_update_ui = (is_linux || is_win || is_mac) && !is_chromeos &&
                   !is_chrome_branded && !is_chrome_for_testing
+declare_args() {
+  enable_pubky_mac_updates = false
+}
 buildflag_header("buildflags") {
   header = "buildflags.h"
-  flags = [ "PUBKY_UPDATE_UI=$pubky_update_ui" ]
+  flags = [
+    "PUBKY_UPDATE_UI=$pubky_update_ui",
+    "PUBKY_MAC_UPDATE_ENABLED=$enable_pubky_mac_updates",
+  ]
 }
 
 source_set("record") {
