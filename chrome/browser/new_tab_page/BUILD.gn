@@ -265,6 +265,7 @@ if (!is_android) {
       "new_tab_page_interactive_uitest.cc",
       "new_tab_page_realbox_interactive_uitest.cc",
       "ntp_promo/ntp_promo_interactive_uitest.cc",
+      "pubky_start_page_interactive_uitest.cc",
     ]
 
     deps = [
@@ -280,6 +281,7 @@ if (!is_android) {
       "//chrome/browser/ui/views/user_education",
       "//chrome/browser/ui/webui/searchbox:searchbox_test_utils",
       "//chrome/browser/user_education",
+      "//chrome/test/base:interactive_test_utils",
       "//chrome/test:test_support",
       "//chrome/test:test_support_ui",
       "//components/contextual_search:test_support",
@@ -287,6 +289,7 @@ if (!is_android) {
       "//content/test:test_support",
       "//testing/gtest",
       "//ui/base:test_support",
+      "//ui/events",
     ]
   }
 }

@@ -438,18 +438,21 @@ IN_PROC_BROWSER_TEST_F(SearchTest, IsNTPOrRelatedURL) {
 
   EXPECT_FALSE(IsNTPOrRelatedURL(invalid_url, profile()));
 
-  GURL remote_ntp_url(GetNewTabPageURL(profile()));
+  GURL local_ntp_url(GetNewTabPageURL(profile()));
+  GURL remote_ntp_url("https://foo.com/newtab");
   GURL remote_ntp_service_worker_url("https://foo.com/newtab-serviceworker.js");
   GURL search_url_with_search_terms("https://foo.com/url?bar=abc");
   GURL search_url_without_search_terms("https://foo.com/url?bar");
 
   EXPECT_FALSE(IsNTPOrRelatedURL(ntp_url, profile()));
+  EXPECT_TRUE(IsNTPOrRelatedURL(local_ntp_url, profile()));
   EXPECT_TRUE(IsNTPOrRelatedURL(remote_ntp_url, profile()));
   EXPECT_TRUE(IsNTPOrRelatedURL(remote_ntp_service_worker_url, profile()));
   EXPECT_FALSE(IsNTPOrRelatedURL(search_url_with_search_terms, profile()));
   EXPECT_FALSE(IsNTPOrRelatedURL(search_url_without_search_terms, profile()));
 
   EXPECT_FALSE(IsNTPOrRelatedURL(ntp_url, nullptr));
+  EXPECT_FALSE(IsNTPOrRelatedURL(local_ntp_url, nullptr));
   EXPECT_FALSE(IsNTPOrRelatedURL(remote_ntp_url, nullptr));
   EXPECT_FALSE(IsNTPOrRelatedURL(remote_ntp_service_worker_url, nullptr));
   EXPECT_FALSE(IsNTPOrRelatedURL(search_url_with_search_terms, nullptr));

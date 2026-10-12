@@ -7,6 +7,7 @@
   --pubky-foreground: var(--pubky-dark-base);
   --pubky-card: #F3F4EE;
   --pubky-muted: #46494A;
+  --pubky-focus: #506600;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +16,7 @@
     --pubky-foreground: var(--pubky-light-base);
     --pubky-card: #202126;
     --pubky-muted: #C1C3C5;
+    --pubky-focus: var(--pubky-accent);
   }
 }
 
@@ -43,6 +45,6 @@ a {
   text-decoration: none;
 }
 a:hover { border-color: var(--pubky-accent); }
-a:focus-visible { outline: 3px solid var(--pubky-accent); outline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--pubky-focus); outline-offset: 3px; }
 a strong { font-size: 1.1rem; }
 a span { color: var(--pubky-muted); font-size: .9rem; margin-top: 4px; }

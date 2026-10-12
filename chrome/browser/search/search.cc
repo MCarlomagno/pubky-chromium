@@ -263,7 +263,8 @@ bool IsNTPOrRelatedURL(const GURL& url, Profile* profile) {
     return url == chrome::ChromeUINewTabURLAsGURL();
   }
 
-  return profile && IsNTPOrRelatedURLHelper(url, profile);
+  return profile && (MatchesOriginAndPath(url, GetNewTabPageURL(profile)) ||
+                     IsNTPOrRelatedURLHelper(url, profile));
 }
 
 bool IsNTPURL(const GURL& url) {
