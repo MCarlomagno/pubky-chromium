@@ -310,8 +310,9 @@ std::unique_ptr<ui::ThemeProvider> ThemeService::CreateBoundThemeProvider(
 void ThemeService::RegisterProfilePrefs(
     user_prefs::PrefRegistrySyncable* registry) {
 #if BUILDFLAG(IS_LINUX)
+  // Default to the Pubky theme rather than the desktop's GTK or Qt theme.
   registry->RegisterIntegerPref(prefs::kSystemTheme,
-                                static_cast<int>(ui::GetDefaultSystemTheme()));
+                                static_cast<int>(ui::SystemTheme::kDefault));
 #endif
   registry->RegisterFilePathPref(prefs::kCurrentThemePackFilename,
                                  base::FilePath());

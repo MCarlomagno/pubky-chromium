@@ -42,6 +42,8 @@ source_set("mixers") {
     "omnibox_color_mixer.h",
     "product_specifications_color_mixer.cc",
     "product_specifications_color_mixer.h",
+    "pubky_color_mixer.cc",
+    "pubky_color_mixer.h",
     "tab_group_color_ids.h",
     "tab_strip_color_mixer.cc",
     "tab_strip_color_mixer.h",
@@ -98,6 +100,7 @@ if (!is_android) {
       "material_new_tab_page_color_mixer_unittest.cc",
       "material_tab_strip_color_mixer_unittest.cc",
       "new_tab_page_color_mixer_unittest.cc",
+      "pubky_color_mixer_unittest.cc",
     ]
 
     deps = [
