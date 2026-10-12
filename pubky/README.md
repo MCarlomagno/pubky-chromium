@@ -137,6 +137,22 @@ no DNS, TLS-verification, or proxy overrides. The other live fixture is:
 https://4msqbgpkfcdgnzrrsyp5hgno8rfa4sx15c79ughsq95ikycunowy/
 ```
 
+## Installing the Linux package
+
+Releases ship a `.deb` for Ubuntu 24.04. Check the download against the
+release's `SHA256SUMS.txt`, then install it from a terminal:
+
+```sh
+sudo apt install ./pubky-chromium_<version>_amd64.deb
+```
+
+Opening the file in Ubuntu's App Center instead shows "Unknown publisher" and
+"Potentially unsafe". App Center shows that for every `.deb` opened from a file;
+it is not a signature failure, and a signed APT repository would not change it.
+The terminal install shows no such warning. Later versions arrive through the
+in-app updater (Settings > About), which verifies the owner's signature before
+installing.
+
 ## Independent diagnostics
 
 With Python 3 and OpenSSL supporting `-enable_server_rpk`:
