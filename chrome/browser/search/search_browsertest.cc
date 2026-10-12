@@ -381,8 +381,7 @@ IN_PROC_BROWSER_TEST_F(SearchTest, NoRewriteInIncognito) {
 }
 
 IN_PROC_BROWSER_TEST_F(SearchTest, UseLocalNTPWithRemoteProvider) {
-  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(),
-            GetNewTabPageURL(profile()));
+  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), GetNewTabPageURL(profile()));
   GURL new_tab_url = chrome::ChromeUINewTabURLAsGURL();
   EXPECT_TRUE(HandleNewTabURLRewrite(&new_tab_url, profile()));
   EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), new_tab_url);
@@ -391,8 +390,7 @@ IN_PROC_BROWSER_TEST_F(SearchTest, UseLocalNTPWithRemoteProvider) {
 IN_PROC_BROWSER_TEST_F(SearchTest, UseLocalNTPIfNTPURLIsInsecure) {
   // Set an insecure new tab page URL and verify that it's ignored.
   SetSearchProvider(true, true);
-  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(),
-            GetNewTabPageURL(profile()));
+  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), GetNewTabPageURL(profile()));
   GURL new_tab_url = chrome::ChromeUINewTabURLAsGURL();
   EXPECT_TRUE(HandleNewTabURLRewrite(&new_tab_url, profile()));
   EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), new_tab_url);
@@ -401,8 +399,7 @@ IN_PROC_BROWSER_TEST_F(SearchTest, UseLocalNTPIfNTPURLIsInsecure) {
 IN_PROC_BROWSER_TEST_F(SearchTest, UseLocalNTPIfNTPURLIsNotSet) {
   // No provider new-tab URL is set.
   SetSearchProvider(false, true);
-  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(),
-            GetNewTabPageURL(profile()));
+  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), GetNewTabPageURL(profile()));
   GURL new_tab_url = chrome::ChromeUINewTabURLAsGURL();
   EXPECT_TRUE(HandleNewTabURLRewrite(&new_tab_url, profile()));
   EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), new_tab_url);
@@ -425,8 +422,7 @@ IN_PROC_BROWSER_TEST_F(SupervisedSearchTest,
   supervised_user_test_util::SetManualFilterForHost(profile(), "foo.com",
                                                     /*allowlist=*/false);
 
-  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(),
-            GetNewTabPageURL(profile()));
+  EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), GetNewTabPageURL(profile()));
   GURL new_tab_url = chrome::ChromeUINewTabURLAsGURL();
   EXPECT_TRUE(HandleNewTabURLRewrite(&new_tab_url, profile()));
   EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), new_tab_url);
