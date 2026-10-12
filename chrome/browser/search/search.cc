@@ -131,18 +131,6 @@ bool IsMatchingServiceWorker(const GURL& my_url, const GURL& document_url) {
   return my_path_without_filename == document_path_without_filename;
 }
 
-// Returns true if |url| matches the NTP URL or the URL of the NTP's associated
-// service worker.
-bool IsNTPOrRelatedURLHelper(const GURL& url, Profile* profile) {
-  if (!url.is_valid()) {
-    return false;
-  }
-
-  const GURL new_tab_url(GetNewTabPageURL(profile));
-  return new_tab_url.is_valid() && (MatchesOriginAndPath(url, new_tab_url) ||
-                                    IsMatchingServiceWorker(url, new_tab_url));
-}
-
 bool IsURLAllowedForSupervisedUser(const GURL& url, Profile& profile) {
   if (!profile.IsChild()) {
     return true;
@@ -226,6 +214,17 @@ struct NewTabURLDetails {
   const GURL url;
   const NewTabURLState state;
 };
+
+// Returns true if |url| matches the NTP URL or its associated service worker.
+bool IsNTPOrRelatedURLHelper(const GURL& url, Profile* profile) {
+  if (!url.is_valid()) {
+    return false;
+  }
+
+  const GURL new_tab_url(NewTabURLDetails::ForProfile(profile).url);
+  return new_tab_url.is_valid() && (MatchesOriginAndPath(url, new_tab_url) ||
+                                    IsMatchingServiceWorker(url, new_tab_url));
+}
 
 bool IsRenderedInInstantProcess(content::WebContents* contents,
                                 Profile* profile) {
@@ -317,7 +316,7 @@ bool IsInstantNTPURL(const GURL& url, Profile* profile) {
     return false;
   }
 
-  GURL new_tab_url(GetNewTabPageURL(profile));
+  GURL new_tab_url(NewTabURLDetails::ForProfile(profile).url);
   return new_tab_url.is_valid() && MatchesOriginAndPath(url, new_tab_url);
 }
 
@@ -335,6 +334,11 @@ bool IsSplitViewNewTabPage(const GURL& url) {
 }
 
 GURL GetNewTabPageURL(Profile* profile) {
+#if !BUILDFLAG(IS_ANDROID)
+  if (!profile->IsOffTheRecord()) {
+    return chrome::ChromeUINewTabPageURLAsGURL();
+  }
+#endif
   return NewTabURLDetails::ForProfile(profile).url;
 }
 
@@ -413,8 +417,9 @@ bool HandleNewTabURLRewrite(GURL* url,
   NewTabURLDetails details(NewTabURLDetails::ForProfile(profile));
   UMA_HISTOGRAM_ENUMERATION("NewTabPage.URLState", details.state,
                             NEW_TAB_URL_MAX);
-  if (details.url.is_valid()) {
-    *url = details.url;
+  const GURL new_tab_url = GetNewTabPageURL(profile);
+  if (new_tab_url.is_valid()) {
+    *url = new_tab_url;
     return true;
   }
   return false;
