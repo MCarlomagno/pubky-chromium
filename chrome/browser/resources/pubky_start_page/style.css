@@ -32,8 +32,18 @@ header { margin-bottom: 48px; }
 .mark { display: block; width: 48px; height: 8px; background: var(--pubky-accent); }
 h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 24px 0 16px; }
 p { color: var(--pubky-muted); margin: 0; }
+section { margin-bottom: 48px; }
+h2 { font-size: 1.4rem; margin: 0 0 12px; }
+.key-links { display: grid; gap: 12px; margin-top: 20px; }
+.key-site { padding: 16px 20px; border-radius: 12px; background: var(--pubky-card); }
+.key-address { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 8px; }
+.key-address a { min-width: 0; overflow-wrap: anywhere; color: var(--pubky-foreground); }
+.key-address code { font-size: .85rem; }
+.key-address button { padding: 6px 12px; border: 1px solid var(--pubky-muted); border-radius: 6px; background: var(--pubky-background); color: var(--pubky-foreground); cursor: pointer; }
+.key-address button:focus-visible, .key-address a:focus-visible { outline: 3px solid var(--pubky-focus); outline-offset: 3px; }
+.key-site small { display: block; color: var(--pubky-muted); margin-top: 8px; }
 nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-a {
+nav a {
   display: flex;
   flex-direction: column;
   min-height: 108px;
@@ -44,7 +54,7 @@ a {
   color: var(--pubky-foreground);
   text-decoration: none;
 }
-a:hover { border-color: var(--pubky-accent); }
-a:focus-visible { outline: 3px solid var(--pubky-focus); outline-offset: 3px; }
-a strong { font-size: 1.1rem; }
-a span { color: var(--pubky-muted); font-size: .9rem; margin-top: 4px; }
+nav a:hover { border-color: var(--pubky-accent); }
+nav a:focus-visible { outline: 3px solid var(--pubky-focus); outline-offset: 3px; }
+nav a strong { font-size: 1.1rem; }
+nav a span { color: var(--pubky-muted); font-size: .9rem; margin-top: 4px; }

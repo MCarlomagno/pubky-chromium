@@ -171,10 +171,11 @@ class PubkyStartPageUI : public content::WebUIController {
       : content::WebUIController(web_ui) {
     auto* source = content::WebUIDataSource::CreateAndAdd(
         Profile::FromWebUI(web_ui), chrome::kChromeUINewTabPageHost);
+    source->AddResourcePath("copy.js", IDR_PUBKY_START_PAGE_COPY_JS);
     source->AddResourcePath("style.css", IDR_PUBKY_START_PAGE_STYLE_CSS);
     source->SetDefaultResource(IDR_PUBKY_START_PAGE_INDEX_HTML);
     source->OverrideContentSecurityPolicy(
-        network::mojom::CSPDirectiveName::ScriptSrc, "script-src 'none';");
+        network::mojom::CSPDirectiveName::ScriptSrc, "script-src 'self';");
     source->OverrideContentSecurityPolicy(
         network::mojom::CSPDirectiveName::ConnectSrc, "connect-src 'none';");
     source->OverrideContentSecurityPolicy(
