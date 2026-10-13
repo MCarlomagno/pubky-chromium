@@ -287,8 +287,11 @@ void ProfileResetter::ResetHomepage() {
   DCHECK(prefs);
   std::string homepage;
 
-  if (master_settings_->GetHomepage(&homepage))
+  if (master_settings_->GetHomepage(&homepage)) {
     prefs->SetString(prefs::kHomePage, homepage);
+  } else {
+    prefs->ClearPref(prefs::kHomePage);
+  }
 
   std::optional<bool> homepage_is_ntp = master_settings_->GetHomepageIsNewTab();
   if (homepage_is_ntp.has_value())
