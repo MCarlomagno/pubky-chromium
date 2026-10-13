@@ -22,6 +22,7 @@
 #include "chrome/browser/ui/color/new_tab_page_color_mixer.h"
 #include "chrome/browser/ui/color/omnibox_color_mixer.h"
 #include "chrome/browser/ui/color/product_specifications_color_mixer.h"
+#include "chrome/browser/ui/color/pubky_color_mixer.h"
 #include "chrome/browser/ui/color/tab_strip_color_mixer.h"
 #include "ui/color/color_provider_utils.h"
 
@@ -84,6 +85,7 @@ void AddChromeColorMixers(ui::ColorProvider* provider,
   AddMaterialOmniboxColorMixer(provider, key);
   AddMaterialSidePanelColorMixer(provider, key);
   AddMaterialTabStripColorMixer(provider, key);
+  AddPubkyColorMixer(provider, key);
 
   // Must be the last one in order to override other mixer colors.
   AddNativeChromeColorMixer(provider, key);
