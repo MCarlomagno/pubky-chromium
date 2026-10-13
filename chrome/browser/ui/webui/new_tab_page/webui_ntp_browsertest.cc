@@ -119,9 +119,8 @@ IN_PROC_BROWSER_TEST_F(WebUiNtpBrowserTest, VerifySiteInstance) {
 
   content::WebContents* web_contents =
       browser()->GetTabStripModel()->GetActiveWebContents();
-  ASSERT_EQ(ntp_url, web_contents->GetLastCommittedURL());
-
   const GURL& webui_ntp_url = chrome::ChromeUINewTabPageURLAsGURL();
+  ASSERT_EQ(webui_ntp_url, web_contents->GetLastCommittedURL());
   ASSERT_EQ(webui_ntp_url, web_contents->GetPrimaryMainFrame()
                                ->GetSiteInstance()
                                ->GetSecurityPrincipal()

@@ -238,6 +238,7 @@ IN_PROC_BROWSER_TEST_F(FirstRunMasterPrefsImportNothing,
                                            chrome::ChromeUINewTabURLAsGURL()));
   content::WebContents* tab = browser()->tab_strip_model()->GetWebContentsAt(0);
   EXPECT_TRUE(WaitForLoadStop(tab));
+  EXPECT_EQ("Pubky", content::EvalJs(tab, "document.title"));
 }
 
 // Test first run with some tracked preferences.

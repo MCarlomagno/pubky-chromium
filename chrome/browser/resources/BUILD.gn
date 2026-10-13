@@ -35,6 +35,7 @@ group("resources") {
       "new_tab_page_instant:resources",
       "new_tab_page_third_party:resources",
       "new_tab_shared:resources",
+      "pubky_start_page:resources",
       "side_panel/customize_chrome:resources",
     ]
   }

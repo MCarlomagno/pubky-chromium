@@ -700,6 +700,10 @@
     "META": {"sizes": {"includes": [10],}},
     "includes": [4640],
   },
+  "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/pubky_start_page/resources.grd": {
+    "META": {"sizes": {"includes": [10]}},
+    "includes": [4650],
+  },
   "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/quota_internals/quota_internals_resources.grd": {
     "META": {"sizes": {"includes": [20]}},
     "includes": [4660],

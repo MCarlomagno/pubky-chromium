@@ -101,6 +101,7 @@ source_set("impl") {
     "//chrome/browser/resources/new_tab_page:resources",
     "//chrome/browser/resources/new_tab_page/untrusted:resources",
     "//chrome/browser/resources/new_tab_shared:resources",
+    "//chrome/browser/resources/pubky_start_page:resources",
     "//chrome/browser/search/background",
     "//chrome/browser/search_engines",
     "//chrome/browser/search_provider_logos",
@@ -266,6 +267,7 @@ if (!is_android) {
     configs += [ "//build/config/compiler:no_exit_time_destructors" ]
     sources = [
       "new_tab_page_handler_browsertest.cc",
+      "pubky_start_page_browsertest.cc",
       "webui_ntp_browsertest.cc",
     ]
     deps = [
