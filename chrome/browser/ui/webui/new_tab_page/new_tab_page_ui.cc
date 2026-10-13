@@ -84,6 +84,7 @@
 #include "chrome/grit/generated_resources.h"
 #include "chrome/grit/new_tab_page_resources.h"
 #include "chrome/grit/new_tab_page_resources_map.h"
+#include "chrome/grit/pubky_start_page_resources.h"
 #include "chrome/grit/theme_resources.h"
 #include "components/commerce/core/commerce_feature_list.h"
 #include "components/content_settings/core/common/content_settings_pattern.h"
@@ -117,6 +118,7 @@
 #include "content/public/browser/navigation_controller.h"
 #include "content/public/browser/navigation_handle.h"
 #include "content/public/browser/url_data_source.h"
+#include "content/public/browser/web_ui_controller.h"
 #include "content/public/browser/web_ui_data_source.h"
 #include "google_apis/gaia/core_account_id.h"
 #include "media/base/media_switches.h"
@@ -162,6 +164,25 @@ using content::WebContents;
 DEFINE_CLASS_ELEMENT_IDENTIFIER_VALUE(NewTabPageUI,
                                       kRealboxContextualEntrypointElementId);
 
+namespace {
+class PubkyStartPageUI : public content::WebUIController {
+ public:
+  explicit PubkyStartPageUI(content::WebUI* web_ui)
+      : content::WebUIController(web_ui) {
+    auto* source = content::WebUIDataSource::CreateAndAdd(
+        Profile::FromWebUI(web_ui), chrome::kChromeUINewTabPageHost);
+    source->AddResourcePath("style.css", IDR_PUBKY_START_PAGE_STYLE_CSS);
+    source->SetDefaultResource(IDR_PUBKY_START_PAGE_INDEX_HTML);
+    source->OverrideContentSecurityPolicy(
+        network::mojom::CSPDirectiveName::ScriptSrc, "script-src 'none';");
+    source->OverrideContentSecurityPolicy(
+        network::mojom::CSPDirectiveName::ConnectSrc, "connect-src 'none';");
+    source->OverrideContentSecurityPolicy(
+        network::mojom::CSPDirectiveName::ImgSrc, "img-src 'none';");
+  }
+};
+}  // namespace
+
 bool NewTabPageUIConfig::IsWebUIEnabled(
     content::BrowserContext* browser_context) {
   Profile* profile = Profile::FromBrowserContext(browser_context);
@@ -176,7 +197,7 @@ NewTabPageUIConfig::CreateWebUIController(content::WebUI* web_ui,
     return std::make_unique<PageNotAvailableForGuestUI>(
         web_ui, chrome::kChromeUINewTabPageHost);
   }
-  return std::make_unique<NewTabPageUI>(web_ui);
+  return std::make_unique<PubkyStartPageUI>(web_ui);
 }
 
 namespace {

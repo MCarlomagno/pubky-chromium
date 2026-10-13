@@ -160,6 +160,7 @@ template("chrome_extra_paks") {
         "$root_gen_dir/chrome/new_tab_page_third_party_resources.pak",
         "$root_gen_dir/chrome/new_tab_page_untrusted_resources.pak",
         "$root_gen_dir/chrome/new_tab_shared_resources.pak",
+        "$root_gen_dir/chrome/pubky_start_page_resources.pak",
       ]
     }
 

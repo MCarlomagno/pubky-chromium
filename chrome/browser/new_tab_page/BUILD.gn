@@ -265,6 +265,7 @@ if (!is_android) {
       "new_tab_page_interactive_uitest.cc",
       "new_tab_page_realbox_interactive_uitest.cc",
       "ntp_promo/ntp_promo_interactive_uitest.cc",
+      "pubky_start_page_interactive_uitest.cc",
     ]
 
     deps = [
@@ -282,11 +283,13 @@ if (!is_android) {
       "//chrome/browser/user_education",
       "//chrome/test:test_support",
       "//chrome/test:test_support_ui",
+      "//chrome/test/base:interactive_test_utils",
       "//components/contextual_search:test_support",
       "//components/omnibox/common:features",
       "//content/test:test_support",
       "//testing/gtest",
       "//ui/base:test_support",
+      "//ui/events",
     ]
   }
 }
