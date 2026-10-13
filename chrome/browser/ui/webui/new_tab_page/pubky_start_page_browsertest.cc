@@ -35,10 +35,12 @@ IN_PROC_BROWSER_TEST_F(PubkyStartPageBrowserTest, NewTabLinks) {
                       "[...document.querySelectorAll('.key-links a')]"
                       ".map(a => a.getAttribute('href')).join(',')"));
   EXPECT_EQ(true, content::EvalJs(
-                      tab, "[...document.querySelectorAll('.key-links a')]"
-                           ".every(a => a.textContent === a.getAttribute('href'))"));
-  EXPECT_EQ(7, content::EvalJs(
-                   tab, "document.querySelectorAll('.key-links button').length"));
+                      tab,
+                      "[...document.querySelectorAll('.key-links a')]"
+                      ".every(a => a.textContent === a.getAttribute('href'))"));
+  EXPECT_EQ(7,
+            content::EvalJs(
+                tab, "document.querySelectorAll('.key-links button').length"));
   EXPECT_EQ(
       "https://pubky.org,https://pubky.app,https://bitkit.to,"
       "https://synonym.to,https://github.com/pubky,https://pubky.tech",
