@@ -202,15 +202,15 @@ TEST_F(CustomizeToolbarHandlerTest, PinAction) {
 }
 
 TEST_F(CustomizeToolbarHandlerTest, PinHome) {
-  ASSERT_EQ(false, profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
-
-  handler().PinAction(side_panel::customize_chrome::mojom::ActionId::kHome,
-                      true);
-  EXPECT_EQ(true, profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
+  ASSERT_EQ(true, profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
 
   handler().PinAction(side_panel::customize_chrome::mojom::ActionId::kHome,
                       false);
   EXPECT_EQ(false, profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
+
+  handler().PinAction(side_panel::customize_chrome::mojom::ActionId::kHome,
+                      true);
+  EXPECT_EQ(true, profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
 }
 
 TEST_F(CustomizeToolbarHandlerTest, PinForward) {
@@ -314,8 +314,8 @@ TEST_F(CustomizeToolbarHandlerTest, GetIsCustomizedForNonPinnedActions) {
       });
 
   // Initially, everything is default.
-  // Home: False, Forward: True, SplitTab: False
-  ASSERT_FALSE(profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
+  // Home: True, Forward: True, SplitTab: False
+  ASSERT_TRUE(profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
   ASSERT_TRUE(profile()->GetPrefs()->GetBoolean(prefs::kShowForwardButton));
   ASSERT_FALSE(profile()->GetPrefs()->GetBoolean(prefs::kPinSplitTabButton));
 
@@ -328,14 +328,14 @@ TEST_F(CustomizeToolbarHandlerTest, GetIsCustomizedForNonPinnedActions) {
 
   // Toggle all to non-default values.
   handler().PinAction(side_panel::customize_chrome::mojom::ActionId::kHome,
-                      true);
+                      false);
   handler().PinAction(side_panel::customize_chrome::mojom::ActionId::kForward,
                       false);
   handler().PinAction(side_panel::customize_chrome::mojom::ActionId::kSplitTab,
                       true);
 
   // Verify all prefs changed.
-  EXPECT_TRUE(profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
+  EXPECT_FALSE(profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
   EXPECT_FALSE(profile()->GetPrefs()->GetBoolean(prefs::kShowForwardButton));
   EXPECT_TRUE(profile()->GetPrefs()->GetBoolean(prefs::kPinSplitTabButton));
 
@@ -351,7 +351,7 @@ TEST_F(CustomizeToolbarHandlerTest, GetIsCustomizedForNonPinnedActions) {
   handler().ResetToDefault();
 
   // Verify all reset to default.
-  EXPECT_FALSE(profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
+  EXPECT_TRUE(profile()->GetPrefs()->GetBoolean(prefs::kShowHomeButton));
   EXPECT_TRUE(profile()->GetPrefs()->GetBoolean(prefs::kShowForwardButton));
   EXPECT_FALSE(profile()->GetPrefs()->GetBoolean(prefs::kPinSplitTabButton));
 

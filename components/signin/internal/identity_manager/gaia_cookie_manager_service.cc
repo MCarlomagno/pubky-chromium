@@ -867,6 +867,11 @@ void GaiaCookieManagerService::StartGaiaLogOut() {
 }
 
 void GaiaCookieManagerService::StartFetchingListAccounts() {
+  // No /ListAccounts call to Google while browser sign-in is off.
+  if (!signin_client_->GetPrefs()->GetBoolean(prefs::kSigninAllowed)) {
+    HandleNextRequest();
+    return;
+  }
   gaia_auth_fetcher_ =
       signin_client_->CreateGaiaAuthFetcher(this, requests_.front().source());
   gaia_auth_fetcher_->StartListAccounts();
