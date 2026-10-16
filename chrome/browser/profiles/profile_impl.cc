@@ -422,8 +422,11 @@ void ProfileImpl::RegisterProfilePrefs(
 #else
   uint32_t home_page_flags = user_prefs::PrefRegistrySyncable::SYNCABLE_PREF;
 #endif
-  registry->RegisterStringPref(prefs::kHomePage, std::string(),
-                               home_page_flags);
+  // pubky.org served under the owner's public key.
+  registry->RegisterStringPref(
+      prefs::kHomePage,
+      "https://pubky.org.w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/",
+      home_page_flags);
   registry->RegisterStringPref(prefs::kNewTabPageLocationOverride,
                                std::string());
 

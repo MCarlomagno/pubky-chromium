@@ -619,9 +619,12 @@ TEST_F(ProfileResetterTest, ResetHomepagePartially) {
 
   ResetAndWait(ProfileResetter::HOMEPAGE);
 
-  EXPECT_TRUE(prefs->GetBoolean(prefs::kHomePageIsNewTabPage));
-  EXPECT_EQ("http://www.foo.com", prefs->GetString(prefs::kHomePage));
-  EXPECT_FALSE(prefs->GetBoolean(prefs::kShowHomeButton));
+  // Pubky defaults: the key-addressed pubky.org home page, Home button shown.
+  EXPECT_FALSE(prefs->GetBoolean(prefs::kHomePageIsNewTabPage));
+  EXPECT_EQ(
+      "https://pubky.org.w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/",
+      prefs->GetString(prefs::kHomePage));
+  EXPECT_TRUE(prefs->GetBoolean(prefs::kShowHomeButton));
 }
 
 TEST_F(ProfileResetterTest, ResetContentSettings) {
@@ -1022,9 +1025,12 @@ class ProfileResetterTestForSnapshots
     EXPECT_TRUE(empty_snap.startup_urls().empty());
     EXPECT_EQ(SessionStartupPref::GetDefaultStartupType(),
               empty_snap.startup_type());
-    EXPECT_TRUE(empty_snap.homepage().empty());
-    EXPECT_TRUE(empty_snap.homepage_is_ntp());
-    EXPECT_FALSE(empty_snap.show_home_button());
+    EXPECT_EQ(
+        "https://"
+        "pubky.org.w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/",
+        empty_snap.homepage());
+    EXPECT_FALSE(empty_snap.homepage_is_ntp());
+    EXPECT_TRUE(empty_snap.show_home_button());
     EXPECT_NE(std::string::npos, empty_snap.dse_url().find("{google:baseURL}"));
     EXPECT_EQ(ResettableSettingsSnapshot::ExtensionList(),
               empty_snap.enabled_extensions());

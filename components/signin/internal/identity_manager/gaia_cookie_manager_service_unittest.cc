@@ -149,6 +149,7 @@ class GaiaCookieManagerServiceTest : public testing::Test {
         canceled_(GoogleServiceAuthError::CreateRequestCanceled()) {
     AccountTrackerService::RegisterPrefs(pref_service_.registry());
     GaiaCookieManagerService::RegisterPrefs(pref_service_.registry());
+    pref_service_.registry()->RegisterBooleanPref(prefs::kSigninAllowed, true);
     signin_client_ = std::make_unique<CustomTestSigninClient>(&pref_service_);
 
 #if BUILDFLAG(IS_ANDROID)
@@ -1371,3 +1372,17 @@ INSTANTIATE_TEST_SUITE_P(
     testing::Combine(/*is_gaia_signin_cookie=*/testing::Bool(),
                      testing::Values(net::CookieChangeCause::UNKNOWN_DELETION,
                                      net::CookieChangeCause::EXPLICIT)));
+
+TEST_F(GaiaCookieManagerServiceTest, NoListAccountsWhenSigninNotAllowed) {
+  GaiaCookieManagerService helper(account_tracker_service(), token_service(),
+                                  signin_client());
+  signin_client()->GetPrefs()->SetBoolean(prefs::kSigninAllowed, false);
+  helper.TriggerListAccounts();
+  base::RunLoop().RunUntilIdle();
+  EXPECT_FALSE(IsLoadPending());
+
+  signin_client()->GetPrefs()->SetBoolean(prefs::kSigninAllowed, true);
+  helper.TriggerListAccounts();
+  base::RunLoop().RunUntilIdle();
+  EXPECT_TRUE(IsLoadPending());
+}

@@ -268,6 +268,8 @@ class BaseSearchProviderTest : public testing::Test,
         base::BindRepeating(&AutocompleteClassifierFactory::BuildInstanceFor));
 
     profile_ = profile_builder.Build();
+    // Pubky turns suggestions off by default; these tests need them on.
+    profile_->GetPrefs()->SetBoolean(prefs::kSearchSuggestEnabled, true);
 
     TestingProfile::Builder otr_profile_builder;
     otr_profile_builder.AddTestingFactory(

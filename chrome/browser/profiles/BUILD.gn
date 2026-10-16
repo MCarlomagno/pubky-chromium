@@ -1118,6 +1118,7 @@ source_set("unit_tests") {
     "profile_selections_unittest.cc",
     "profile_unittest.cc",
     "profiles_state_unittest.cc",
+    "pubky_defaults_unittest.cc",
   ]
   deps = [
     ":misc",
@@ -1129,11 +1130,13 @@ source_set("unit_tests") {
     "//base",
     "//base/test:test_support",
     "//chrome/browser/prefs",
+    "//chrome/browser/preloading",
     "//chrome/browser/signin",
     "//chrome/browser/ui:ui_features",
     "//chrome/browser/ui/profiles",
     "//chrome/test:test_support",
     "//chrome/test/base:testing_browser_process",
+    "//components/omnibox/browser:aim_eligibility_service_features",
     "//components/policy/core/browser",
     "//components/policy/core/browser:incognito_mode_policy_test_support",
     "//components/policy/core/browser:test_support",

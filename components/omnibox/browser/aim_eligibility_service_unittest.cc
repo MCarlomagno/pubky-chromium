@@ -103,6 +103,11 @@ class AimEligibilityServiceTest : public testing::Test {
  public:
   explicit AimEligibilityServiceTest() {}
 
+ private:
+  // Pubky turns AI Mode off by default; these tests need it on.
+  base::test::ScopedFeatureList aim_enabled_{omnibox::kAimEnabled};
+
+ public:
   void SetUp() override {
     AimEligibilityService::RegisterProfilePrefs(
         search_engines_test_environment_.pref_service().registry());
