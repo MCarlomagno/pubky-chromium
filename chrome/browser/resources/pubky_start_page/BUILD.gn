@@ -11,6 +11,7 @@ grit("resources") {
   enable_input_discovery_for_gn_analyze = false
   source = "$target_gen_dir/resources.grd"
   inputs = [
+    "copy.js",
     "index.html",
     "style.css",
   ]
@@ -28,6 +29,7 @@ generate_grd("build_grd") {
   grd_prefix = "pubky_start_page"
   out_grd = "$target_gen_dir/resources.grd"
   input_files = [
+    "copy.js",
     "index.html",
     "style.css",
   ]

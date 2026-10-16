@@ -18,6 +18,30 @@ IN_PROC_BROWSER_TEST_F(PubkyStartPageBrowserTest, NewTabLinks) {
   auto* tab = browser()->GetTabStripModel()->GetActiveWebContents();
   EXPECT_EQ(chrome::ChromeUINewTabPageURLAsGURL(), tab->GetLastCommittedURL());
   EXPECT_EQ(
+      "https://pubky.org."
+      "w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/,"
+      "https://pubky.app."
+      "w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/,"
+      "https://bitkit.to."
+      "w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/,"
+      "https://synonym.to."
+      "w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/,"
+      "https://github.com."
+      "w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/,"
+      "https://pubky.tech."
+      "w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/,"
+      "https://w3wfjtcjabczp7jupgiizq7db5ps7f3x39addowas4ops8ba3oto/",
+      content::EvalJs(tab,
+                      "[...document.querySelectorAll('.key-links a')]"
+                      ".map(a => a.getAttribute('href')).join(',')"));
+  EXPECT_EQ(true, content::EvalJs(
+                      tab,
+                      "[...document.querySelectorAll('.key-links a')]"
+                      ".every(a => a.textContent === a.getAttribute('href'))"));
+  EXPECT_EQ(7,
+            content::EvalJs(
+                tab, "document.querySelectorAll('.key-links button').length"));
+  EXPECT_EQ(
       "https://pubky.org,https://pubky.app,https://bitkit.to,"
       "https://synonym.to,https://github.com/pubky,https://pubky.tech",
       content::EvalJs(tab,
