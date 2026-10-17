@@ -58,14 +58,17 @@ S0 is not complete when the repository and board exist. Track these gates in iss
 |---|---|
 | Mission, exclusions, repository, first platform and operating permissions | Recorded here; independent review pending |
 | Base adoption, source/tool pins, patch scope, licensing, update policy and maintenance-cost evidence | Pins adopted; maintenance assessment pending |
-| Identifier grammar: PKD sites versus Pubky identities, search/fallback, malformed/Unicode input | Decision brief and review pending |
-| TLS trust model: key binding, secure context, downgrade, mixed content, connection display | Decision brief and review pending |
-| Profile/avatar lookup and privacy defaults | Owner decision pending; no new lookups implemented |
-| Scoped-session design brief and origin-permission/XSS analysis | Design and independent review pending; implementation deferred |
-| Threat model and Google-service inventory/replacement policy | Analysis and owner decisions pending |
+| Identifier grammar: PKD sites versus Pubky identities, search/fallback, malformed/Unicode input | Recorded in [IDENTIFIERS.md](IDENTIFIERS.md) |
+| TLS trust model: key binding, secure context, downgrade, mixed content, connection display | Recorded in [TLS_TRUST_MODEL.md](TLS_TRUST_MODEL.md), assuming PKResolve resolution and delegation |
+| Profile/avatar lookup and privacy defaults | Settled before identity-card work starts; no new lookups implemented |
+| Scoped-session design brief and origin-permission/XSS analysis | Settled before session-layer work starts |
+| Threat model | Initial version in [THREAT_MODEL.md](THREAT_MODEL.md); each feature adds its section before it ships |
+| Google-service inventory/replacement policy | Analysis and owner decisions pending |
 | Linux checkout/build isolation, resource/access limits, first-fetch runbook/evidence | Plan and scoped dependency-download permission pending |
-| Dependency ledger and independent protocol/state-machine review | Pending |
+| Dependency ledger and protocol/state-machine review | Recorded before each implementation that adds a dependency or a protocol state machine |
 
-Preserve the original roadmap's substantive gates. Record an explicit amendment when a previous environment assumption is replaced; do not silently mark an unmeasured or unavailable gate complete. Security-sensitive runtime implementation starts only after its relevant contracts and S0 review are settled.
+Preserve the original roadmap's substantive gates. Record an explicit amendment when a previous environment assumption is replaced; do not silently mark an unmeasured or unavailable gate complete.
+
+Amendment, October 2026: the project is experimental, so design gates no longer block all runtime work up front. Each gate is settled before the implementation that depends on it, as the table states. Prototypes may proceed behind a flag before then.
 
 The public issues hold actionable work and sanitized evidence. The private planning board can hold decision requests and future work, but does not make linked public issues private. Later roadmap stages remain high-level planning items until their scope is approved.
