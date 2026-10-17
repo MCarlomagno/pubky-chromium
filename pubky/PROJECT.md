@@ -6,7 +6,7 @@ Status: S0 foundations in progress. This document records the approved operating
 
 Build on the existing Pubky Chromium fork. The long-term goal is native Pubky identity and scoped sessions, with public-key navigation, authenticated connections, and identity UI. The immediate milestone is a reproducible Linux baseline and an evidence-backed map of the remaining work. No session storage, authenticated writes, replacement of existing browsing protections, mobile implementation, release signing, or new resolver implementation is authorized in this first milestone.
 
-Repository: `MCarlomagno/pubky-chromium`, development branch `pubky`.
+Repository: `pubky/pubky-chromium`, development branch `pubky`.
 
 Adopted source revision: `77445742d82c8cfc482b2fea0476fe5f84d16032` from `SeverinAlexB/pubky-chromium`. Its recorded Chromium base is `7fec6741f4f7ea010205dc20afc7dafb90221176`. Keep the inherited `DEPS` and `pubky/depot-tools-revision.txt` pins until an approved update. Preserve Chromium branding/licensing restrictions and third-party notices.
 
