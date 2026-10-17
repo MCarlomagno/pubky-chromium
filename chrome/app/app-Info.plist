@@ -150,7 +150,7 @@
 	<key>SUPublicEDKey</key>
 	<string>RGzK2rB/P4diYxd70MkBDc4FDUO0JikBqrFaSWTVOfI=</string>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/MCarlomagno/pubky-chromium/update-manifests-v1/experimental/macos-arm64.xml</string>
+	<string>https://raw.githubusercontent.com/pubky/pubky-chromium/update-manifests-v1/experimental/macos-arm64.xml</string>
 	<key>SURequireSignedFeed</key>
 	<true/>
 	<key>SUVerifyUpdateBeforeExtraction</key>

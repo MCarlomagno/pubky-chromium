@@ -81,7 +81,7 @@ def validate(record, target, running, installed, floor, now):
         raise ValueError("invalid package size")
     if target not in ("linux", "windows"):
         raise ValueError("unsupported target")
-    expected = {"repository": "MCarlomagno/pubky-chromium", "product": "Pubky Chromium",
+    expected = {"repository": "pubky/pubky-chromium", "product": "Pubky Chromium",
                 "channel": "experimental", "architecture": "x64", "platform": target,
                 "package_id": "pubky-chromium" if target == "linux" else "PubkyChromium"}
     if any(record[k] != v for k, v in expected.items()):
@@ -91,7 +91,7 @@ def validate(record, target, running, installed, floor, now):
             raise ValueError("invalid release path segment")
     if not record["asset"].endswith(".deb" if target == "linux" else ".exe"):
         raise ValueError("wrong package format")
-    expected_url = ("https://github.com/MCarlomagno/pubky-chromium/releases/download/"
+    expected_url = ("https://github.com/pubky/pubky-chromium/releases/download/"
                     + record["tag"] + "/" + record["asset"])
     if record["url"] != expected_url:
         raise ValueError("package origin/path mismatch")

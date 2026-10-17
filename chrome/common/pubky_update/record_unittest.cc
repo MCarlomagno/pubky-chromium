@@ -77,9 +77,14 @@ TEST_F(PubkyUpdateRecordTest, IdentityOriginsAndExpiry) {
     record.Set(field, "wrong");
     EXPECT_EQ(RecordError::kTarget, Verify(test::Envelope(record)).error);
   }
+  // The repository moved; records naming the old one are not accepted.
+  auto old_repository = test::Record(now_);
+  old_repository.Set("repository", "MCarlomagno/pubky-chromium");
+  EXPECT_EQ(RecordError::kTarget, Verify(test::Envelope(old_repository)).error);
   for (auto url : {"https://evil.example/pubky.deb",
-                  "https://github.com/MCarlomagno/pubky-chromium/releases/download/v156.0.8073.1/pubky.deb?q=1",
-                  "https://github.com:443/MCarlomagno/pubky-chromium/releases/download/v156.0.8073.1/pubky.deb"}) {
+                  "https://github.com/MCarlomagno/pubky-chromium/releases/download/v156.0.8073.1/pubky.deb",
+                  "https://github.com/pubky/pubky-chromium/releases/download/v156.0.8073.1/pubky.deb?q=1",
+                  "https://github.com:443/pubky/pubky-chromium/releases/download/v156.0.8073.1/pubky.deb"}) {
     auto record = test::Record(now_);
     record.Set("url", url);
     EXPECT_EQ(RecordError::kOrigin, Verify(test::Envelope(record)).error);

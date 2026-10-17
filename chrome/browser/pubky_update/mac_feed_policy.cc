@@ -31,14 +31,14 @@ bool AcceptMacFeedItem(std::string_view version,
       (!floor.empty() && (!previous.IsValid() || previous.GetString() != floor)) ||
       offered <= current || (previous.IsValid() && offered < previous) ||
       channel != "experimental" || architecture != "arm64" ||
-      repository != "MCarlomagno/pubky-chromium" || length == 0 ||
+      repository != "pubky/pubky-chromium" || length == 0 ||
       length >= 2147483648ULL || issued.is_null() || expires.is_null() ||
       expires <= issued || expires - issued > base::Days(180) ||
       issued > now + base::Minutes(5) || now >= expires) {
     return false;
   }
   constexpr std::string_view prefix =
-      "https://github.com/MCarlomagno/pubky-chromium/releases/download/";
+      "https://github.com/pubky/pubky-chromium/releases/download/";
   const std::string& url = archive.spec();
   if (!archive.is_valid() || !base::StartsWith(url, prefix) ||
       archive.has_query() || archive.has_ref() || archive.has_username() ||
