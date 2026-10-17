@@ -34,7 +34,7 @@ namespace {
 
 constexpr std::string_view kInstaller = "MZ signed test installer";
 constexpr char kUrl[] =
-    "https://github.com/MCarlomagno/pubky-chromium/releases/download/"
+    "https://github.com/pubky/pubky-chromium/releases/download/"
     "v156.0.8073.1/mini_installer.exe";
 
 WindowsInstallFacts GoodFacts() {

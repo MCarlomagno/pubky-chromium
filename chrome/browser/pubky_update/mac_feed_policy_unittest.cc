@@ -16,10 +16,10 @@ TEST(PubkyUpdateMacTest, SignedItemMustHaveCurrentTargetAndExpiry) {
                    std::string_view channel, std::string_view architecture,
                    const GURL& url, base::Time expiry) {
     return AcceptMacFeedItem(version, "8073.1", floor, channel, architecture,
-                             "MCarlomagno/pubky-chromium", url, 4096,
+                             "pubky/pubky-chromium", url, 4096,
                              now - base::Days(1), expiry, now);
   };
-  const GURL url("https://github.com/MCarlomagno/pubky-chromium/"
+  const GURL url("https://github.com/pubky/pubky-chromium/"
                  "releases/download/v156.0.8073.2/pubky-chromium-macos-arm64.zip");
   EXPECT_TRUE(check("8073.2", "8073.2", "experimental", "arm64", url,
                     now + base::Days(1)));

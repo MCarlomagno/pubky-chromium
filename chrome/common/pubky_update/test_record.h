@@ -49,14 +49,14 @@ inline base::DictValue Record(base::Time now, Target target = Target::kLinuxX64)
   r.Set("platform", is_linux ? "linux" : "windows");
   r.Set("product", "Pubky Chromium");
   r.Set("product_version", "156.0.8073.1");
-  r.Set("repository", "MCarlomagno/pubky-chromium");
+  r.Set("repository", "pubky/pubky-chromium");
   r.Set("schema", 1);
   r.Set("sha256", std::string(64, 'a'));
   r.Set("size", 123);
   r.Set("source_revision", std::string(40, 'b'));
   r.Set("tag", "v156.0.8073.1");
   r.Set("upstream_version", "156.0.8073.0");
-  r.Set("url", std::string("https://github.com/MCarlomagno/pubky-chromium/releases/download/v156.0.8073.1/") +
+  r.Set("url", std::string("https://github.com/pubky/pubky-chromium/releases/download/v156.0.8073.1/") +
                    (is_linux ? "pubky.deb" : "mini_installer.exe"));
   return r;
 }

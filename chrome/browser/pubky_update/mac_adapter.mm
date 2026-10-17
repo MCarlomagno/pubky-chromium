@@ -23,7 +23,7 @@
 namespace pubky_update {
 namespace {
 constexpr char kFloorPref[] = "pubky_update.macos_arm64.offered_floor";
-constexpr char kFeedUrl[] = "https://raw.githubusercontent.com/MCarlomagno/"
+constexpr char kFeedUrl[] = "https://raw.githubusercontent.com/pubky/"
                             "pubky-chromium/update-manifests-v1/experimental/macos-arm64.xml";
 
 base::Time ParseDate(NSString* value) {

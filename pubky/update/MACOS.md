@@ -9,7 +9,7 @@ enter this repository.
 The signed XML feed at `experimental/macos-arm64.xml` contains exactly one item.
 Use Sparkle's standard signed-appcast format (`SURequireSignedFeed=YES`) and an
 Ed25519-signed full `.zip` enclosure. Put these signed first-level fields on the
-item: `pubky:repository=MCarlomagno/pubky-chromium`,
+item: `pubky:repository=pubky/pubky-chromium`,
 `pubky:product=Pubky Chromium`, `pubky:platform=macos`,
 `pubky:architecture=arm64`, `pubky:channel=experimental`,
 `pubky:issued_at` and `pubky:expires_at` (exact UTC `YYYY-MM-DDTHH:MM:SSZ`).

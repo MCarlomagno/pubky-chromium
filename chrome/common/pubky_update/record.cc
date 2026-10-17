@@ -96,7 +96,7 @@ std::optional<std::array<uint8_t, 32>> ProductionPublicKey() {
 
 GURL FeedUrl(Target target) {
   return GURL(base::StrCat({
-      "https://raw.githubusercontent.com/MCarlomagno/pubky-chromium/",
+      "https://raw.githubusercontent.com/pubky/pubky-chromium/",
       "update-manifests-v1/experimental/",
       target == Target::kLinuxX64 ? "linux-x64.json" : "windows-x64.json"}));
 }
@@ -157,7 +157,7 @@ RecordResult VerifyRecord(std::string_view envelope,
     return *dict->FindString(field);
   };
   const bool is_linux = target == Target::kLinuxX64;
-  if (get("repository") != "MCarlomagno/pubky-chromium" ||
+  if (get("repository") != "pubky/pubky-chromium" ||
       get("product") != "Pubky Chromium" || get("channel") != "experimental" ||
       get("architecture") != "x64" ||
       get("platform") != (is_linux ? "linux" : "windows") ||
@@ -172,7 +172,7 @@ RecordResult VerifyRecord(std::string_view envelope,
   Record record;
   record.url = GURL(get("url"));
   const std::string expected_url = base::StrCat({
-      "https://github.com/MCarlomagno/pubky-chromium/releases/download/",
+      "https://github.com/pubky/pubky-chromium/releases/download/",
       get("tag"), "/", get("asset")});
   if (!SecureUrl(record.url) || record.url.has_query() ||
       get("url") != expected_url || record.url.spec() != expected_url) {
