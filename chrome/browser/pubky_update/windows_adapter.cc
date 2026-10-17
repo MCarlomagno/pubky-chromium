@@ -318,7 +318,7 @@ void WindowsAdapter::OnStaging(Record record, Staging staging) {
             type: NONE
           }
           destination: OTHER
-          destination_other: "The MCarlomagno/pubky-chromium GitHub release asset named in the signed record."
+          destination_other: "The pubky/pubky-chromium GitHub release asset named in the signed record."
           internal {
             contacts {
               owners: "chrome/browser/OWNERS"

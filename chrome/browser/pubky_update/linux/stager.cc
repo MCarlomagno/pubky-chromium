@@ -161,7 +161,7 @@ void LinuxStager::OnPrepared(Record record, StageResult result) {
           data: "No account, profile or browser identifiers."
           user_data { type: NONE }
           destination: OTHER
-          destination_other: "MCarlomagno/pubky-chromium GitHub Release and its allowed asset CDN."
+          destination_other: "pubky/pubky-chromium GitHub Release and its allowed asset CDN."
           internal { contacts { owners: "chrome/browser/OWNERS" } }
           last_reviewed: "2026-10-06"
         }

@@ -155,7 +155,7 @@ void Controller::FetchMetadata() {
             type: NONE
           }
           destination: OTHER
-          destination_other: "The fixed MCarlomagno/pubky-chromium raw GitHub feed."
+          destination_other: "The fixed pubky/pubky-chromium raw GitHub feed."
           internal {
             contacts {
               owners: "chrome/browser/OWNERS"

@@ -26,18 +26,18 @@ MENUNAME="Pubky Chromium"
 SHORTDESC="A browser for censorship-resistant domains"
 
 # Detailed package description.
-FULLDESC="Pubky Chromium opens websites addressed by Ed25519 public keys, alongside the regular web. It finds them through PKDNS over DNS-over-HTTPS and checks the server against the key in the URL with raw-public-key TLS. It is an experimental build of Chromium from the MCarlomagno/pubky-chromium project, not a Google or Chromium project release. It updates itself from signed releases when you check for updates in About and confirm."
+FULLDESC="Pubky Chromium opens websites addressed by Ed25519 public keys, alongside the regular web. It finds them through PKDNS over DNS-over-HTTPS and checks the server against the key in the URL with raw-public-key TLS. It is an experimental build of Chromium from the pubky/pubky-chromium project, not a Google or Chromium project release. It updates itself from signed releases when you check for updates in About and confirm."
 
 # Package maintainer information.
 MAINTNAME="MCarlomagno"
 MAINTMAIL="marcoscarlomagno1@gmail.com"
-PRODUCTURL="https://github.com/MCarlomagno/pubky-chromium"
+PRODUCTURL="https://github.com/pubky/pubky-chromium"
 
 PROJECT_LICENSE="BSD-3-Clause and LGPL-2.1+ and Apache-2.0 and IJG and MIT and GPL-2.0+ and ISC and OpenSSL and (MPL-1.1 or GPL-2.0 or LGPL-2.0)"
 
 DEVELOPER_NAME="The Chromium Authors"
 
-BUGTRACKERURL="https://github.com/MCarlomagno/pubky-chromium/issues"
+BUGTRACKERURL="https://github.com/pubky/pubky-chromium/issues"
 
 HELPURL="https://chromium.googlesource.com/chromium/src/+/main/docs/linux/debugging.md"
 
