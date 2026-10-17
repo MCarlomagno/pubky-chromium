@@ -1,6 +1,6 @@
 # Pubky Chromium project
 
-Status: S0 foundations in progress. This document records the approved operating boundaries; it does not claim that the browser has been rebuilt or validated by this project.
+Status: S0 foundations complete (October 2026). This document records the approved operating boundaries.
 
 ## Product and first milestone
 
@@ -40,7 +40,7 @@ Testing has three levels. Every pull request runs the checks that need no Chromi
 
 ## Branches, review, and integration
 
-Use one branch per issue, based on the pinned development branch, named `s0/<issue-number>-<description>` for foundation work. Give each implementation an isolated writable workspace. Do not force-push or change inherited dependency pins as incidental cleanup. Upstream synchronization cadence and rebase cost remain an S0 decision/evidence item; there are no automatic upstream merges yet.
+Use one branch per issue, based on the pinned development branch, named `s0/<issue-number>-<description>` for foundation work. Give each implementation an isolated writable workspace. Do not force-push or change inherited dependency pins as incidental cleanup. Upstream synchronization cadence and rebase cost are tracked in #54; there are no automatic upstream merges yet.
 
 An issue is Ready only when its goal, boundaries, dependencies, acceptance checks, and approval context are sufficient to execute. Independent work can proceed in parallel. Shared protocol/interface changes, dependency upgrades, broad refactors, and builds must be coordinated; review takes priority over starting another implementation.
 
@@ -52,19 +52,19 @@ Engineers share one GitHub account, so a review comment names the reviewing engi
 
 ## S0 acceptance ledger
 
-S0 is not complete when the repository and board exist. Track these gates in issues and link the exact artifacts/revisions:
+S0 closed in October 2026. Final state of each gate:
 
 | Gate | Current state |
 |---|---|
-| Mission, exclusions, repository, first platform and operating permissions | Recorded here; independent review pending |
-| Base adoption, source/tool pins, patch scope, licensing, update policy and maintenance-cost evidence | Pins adopted; maintenance assessment pending |
+| Mission, exclusions, repository, first platform and operating permissions | Recorded here |
+| Base adoption, source/tool pins, patch scope, licensing, update policy and maintenance-cost evidence | Pins adopted; licensing ships with each release; upstream sync policy and rebase cost tracked in #54 |
 | Identifier grammar: PKD sites versus Pubky identities, search/fallback, malformed/Unicode input | Recorded in [IDENTIFIERS.md](IDENTIFIERS.md) |
 | TLS trust model: key binding, secure context, downgrade, mixed content, connection display | Recorded in [TLS_TRUST_MODEL.md](TLS_TRUST_MODEL.md), assuming PKResolve resolution and delegation |
 | Profile/avatar lookup and privacy defaults | Settled before identity-card work starts; no new lookups implemented |
 | Scoped-session design brief and origin-permission/XSS analysis | Settled before session-layer work starts |
 | Threat model | Initial version in [THREAT_MODEL.md](THREAT_MODEL.md); each feature adds its section before it ships |
-| Google-service inventory/replacement policy | Analysis and owner decisions pending |
-| Linux checkout/build isolation, resource/access limits, first-fetch runbook/evidence | Plan and scoped dependency-download permission pending |
+| Google-service inventory/replacement policy | Idle Google requests reduced (#45); the full inventory continues as hardening work (T17 in [THREAT_MODEL.md](THREAT_MODEL.md)) |
+| Linux checkout/build isolation, resource/access limits, first-fetch runbook/evidence | Done: the designated builder produces every release |
 | Dependency ledger and protocol/state-machine review | Recorded before each implementation that adds a dependency or a protocol state machine |
 
 Preserve the original roadmap's substantive gates. Record an explicit amendment when a previous environment assumption is replaced; do not silently mark an unmeasured or unavailable gate complete.
